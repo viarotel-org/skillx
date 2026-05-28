@@ -8,14 +8,15 @@ import {
   atomicReplaceDirectory,
   cleanupRunWorkspace,
   copyDirectory,
-  countDirectSkillDirs,
   createManifest,
   createRunWorkspace,
+  discoverSkillDirs,
   ensureDirectory,
+  filterSkillDirs,
   getStaleManagedIds,
   listUnknownSkillDirs,
   MANIFEST_PATH,
-  pathExists,
+  planSkillTargets,
   readManifest,
   removeGeneratedSkillDir,
   resolveInside,
@@ -52,8 +53,11 @@ import { createSummary, writeSummaryFiles } from './skills-sync/summary.mjs'
  * @property {string} url
  * @property {string} branch
  * @property {string} path
+ * @property {'flat' | 'nested'} mode
  * @property {boolean} enabled
  * @property {boolean} preserveOnFailure
+ * @property {string[]} includes
+ * @property {string[]} excludes
  * @property {unknown} priority
  */
 
@@ -75,6 +79,8 @@ import { createSummary, writeSummaryFiles } from './skills-sync/summary.mjs'
 /**
  * @typedef {object} ManifestSource
  * @property {string} [commit]
+ * @property {string[]} [targets]
+ * @property {string[]} [skillPaths]
  */
 
 /**
@@ -107,7 +113,6 @@ export async function syncSkills(options = {}, logger = createLogger()) {
   const enabledSources = config.sources.filter(source => source.enabled)
   const skippedSources = config.sources.filter(source => !source.enabled)
   const previousManifest = /** @type {Manifest | null} */ (await readManifest(cwd, MANIFEST_PATH))
-  const currentSourceIds = enabledSources.map(source => source.id)
   const runWorkspace = await createRunWorkspace(cwd, { dryRun: options.dryRun })
 
   summary.totalSources = config.sources.length
@@ -122,11 +127,10 @@ export async function syncSkills(options = {}, logger = createLogger()) {
   }
 
   try {
-    await prepareLocalDirectories(cwd, config, options)
-    await handleStaleManagedDirectories(cwd, previousManifest, currentSourceIds, config.protectedIds, summary, options, logger)
-    await reportUnknownDirectories(cwd, currentSourceIds, config.protectedIds, summary, logger)
+    await prepareLocalDirectories(cwd, options)
 
     const syncedManifestSources = []
+    const activeManagedTargets = []
 
     for (const source of enabledSources) {
       const result = await syncSource(cwd, source, runWorkspace, options, logger)
@@ -134,22 +138,35 @@ export async function syncSkills(options = {}, logger = createLogger()) {
       if (result.status === 'synced') {
         summary.synced.push(result)
         syncedManifestSources.push(result)
+        activeManagedTargets.push(...(result.targets ?? []))
         continue
       }
 
       summary.failed.push(result)
       const previousSource = previousManifest?.sources?.[source.id]
+      if (previousSource) {
+        activeManagedTargets.push(...getPreviousManagedTargets(source.id, previousSource))
+      }
+
       if (source.preserveOnFailure && previousSource) {
         syncedManifestSources.push({
           id: source.id,
           url: source.url,
           branch: source.branch,
           path: source.path,
+          mode: previousSource.mode ?? source.mode,
+          includes: previousSource.includes ?? source.includes,
+          excludes: previousSource.excludes ?? source.excludes,
           commit: previousSource.commit,
           status: 'preserved',
+          targets: getPreviousManagedTargets(source.id, previousSource),
+          skillPaths: previousSource.skillPaths ?? [],
         })
       }
     }
+
+    await handleStaleManagedDirectories(cwd, previousManifest, activeManagedTargets, config.protectedIds, summary, options, logger)
+    await reportUnknownDirectories(cwd, activeManagedTargets, config.protectedIds, summary, logger)
 
     const nextManifest = createManifest(syncedManifestSources)
     await writeManifest(cwd, nextManifest, { dryRun: options.dryRun })
@@ -167,34 +184,25 @@ export async function syncSkills(options = {}, logger = createLogger()) {
 
 /**
  * @param {string} cwd
- * @param {SkillsConfig} config
  * @param {SyncOptions} options
  * @returns {Promise<void>}
  */
-async function prepareLocalDirectories(cwd, config, options) {
+async function prepareLocalDirectories(cwd, options) {
   await ensureDirectory(resolveInside(cwd, SKILLS_ROOT), { dryRun: options.dryRun })
-  await ensureDirectory(resolveInside(cwd, SKILLS_ROOT, 'local'), { dryRun: options.dryRun })
-
-  for (const protectedId of config.protectedIds) {
-    const protectedPath = resolveInside(cwd, SKILLS_ROOT, protectedId)
-    if (protectedId === 'local' && !(await pathExists(protectedPath)) && !options.dryRun) {
-      await ensureDirectory(protectedPath)
-    }
-  }
 }
 
 /**
  * @param {string} cwd
  * @param {Manifest | null} previousManifest
- * @param {string[]} currentSourceIds
+ * @param {string[]} currentManagedTargetIds
  * @param {string[]} protectedIds
  * @param {import('./skills-sync/summary.mjs').SyncSummary} summary
  * @param {SyncOptions} options
  * @param {Logger} logger
  * @returns {Promise<void>}
  */
-async function handleStaleManagedDirectories(cwd, previousManifest, currentSourceIds, protectedIds, summary, options, logger) {
-  const staleManagedIds = getStaleManagedIds(previousManifest, currentSourceIds, protectedIds)
+async function handleStaleManagedDirectories(cwd, previousManifest, currentManagedTargetIds, protectedIds, summary, options, logger) {
+  const staleManagedIds = getStaleManagedIds(previousManifest, currentManagedTargetIds, protectedIds)
   for (const staleManagedId of staleManagedIds) {
     if (options.dryRun) {
       summary.stalePlanned.push(staleManagedId)
@@ -210,14 +218,14 @@ async function handleStaleManagedDirectories(cwd, previousManifest, currentSourc
 
 /**
  * @param {string} cwd
- * @param {string[]} currentSourceIds
+ * @param {string[]} knownDirectoryIds
  * @param {string[]} protectedIds
  * @param {import('./skills-sync/summary.mjs').SyncSummary} summary
  * @param {Logger} logger
  * @returns {Promise<void>}
  */
-async function reportUnknownDirectories(cwd, currentSourceIds, protectedIds, summary, logger) {
-  const unknownDirs = await listUnknownSkillDirs(cwd, currentSourceIds, protectedIds)
+async function reportUnknownDirectories(cwd, knownDirectoryIds, protectedIds, summary, logger) {
+  const unknownDirs = await listUnknownSkillDirs(cwd, knownDirectoryIds, protectedIds)
   summary.unknownDirs.push(...unknownDirs)
 
   for (const unknownDir of unknownDirs) {
@@ -241,31 +249,43 @@ async function syncSource(cwd, source, runWorkspace, options, logger) {
   const sourceSkillsPath = source.path === '.'
     ? repoPath
     : path.join(repoPath, ...source.path.split('/'))
-  const stagedPath = path.join(runWorkspace.stagingPath, source.id)
-  const targetPath = resolveInside(cwd, SKILLS_ROOT, source.id)
 
   try {
     await cloneSourceWithRetry(source, repoPath, { cwd, maxAttempts: 3 }, logger)
     await assertDirectory(sourceSkillsPath, `Source path ${source.path}`)
 
     const commit = await getHeadCommit(repoPath)
-    const skillCount = await countDirectSkillDirs(sourceSkillsPath)
+    const discoveredSkills = await discoverSkillDirs(sourceSkillsPath)
+    const selectedSkills = filterSkillDirs(discoveredSkills, source)
+    const plannedTargets = planSkillTargets(source, selectedSkills)
+    const targets = getUniqueValues(plannedTargets.map(target => target.targetId))
+    const skillPaths = plannedTargets.map(target => target.relativePath)
 
     if (!options.dryRun) {
-      await copyDirectory(sourceSkillsPath, stagedPath)
-      await atomicReplaceDirectory(targetPath, stagedPath, runWorkspace.backupsPath)
+      if (source.mode === 'nested') {
+        await syncNestedSource(cwd, source, plannedTargets, runWorkspace)
+      }
+      else {
+        await syncFlatSource(cwd, plannedTargets, runWorkspace)
+      }
     }
 
-    logger.success(`Synced ${source.id}: ${skillCount} skill directories at ${commit.slice(0, 12)}.`)
+    logger.success(`Synced ${source.id}: ${selectedSkills.length}/${discoveredSkills.length} skill directories at ${commit.slice(0, 12)}.`)
     return {
       id: source.id,
       url: source.url,
       branch: source.branch,
       path: source.path,
+      mode: source.mode,
+      includes: source.includes,
+      excludes: source.excludes,
       status: 'synced',
-      skillCount,
+      skillCount: selectedSkills.length,
+      discoveredSkillCount: discoveredSkills.length,
       commit,
-      message: options.dryRun ? 'Dry-run validated clone and source path.' : 'Synced successfully.',
+      targets,
+      skillPaths,
+      message: options.dryRun ? 'Dry-run validated clone, filters, and target paths.' : 'Synced successfully.',
     }
   }
   catch (error) {
@@ -286,6 +306,64 @@ async function syncSource(cwd, source, runWorkspace, options, logger) {
   finally {
     logger.groupEnd()
   }
+}
+
+/**
+ * @param {string} cwd
+ * @param {SourceConfig} source
+ * @param {import('./skills-sync/fs.mjs').PlannedSkillTarget[]} plannedTargets
+ * @param {RunWorkspace} runWorkspace
+ * @returns {Promise<void>}
+ */
+async function syncNestedSource(cwd, source, plannedTargets, runWorkspace) {
+  if (plannedTargets.length === 0) {
+    return
+  }
+
+  const stagedPath = path.join(runWorkspace.stagingPath, source.id)
+  const targetPath = resolveInside(cwd, SKILLS_ROOT, source.id)
+  await ensureDirectory(stagedPath)
+
+  for (const plannedTarget of plannedTargets) {
+    const stagedSkillPath = plannedTarget.nestedPath === '.'
+      ? stagedPath
+      : path.join(stagedPath, ...plannedTarget.nestedPath.split('/'))
+    await copyDirectory(plannedTarget.absolutePath, stagedSkillPath)
+  }
+
+  await atomicReplaceDirectory(targetPath, stagedPath, runWorkspace.backupsPath)
+}
+
+/**
+ * @param {string} cwd
+ * @param {import('./skills-sync/fs.mjs').PlannedSkillTarget[]} plannedTargets
+ * @param {RunWorkspace} runWorkspace
+ * @returns {Promise<void>}
+ */
+async function syncFlatSource(cwd, plannedTargets, runWorkspace) {
+  for (const plannedTarget of plannedTargets) {
+    const stagedPath = path.join(runWorkspace.stagingPath, plannedTarget.targetId)
+    const targetPath = resolveInside(cwd, SKILLS_ROOT, plannedTarget.targetId)
+    await copyDirectory(plannedTarget.absolutePath, stagedPath)
+    await atomicReplaceDirectory(targetPath, stagedPath, runWorkspace.backupsPath)
+  }
+}
+
+/**
+ * @param {string} sourceId
+ * @param {ManifestSource} previousSource
+ * @returns {string[]}
+ */
+function getPreviousManagedTargets(sourceId, previousSource) {
+  return Array.isArray(previousSource.targets) ? previousSource.targets : [sourceId]
+}
+
+/**
+ * @param {string[]} values
+ * @returns {string[]}
+ */
+function getUniqueValues(values) {
+  return [...new Set(values)]
 }
 
 /**

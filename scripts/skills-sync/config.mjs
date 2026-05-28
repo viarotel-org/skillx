@@ -1,14 +1,18 @@
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import process from 'node:process'
+import { minimatch } from 'minimatch'
 import YAML from 'yaml'
 
 /**
  * @typedef {object} DefaultsConfig
  * @property {string} branch
  * @property {string} path
+ * @property {'flat' | 'nested'} mode
  * @property {boolean} enabled
  * @property {boolean} preserveOnFailure
+ * @property {string[]} includes
+ * @property {string[]} excludes
  */
 
 /**
@@ -17,21 +21,28 @@ import YAML from 'yaml'
  * @property {string} url
  * @property {string} branch
  * @property {string} path
+ * @property {'flat' | 'nested'} mode
  * @property {boolean} enabled
  * @property {boolean} preserveOnFailure
+ * @property {string[]} includes
+ * @property {string[]} excludes
  * @property {unknown} priority
  */
 
-export const DEFAULT_CONFIG_PATH = 'config/skills-sources.yaml'
+export const DEFAULT_CONFIG_PATH = 'skills-sources.yaml'
 
 const SOURCE_ID_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
-const DEFAULT_PROTECTED_IDS = ['local', 'subscribe']
+const DEFAULT_PROTECTED_IDS = ['local-*', 'subscribe']
 const DEFAULTS = {
   branch: 'main',
   path: 'skills',
+  mode: 'flat',
   enabled: true,
   preserveOnFailure: true,
+  includes: [],
+  excludes: [],
 }
+const SOURCE_MODES = ['flat', 'nested']
 
 export class ConfigValidationError extends Error {
   /**
@@ -118,7 +129,7 @@ export function validateSourceId(sourceId, protectedIds = DEFAULT_PROTECTED_IDS)
     return `Source id "${sourceId}" must use kebab-case lowercase letters and numbers.`
   }
 
-  if (protectedIds.includes(sourceId)) {
+  if (isProtectedId(sourceId, protectedIds)) {
     return `Source id "${sourceId}" is protected and cannot be generated.`
   }
 
@@ -200,11 +211,21 @@ function normalizeDefaults(rawDefaults, issues) {
     issues.push('`defaults.preserveOnFailure` must be a boolean.')
   }
 
+  if (!isValidSourceMode(mergedDefaults.mode)) {
+    issues.push('`defaults.mode` must be either "flat" or "nested".')
+  }
+
+  const includes = normalizeFilterPatterns(mergedDefaults.includes, 'defaults.includes', issues)
+  const excludes = normalizeFilterPatterns(mergedDefaults.excludes, 'defaults.excludes', issues)
+
   return {
     branch: String(mergedDefaults.branch ?? DEFAULTS.branch),
     path: String(mergedDefaults.path ?? DEFAULTS.path),
+    mode: isValidSourceMode(mergedDefaults.mode) ? mergedDefaults.mode : DEFAULTS.mode,
     enabled: Boolean(mergedDefaults.enabled),
     preserveOnFailure: Boolean(mergedDefaults.preserveOnFailure),
+    includes,
+    excludes,
   }
 }
 
@@ -221,12 +242,50 @@ function normalizeProtectedIds(rawProtectedIds, issues) {
 
   const protectedIds = [...new Set([...DEFAULT_PROTECTED_IDS, ...(rawProtectedIds ?? [])])]
   for (const protectedId of protectedIds) {
-    if (typeof protectedId !== 'string' || !SOURCE_ID_PATTERN.test(protectedId)) {
-      issues.push(`Protected id "${String(protectedId)}" must use kebab-case.`)
+    const protectedIdIssue = validateProtectedIdPattern(protectedId)
+    if (protectedIdIssue) {
+      issues.push(protectedIdIssue)
     }
   }
 
   return protectedIds
+}
+
+/**
+ * @param {string} sourceId
+ * @param {string[]} protectedIds
+ * @returns {boolean}
+ */
+function isProtectedId(sourceId, protectedIds) {
+  return protectedIds.some(protectedId => sourceId === protectedId || minimatch(sourceId, protectedId, { nonegate: true, nocomment: true }))
+}
+
+/**
+ * @param {unknown} protectedId
+ * @returns {string | null}
+ */
+function validateProtectedIdPattern(protectedId) {
+  if (typeof protectedId !== 'string' || protectedId.trim().length === 0) {
+    return `Protected id "${String(protectedId)}" must be a non-empty string.`
+  }
+
+  if (protectedId !== protectedId.trim()) {
+    return `Protected id "${protectedId}" must not include leading or trailing whitespace.`
+  }
+
+  if (protectedId.includes('/') || protectedId.includes('\\')) {
+    return `Protected id "${protectedId}" must be a single directory id or glob pattern.`
+  }
+
+  if (!/^[a-z0-9*?-]+$/.test(protectedId) || !/[a-z0-9]/.test(protectedId)) {
+    return `Protected id "${protectedId}" must use lowercase kebab-case characters and may include * or ? wildcards.`
+  }
+
+  if (protectedId.startsWith('-')) {
+    return `Protected id "${protectedId}" must not start with a hyphen.`
+  }
+
+  return null
 }
 
 /**
@@ -283,13 +342,24 @@ function normalizeSources(rawSources, defaults, protectedIds, issues) {
       issues.push(`${sourceLabel}: preserveOnFailure must be a boolean.`)
     }
 
+    const mode = rawSource.mode ?? defaults.mode
+    if (!isValidSourceMode(mode)) {
+      issues.push(`${sourceLabel}: mode must be either "flat" or "nested".`)
+    }
+
+    const includes = normalizeFilterPatterns(rawSource.includes ?? defaults.includes, `${sourceLabel}.includes`, issues)
+    const excludes = normalizeFilterPatterns(rawSource.excludes ?? defaults.excludes, `${sourceLabel}.excludes`, issues)
+
     return {
       id: typeof id === 'string' ? id : '',
       url: typeof rawSource.url === 'string' ? rawSource.url : '',
       branch: typeof branch === 'string' ? branch : defaults.branch,
       path: typeof normalizedPath === 'string' ? normalizedPath : defaults.path,
+      mode: isValidSourceMode(mode) ? mode : defaults.mode,
       enabled: Boolean(enabled),
       preserveOnFailure: Boolean(preserveOnFailure),
+      includes,
+      excludes,
       priority: rawSource.priority ?? null,
     }
   })
@@ -305,10 +375,84 @@ function createInvalidSource(defaults) {
     url: '',
     branch: defaults.branch,
     path: defaults.path,
+    mode: defaults.mode,
     enabled: false,
     preserveOnFailure: defaults.preserveOnFailure,
+    includes: [...defaults.includes],
+    excludes: [...defaults.excludes],
     priority: null,
   }
+}
+
+/**
+ * @param {unknown} mode
+ * @returns {mode is 'flat' | 'nested'}
+ */
+function isValidSourceMode(mode) {
+  return typeof mode === 'string' && SOURCE_MODES.includes(mode)
+}
+
+/**
+ * @param {unknown} rawPatterns
+ * @param {string} label
+ * @param {string[]} issues
+ * @returns {string[]}
+ */
+function normalizeFilterPatterns(rawPatterns, label, issues) {
+  if (rawPatterns === undefined) {
+    return []
+  }
+
+  if (!Array.isArray(rawPatterns)) {
+    issues.push(`\`${label}\` must be an array when provided.`)
+    return []
+  }
+
+  /** @type {string[]} */
+  const patterns = []
+  for (const [patternIndex, rawPattern] of rawPatterns.entries()) {
+    const patternLabel = `${label}[${patternIndex}]`
+    if (typeof rawPattern !== 'string' || rawPattern.trim().length === 0) {
+      issues.push(`\`${patternLabel}\` must be a non-empty string.`)
+      continue
+    }
+
+    const pattern = rawPattern.trim()
+    const patternIssue = validateFilterPattern(pattern)
+    if (patternIssue) {
+      issues.push(`\`${patternLabel}\`: ${patternIssue}`)
+      continue
+    }
+
+    patterns.push(pattern)
+  }
+
+  return patterns
+}
+
+/**
+ * @param {string} pattern
+ * @returns {string | null}
+ */
+function validateFilterPattern(pattern) {
+  if (pattern === '.') {
+    return null
+  }
+
+  if (pattern.includes('\\')) {
+    return `filter pattern "${pattern}" must use forward slashes.`
+  }
+
+  if (path.posix.isAbsolute(pattern)) {
+    return `filter pattern "${pattern}" must be relative.`
+  }
+
+  const parts = pattern.split('/')
+  if (parts.some(part => part.length === 0 || part === '.' || part === '..')) {
+    return `filter pattern "${pattern}" must not contain empty, dot, or parent segments.`
+  }
+
+  return null
 }
 
 /**

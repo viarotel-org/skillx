@@ -3,55 +3,57 @@ version: 1
 defaults:
   branch: main
   path: skills
+  mode: flat
   enabled: true
   preserveOnFailure: true
+  includes: []
+  excludes: []
 
 protectedIds:
-  - local
-  - subscribe
+  - 'local-*'
 
 sources:
-  - id: awesome-copilot
+  - id: remote-awesome-copilot
     url: https://github.com/github/awesome-copilot
     branch: main
     path: skills
 
-  - id: anthropic
+  - id: remote-anthropic
     url: https://github.com/anthropics/skills.git
     branch: main
     path: skills
 
-  - id: openai
+  - id: remote-openai
     url: https://github.com/openai/skills.git
     branch: main
     path: skills
 
-  - id: antfu
+  - id: remote-antfu
     url: https://github.com/antfu/skills.git
     branch: main
     path: skills
 
-  - id: mattpocock
+  - id: remote-mattpocock
     url: https://github.com/mattpocock/skills.git
     branch: main
     path: skills
 
-  - id: open-wot
+  - id: remote-open-wot
     url: https://github.com/wot-ui/open-wot.git
     branch: main
     path: skills
 
-  - id: addyosmani
+  - id: remote-addyosmani
     url: https://github.com/addyosmani/agent-skills.git
     branch: main
     path: skills
 
-  - id: android
+  - id: remote-android
     url: https://github.com/android/skills.git
     branch: main
     path: .
 
-  - id: vuejs-ai
+  - id: remote-vuejs-ai
     url: https://github.com/vuejs-ai/skills.git
     branch: main
     path: skills

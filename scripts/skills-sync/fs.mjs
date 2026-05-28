@@ -2,6 +2,7 @@ import { constants as fileConstants } from 'node:fs'
 import { access, cp, mkdir, readdir, readFile, rename, rm, stat, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import process from 'node:process'
+import { minimatch } from 'minimatch'
 
 export const SKILLS_ROOT = 'skills'
 export const MANIFEST_PATH = '.skills-sync/manifest.json'
@@ -30,8 +31,16 @@ const EXCLUDED_ROOT_FILES = ['.env', '.env.local', '.env.production', '.gitattri
  * @property {string} [url]
  * @property {string} [branch]
  * @property {string} [path]
+ * @property {string} [mode]
+ * @property {string[]} [includes]
+ * @property {string[]} [excludes]
  * @property {string | null} [commit]
  * @property {string} [status]
+ * @property {number} [skillCount]
+ * @property {number} [discoveredSkillCount]
+ * @property {string[]} [targets]
+ * @property {string[]} [skillPaths]
+ * @property {string} [message]
  */
 
 /**
@@ -46,8 +55,23 @@ const EXCLUDED_ROOT_FILES = ['.env', '.env.local', '.env.production', '.gitattri
  * @property {string} [url]
  * @property {string} [branch]
  * @property {string} [path]
+ * @property {string} [mode]
+ * @property {string[]} [includes]
+ * @property {string[]} [excludes]
  * @property {string | null} [commit]
  * @property {string} [status]
+ * @property {string[]} [targets]
+ * @property {string[]} [skillPaths]
+ */
+
+/**
+ * @typedef {object} DiscoveredSkill
+ * @property {string} absolutePath
+ * @property {string} relativePath
+ */
+
+/**
+ * @typedef {DiscoveredSkill & { targetId: string, nestedPath: string }} PlannedSkillTarget
  */
 
 /**
@@ -185,57 +209,62 @@ export function createManifest(sources) {
       url: source.url,
       branch: source.branch,
       path: source.path,
+      mode: source.mode,
+      includes: source.includes ?? [],
+      excludes: source.excludes ?? [],
       commit: source.commit,
       status: source.status,
+      targets: source.targets ?? [source.id],
+      skillPaths: source.skillPaths ?? [],
     }])
 
   return {
-    version: 1,
+    version: 2,
     sources: Object.fromEntries(sourceEntries),
   }
 }
 
 /**
  * @param {Manifest | null} previousManifest
- * @param {string[]} currentSourceIds
+ * @param {string[]} currentManagedTargetIds
  * @param {string[]} [protectedIds]
  * @returns {string[]}
  */
-export function getStaleManagedIds(previousManifest, currentSourceIds, protectedIds = []) {
+export function getStaleManagedIds(previousManifest, currentManagedTargetIds, protectedIds = []) {
   if (!previousManifest?.sources || typeof previousManifest.sources !== 'object') {
     return []
   }
 
-  const currentSourceIdSet = new Set(currentSourceIds)
-  const protectedIdSet = new Set(protectedIds)
+  const currentManagedTargetIdSet = new Set(currentManagedTargetIds)
+  const previousManagedTargetIds = Object.entries(previousManifest.sources)
+    .flatMap(([sourceId, source]) => getManifestSourceTargets(sourceId, source))
 
-  return Object.keys(previousManifest.sources)
-    .filter(sourceId => !currentSourceIdSet.has(sourceId))
-    .filter(sourceId => !protectedIdSet.has(sourceId))
+  return [...new Set(previousManagedTargetIds)]
+    .filter(targetId => !currentManagedTargetIdSet.has(targetId))
+    .filter(targetId => !isProtectedDirectoryId(targetId, protectedIds))
     .sort()
 }
 
 /**
  * @param {string} cwd
- * @param {string[]} knownSourceIds
+ * @param {string[]} knownDirectoryIds
  * @param {string[]} [protectedIds]
  * @returns {Promise<string[]>}
  */
-export async function listUnknownSkillDirs(cwd, knownSourceIds, protectedIds = []) {
+export async function listUnknownSkillDirs(cwd, knownDirectoryIds, protectedIds = []) {
   const skillsRootPath = resolveInside(cwd, SKILLS_ROOT)
   if (!(await pathExists(skillsRootPath))) {
     return []
   }
 
   const entries = await readdir(skillsRootPath, { withFileTypes: true })
-  const knownSourceIdSet = new Set(knownSourceIds)
-  const protectedIdSet = new Set(protectedIds)
+  const knownDirectoryIdSet = new Set(knownDirectoryIds)
 
   return entries
     .filter(entry => entry.isDirectory())
     .map(entry => entry.name)
-    .filter(entryName => !knownSourceIdSet.has(entryName))
-    .filter(entryName => !protectedIdSet.has(entryName))
+    .filter(entryName => !knownDirectoryIdSet.has(entryName))
+    .filter(entryName => !isProtectedDirectoryId(entryName, protectedIds))
     .sort()
 }
 
@@ -256,10 +285,51 @@ export async function removeGeneratedSkillDir(cwd, sourceId, options = {}) {
 
 /**
  * @param {string} sourcePath
- * @returns {Promise<number>}
+ * @returns {Promise<DiscoveredSkill[]>}
  */
-export async function countDirectSkillDirs(sourcePath) {
-  return countSkillDirs(sourcePath)
+export async function discoverSkillDirs(sourcePath) {
+  /** @type {DiscoveredSkill[]} */
+  const skills = []
+  await collectSkillDirs(sourcePath, sourcePath, skills)
+
+  return skills.sort((leftSkill, rightSkill) => leftSkill.relativePath.localeCompare(rightSkill.relativePath))
+}
+
+/**
+ * @param {DiscoveredSkill[]} skills
+ * @param {{ includes?: string[], excludes?: string[] }} [filters]
+ * @returns {DiscoveredSkill[]}
+ */
+export function filterSkillDirs(skills, filters = {}) {
+  const includes = filters.includes ?? []
+  const excludes = filters.excludes ?? []
+
+  return skills.filter((skill) => {
+    const isIncluded = includes.length === 0 || includes.some(pattern => matchesSkillPattern(skill.relativePath, pattern))
+    const isExcluded = excludes.some(pattern => matchesSkillPattern(skill.relativePath, pattern))
+
+    return isIncluded && !isExcluded
+  })
+}
+
+/**
+ * @param {{ id: string, mode?: string }} source
+ * @param {DiscoveredSkill[]} skills
+ * @returns {PlannedSkillTarget[]}
+ */
+export function planSkillTargets(source, skills) {
+  const mode = source.mode ?? 'flat'
+  const plannedTargets = skills.map(skill => ({
+    ...skill,
+    targetId: mode === 'nested' ? source.id : createFlatTargetId(source.id, skill.relativePath),
+    nestedPath: mode === 'nested' ? skill.relativePath : '.',
+  }))
+
+  if (mode === 'flat') {
+    assertUniqueFlatTargets(plannedTargets)
+  }
+
+  return plannedTargets
 }
 
 /**
@@ -293,6 +363,7 @@ export async function copyDirectory(sourcePath, targetPath, options = {}) {
   }
 
   await rm(targetPath, { recursive: true, force: true })
+  await mkdir(path.dirname(targetPath), { recursive: true })
   await cp(sourcePath, targetPath, {
     recursive: true,
     force: true,
@@ -366,19 +437,108 @@ function shouldCopyPath(rootPath, sourcePath) {
 }
 
 /**
+ * @param {string} sourceRootPath
  * @param {string} directoryPath
- * @returns {Promise<number>}
+ * @param {DiscoveredSkill[]} skills
+ * @returns {Promise<void>}
  */
-async function countSkillDirs(directoryPath) {
+async function collectSkillDirs(sourceRootPath, directoryPath, skills) {
   const entries = await readdir(directoryPath, { withFileTypes: true })
   const hasSkillFile = entries.some(entry => entry.isFile() && entry.name === 'SKILL.md')
+
+  if (hasSkillFile) {
+    skills.push({
+      absolutePath: directoryPath,
+      relativePath: toPosixRelativePath(sourceRootPath, directoryPath),
+    })
+  }
+
   const childDirectories = entries
     .filter(entry => entry.isDirectory())
     .filter(entry => !EXCLUDED_DIRECTORY_NAMES.includes(entry.name))
 
-  /** @type {number[]} */
-  const childCounts = await Promise.all(childDirectories.map(entry => countSkillDirs(path.join(directoryPath, entry.name))))
-  const childTotal = childCounts.reduce((total, count) => total + count, 0)
+  await Promise.all(childDirectories.map(entry => collectSkillDirs(sourceRootPath, path.join(directoryPath, entry.name), skills)))
+}
 
-  return childTotal + (hasSkillFile ? 1 : 0)
+/**
+ * @param {string} sourceRootPath
+ * @param {string} directoryPath
+ * @returns {string}
+ */
+function toPosixRelativePath(sourceRootPath, directoryPath) {
+  const relativePath = path.relative(sourceRootPath, directoryPath)
+  if (relativePath.length === 0) {
+    return '.'
+  }
+
+  return relativePath.split(path.sep).join('/')
+}
+
+/**
+ * @param {string} relativePath
+ * @param {string} pattern
+ * @returns {boolean}
+ */
+function matchesSkillPattern(relativePath, pattern) {
+  return minimatch(relativePath, pattern, { dot: true })
+}
+
+/**
+ * @param {string} directoryId
+ * @param {string[]} protectedIds
+ * @returns {boolean}
+ */
+function isProtectedDirectoryId(directoryId, protectedIds) {
+  return protectedIds.some(protectedId => directoryId === protectedId || minimatch(directoryId, protectedId, { nonegate: true, nocomment: true }))
+}
+
+/**
+ * @param {string} sourceId
+ * @param {string} relativePath
+ * @returns {string}
+ */
+function createFlatTargetId(sourceId, relativePath) {
+  if (relativePath === '.') {
+    return sourceId
+  }
+
+  const skillSlug = relativePath
+    .toLowerCase()
+    .replaceAll(/[^a-z0-9]+/g, '-')
+    .replaceAll(/^-+|-+$/g, '')
+
+  if (skillSlug.length === 0) {
+    throw new Error(`Cannot create generated target id for ${sourceId}/${relativePath}.`)
+  }
+
+  return `${sourceId}-${skillSlug}`
+}
+
+/**
+ * @param {PlannedSkillTarget[]} plannedTargets
+ * @returns {void}
+ */
+function assertUniqueFlatTargets(plannedTargets) {
+  const seenTargets = new Map()
+  for (const plannedTarget of plannedTargets) {
+    const previousRelativePath = seenTargets.get(plannedTarget.targetId)
+    if (previousRelativePath) {
+      throw new Error(`Generated target collision for ${plannedTarget.targetId}: ${previousRelativePath} and ${plannedTarget.relativePath}.`)
+    }
+
+    seenTargets.set(plannedTarget.targetId, plannedTarget.relativePath)
+  }
+}
+
+/**
+ * @param {string} sourceId
+ * @param {ManifestSource | undefined} source
+ * @returns {string[]}
+ */
+function getManifestSourceTargets(sourceId, source) {
+  if (Array.isArray(source?.targets)) {
+    return source.targets
+  }
+
+  return [sourceId]
 }

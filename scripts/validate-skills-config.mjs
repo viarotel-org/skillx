@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 import process from 'node:process'
 import { getErrorMessage, loadSkillsConfig } from './skills-sync/config.mjs'
-import { pathExists, resolveInside, SKILLS_ROOT } from './skills-sync/fs.mjs'
 import { createLogger } from './skills-sync/logger.mjs'
 
 const logger = createLogger()
@@ -10,11 +9,6 @@ try {
   const options = parseArgs(process.argv.slice(2))
   const cwd = process.cwd()
   const config = await loadSkillsConfig({ cwd, configPath: options.configPath })
-  const localSkillsPath = resolveInside(cwd, SKILLS_ROOT, 'local')
-
-  if (!(await pathExists(localSkillsPath))) {
-    throw new Error('Protected directory skills/local does not exist.')
-  }
 
   logger.success(`Validated ${config.sources.length} sources from ${config.configPath}.`)
 }

@@ -19,12 +19,15 @@ jobs:
     name: Sync subscribed skills
     runs-on: ubuntu-latest
     timeout-minutes: 45
+    outputs:
+      changed: ${{ steps.changes.outputs.changed }}
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ github.event.repository.default_branch }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -56,25 +59,29 @@ jobs:
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Create or update pull request
+      - name: Commit synced changes
         if: steps.changes.outputs.changed == 'true'
         env:
-          GH_TOKEN: ${{ github.token }}
-          SYNC_BRANCH: chore/sync-skills
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
         run: |
+          set -euo pipefail
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -B "$SYNC_BRANCH"
           git add skills .skills-sync/manifest.json
-          git commit -m "chore: sync skills subscriptions"
-          git push --force-with-lease origin "$SYNC_BRANCH"
+          git commit -m "fix: sync skills subscriptions"
+          git pull --rebase origin "$DEFAULT_BRANCH"
+          git push origin "HEAD:$DEFAULT_BRANCH"
 
-          if gh pr view "$SYNC_BRANCH" --base "${{ github.event.repository.default_branch }}" >/dev/null 2>&1; then
-            gh pr edit "$SYNC_BRANCH" --body-file .skills-sync/summary.md
-          else
-            gh pr create \
-              --base "${{ github.event.repository.default_branch }}" \
-              --head "$SYNC_BRANCH" \
-              --title "chore: sync skills subscriptions" \
-              --body-file .skills-sync/summary.md
-          fi
+  release-please:
+    name: Release Please
+    needs: sync
+    if: needs.sync.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run release-please
+        uses: googleapis/release-please-action@v4
+        with:
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+          target-branch: ${{ github.event.repository.default_branch }}

@@ -2,8 +2,7 @@ import antfu from '@antfu/eslint-config'
 
 export default antfu({
   ignores: [
-    'skills/*/**',
-    '!skills/local/**',
+    'skills/remote-*/**',
   ],
   markdown: {
     overrides: {
