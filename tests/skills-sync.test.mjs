@@ -28,12 +28,14 @@ it('validates a minimal skills source config', () => {
     sources: [
       {
         id: 'anthropic',
-        url: 'https://github.com/anthropics/skills.git',
+        location: 'https://github.com/anthropics/skills.git',
       },
     ],
   })
 
   assert.equal(config.sources.length, 1)
+  assert.equal(config.sources[0].type, 'remote')
+  assert.equal(config.sources[0].location, 'https://github.com/anthropics/skills.git')
   assert.equal(config.sources[0].branch, 'main')
   assert.equal(config.sources[0].path, 'skills')
   assert.equal(config.sources[0].mode, 'flat')
@@ -63,7 +65,7 @@ it('normalizes clone timeout and retry settings', () => {
     sources: [
       {
         id: 'openai',
-        url: 'https://github.com/openai/skills.git',
+        location: 'https://github.com/openai/skills.git',
         cloneTimeoutMs: 900000,
         cloneMaxAttempts: 2,
       },
@@ -85,7 +87,7 @@ it('normalizes source concurrency settings', () => {
     sources: [
       {
         id: 'openai',
-        url: 'https://github.com/openai/skills.git',
+        location: 'https://github.com/openai/skills.git',
       },
     ],
   })
@@ -103,7 +105,7 @@ it('rejects invalid clone timeout and retry settings', () => {
     sources: [
       {
         id: 'openai',
-        url: 'https://github.com/openai/skills.git',
+        location: 'https://github.com/openai/skills.git',
       },
     ],
   }), ConfigValidationError)
@@ -113,7 +115,7 @@ it('rejects invalid clone timeout and retry settings', () => {
     sources: [
       {
         id: 'openai',
-        url: 'https://github.com/openai/skills.git',
+        location: 'https://github.com/openai/skills.git',
         cloneTimeoutMs: 1.5,
         cloneMaxAttempts: 'three',
       },
@@ -130,7 +132,66 @@ it('rejects invalid source concurrency settings', () => {
     sources: [
       {
         id: 'openai',
+        location: 'https://github.com/openai/skills.git',
+      },
+    ],
+  }), ConfigValidationError)
+})
+
+it('validates remote and local source locations', () => {
+  const config = validateConfigDocument({
+    version: 1,
+    sources: [
+      {
+        id: 'openai',
+        type: 'remote',
+        location: 'https://github.com/openai/skills.git',
+      },
+      {
+        id: 'skillx',
+        type: 'local',
+        location: 'skillx',
+        path: '.',
+      },
+    ],
+  })
+
+  assert.equal(config.sources[0].type, 'remote')
+  assert.equal(config.sources[0].location, 'https://github.com/openai/skills.git')
+  assert.equal(config.sources[1].type, 'local')
+  assert.equal(config.sources[1].location, 'skillx')
+  assert.equal(config.sources[1].path, '.')
+})
+
+it('rejects old url-only sources and invalid locations', () => {
+  assert.throws(() => validateConfigDocument({
+    version: 1,
+    sources: [
+      {
+        id: 'openai',
         url: 'https://github.com/openai/skills.git',
+      },
+    ],
+  }), ConfigValidationError)
+
+  assert.throws(() => validateConfigDocument({
+    version: 1,
+    sources: [
+      {
+        id: 'local-source',
+        type: 'local',
+        location: '../skills',
+      },
+    ],
+  }), ConfigValidationError)
+
+  assert.throws(() => validateConfigDocument({
+    version: 1,
+    sources: [
+      {
+        id: 'remote-source',
+        type: 'remote',
+        location: 'skillx/local-source',
       },
     ],
   }), ConfigValidationError)
@@ -167,7 +228,7 @@ it('validates source mode and skill filters', () => {
     sources: [
       {
         id: 'openai',
-        url: 'https://github.com/openai/skills.git',
+        location: 'https://github.com/openai/skills.git',
         mode: 'flat',
         includes: ['.curated/aspnet-core'],
         excludes: ['.curated/**/draft'],
@@ -189,7 +250,7 @@ it('rejects invalid modes and unsafe skill filters', () => {
     sources: [
       {
         id: 'openai',
-        url: 'https://github.com/openai/skills.git',
+        location: 'https://github.com/openai/skills.git',
         mode: 'wide',
         includes: ['/absolute'],
         excludes: ['../escape'],
@@ -203,32 +264,32 @@ it('rejects protected source ids', () => {
 })
 
 it('rejects source ids matching protected id patterns', () => {
-  assert.equal(validateSourceId('local-escrcpy', ['local-*']), 'Source id "local-escrcpy" is protected and cannot be generated.')
+  assert.equal(validateSourceId('reserved-escrcpy', ['reserved-*']), 'Source id "reserved-escrcpy" is protected and cannot be generated.')
 })
 
 it('validates protected id patterns in config', () => {
   const config = validateConfigDocument({
     version: 1,
-    protectedIds: ['local-*'],
+    protectedIds: ['reserved-*'],
     sources: [
       {
-        id: 'remote-openai',
-        url: 'https://github.com/openai/skills.git',
+        id: 'openai',
+        location: 'https://github.com/openai/skills.git',
       },
     ],
   })
 
-  assert.ok(config.protectedIds.includes('local-*'))
+  assert.ok(config.protectedIds.includes('reserved-*'))
 })
 
 it('rejects unsafe protected id patterns in config', () => {
   assert.throws(() => validateConfigDocument({
     version: 1,
-    protectedIds: ['local/**'],
+    protectedIds: ['reserved/**'],
     sources: [
       {
-        id: 'remote-openai',
-        url: 'https://github.com/openai/skills.git',
+        id: 'openai',
+        location: 'https://github.com/openai/skills.git',
       },
     ],
   }), ConfigValidationError)
@@ -238,8 +299,8 @@ it('rejects unsafe protected id patterns in config', () => {
     protectedIds: ['*'],
     sources: [
       {
-        id: 'remote-openai',
-        url: 'https://github.com/openai/skills.git',
+        id: 'openai',
+        location: 'https://github.com/openai/skills.git',
       },
     ],
   }), ConfigValidationError)
@@ -251,11 +312,11 @@ it('rejects duplicate source ids', () => {
     sources: [
       {
         id: 'openai',
-        url: 'https://github.com/openai/skills.git',
+        location: 'https://github.com/openai/skills.git',
       },
       {
         id: 'openai',
-        url: 'https://github.com/example/skills.git',
+        location: 'https://github.com/example/skills.git',
       },
     ],
   }), ConfigValidationError)
@@ -301,14 +362,14 @@ it('does not mark managed ids matching protected patterns as stale', () => {
   const staleManagedIds = getStaleManagedIds({
     version: 2,
     sources: {
-      'local': {
-        targets: ['local-escrcpy', 'local-viarotel'],
+      'reserved': {
+        targets: ['reserved-escrcpy', 'reserved-viarotel'],
       },
       'remote-openai': {
         targets: ['remote-openai-imagegen'],
       },
     },
-  }, [], ['local-*'])
+  }, [], ['reserved-*'])
 
   assert.deepEqual(staleManagedIds, ['remote-openai-imagegen'])
 })
@@ -317,11 +378,11 @@ it('does not report unknown skill dirs matching protected patterns', async () =>
   const rootPath = await mkdtemp(path.join(tmpdir(), 'skillx-test-'))
 
   try {
-    await mkdir(path.join(rootPath, 'skills', 'local-escrcpy'), { recursive: true })
-    await mkdir(path.join(rootPath, 'skills', 'local-viarotel'), { recursive: true })
+    await mkdir(path.join(rootPath, 'skills', 'reserved-escrcpy'), { recursive: true })
+    await mkdir(path.join(rootPath, 'skills', 'reserved-viarotel'), { recursive: true })
     await mkdir(path.join(rootPath, 'skills', 'remote-old'), { recursive: true })
 
-    const unknownSkillDirs = await listUnknownSkillDirs(rootPath, [], ['local-*'])
+    const unknownSkillDirs = await listUnknownSkillDirs(rootPath, [], ['reserved-*'])
 
     assert.deepEqual(unknownSkillDirs, ['remote-old'])
   }
@@ -368,11 +429,13 @@ it('removes previously managed targets when a source no longer exposes its skill
 
   try {
     await createGitRepo(sourceRepoPath)
+    const sourceLocation = pathToFileURL(sourceRepoPath).href
     await writeFile(path.join(rootPath, 'skills-sources.yaml'), [
       'version: 1',
       'sources:',
-      '  - id: remote-fixture',
-      `    url: ${sourceRepoPath}`,
+      '  - id: fixture',
+      '    type: remote',
+      `    location: ${sourceLocation}`,
       '    branch: main',
       '    path: missing-skills',
       '    preserveOnFailure: false',
@@ -422,17 +485,19 @@ it('syncs a local git fixture idempotently and removes skills deleted upstream',
 
     await syncSkills({ cwd: rootPath }, createSilentLogger())
 
-    assert.equal(await pathExists(path.join(rootPath, 'skills', 'remote-fixture-alpha', 'SKILL.md')), true)
-    assert.equal(await pathExists(path.join(rootPath, 'skills', 'remote-fixture-beta', 'SKILL.md')), true)
+    assert.equal(await pathExists(path.join(rootPath, 'skills', 'fixture-alpha', 'SKILL.md')), true)
+    assert.equal(await pathExists(path.join(rootPath, 'skills', 'fixture-beta', 'SKILL.md')), true)
 
     await rm(path.join(sourceRepoPath, 'skills', 'beta'), { recursive: true, force: true })
     await commitAll(sourceRepoPath, 'remove beta skill')
     await syncSkills({ cwd: rootPath }, createSilentLogger())
 
     const manifestAfterRemoval = await readManifest(rootPath)
-    assert.deepEqual(manifestAfterRemoval?.sources['remote-fixture'].targets, ['remote-fixture-alpha'])
-    assert.equal(await pathExists(path.join(rootPath, 'skills', 'remote-fixture-alpha', 'SKILL.md')), true)
-    assert.equal(await pathExists(path.join(rootPath, 'skills', 'remote-fixture-beta')), false)
+    assert.deepEqual(manifestAfterRemoval?.sources.fixture.targets, ['fixture-alpha'])
+    assert.equal(manifestAfterRemoval?.sources.fixture.type, 'remote')
+    assert.equal(manifestAfterRemoval?.sources.fixture.location, pathToFileURL(sourceRepoPath).href)
+    assert.equal(await pathExists(path.join(rootPath, 'skills', 'fixture-alpha', 'SKILL.md')), true)
+    assert.equal(await pathExists(path.join(rootPath, 'skills', 'fixture-beta')), false)
 
     const manifestSnapshot = JSON.stringify(manifestAfterRemoval)
     await syncSkills({ cwd: rootPath }, createSilentLogger())
@@ -442,6 +507,50 @@ it('syncs a local git fixture idempotently and removes skills deleted upstream',
   finally {
     await rm(rootPath, { recursive: true, force: true })
     await rm(sourceRepoPath, { recursive: true, force: true })
+  }
+})
+
+it('syncs a local project directory and removes local skills deleted from the source', async () => {
+  const rootPath = await mkdtemp(path.join(tmpdir(), 'skillx-test-'))
+
+  try {
+    await mkdir(path.join(rootPath, 'skillx', 'alpha'), { recursive: true })
+    await mkdir(path.join(rootPath, 'skillx', 'beta'), { recursive: true })
+    await writeFile(path.join(rootPath, 'skillx', 'alpha', 'SKILL.md'), '# Alpha\n', 'utf8')
+    await writeFile(path.join(rootPath, 'skillx', 'beta', 'SKILL.md'), '# Beta\n', 'utf8')
+    await writeFile(path.join(rootPath, 'skills-sources.yaml'), [
+      'version: 1',
+      'sources:',
+      '  - id: skillx',
+      '    type: local',
+      '    location: skillx',
+      '    path: .',
+      '',
+    ].join('\n'), 'utf8')
+
+    const syncScriptUrl = pathToFileURL(path.resolve('scripts/sync-skills.mjs'))
+    syncScriptUrl.searchParams.set('localSourceTest', String(Date.now()))
+    const { syncSkills } = await import(syncScriptUrl.href)
+
+    await syncSkills({ cwd: rootPath }, createSilentLogger())
+
+    assert.equal(await pathExists(path.join(rootPath, 'skills', 'skillx-alpha', 'SKILL.md')), true)
+    assert.equal(await pathExists(path.join(rootPath, 'skills', 'skillx-beta', 'SKILL.md')), true)
+
+    await rm(path.join(rootPath, 'skillx', 'beta'), { recursive: true, force: true })
+    await syncSkills({ cwd: rootPath }, createSilentLogger())
+
+    const manifestAfterRemoval = await readManifest(rootPath)
+    assert.deepEqual(manifestAfterRemoval?.sources.skillx.targets, ['skillx-alpha'])
+    assert.equal(manifestAfterRemoval?.sources.skillx.type, 'local')
+    assert.equal(manifestAfterRemoval?.sources.skillx.location, 'skillx')
+    assert.equal(manifestAfterRemoval?.sources.skillx.commit, null)
+    assert.equal(await pathExists(path.join(rootPath, 'skills', 'skillx-alpha', 'SKILL.md')), true)
+    assert.equal(await pathExists(path.join(rootPath, 'skills', 'skillx-beta')), false)
+    assert.equal(await pathExists(path.join(rootPath, 'skillx', 'alpha', 'SKILL.md')), true)
+  }
+  finally {
+    await rm(rootPath, { recursive: true, force: true })
   }
 })
 
@@ -513,19 +622,19 @@ it('plans flat and nested skill targets', () => {
     { absolutePath: '/repo/skills/root', relativePath: '.' },
   ]
 
-  const flatTargets = planSkillTargets({ id: 'remote-openai', mode: 'flat' }, skills)
-  const nestedTargets = planSkillTargets({ id: 'remote-openai', mode: 'nested' }, skills)
+  const flatTargets = planSkillTargets({ id: 'openai', mode: 'flat' }, skills)
+  const nestedTargets = planSkillTargets({ id: 'openai', mode: 'nested' }, skills)
 
   assert.deepEqual(flatTargets.map(target => target.targetId), [
-    'remote-openai-curated-aspnet-core',
-    'remote-openai',
+    'openai-curated-aspnet-core',
+    'openai',
   ])
-  assert.deepEqual(nestedTargets.map(target => target.targetId), ['remote-openai', 'remote-openai'])
+  assert.deepEqual(nestedTargets.map(target => target.targetId), ['openai', 'openai'])
   assert.deepEqual(nestedTargets.map(target => target.nestedPath), ['.curated/aspnet-core', '.'])
 })
 
 it('rejects flat target collisions after slugging', () => {
-  assert.throws(() => planSkillTargets({ id: 'remote-openai', mode: 'flat' }, [
+  assert.throws(() => planSkillTargets({ id: 'openai', mode: 'flat' }, [
     { absolutePath: '/repo/skills/.curated/aspnet-core', relativePath: '.curated/aspnet-core' },
     { absolutePath: '/repo/skills/curated/aspnet-core', relativePath: 'curated/aspnet-core' },
   ]), /target collision/)
@@ -562,13 +671,16 @@ async function commitAll(repoPath, message) {
 }
 
 async function writeSourceConfig(rootPath, sourceRepoPath) {
+  const sourceLocation = pathToFileURL(sourceRepoPath).href
+
   await writeFile(path.join(rootPath, 'skills-sources.yaml'), [
     'version: 1',
     'defaults:',
     '  sourceConcurrency: 2',
     'sources:',
-    '  - id: remote-fixture',
-    `    url: ${sourceRepoPath}`,
+    '  - id: fixture',
+    '    type: remote',
+    `    location: ${sourceLocation}`,
     '    branch: main',
     '    path: skills',
     '',

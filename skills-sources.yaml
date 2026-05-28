@@ -12,51 +12,62 @@ defaults:
   includes: []
   excludes: []
 
-protectedIds:
-  - 'local-*'
-
 sources:
-  - id: remote-awesome-copilot
-    url: https://github.com/github/awesome-copilot
+  - id: skillx
+    type: local
+    location: skillx
+    path: .
+
+  - id: awesome-copilot
+    type: remote
+    location: https://github.com/github/awesome-copilot
     branch: main
     path: skills
 
-  - id: remote-anthropic
-    url: https://github.com/anthropics/skills.git
+  - id: anthropic
+    type: remote
+    location: https://github.com/anthropics/skills.git
     branch: main
     path: skills
 
-  - id: remote-openai
-    url: https://github.com/openai/skills.git
+  - id: openai
+    type: remote
+    location: https://github.com/openai/skills.git
     branch: main
     path: skills
 
-  - id: remote-antfu
-    url: https://github.com/antfu/skills.git
+  - id: antfu
+    type: remote
+    location: https://github.com/antfu/skills.git
     branch: main
     path: skills
 
-  - id: remote-mattpocock
-    url: https://github.com/mattpocock/skills.git
+  - id: mattpocock
+    type: remote
+    location: https://github.com/mattpocock/skills.git
     branch: main
     path: skills
 
-  - id: remote-open-wot
-    url: https://github.com/wot-ui/open-wot.git
+  - id: open-wot
+    type: remote
+    location: https://github.com/wot-ui/open-wot.git
     branch: main
     path: skills
 
-  - id: remote-addyosmani
-    url: https://github.com/addyosmani/agent-skills.git
+  - id: addyosmani
+    type: remote
+    location: https://github.com/addyosmani/agent-skills.git
     branch: main
     path: skills
 
-  - id: remote-android
-    url: https://github.com/android/skills.git
+  - id: android
+    type: remote
+    location: https://github.com/android/skills.git
     branch: main
     path: .
 
-  - id: remote-vuejs-ai
-    url: https://github.com/vuejs-ai/skills.git
+  - id: vuejs-ai
+    type: remote
+    location: https://github.com/vuejs-ai/skills.git
     branch: main
     path: skills

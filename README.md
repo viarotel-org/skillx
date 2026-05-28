@@ -9,7 +9,7 @@ A predictable hub for local and subscribed AI agent skills.
 
 ## Features
 
-- Local skill storage under protected directory ids such as `local-*`.
+- Local skill storage can be subscribed from repository-relative directories.
 - Remote skill subscriptions from Git repositories.
 - Recursive `SKILL.md` discovery, including dot-prefixed directories such as `.curated/`.
 - `flat` and `nested` output modes for generated skill directories.
@@ -102,12 +102,15 @@ defaults:
   includes: []
   excludes: []
 
-protectedIds:
-  - 'local-*'
-
 sources:
-  - id: remote-openai
-    url: https://github.com/openai/skills.git
+  - id: skillx
+    type: local
+    location: skillx
+    path: .
+
+  - id: openai
+    type: remote
+    location: https://github.com/openai/skills.git
     branch: main
     path: skills
 ```
@@ -117,9 +120,10 @@ sources:
 | Field | Required | Description |
 | --- | --- | --- |
 | `id` | Yes | Source id. Must use lowercase kebab-case letters and numbers, and must not match a protected id. |
-| `url` | Yes | Git repository URL passed to `git clone`. |
-| `branch` | No | Branch to clone. Defaults to `main`. |
-| `path` | No | Directory inside the source repository that contains skills. Defaults to `skills`. Use `.` for repository root. |
+| `type` | No | Source type, either `remote` or `local`. Defaults to `remote`. |
+| `location` | Yes | For `remote`, a Git URL passed to `git clone`. For `local`, a repository-relative source directory. |
+| `branch` | No | Branch to clone for remote sources. Defaults to `main`. Ignored by local sources. |
+| `path` | No | Directory inside the source location that contains skills. Defaults to `skills`. Use `.` when the source location itself is a skill root. |
 | `mode` | No | `flat` writes each discovered skill as its own generated directory. `nested` keeps skills grouped under `skills/<source-id>/`. |
 | `enabled` | No | Disabled sources are skipped. Defaults to `true`. |
 | `preserveOnFailure` | No | Keeps the previous manifest entry and generated targets when a source fails. Defaults to `false`, so stale generated skills are removed unless preservation is explicitly enabled. |
@@ -136,32 +140,38 @@ This repository uses `flat` as its configured default in `skills-sources.yaml`, 
 In `flat` mode, discovered skill paths are slugged into separate target ids:
 
 ```txt
-remote-openai + .curated/aspnet-core -> skills/remote-openai-curated-aspnet-core
-remote-openai + .                    -> skills/remote-openai
+openai + .curated/aspnet-core -> skills/openai-curated-aspnet-core
+openai + .                    -> skills/openai
 ```
 
 In `nested` mode, all selected skills stay under the source id:
 
 ```txt
-remote-openai + .curated/aspnet-core -> skills/remote-openai/.curated/aspnet-core
-remote-openai + .                    -> skills/remote-openai
+openai + .curated/aspnet-core -> skills/openai/.curated/aspnet-core
+openai + .                    -> skills/openai
 ```
 
 Flat mode checks for generated target collisions after slugging and fails fast when two source paths would map to the same target id.
 
-### Protected Local Skills
+### Local Sources And Protected Inputs
 
-The validator always includes default protected ids for `local-*` and `subscribe`, and this repository explicitly protects `local-*`. Use that pattern for hand-maintained skills:
+Source ids no longer need `local-` or `remote-` prefixes. Use `type` to describe where a source comes from, and keep directory names focused on the skill collection name. This repository keeps hand-maintained local source inputs under `skillx/` and subscribes to that whole tree as a single local source. Generated output still goes to `skills/`:
 
 ```txt
-skills/
-  local-escrcpy/
+skillx/
+  escrcpy/
     SKILL.md
-  local-viarotel/
+  viarotel/
+    SKILL.md
+
+skills/
+  skillx-escrcpy/
+    SKILL.md
+  skillx-viarotel/
     SKILL.md
 ```
 
-Protected directories are not removed as stale generated output, and source ids matching those patterns are rejected.
+The validator always includes the default protected id `subscribe`. Additional `protectedIds` can be configured for generated directories that must never be removed as stale output, and source ids matching those patterns are rejected.
 
 ## Project Structure
 
@@ -173,7 +183,8 @@ Protected directories are not removed as stale generated output, and source ids 
 │   ├── sync-skills.mjs      # Main sync command
 │   ├── validate-skills-config.mjs
 │   └── skills-sync/         # Config, filesystem, git, logging, and summary helpers
-├── skills/                  # Local and generated skills
+├── skillx/                  # Hand-maintained local source inputs
+├── skills/                  # Generated skill outputs
 ├── tests/                   # Vitest coverage for config and sync planning logic
 ├── skills-sources.yaml      # Subscription source list
 ├── release-please-config.json
@@ -244,14 +255,14 @@ When a sync changes tracked generated output, the workflow also runs release-ple
 
 ## Contributing
 
-1. Keep local skills under protected ids such as `skills/local-<name>/`.
-2. Add or modify remote subscriptions in `skills-sources.yaml`.
+1. Keep hand-maintained local source inputs under `skillx/<name>/`; generated copies are written to `skills/`.
+2. Add or modify local and remote subscriptions in `skills-sources.yaml` with `type` and `location`.
 3. Run `pnpm validate` before syncing.
 4. Use `pnpm sync:dry-run` when changing filters, paths, modes, or source ids.
 5. Run `pnpm test` for changes to sync behavior.
 6. Run `pnpm lint` before opening a pull request or pushing shared changes.
 
-Source ids and generated directory names should stay lowercase kebab-case. Avoid editing generated remote skill directories by hand; update the source repository or the subscription filters instead.
+Source ids and generated directory names should stay lowercase kebab-case. Avoid editing generated skill directories by hand; update the local source directory, source repository, or subscription filters instead.
 
 ## License
 

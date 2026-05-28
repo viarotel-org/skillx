@@ -20,7 +20,7 @@ export async function cloneSource(source, destinationPath, options = {}) {
     '--single-branch',
     '--branch',
     source.branch,
-    source.url,
+    source.location,
     destinationPath,
   ]
 

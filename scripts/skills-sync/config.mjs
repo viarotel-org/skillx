@@ -21,7 +21,8 @@ import YAML from 'yaml'
 /**
  * @typedef {object} SourceConfig
  * @property {string} id
- * @property {string} url
+ * @property {'remote' | 'local'} type
+ * @property {string} location
  * @property {string} branch
  * @property {string} path
  * @property {'flat' | 'nested'} mode
@@ -37,7 +38,7 @@ import YAML from 'yaml'
 export const DEFAULT_CONFIG_PATH = 'skills-sources.yaml'
 
 const SOURCE_ID_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
-const DEFAULT_PROTECTED_IDS = ['local-*', 'subscribe']
+const DEFAULT_PROTECTED_IDS = ['subscribe']
 const DEFAULTS = {
   branch: 'main',
   path: 'skills',
@@ -51,6 +52,7 @@ const DEFAULTS = {
   excludes: [],
 }
 const SOURCE_MODES = ['flat', 'nested']
+const SOURCE_TYPES = ['remote', 'local']
 
 export class ConfigValidationError extends Error {
   /**
@@ -332,8 +334,31 @@ function normalizeSources(rawSources, defaults, protectedIds, issues) {
       seenSourceIds.add(id)
     }
 
-    if (!isSafeGitUrl(rawSource.url)) {
-      issues.push(`${sourceLabel}: url must be a non-empty git URL string.`)
+    if (rawSource.url !== undefined) {
+      issues.push(`${sourceLabel}: url is not supported. Use location instead.`)
+    }
+
+    const type = rawSource.type ?? 'remote'
+    if (!isValidSourceType(type)) {
+      issues.push(`${sourceLabel}: type must be either "remote" or "local".`)
+    }
+
+    const location = rawSource.location
+    const hasLocation = typeof location === 'string' && location.trim().length > 0
+    if (!hasLocation) {
+      issues.push(`${sourceLabel}: location must be a non-empty string.`)
+    }
+    else if (isValidSourceType(type)) {
+      if (type === 'remote' && !isSafeGitUrl(location)) {
+        issues.push(`${sourceLabel}: location must be a non-empty git URL string for remote sources.`)
+      }
+
+      if (type === 'local') {
+        const locationIssue = validateRelativePath(location, 'location')
+        if (locationIssue) {
+          issues.push(`${sourceLabel}: ${locationIssue}`)
+        }
+      }
     }
 
     const normalizedPath = rawSource.path ?? defaults.path
@@ -370,7 +395,8 @@ function normalizeSources(rawSources, defaults, protectedIds, issues) {
 
     return {
       id: typeof id === 'string' ? id : '',
-      url: typeof rawSource.url === 'string' ? rawSource.url : '',
+      type: isValidSourceType(type) ? type : 'remote',
+      location: typeof location === 'string' ? location : '',
       branch: typeof branch === 'string' ? branch : defaults.branch,
       path: typeof normalizedPath === 'string' ? normalizedPath : defaults.path,
       mode: isValidSourceMode(mode) ? mode : defaults.mode,
@@ -392,7 +418,8 @@ function normalizeSources(rawSources, defaults, protectedIds, issues) {
 function createInvalidSource(defaults) {
   return {
     id: '',
-    url: '',
+    type: 'remote',
+    location: '',
     branch: defaults.branch,
     path: defaults.path,
     mode: defaults.mode,
@@ -404,6 +431,14 @@ function createInvalidSource(defaults) {
     excludes: [...defaults.excludes],
     priority: null,
   }
+}
+
+/**
+ * @param {unknown} type
+ * @returns {type is 'remote' | 'local'}
+ */
+function isValidSourceType(type) {
+  return typeof type === 'string' && SOURCE_TYPES.includes(type)
 }
 
 /**
@@ -498,11 +533,21 @@ function validateFilterPattern(pattern) {
  * @returns {boolean}
  */
 function isSafeGitUrl(url) {
-  return typeof url === 'string'
-    && url.trim().length > 0
-    && !url.startsWith('-')
-    && !url.includes('\n')
-    && !url.includes('\r')
+  if (typeof url !== 'string' || url.trim().length === 0 || url.startsWith('-') || url.includes('\n') || url.includes('\r')) {
+    return false
+  }
+
+  if (/^[\w.-]+@[^:]+:.+$/.test(url)) {
+    return true
+  }
+
+  try {
+    const parsedUrl = new URL(url)
+    return ['https:', 'http:', 'ssh:', 'git:', 'file:'].includes(parsedUrl.protocol)
+  }
+  catch {
+    return false
+  }
 }
 
 /**

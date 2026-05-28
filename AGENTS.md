@@ -26,8 +26,9 @@
 ## Project Conventions
 
 - Keep source ids and generated directory ids lowercase kebab-case.
-- Keep hand-maintained skills under protected ids such as `skills/local-<name>/`; `local-*` is protected in [skills-sources.yaml](skills-sources.yaml).
-- Do not hand-edit generated remote skill directories (`skills/remote-*/**`). Change the upstream source or subscription filters instead.
+- Source ids do not need `local-` or `remote-` prefixes; use `type: local|remote` and `location` in [skills-sources.yaml](skills-sources.yaml) to express where content comes from.
+- Keep hand-maintained local source inputs under `skillx/<name>/`; subscribe to them through the single local `skillx` source and write generated copies to `skills/skillx-*`.
+- Do not hand-edit generated skill directories. Change the local source directory, upstream repository, or subscription filters instead.
 - Treat `.skills-sync/manifest.json` as the cleanup contract for generated directories. Unknown or protected skill directories should be left untouched.
 - Preserve path traversal defenses: config paths and filters must remain relative, use forward slashes, and avoid `.` or `..` segments except the source path value `.`.
 - `includes` and `excludes` are relative skill path globs; excludes take precedence over includes.
@@ -37,7 +38,7 @@
 - `preserveOnFailure` defaults to `false`; only set it to `true` when intentionally keeping previous generated output for failed sources.
 - Symlinks from subscribed sources are skipped during copy and reported in `.skills-sync/summary.*`.
 - `mode: flat` slugs discovered skill paths into separate target ids and must fail on collisions; `mode: nested` keeps selected skills grouped under the source id.
-- ESLint ignores `skills/remote-*/**`; do not use that as a place for source changes.
+- ESLint should ignore generated skill outputs; do not use generated directories as a place for source changes.
 
 ## When Editing
 

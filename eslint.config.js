@@ -2,7 +2,16 @@ import antfu from '@antfu/eslint-config'
 
 export default antfu({
   ignores: [
-    'skills/remote-*/**',
+    'skills/addyosmani*/**',
+    'skills/android*/**',
+    'skills/anthropic*/**',
+    'skills/antfu*/**',
+    'skills/awesome-copilot*/**',
+    'skills/mattpocock*/**',
+    'skills/open-wot*/**',
+    'skills/openai*/**',
+    'skills/skillx*/**',
+    'skills/vuejs-ai*/**',
   ],
   markdown: {
     overrides: {

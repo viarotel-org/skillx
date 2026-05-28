@@ -52,7 +52,8 @@ import { createSummary, writeSummaryFiles } from './skills-sync/summary.mjs'
 /**
  * @typedef {object} SourceConfig
  * @property {string} id
- * @property {string} url
+ * @property {'remote' | 'local'} type
+ * @property {string} location
  * @property {string} branch
  * @property {string} path
  * @property {'flat' | 'nested'} mode
@@ -193,7 +194,8 @@ async function syncSkillsWithLock(cwd, options, logger) {
         activeManagedTargets.push(...getPreviousManagedTargets(source.id, previousSource))
         syncedManifestSources.push({
           id: source.id,
-          url: source.url,
+          type: previousSource.type ?? source.type,
+          location: previousSource.location ?? source.location,
           branch: source.branch,
           path: source.path,
           mode: previousSource.mode ?? source.mode,
@@ -285,28 +287,20 @@ async function reportUnknownDirectories(cwd, knownDirectoryIds, protectedIds, su
  */
 async function planSource(cwd, source, runWorkspace, options, logger) {
   logger.group(`Sync ${source.id}`)
-  logger.info(`Cloning ${source.url}#${source.branch}.`)
-
-  const repoPath = path.join(runWorkspace.reposPath, source.id)
-  const sourceSkillsPath = source.path === '.'
-    ? repoPath
-    : path.join(repoPath, ...source.path.split('/'))
 
   try {
-    await cloneSourceWithRetry(source, repoPath, { cwd, maxAttempts: source.cloneMaxAttempts }, logger)
-    await assertDirectory(sourceSkillsPath, `Source path ${source.path}`)
-
-    const commit = await getHeadCommit(repoPath)
-    const discoveredSkills = await discoverSkillDirs(sourceSkillsPath)
+    const sourcePlanInput = await prepareSourcePlanInput(cwd, source, runWorkspace, logger)
+    const discoveredSkills = await discoverSkillDirs(sourcePlanInput.sourceSkillsPath)
     const selectedSkills = filterSkillDirs(discoveredSkills, source)
     const plannedTargets = planSkillTargets(source, selectedSkills)
     const targets = getUniqueValues(plannedTargets.map(target => target.targetId))
     const skillPaths = plannedTargets.map(target => target.relativePath)
 
-    logger.success(`Planned ${source.id}: ${selectedSkills.length}/${discoveredSkills.length} skill directories at ${commit.slice(0, 12)}.`)
+    logger.success(`Planned ${source.id}: ${selectedSkills.length}/${discoveredSkills.length} skill directories${sourcePlanInput.commit ? ` at ${sourcePlanInput.commit.slice(0, 12)}` : ''}.`)
     return {
       id: source.id,
-      url: source.url,
+      type: source.type,
+      location: source.location,
       branch: source.branch,
       path: source.path,
       mode: source.mode,
@@ -315,7 +309,7 @@ async function planSource(cwd, source, runWorkspace, options, logger) {
       status: 'synced',
       skillCount: selectedSkills.length,
       discoveredSkillCount: discoveredSkills.length,
-      commit,
+      commit: sourcePlanInput.commit,
       targets,
       skillPaths,
       source,
@@ -329,7 +323,8 @@ async function planSource(cwd, source, runWorkspace, options, logger) {
     logger.error(`Failed ${source.id}: ${message}`)
     return {
       id: source.id,
-      url: source.url,
+      type: source.type,
+      location: source.location,
       branch: source.branch,
       path: source.path,
       status: 'failed',
@@ -341,6 +336,46 @@ async function planSource(cwd, source, runWorkspace, options, logger) {
   }
   finally {
     logger.groupEnd()
+  }
+}
+
+/**
+ * @param {string} cwd
+ * @param {SourceConfig} source
+ * @param {RunWorkspace} runWorkspace
+ * @param {Logger} logger
+ * @returns {Promise<{ sourceSkillsPath: string, commit: string | null }>}
+ */
+async function prepareSourcePlanInput(cwd, source, runWorkspace, logger) {
+  if (source.type === 'local') {
+    logger.info(`Reading local source ${source.location}.`)
+    const sourceRootPath = source.location === '.'
+      ? cwd
+      : resolveInside(cwd, ...source.location.split('/'))
+    const sourceSkillsPath = source.path === '.'
+      ? sourceRootPath
+      : path.join(sourceRootPath, ...source.path.split('/'))
+
+    await assertDirectory(sourceSkillsPath, `Source path ${source.path}`)
+
+    return {
+      sourceSkillsPath,
+      commit: null,
+    }
+  }
+
+  logger.info(`Cloning ${source.location}#${source.branch}.`)
+  const repoPath = path.join(runWorkspace.reposPath, source.id)
+  const sourceSkillsPath = source.path === '.'
+    ? repoPath
+    : path.join(repoPath, ...source.path.split('/'))
+
+  await cloneSourceWithRetry(source, repoPath, { cwd, maxAttempts: source.cloneMaxAttempts }, logger)
+  await assertDirectory(sourceSkillsPath, `Source path ${source.path}`)
+
+  return {
+    sourceSkillsPath,
+    commit: await getHeadCommit(repoPath),
   }
 }
 

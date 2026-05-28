@@ -29,7 +29,8 @@ const EXCLUDED_ROOT_FILES = ['.env', '.env.local', '.env.production', '.gitattri
 
 /**
  * @typedef {object} ManifestSource
- * @property {string} [url]
+ * @property {string} [type]
+ * @property {string} [location]
  * @property {string} [branch]
  * @property {string} [path]
  * @property {string} [mode]
@@ -46,6 +47,7 @@ const EXCLUDED_ROOT_FILES = ['.env', '.env.local', '.env.production', '.gitattri
 
 /**
  * @typedef {object} Manifest
+ * @property {string} [$schema]
  * @property {number} version
  * @property {Record<string, ManifestSource>} sources
  */
@@ -53,7 +55,8 @@ const EXCLUDED_ROOT_FILES = ['.env', '.env.local', '.env.production', '.gitattri
 /**
  * @typedef {object} SyncResultSource
  * @property {string} id
- * @property {string} [url]
+ * @property {string} [type]
+ * @property {string} [location]
  * @property {string} [branch]
  * @property {string} [path]
  * @property {string} [mode]
@@ -244,7 +247,8 @@ export function createManifest(sources) {
   const sourceEntries = sources
     .filter(source => source.status === 'synced' || source.status === 'preserved')
     .map(source => [source.id, {
-      url: source.url,
+      type: source.type,
+      location: source.location,
       branch: source.branch,
       path: source.path,
       mode: source.mode,
@@ -257,6 +261,7 @@ export function createManifest(sources) {
     }])
 
   return {
+    $schema: '../schemas/skills-sync-manifest.schema.json',
     version: 2,
     sources: Object.fromEntries(sourceEntries),
   }

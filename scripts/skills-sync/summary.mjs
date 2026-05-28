@@ -5,7 +5,8 @@ import process from 'node:process'
 /**
  * @typedef {object} SummaryItem
  * @property {string} id
- * @property {string} [url]
+ * @property {string} [type]
+ * @property {string} [location]
  * @property {string} [branch]
  * @property {string} [path]
  * @property {string} [status]
