@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.0](https://github.com/viarotel-org/skillx/compare/skillx-v0.2.0...skillx-v0.3.0) (2026-05-28)
+
+
+### Features
+
+* 🚀 Optimize the performance of synchronous remote repositories ([5c64684](https://github.com/viarotel-org/skillx/commit/5c64684aaea973ba8738915c00f4b7538cf6e3f9))
+* 🚀 Support maintenance of local warehouse ([f6af85f](https://github.com/viarotel-org/skillx/commit/f6af85fa16972b0eabccd66b2bd8486d1973ac66))
+
 ## [0.2.0](https://github.com/viarotel-org/skillx/compare/skillx-v0.1.0...skillx-v0.2.0) (2026-05-28)
 
 
