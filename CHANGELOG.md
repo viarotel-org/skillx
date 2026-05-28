@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/viarotel-org/skillx/compare/skillx-v0.1.0...skillx-v0.2.0) (2026-05-28)
+
+
+### Features
+
+* 🚀 Improve the architectural details ([d6db828](https://github.com/viarotel-org/skillx/commit/d6db8280b3ff93f24bef69ef144a741b1dda9499))
+
 ## [0.1.0](https://github.com/viarotel-org/skillx/compare/skillx-v0.0.1...skillx-v0.1.0) (2026-05-28)
 
 
