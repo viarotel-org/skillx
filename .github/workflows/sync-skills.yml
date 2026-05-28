@@ -53,6 +53,8 @@ jobs:
         run: pnpm lint
 
       - name: Sync skills
+        env:
+          SKILLX_WRITE_STEP_SUMMARY: '1'
         run: pnpm sync
 
       - name: Upload sync summary
@@ -66,9 +68,11 @@ jobs:
       - name: Detect changes
         id: changes
         run: |
-          if git diff --quiet -- skills .skills-sync/manifest.json; then
+          changed_files="$(git status --porcelain -- skills .skills-sync/manifest.json)"
+          if [ -z "$changed_files" ]; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
+            printf '%s\n' "$changed_files"
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
@@ -81,7 +85,7 @@ jobs:
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add skills .skills-sync/manifest.json
+          git add -A -- skills .skills-sync/manifest.json
           git commit -m "fix: sync skills subscriptions"
           git pull --rebase origin "$DEFAULT_BRANCH"
           git push origin "HEAD:$DEFAULT_BRANCH"

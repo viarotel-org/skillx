@@ -19,6 +19,7 @@ import {
   readManifest,
   resolveInside,
 } from '../scripts/skills-sync/fs.mjs'
+import { createSummary, writeSummaryFiles } from '../scripts/skills-sync/summary.mjs'
 
 const execFileAsync = promisify(execFile)
 
@@ -575,6 +576,35 @@ it('skips symlinks when copying skills and reports skipped paths', async () => {
   }
 })
 
+it('writes GitHub step summaries only when explicitly enabled', async () => {
+  const rootPath = await mkdtemp(path.join(tmpdir(), 'skillx-test-'))
+  const stepSummaryPath = path.join(rootPath, 'step-summary.md')
+  const previousStepSummary = process.env.GITHUB_STEP_SUMMARY
+  const previousWriteStepSummary = process.env.SKILLX_WRITE_STEP_SUMMARY
+
+  try {
+    process.env.GITHUB_STEP_SUMMARY = stepSummaryPath
+    delete process.env.SKILLX_WRITE_STEP_SUMMARY
+
+    const summary = createSummary({ configPath: 'skills-sources.yaml' })
+    summary.totalSources = 1
+
+    await writeSummaryFiles(rootPath, summary)
+
+    assert.equal(await pathExists(stepSummaryPath), false)
+
+    process.env.SKILLX_WRITE_STEP_SUMMARY = '1'
+    await writeSummaryFiles(rootPath, summary)
+
+    assert.equal(await pathExists(stepSummaryPath), true)
+  }
+  finally {
+    restoreEnvValue('GITHUB_STEP_SUMMARY', previousStepSummary)
+    restoreEnvValue('SKILLX_WRITE_STEP_SUMMARY', previousWriteStepSummary)
+    await rm(rootPath, { recursive: true, force: true })
+  }
+})
+
 it('prevents resolved paths from escaping root', () => {
   assert.throws(() => resolveInside('/repo', '..', 'outside'), /escapes root/)
 })
@@ -697,4 +727,13 @@ function createSilentLogger() {
     group() {},
     groupEnd() {},
   }
+}
+
+function restoreEnvValue(name, value) {
+  if (value === undefined) {
+    delete process.env[name]
+    return
+  }
+
+  process.env[name] = value
 }

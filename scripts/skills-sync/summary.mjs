@@ -2,6 +2,8 @@ import { mkdir, rename, rm, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import process from 'node:process'
 
+const WRITE_STEP_SUMMARY_VALUE = '1'
+
 /**
  * @typedef {object} SummaryItem
  * @property {string} id
@@ -92,7 +94,7 @@ export async function writeSummaryFiles(cwd, summary) {
   await writeFileAtomic(path.join(summaryDirectory, 'summary.md'), markdownSummary)
   await writeFileAtomic(path.join(summaryDirectory, 'summary.json'), `${JSON.stringify(summary, null, 2)}\n`)
 
-  if (process.env.GITHUB_STEP_SUMMARY) {
+  if (process.env.SKILLX_WRITE_STEP_SUMMARY === WRITE_STEP_SUMMARY_VALUE && process.env.GITHUB_STEP_SUMMARY) {
     await writeFileAtomic(process.env.GITHUB_STEP_SUMMARY, markdownSummary)
   }
 }
