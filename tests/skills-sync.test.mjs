@@ -1,17 +1,25 @@
 import assert from 'node:assert/strict'
+import { execFile } from 'node:child_process'
 import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import path from 'node:path'
+import { pathToFileURL } from 'node:url'
+import { promisify } from 'node:util'
 import { it } from 'vitest'
 import { ConfigValidationError, validateConfigDocument, validateRelativePath, validateSourceId } from '../scripts/skills-sync/config.mjs'
 import {
+  acquireSyncLock,
   discoverSkillDirs,
   filterSkillDirs,
   getStaleManagedIds,
   listUnknownSkillDirs,
+  pathExists,
   planSkillTargets,
+  readManifest,
   resolveInside,
 } from '../scripts/skills-sync/fs.mjs'
+
+const execFileAsync = promisify(execFile)
 
 it('validates a minimal skills source config', () => {
   const config = validateConfigDocument({
@@ -29,8 +37,70 @@ it('validates a minimal skills source config', () => {
   assert.equal(config.sources[0].path, 'skills')
   assert.equal(config.sources[0].mode, 'flat')
   assert.equal(config.sources[0].enabled, true)
+  assert.equal(config.sources[0].preserveOnFailure, false)
   assert.deepEqual(config.sources[0].includes, [])
   assert.deepEqual(config.sources[0].excludes, [])
+})
+
+it('can import the sync orchestrator without executing the CLI', async () => {
+  const syncScriptUrl = pathToFileURL(path.resolve('scripts/sync-skills.mjs'))
+  syncScriptUrl.searchParams.set('testImport', String(Date.now()))
+
+  const syncModule = await import(syncScriptUrl.href)
+
+  assert.equal(typeof syncModule.syncSkills, 'function')
+  assert.equal(typeof syncModule.parseArgs, 'function')
+})
+
+it('normalizes clone timeout and retry settings', () => {
+  const config = validateConfigDocument({
+    version: 1,
+    defaults: {
+      cloneTimeoutMs: 600000,
+      cloneMaxAttempts: 4,
+    },
+    sources: [
+      {
+        id: 'openai',
+        url: 'https://github.com/openai/skills.git',
+        cloneTimeoutMs: 900000,
+        cloneMaxAttempts: 2,
+      },
+    ],
+  })
+
+  assert.equal(config.defaults.cloneTimeoutMs, 600000)
+  assert.equal(config.defaults.cloneMaxAttempts, 4)
+  assert.equal(config.sources[0].cloneTimeoutMs, 900000)
+  assert.equal(config.sources[0].cloneMaxAttempts, 2)
+})
+
+it('rejects invalid clone timeout and retry settings', () => {
+  assert.throws(() => validateConfigDocument({
+    version: 1,
+    defaults: {
+      cloneTimeoutMs: 0,
+      cloneMaxAttempts: 0,
+    },
+    sources: [
+      {
+        id: 'openai',
+        url: 'https://github.com/openai/skills.git',
+      },
+    ],
+  }), ConfigValidationError)
+
+  assert.throws(() => validateConfigDocument({
+    version: 1,
+    sources: [
+      {
+        id: 'openai',
+        url: 'https://github.com/openai/skills.git',
+        cloneTimeoutMs: 1.5,
+        cloneMaxAttempts: 'three',
+      },
+    ],
+  }), ConfigValidationError)
 })
 
 it('validates source mode and skill filters', () => {
@@ -207,6 +277,81 @@ it('does not report unknown skill dirs matching protected patterns', async () =>
   }
 })
 
+it('prevents concurrent sync runs with a repository lock', async () => {
+  const rootPath = await mkdtemp(path.join(tmpdir(), 'skillx-test-'))
+
+  try {
+    const releaseLock = await acquireSyncLock(rootPath)
+
+    await assert.rejects(() => acquireSyncLock(rootPath), /already running/)
+
+    await releaseLock()
+
+    const releaseSecondLock = await acquireSyncLock(rootPath)
+    await releaseSecondLock()
+  }
+  finally {
+    await rm(rootPath, { recursive: true, force: true })
+  }
+})
+
+it('reports corrupted manifests with recovery guidance', async () => {
+  const rootPath = await mkdtemp(path.join(tmpdir(), 'skillx-test-'))
+
+  try {
+    await mkdir(path.join(rootPath, '.skills-sync'), { recursive: true })
+    await writeFile(path.join(rootPath, '.skills-sync', 'manifest.json'), '{ invalid json', 'utf8')
+
+    await assert.rejects(() => readManifest(rootPath), /Manifest parse failed.*pnpm sync:dry-run/s)
+  }
+  finally {
+    await rm(rootPath, { recursive: true, force: true })
+  }
+})
+
+it('removes previously managed targets when a source no longer exposes its skills path', async () => {
+  const rootPath = await mkdtemp(path.join(tmpdir(), 'skillx-test-'))
+  const sourceRepoPath = await mkdtemp(path.join(tmpdir(), 'skillx-source-'))
+
+  try {
+    await createGitRepo(sourceRepoPath)
+    await writeFile(path.join(rootPath, 'skills-sources.yaml'), [
+      'version: 1',
+      'sources:',
+      '  - id: remote-fixture',
+      `    url: ${sourceRepoPath}`,
+      '    branch: main',
+      '    path: missing-skills',
+      '    preserveOnFailure: false',
+      '',
+    ].join('\n'), 'utf8')
+    await mkdir(path.join(rootPath, '.skills-sync'), { recursive: true })
+    await writeFile(path.join(rootPath, '.skills-sync', 'manifest.json'), `${JSON.stringify({
+      version: 2,
+      sources: {
+        'remote-fixture': {
+          targets: ['remote-fixture-old-skill'],
+        },
+      },
+    }, null, 2)}\n`, 'utf8')
+    await mkdir(path.join(rootPath, 'skills', 'remote-fixture-old-skill'), { recursive: true })
+
+    const syncScriptUrl = pathToFileURL(path.resolve('scripts/sync-skills.mjs'))
+    syncScriptUrl.searchParams.set('sourceTruthTest', String(Date.now()))
+    const { syncSkills } = await import(syncScriptUrl.href)
+
+    await syncSkills({ cwd: rootPath }, createSilentLogger())
+
+    const manifest = await readManifest(rootPath)
+    assert.deepEqual(manifest?.sources, {})
+    assert.equal(await pathExists(path.join(rootPath, 'skills', 'remote-fixture-old-skill')), false)
+  }
+  finally {
+    await rm(rootPath, { recursive: true, force: true })
+    await rm(sourceRepoPath, { recursive: true, force: true })
+  }
+})
+
 it('prevents resolved paths from escaping root', () => {
   assert.throws(() => resolveInside('/repo', '..', 'outside'), /escapes root/)
 })
@@ -282,4 +427,23 @@ async function createTempSkillTree(files) {
   }))
 
   return rootPath
+}
+
+async function createGitRepo(repoPath) {
+  await execFileAsync('git', ['init', '-b', 'main'], { cwd: repoPath })
+  await writeFile(path.join(repoPath, 'README.md'), '# Fixture\n', 'utf8')
+  await execFileAsync('git', ['add', 'README.md'], { cwd: repoPath })
+  await execFileAsync('git', ['-c', 'user.name=skillx-test', '-c', 'user.email=skillx-test@example.com', 'commit', '-m', 'test fixture'], { cwd: repoPath })
+}
+
+function createSilentLogger() {
+  return {
+    info() {},
+    success() {},
+    warn() {},
+    error() {},
+    debug() {},
+    group() {},
+    groupEnd() {},
+  }
 }

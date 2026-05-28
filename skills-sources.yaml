@@ -5,7 +5,9 @@ defaults:
   path: skills
   mode: flat
   enabled: true
-  preserveOnFailure: true
+  preserveOnFailure: false
+  cloneTimeoutMs: 300000
+  cloneMaxAttempts: 3
   includes: []
   excludes: []
 

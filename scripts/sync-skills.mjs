@@ -2,8 +2,10 @@
 import { rm } from 'node:fs/promises'
 import path from 'node:path'
 import process from 'node:process'
+import { fileURLToPath } from 'node:url'
 import { getErrorMessage, loadSkillsConfig } from './skills-sync/config.mjs'
 import {
+  acquireSyncLock,
   assertDirectory,
   atomicReplaceDirectory,
   cleanupRunWorkspace,
@@ -56,6 +58,8 @@ import { createSummary, writeSummaryFiles } from './skills-sync/summary.mjs'
  * @property {'flat' | 'nested'} mode
  * @property {boolean} enabled
  * @property {boolean} preserveOnFailure
+ * @property {number} cloneTimeoutMs
+ * @property {number} cloneMaxAttempts
  * @property {string[]} includes
  * @property {string[]} excludes
  * @property {unknown} priority
@@ -89,16 +93,25 @@ import { createSummary, writeSummaryFiles } from './skills-sync/summary.mjs'
  * @property {Record<string, ManifestSource>} sources
  */
 
-/** @type {SyncOptions} */
-const options = parseArgs(process.argv.slice(2))
-const logger = createLogger({ verbose: options.verbose })
-
-try {
-  await syncSkills(options, logger)
+if (isDirectCli()) {
+  await runCli(process.argv.slice(2))
 }
-catch (error) {
-  logger.error(getErrorMessage(error))
-  process.exitCode = 1
+
+/**
+ * @param {string[]} args
+ * @returns {Promise<void>}
+ */
+export async function runCli(args) {
+  const options = parseArgs(args)
+  const logger = createLogger({ verbose: options.verbose })
+
+  try {
+    await syncSkills(options, logger)
+  }
+  catch (error) {
+    logger.error(getErrorMessage(error))
+    process.exitCode = 1
+  }
 }
 
 /**
@@ -108,6 +121,23 @@ catch (error) {
  */
 export async function syncSkills(options = {}, logger = createLogger()) {
   const cwd = options.cwd ?? process.cwd()
+  const releaseLock = await acquireSyncLock(cwd)
+
+  try {
+    await syncSkillsWithLock(cwd, options, logger)
+  }
+  finally {
+    await releaseLock()
+  }
+}
+
+/**
+ * @param {string} cwd
+ * @param {SyncOptions} options
+ * @param {Logger} logger
+ * @returns {Promise<void>}
+ */
+async function syncSkillsWithLock(cwd, options, logger) {
   const config = /** @type {SkillsConfig} */ (await loadSkillsConfig({ cwd, configPath: options.configPath }))
   const summary = createSummary({ dryRun: options.dryRun, configPath: config.configPath })
   const enabledSources = config.sources.filter(source => source.enabled)
@@ -144,11 +174,8 @@ export async function syncSkills(options = {}, logger = createLogger()) {
 
       summary.failed.push(result)
       const previousSource = previousManifest?.sources?.[source.id]
-      if (previousSource) {
-        activeManagedTargets.push(...getPreviousManagedTargets(source.id, previousSource))
-      }
-
       if (source.preserveOnFailure && previousSource) {
+        activeManagedTargets.push(...getPreviousManagedTargets(source.id, previousSource))
         syncedManifestSources.push({
           id: source.id,
           url: source.url,
@@ -251,7 +278,7 @@ async function syncSource(cwd, source, runWorkspace, options, logger) {
     : path.join(repoPath, ...source.path.split('/'))
 
   try {
-    await cloneSourceWithRetry(source, repoPath, { cwd, maxAttempts: 3 }, logger)
+    await cloneSourceWithRetry(source, repoPath, { cwd, maxAttempts: source.cloneMaxAttempts }, logger)
     await assertDirectory(sourceSkillsPath, `Source path ${source.path}`)
 
     const commit = await getHeadCommit(repoPath)
@@ -378,7 +405,7 @@ async function cloneSourceWithRetry(source, repoPath, options, logger) {
 
   for (let attempt = 1; attempt <= options.maxAttempts; attempt += 1) {
     try {
-      await cloneSource(source, repoPath, { cwd: options.cwd })
+      await cloneSource(source, repoPath, { cwd: options.cwd, timeoutMs: source.cloneTimeoutMs })
       return
     }
     catch (error) {
@@ -401,7 +428,7 @@ async function cloneSourceWithRetry(source, repoPath, options, logger) {
  * @param {string[]} args
  * @returns {SyncOptions}
  */
-function parseArgs(args) {
+export function parseArgs(args) {
   /** @type {SyncOptions} */
   const options = {
     configPath: undefined,
@@ -440,4 +467,11 @@ function parseArgs(args) {
   }
 
   return options
+}
+
+/**
+ * @returns {boolean}
+ */
+function isDirectCli() {
+  return Boolean(process.argv[1]) && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)
 }

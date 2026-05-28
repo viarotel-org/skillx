@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from 'node:fs/promises'
+import { mkdir, rename, rm, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import process from 'node:process'
 
@@ -83,11 +83,13 @@ export function formatSummaryMarkdown(summary) {
 export async function writeSummaryFiles(cwd, summary) {
   const summaryDirectory = path.resolve(cwd, '.skills-sync')
   await mkdir(summaryDirectory, { recursive: true })
-  await writeFile(path.join(summaryDirectory, 'summary.md'), formatSummaryMarkdown(summary), 'utf8')
-  await writeFile(path.join(summaryDirectory, 'summary.json'), `${JSON.stringify(summary, null, 2)}\n`, 'utf8')
+
+  const markdownSummary = formatSummaryMarkdown(summary)
+  await writeFileAtomic(path.join(summaryDirectory, 'summary.md'), markdownSummary)
+  await writeFileAtomic(path.join(summaryDirectory, 'summary.json'), `${JSON.stringify(summary, null, 2)}\n`)
 
   if (process.env.GITHUB_STEP_SUMMARY) {
-    await writeFile(process.env.GITHUB_STEP_SUMMARY, formatSummaryMarkdown(summary), 'utf8')
+    await writeFileAtomic(process.env.GITHUB_STEP_SUMMARY, markdownSummary)
   }
 }
 
@@ -162,4 +164,22 @@ function formatCleanupLines(summary) {
  */
 function escapeTableCell(value) {
   return String(value).replaceAll('|', '\\|').replaceAll('\n', '<br>')
+}
+
+/**
+ * @param {string} targetPath
+ * @param {string} content
+ * @returns {Promise<void>}
+ */
+async function writeFileAtomic(targetPath, content) {
+  const tempPath = `${targetPath}.${process.pid}.${Date.now()}.tmp`
+
+  try {
+    await writeFile(tempPath, content, 'utf8')
+    await rename(tempPath, targetPath)
+  }
+  catch (error) {
+    await rm(tempPath, { force: true })
+    throw error
+  }
 }

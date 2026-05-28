@@ -31,6 +31,9 @@
 - Treat `.skills-sync/manifest.json` as the cleanup contract for generated directories. Unknown or protected skill directories should be left untouched.
 - Preserve path traversal defenses: config paths and filters must remain relative, use forward slashes, and avoid `.` or `..` segments except the source path value `.`.
 - `includes` and `excludes` are relative skill path globs; excludes take precedence over includes.
+- `cloneTimeoutMs` and `cloneMaxAttempts` can be set in defaults or per source to tune Git clone resilience.
+- This repository configures `mode: flat` by default; upstream removals should be reflected by stale generated target cleanup on the next sync.
+- `preserveOnFailure` defaults to `false`; only set it to `true` when intentionally keeping previous generated output for failed sources.
 - `mode: flat` slugs discovered skill paths into separate target ids and must fail on collisions; `mode: nested` keeps selected skills grouped under the source id.
 - ESLint ignores `skills/remote-*/**`; do not use that as a place for source changes.
 
@@ -39,4 +42,5 @@
 - Prefer focused changes in the existing module boundary instead of moving sync responsibilities across files.
 - Add or update tests in [tests/skills-sync.test.mjs](tests/skills-sync.test.mjs) for behavior changes in config parsing, discovery, filtering, target planning, manifest handling, or cleanup.
 - Validate YAML changes with `pnpm validate` before running sync commands.
+- The scheduled sync workflow runs `pnpm test` and `pnpm lint` before committing generated sync changes.
 - Avoid duplicating README content here; link to [README.md](README.md) for details that are already documented.

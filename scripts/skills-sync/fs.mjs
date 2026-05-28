@@ -120,6 +120,36 @@ export async function ensureDirectory(directoryPath, options = {}) {
 
 /**
  * @param {string} cwd
+ * @returns {Promise<() => Promise<void>>}
+ */
+export async function acquireSyncLock(cwd) {
+  const lockPath = resolveInside(cwd, '.skills-sync', 'sync.lock')
+  await mkdir(path.dirname(lockPath), { recursive: true })
+
+  try {
+    await mkdir(lockPath)
+  }
+  catch (error) {
+    if (isNodeError(error) && error.code === 'EEXIST') {
+      throw new Error('A skills sync is already running for this repository.')
+    }
+
+    throw error
+  }
+
+  let released = false
+  return async () => {
+    if (released) {
+      return
+    }
+
+    released = true
+    await rm(lockPath, { recursive: true, force: true })
+  }
+}
+
+/**
+ * @param {string} cwd
  * @param {FileOperationOptions} [options]
  * @returns {Promise<RunWorkspace>}
  */
@@ -173,7 +203,14 @@ export async function readManifest(cwd, manifestPath = MANIFEST_PATH) {
   }
 
   const rawManifest = await readFile(absoluteManifestPath, 'utf8')
-  const manifest = JSON.parse(rawManifest)
+  let manifest
+  try {
+    manifest = JSON.parse(rawManifest)
+  }
+  catch (error) {
+    const message = error instanceof Error ? error.message : String(error)
+    throw new Error(`Manifest parse failed at ${absoluteManifestPath}: ${message}. Run pnpm sync:dry-run to validate the current sync plan before rebuilding the manifest.`)
+  }
 
   if (!manifest || typeof manifest !== 'object' || !manifest.sources || typeof manifest.sources !== 'object') {
     return null
@@ -195,7 +232,7 @@ export async function writeManifest(cwd, manifest, options = {}) {
 
   const absoluteManifestPath = resolveInside(cwd, MANIFEST_PATH)
   await mkdir(path.dirname(absoluteManifestPath), { recursive: true })
-  await writeFile(absoluteManifestPath, `${JSON.stringify(manifest, null, 2)}\n`, 'utf8')
+  await writeFileAtomic(absoluteManifestPath, `${JSON.stringify(manifest, null, 2)}\n`)
 }
 
 /**
@@ -541,4 +578,30 @@ function getManifestSourceTargets(sourceId, source) {
   }
 
   return [sourceId]
+}
+
+/**
+ * @param {string} targetPath
+ * @param {string} content
+ * @returns {Promise<void>}
+ */
+async function writeFileAtomic(targetPath, content) {
+  const tempPath = `${targetPath}.${process.pid}.${Date.now()}.tmp`
+
+  try {
+    await writeFile(tempPath, content, 'utf8')
+    await rename(tempPath, targetPath)
+  }
+  catch (error) {
+    await rm(tempPath, { force: true })
+    throw error
+  }
+}
+
+/**
+ * @param {unknown} error
+ * @returns {error is NodeJS.ErrnoException}
+ */
+function isNodeError(error) {
+  return error instanceof Error && 'code' in error
 }

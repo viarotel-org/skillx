@@ -94,7 +94,9 @@ defaults:
   path: skills
   mode: flat
   enabled: true
-  preserveOnFailure: true
+  preserveOnFailure: false
+  cloneTimeoutMs: 300000
+  cloneMaxAttempts: 3
   includes: []
   excludes: []
 
@@ -118,11 +120,15 @@ sources:
 | `path` | No | Directory inside the source repository that contains skills. Defaults to `skills`. Use `.` for repository root. |
 | `mode` | No | `flat` writes each discovered skill as its own generated directory. `nested` keeps skills grouped under `skills/<source-id>/`. |
 | `enabled` | No | Disabled sources are skipped. Defaults to `true`. |
-| `preserveOnFailure` | No | Keeps the previous manifest entry and generated targets when a source fails. Defaults to `true`. |
+| `preserveOnFailure` | No | Keeps the previous manifest entry and generated targets when a source fails. Defaults to `false`, so stale generated skills are removed unless preservation is explicitly enabled. |
+| `cloneTimeoutMs` | No | Git clone timeout in milliseconds. Defaults to `300000`. |
+| `cloneMaxAttempts` | No | Maximum clone attempts for retryable Git failures. Defaults to `3`. |
 | `includes` | No | Relative glob patterns for selected skill paths. Empty means include all discovered skills. |
 | `excludes` | No | Relative glob patterns to remove from the selected set. Excludes take precedence over includes. |
 
 ### Output Modes
+
+This repository uses `flat` as its configured default in `skills-sources.yaml`, so generated skill paths are source-of-truth snapshots of the subscribed repositories. Skills removed upstream are removed from generated output on the next successful sync.
 
 In `flat` mode, discovered skill paths are slugged into separate target ids:
 
@@ -225,9 +231,9 @@ pnpm test
 
 ### Sync Skills
 
-`.github/workflows/sync-skills.yml` runs manually and on the daily cron schedule `17 3 * * *`. It installs dependencies, validates the source config, runs `pnpm sync`, and commits changed `skills/` content plus `.skills-sync/manifest.json` back to the default branch.
+`.github/workflows/sync-skills.yml` runs manually and on the daily UTC cron schedule `17 3 * * *`. It installs dependencies, validates the source config, runs tests and linting, runs `pnpm sync`, uploads the sync summary artifact, and commits changed `skills/` content plus `.skills-sync/manifest.json` back to the default branch.
 
-When a sync changes tracked generated output, the workflow also runs release-please so the release metadata can follow the subscription update.
+When a sync changes tracked generated output, the workflow also runs release-please so release metadata can follow the subscription update. The standalone release workflow continues to handle normal pushes and manual release runs.
 
 ### Release
 

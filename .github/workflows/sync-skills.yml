@@ -4,7 +4,6 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '17 3 * * *'
-      timezone: Asia/Shanghai
 
 permissions:
   contents: write
@@ -47,8 +46,22 @@ jobs:
       - name: Validate configuration
         run: pnpm validate
 
+      - name: Run tests
+        run: pnpm test
+
+      - name: Run lint
+        run: pnpm lint
+
       - name: Sync skills
         run: pnpm sync
+
+      - name: Upload sync summary
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: skills-sync-summary
+          path: .skills-sync/summary.*
+          if-no-files-found: ignore
 
       - name: Detect changes
         id: changes

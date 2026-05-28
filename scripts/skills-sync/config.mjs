@@ -11,6 +11,8 @@ import YAML from 'yaml'
  * @property {'flat' | 'nested'} mode
  * @property {boolean} enabled
  * @property {boolean} preserveOnFailure
+ * @property {number} cloneTimeoutMs
+ * @property {number} cloneMaxAttempts
  * @property {string[]} includes
  * @property {string[]} excludes
  */
@@ -24,6 +26,8 @@ import YAML from 'yaml'
  * @property {'flat' | 'nested'} mode
  * @property {boolean} enabled
  * @property {boolean} preserveOnFailure
+ * @property {number} cloneTimeoutMs
+ * @property {number} cloneMaxAttempts
  * @property {string[]} includes
  * @property {string[]} excludes
  * @property {unknown} priority
@@ -38,7 +42,9 @@ const DEFAULTS = {
   path: 'skills',
   mode: 'flat',
   enabled: true,
-  preserveOnFailure: true,
+  preserveOnFailure: false,
+  cloneTimeoutMs: 300000,
+  cloneMaxAttempts: 3,
   includes: [],
   excludes: [],
 }
@@ -211,6 +217,9 @@ function normalizeDefaults(rawDefaults, issues) {
     issues.push('`defaults.preserveOnFailure` must be a boolean.')
   }
 
+  const cloneTimeoutMs = normalizePositiveInteger(mergedDefaults.cloneTimeoutMs, 'defaults.cloneTimeoutMs', DEFAULTS.cloneTimeoutMs, issues)
+  const cloneMaxAttempts = normalizePositiveInteger(mergedDefaults.cloneMaxAttempts, 'defaults.cloneMaxAttempts', DEFAULTS.cloneMaxAttempts, issues)
+
   if (!isValidSourceMode(mergedDefaults.mode)) {
     issues.push('`defaults.mode` must be either "flat" or "nested".')
   }
@@ -224,6 +233,8 @@ function normalizeDefaults(rawDefaults, issues) {
     mode: isValidSourceMode(mergedDefaults.mode) ? mergedDefaults.mode : DEFAULTS.mode,
     enabled: Boolean(mergedDefaults.enabled),
     preserveOnFailure: Boolean(mergedDefaults.preserveOnFailure),
+    cloneTimeoutMs,
+    cloneMaxAttempts,
     includes,
     excludes,
   }
@@ -347,6 +358,9 @@ function normalizeSources(rawSources, defaults, protectedIds, issues) {
       issues.push(`${sourceLabel}: mode must be either "flat" or "nested".`)
     }
 
+    const cloneTimeoutMs = normalizePositiveInteger(rawSource.cloneTimeoutMs ?? defaults.cloneTimeoutMs, `${sourceLabel}.cloneTimeoutMs`, defaults.cloneTimeoutMs, issues)
+    const cloneMaxAttempts = normalizePositiveInteger(rawSource.cloneMaxAttempts ?? defaults.cloneMaxAttempts, `${sourceLabel}.cloneMaxAttempts`, defaults.cloneMaxAttempts, issues)
+
     const includes = normalizeFilterPatterns(rawSource.includes ?? defaults.includes, `${sourceLabel}.includes`, issues)
     const excludes = normalizeFilterPatterns(rawSource.excludes ?? defaults.excludes, `${sourceLabel}.excludes`, issues)
 
@@ -358,6 +372,8 @@ function normalizeSources(rawSources, defaults, protectedIds, issues) {
       mode: isValidSourceMode(mode) ? mode : defaults.mode,
       enabled: Boolean(enabled),
       preserveOnFailure: Boolean(preserveOnFailure),
+      cloneTimeoutMs,
+      cloneMaxAttempts,
       includes,
       excludes,
       priority: rawSource.priority ?? null,
@@ -378,6 +394,8 @@ function createInvalidSource(defaults) {
     mode: defaults.mode,
     enabled: false,
     preserveOnFailure: defaults.preserveOnFailure,
+    cloneTimeoutMs: defaults.cloneTimeoutMs,
+    cloneMaxAttempts: defaults.cloneMaxAttempts,
     includes: [...defaults.includes],
     excludes: [...defaults.excludes],
     priority: null,
@@ -390,6 +408,22 @@ function createInvalidSource(defaults) {
  */
 function isValidSourceMode(mode) {
   return typeof mode === 'string' && SOURCE_MODES.includes(mode)
+}
+
+/**
+ * @param {unknown} value
+ * @param {string} label
+ * @param {number} fallback
+ * @param {string[]} issues
+ * @returns {number}
+ */
+function normalizePositiveInteger(value, label, fallback, issues) {
+  if (!Number.isInteger(value) || value <= 0) {
+    issues.push(`\`${label}\` must be a positive integer.`)
+    return fallback
+  }
+
+  return value
 }
 
 /**

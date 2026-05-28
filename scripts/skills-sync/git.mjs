@@ -26,7 +26,7 @@ export async function cloneSource(source, destinationPath, options = {}) {
 
   await runGit(args, {
     cwd: options.cwd ?? process.cwd(),
-    timeoutMs: options.timeoutMs ?? 180000,
+    timeoutMs: options.timeoutMs ?? source.cloneTimeoutMs ?? 300000,
   })
 }
 
