@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/viarotel-org/skillx/compare/skillx-v0.3.0...skillx-v0.3.1) (2026-05-28)
+
+
+### Bug Fixes
+
+* 🚀 Fix the problem of first build failure ([2026826](https://github.com/viarotel-org/skillx/commit/2026826741e7df22a2527b6cc01aec39d9b62491))
+
 ## [0.3.0](https://github.com/viarotel-org/skillx/compare/skillx-v0.2.0...skillx-v0.3.0) (2026-05-28)
 
 
