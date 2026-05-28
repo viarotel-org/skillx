@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "checkJs": false,
+    "strict": false,
+    "noEmit": true
+  },
+  "include": ["scripts/**/*.mjs", "tests/**/*.mjs"],
+  "exclude": ["node_modules", ".skills-sync", "skills"]
+}

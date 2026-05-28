@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "sources": {
+    "anthropic": {
+      "url": "https://github.com/anthropics/skills.git",
+      "branch": "main",
+      "path": "skills",
+      "commit": "690f15cac7f7b4c055c5ab109c79ed9259934081",
+      "status": "synced"
+    },
+    "openai": {
+      "url": "https://github.com/openai/skills.git",
+      "branch": "main",
+      "path": "skills",
+      "commit": "b0401f07213a66414d84a65cb50c1d226f99485a",
+      "status": "synced"
+    },
+    "antfu": {
+      "url": "https://github.com/antfu/skills.git",
+      "branch": "main",
+      "path": "skills",
+      "commit": "50deaeb269d80d92db7a2c5a677290309ae307fc",
+      "status": "synced"
+    },
+    "mattpocock": {
+      "url": "https://github.com/mattpocock/skills.git",
+      "branch": "main",
+      "path": "skills",
+      "commit": "0288510dd61ff6ef7c2003834082ab8f2387e80e",
+      "status": "synced"
+    },
+    "open-wot": {
+      "url": "https://github.com/wot-ui/open-wot.git",
+      "branch": "main",
+      "path": "skills",
+      "commit": "502e8408de3b434c5fa67d1e8854ec42b52bc3f1",
+      "status": "synced"
+    },
+    "addyosmani": {
+      "url": "https://github.com/addyosmani/agent-skills.git",
+      "branch": "main",
+      "path": "skills",
+      "commit": "6ce029897d2b794940325fc7148774a6ec51111c",
+      "status": "synced"
+    },
+    "android": {
+      "url": "https://github.com/android/skills.git",
+      "branch": "main",
+      "path": ".",
+      "commit": "a8f3525d5a1f7fe250fecd0fca43a87755433c8f",
+      "status": "synced"
+    }
+  }
+}

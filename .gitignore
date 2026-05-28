@@ -1,0 +1,7 @@
+node_modules/
+.DS_Store
+
+.skills-sync/tmp/
+.skills-sync/cache/
+.skills-sync/summary.md
+.skills-sync/summary.json
