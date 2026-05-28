@@ -14,8 +14,6 @@ skills/
 
 `skills/local` is protected. The sync script never removes or overwrites it.
 
-`skills/subscribe` is no longer used. Remote sources are synced into `skills/<id>` instead, which avoids cross-repository skill name conflicts by design.
-
 ## Configure Sources
 
 Edit [config/skills-sources.yaml](config/skills-sources.yaml) to add or disable sources.
@@ -87,14 +85,3 @@ The workflow uses minimal token permissions:
 
 - `contents: write` to push the sync branch.
 - `pull-requests: write` to create or update the PR.
-
-## Conflict Handling
-
-Earlier aggregate-directory designs needed `overwrite`, `skip`, or `rename` for same-name skills. This repository uses source namespaces instead:
-
-```txt
-skills/anthropic/same-skill-name
-skills/openai/same-skill-name
-```
-
-That keeps each source isolated and makes sync results deterministic. Configuration conflicts such as duplicate ids, protected ids, or unsafe paths fail validation before any sync work starts.

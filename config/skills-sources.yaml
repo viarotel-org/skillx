@@ -11,6 +11,11 @@ protectedIds:
   - subscribe
 
 sources:
+  - id: awesome-copilot
+    url: https://github.com/github/awesome-copilot
+    branch: main
+    path: skills
+
   - id: anthropic
     url: https://github.com/anthropics/skills.git
     branch: main
@@ -45,3 +50,8 @@ sources:
     url: https://github.com/android/skills.git
     branch: main
     path: .
+
+  - id: vuejs-ai
+    url: https://github.com/vuejs-ai/skills.git
+    branch: main
+    path: skills
