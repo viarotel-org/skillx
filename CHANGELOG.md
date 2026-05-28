@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/viarotel-org/skillx/compare/skillx-v0.3.2...skillx-v0.4.0) (2026-05-28)
+
+
+### Features
+
+* 🚀 Update the workflow to ensure it is intuitive ([7339184](https://github.com/viarotel-org/skillx/commit/7339184dc9a5c44182cf404868bbc7d011b4b505))
+
 ## [0.3.2](https://github.com/viarotel-org/skillx/compare/skillx-v0.3.1...skillx-v0.3.2) (2026-05-28)
 
 
