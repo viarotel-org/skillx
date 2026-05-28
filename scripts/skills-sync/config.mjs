@@ -13,6 +13,7 @@ import YAML from 'yaml'
  * @property {boolean} preserveOnFailure
  * @property {number} cloneTimeoutMs
  * @property {number} cloneMaxAttempts
+ * @property {number} sourceConcurrency
  * @property {string[]} includes
  * @property {string[]} excludes
  */
@@ -45,6 +46,7 @@ const DEFAULTS = {
   preserveOnFailure: false,
   cloneTimeoutMs: 300000,
   cloneMaxAttempts: 3,
+  sourceConcurrency: 3,
   includes: [],
   excludes: [],
 }
@@ -219,6 +221,7 @@ function normalizeDefaults(rawDefaults, issues) {
 
   const cloneTimeoutMs = normalizePositiveInteger(mergedDefaults.cloneTimeoutMs, 'defaults.cloneTimeoutMs', DEFAULTS.cloneTimeoutMs, issues)
   const cloneMaxAttempts = normalizePositiveInteger(mergedDefaults.cloneMaxAttempts, 'defaults.cloneMaxAttempts', DEFAULTS.cloneMaxAttempts, issues)
+  const sourceConcurrency = normalizePositiveInteger(mergedDefaults.sourceConcurrency, 'defaults.sourceConcurrency', DEFAULTS.sourceConcurrency, issues)
 
   if (!isValidSourceMode(mergedDefaults.mode)) {
     issues.push('`defaults.mode` must be either "flat" or "nested".')
@@ -235,6 +238,7 @@ function normalizeDefaults(rawDefaults, issues) {
     preserveOnFailure: Boolean(mergedDefaults.preserveOnFailure),
     cloneTimeoutMs,
     cloneMaxAttempts,
+    sourceConcurrency,
     includes,
     excludes,
   }

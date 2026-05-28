@@ -37,15 +37,16 @@ skills-sources.yaml
         v
 scripts/sync-skills.mjs
         |
-        +-- clone each enabled source into .skills-sync/tmp/
+    +-- clone enabled sources into .skills-sync/tmp/ with bounded concurrency
         +-- discover directories containing SKILL.md
         +-- apply includes/excludes filters
         +-- plan generated targets with flat or nested mode
+    +-- stage planned copies and skip symlinks by default
         +-- atomically replace managed directories in skills/
         +-- write .skills-sync/manifest.json and run summaries
 ```
 
-The sync process is intentionally conservative. It removes only generated directories that were previously recorded in the manifest and are no longer active. Unknown directories and protected ids are left untouched.
+The sync process plans all enabled sources before writing generated output, then commits planned copies into `skills/`. It removes only generated directories that were previously recorded in the manifest and are no longer active. Unknown directories and protected ids are left untouched. Symlinks from subscribed repositories are skipped and reported in the sync summary instead of being copied into generated skills.
 
 ## Getting Started
 
@@ -97,6 +98,7 @@ defaults:
   preserveOnFailure: false
   cloneTimeoutMs: 300000
   cloneMaxAttempts: 3
+  sourceConcurrency: 3
   includes: []
   excludes: []
 
@@ -123,6 +125,7 @@ sources:
 | `preserveOnFailure` | No | Keeps the previous manifest entry and generated targets when a source fails. Defaults to `false`, so stale generated skills are removed unless preservation is explicitly enabled. |
 | `cloneTimeoutMs` | No | Git clone timeout in milliseconds. Defaults to `300000`. |
 | `cloneMaxAttempts` | No | Maximum clone attempts for retryable Git failures. Defaults to `3`. |
+| `sourceConcurrency` | No | Maximum number of sources planned concurrently. Defaults to `3`. |
 | `includes` | No | Relative glob patterns for selected skill paths. Empty means include all discovered skills. |
 | `excludes` | No | Relative glob patterns to remove from the selected set. Excludes take precedence over includes. |
 

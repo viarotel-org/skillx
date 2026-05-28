@@ -68,6 +68,7 @@ import { createSummary, writeSummaryFiles } from './skills-sync/summary.mjs'
 /**
  * @typedef {object} SkillsConfig
  * @property {string} configPath
+ * @property {{ sourceConcurrency: number }} defaults
  * @property {string[]} protectedIds
  * @property {SourceConfig[]} sources
  */
@@ -162,8 +163,21 @@ async function syncSkillsWithLock(cwd, options, logger) {
     const syncedManifestSources = []
     const activeManagedTargets = []
 
-    for (const source of enabledSources) {
-      const result = await syncSource(cwd, source, runWorkspace, options, logger)
+    const sourcePlans = await mapWithConcurrency(
+      enabledSources,
+      config.defaults.sourceConcurrency,
+      source => planSource(cwd, source, runWorkspace, options, logger),
+    )
+
+    for (const result of sourcePlans) {
+      if (result.status === 'synced' && !options.dryRun) {
+        const skippedSymlinks = await commitSourcePlan(cwd, result, runWorkspace)
+        result.skippedSymlinks = skippedSymlinks
+        summary.skippedSymlinks.push(...skippedSymlinks.map(item => ({
+          source: result.id,
+          ...item,
+        })))
+      }
 
       if (result.status === 'synced') {
         summary.synced.push(result)
@@ -173,6 +187,7 @@ async function syncSkillsWithLock(cwd, options, logger) {
       }
 
       summary.failed.push(result)
+      const source = result.source
       const previousSource = previousManifest?.sources?.[source.id]
       if (source.preserveOnFailure && previousSource) {
         activeManagedTargets.push(...getPreviousManagedTargets(source.id, previousSource))
@@ -268,7 +283,7 @@ async function reportUnknownDirectories(cwd, knownDirectoryIds, protectedIds, su
  * @param {Logger} logger
  * @returns {Promise<import('./skills-sync/summary.mjs').SummaryItem>}
  */
-async function syncSource(cwd, source, runWorkspace, options, logger) {
+async function planSource(cwd, source, runWorkspace, options, logger) {
   logger.group(`Sync ${source.id}`)
   logger.info(`Cloning ${source.url}#${source.branch}.`)
 
@@ -288,16 +303,7 @@ async function syncSource(cwd, source, runWorkspace, options, logger) {
     const targets = getUniqueValues(plannedTargets.map(target => target.targetId))
     const skillPaths = plannedTargets.map(target => target.relativePath)
 
-    if (!options.dryRun) {
-      if (source.mode === 'nested') {
-        await syncNestedSource(cwd, source, plannedTargets, runWorkspace)
-      }
-      else {
-        await syncFlatSource(cwd, plannedTargets, runWorkspace)
-      }
-    }
-
-    logger.success(`Synced ${source.id}: ${selectedSkills.length}/${discoveredSkills.length} skill directories at ${commit.slice(0, 12)}.`)
+    logger.success(`Planned ${source.id}: ${selectedSkills.length}/${discoveredSkills.length} skill directories at ${commit.slice(0, 12)}.`)
     return {
       id: source.id,
       url: source.url,
@@ -312,6 +318,8 @@ async function syncSource(cwd, source, runWorkspace, options, logger) {
       commit,
       targets,
       skillPaths,
+      source,
+      plannedTargets,
       message: options.dryRun ? 'Dry-run validated clone, filters, and target paths.' : 'Synced successfully.',
     }
   }
@@ -327,6 +335,7 @@ async function syncSource(cwd, source, runWorkspace, options, logger) {
       status: 'failed',
       skillCount: 0,
       commit: null,
+      source,
       message,
     }
   }
@@ -337,12 +346,30 @@ async function syncSource(cwd, source, runWorkspace, options, logger) {
 
 /**
  * @param {string} cwd
+ * @param {import('./skills-sync/summary.mjs').SummaryItem & { source: SourceConfig, plannedTargets: import('./skills-sync/fs.mjs').PlannedSkillTarget[] }} sourcePlan
+ * @param {RunWorkspace} runWorkspace
+ * @returns {Promise<{ path: string, target: string }[]>}
+ */
+async function commitSourcePlan(cwd, sourcePlan, runWorkspace) {
+  const skippedSymlinks = []
+  if (sourcePlan.source.mode === 'nested') {
+    await syncNestedSource(cwd, sourcePlan.source, sourcePlan.plannedTargets, runWorkspace, skippedSymlinks)
+  }
+  else {
+    await syncFlatSource(cwd, sourcePlan.plannedTargets, runWorkspace, skippedSymlinks)
+  }
+
+  return skippedSymlinks
+}
+
+/**
+ * @param {string} cwd
  * @param {SourceConfig} source
  * @param {import('./skills-sync/fs.mjs').PlannedSkillTarget[]} plannedTargets
  * @param {RunWorkspace} runWorkspace
  * @returns {Promise<void>}
  */
-async function syncNestedSource(cwd, source, plannedTargets, runWorkspace) {
+async function syncNestedSource(cwd, source, plannedTargets, runWorkspace, skippedSymlinks = []) {
   if (plannedTargets.length === 0) {
     return
   }
@@ -355,7 +382,7 @@ async function syncNestedSource(cwd, source, plannedTargets, runWorkspace) {
     const stagedSkillPath = plannedTarget.nestedPath === '.'
       ? stagedPath
       : path.join(stagedPath, ...plannedTarget.nestedPath.split('/'))
-    await copyDirectory(plannedTarget.absolutePath, stagedSkillPath)
+    await copyDirectory(plannedTarget.absolutePath, stagedSkillPath, { skippedSymlinks })
   }
 
   await atomicReplaceDirectory(targetPath, stagedPath, runWorkspace.backupsPath)
@@ -367,13 +394,39 @@ async function syncNestedSource(cwd, source, plannedTargets, runWorkspace) {
  * @param {RunWorkspace} runWorkspace
  * @returns {Promise<void>}
  */
-async function syncFlatSource(cwd, plannedTargets, runWorkspace) {
+async function syncFlatSource(cwd, plannedTargets, runWorkspace, skippedSymlinks = []) {
   for (const plannedTarget of plannedTargets) {
     const stagedPath = path.join(runWorkspace.stagingPath, plannedTarget.targetId)
     const targetPath = resolveInside(cwd, SKILLS_ROOT, plannedTarget.targetId)
-    await copyDirectory(plannedTarget.absolutePath, stagedPath)
+    await copyDirectory(plannedTarget.absolutePath, stagedPath, { skippedSymlinks })
     await atomicReplaceDirectory(targetPath, stagedPath, runWorkspace.backupsPath)
   }
+}
+
+/**
+ * @template Input
+ * @template Output
+ * @param {Input[]} items
+ * @param {number} concurrency
+ * @param {(item: Input, index: number) => Promise<Output>} mapper
+ * @returns {Promise<Output[]>}
+ */
+export async function mapWithConcurrency(items, concurrency, mapper) {
+  const results = Array.from({ length: items.length })
+  let nextIndex = 0
+
+  async function worker() {
+    while (nextIndex < items.length) {
+      const currentIndex = nextIndex
+      nextIndex += 1
+      results[currentIndex] = await mapper(items[currentIndex], currentIndex)
+    }
+  }
+
+  const workerCount = Math.min(Math.max(1, concurrency), items.length)
+  await Promise.all(Array.from({ length: workerCount }, () => worker()))
+
+  return results
 }
 
 /**

@@ -12,6 +12,7 @@ import process from 'node:process'
  * @property {number} [skillCount]
  * @property {string | null} [commit]
  * @property {string} [message]
+ * @property {{ path: string, target: string }[]} [skippedSymlinks]
  */
 
 /**
@@ -25,6 +26,7 @@ import process from 'node:process'
  * @property {string[]} staleRemoved
  * @property {string[]} stalePlanned
  * @property {string[]} unknownDirs
+ * @property {{ source: string, path: string, target: string }[]} skippedSymlinks
  */
 
 /**
@@ -42,6 +44,7 @@ export function createSummary(options = {}) {
     staleRemoved: [],
     stalePlanned: [],
     unknownDirs: [],
+    skippedSymlinks: [],
   }
 }
 
@@ -149,6 +152,10 @@ function formatCleanupLines(summary) {
 
   if (summary.unknownDirs.length > 0) {
     lines.push(`- Unknown directories left untouched: ${summary.unknownDirs.join(', ')}`)
+  }
+
+  if (summary.skippedSymlinks.length > 0) {
+    lines.push(`- Skipped symlinks: ${summary.skippedSymlinks.map(item => `${item.source}/${item.path} -> ${item.target}`).join(', ')}`)
   }
 
   if (lines.length === 0) {

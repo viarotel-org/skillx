@@ -32,8 +32,10 @@
 - Preserve path traversal defenses: config paths and filters must remain relative, use forward slashes, and avoid `.` or `..` segments except the source path value `.`.
 - `includes` and `excludes` are relative skill path globs; excludes take precedence over includes.
 - `cloneTimeoutMs` and `cloneMaxAttempts` can be set in defaults or per source to tune Git clone resilience.
+- `sourceConcurrency` controls how many enabled sources are planned concurrently before generated directories are written.
 - This repository configures `mode: flat` by default; upstream removals should be reflected by stale generated target cleanup on the next sync.
 - `preserveOnFailure` defaults to `false`; only set it to `true` when intentionally keeping previous generated output for failed sources.
+- Symlinks from subscribed sources are skipped during copy and reported in `.skills-sync/summary.*`.
 - `mode: flat` slugs discovered skill paths into separate target ids and must fail on collisions; `mode: nested` keeps selected skills grouped under the source id.
 - ESLint ignores `skills/remote-*/**`; do not use that as a place for source changes.
 

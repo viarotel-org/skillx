@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { execFile } from 'node:child_process'
-import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises'
+import { mkdir, mkdtemp, readFile, rm, symlink, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import path from 'node:path'
 import { pathToFileURL } from 'node:url'
@@ -9,6 +9,7 @@ import { it } from 'vitest'
 import { ConfigValidationError, validateConfigDocument, validateRelativePath, validateSourceId } from '../scripts/skills-sync/config.mjs'
 import {
   acquireSyncLock,
+  copyDirectory,
   discoverSkillDirs,
   filterSkillDirs,
   getStaleManagedIds,
@@ -75,6 +76,23 @@ it('normalizes clone timeout and retry settings', () => {
   assert.equal(config.sources[0].cloneMaxAttempts, 2)
 })
 
+it('normalizes source concurrency settings', () => {
+  const config = validateConfigDocument({
+    version: 1,
+    defaults: {
+      sourceConcurrency: 2,
+    },
+    sources: [
+      {
+        id: 'openai',
+        url: 'https://github.com/openai/skills.git',
+      },
+    ],
+  })
+
+  assert.equal(config.defaults.sourceConcurrency, 2)
+})
+
 it('rejects invalid clone timeout and retry settings', () => {
   assert.throws(() => validateConfigDocument({
     version: 1,
@@ -101,6 +119,41 @@ it('rejects invalid clone timeout and retry settings', () => {
       },
     ],
   }), ConfigValidationError)
+})
+
+it('rejects invalid source concurrency settings', () => {
+  assert.throws(() => validateConfigDocument({
+    version: 1,
+    defaults: {
+      sourceConcurrency: 0,
+    },
+    sources: [
+      {
+        id: 'openai',
+        url: 'https://github.com/openai/skills.git',
+      },
+    ],
+  }), ConfigValidationError)
+})
+
+it('runs async work with a stable order and a concurrency limit', async () => {
+  const syncScriptUrl = pathToFileURL(path.resolve('scripts/sync-skills.mjs'))
+  syncScriptUrl.searchParams.set('concurrencyTest', String(Date.now()))
+  const { mapWithConcurrency } = await import(syncScriptUrl.href)
+  let activeCount = 0
+  let maxActiveCount = 0
+
+  const results = await mapWithConcurrency([1, 2, 3, 4], 2, async (value) => {
+    activeCount += 1
+    maxActiveCount = Math.max(maxActiveCount, activeCount)
+    await new Promise(resolve => setTimeout(resolve, 5 - value))
+    activeCount -= 1
+
+    return value * 2
+  })
+
+  assert.deepEqual(results, [2, 4, 6, 8])
+  assert.equal(maxActiveCount, 2)
 })
 
 it('validates source mode and skill filters', () => {
@@ -352,6 +405,67 @@ it('removes previously managed targets when a source no longer exposes its skill
   }
 })
 
+it('syncs a local git fixture idempotently and removes skills deleted upstream', async () => {
+  const rootPath = await mkdtemp(path.join(tmpdir(), 'skillx-test-'))
+  const sourceRepoPath = await mkdtemp(path.join(tmpdir(), 'skillx-source-'))
+
+  try {
+    await createGitRepo(sourceRepoPath, {
+      'skills/alpha/SKILL.md': '# Alpha',
+      'skills/beta/SKILL.md': '# Beta',
+    })
+    await writeSourceConfig(rootPath, sourceRepoPath)
+
+    const syncScriptUrl = pathToFileURL(path.resolve('scripts/sync-skills.mjs'))
+    syncScriptUrl.searchParams.set('fixtureSyncTest', String(Date.now()))
+    const { syncSkills } = await import(syncScriptUrl.href)
+
+    await syncSkills({ cwd: rootPath }, createSilentLogger())
+
+    assert.equal(await pathExists(path.join(rootPath, 'skills', 'remote-fixture-alpha', 'SKILL.md')), true)
+    assert.equal(await pathExists(path.join(rootPath, 'skills', 'remote-fixture-beta', 'SKILL.md')), true)
+
+    await rm(path.join(sourceRepoPath, 'skills', 'beta'), { recursive: true, force: true })
+    await commitAll(sourceRepoPath, 'remove beta skill')
+    await syncSkills({ cwd: rootPath }, createSilentLogger())
+
+    const manifestAfterRemoval = await readManifest(rootPath)
+    assert.deepEqual(manifestAfterRemoval?.sources['remote-fixture'].targets, ['remote-fixture-alpha'])
+    assert.equal(await pathExists(path.join(rootPath, 'skills', 'remote-fixture-alpha', 'SKILL.md')), true)
+    assert.equal(await pathExists(path.join(rootPath, 'skills', 'remote-fixture-beta')), false)
+
+    const manifestSnapshot = JSON.stringify(manifestAfterRemoval)
+    await syncSkills({ cwd: rootPath }, createSilentLogger())
+
+    assert.equal(JSON.stringify(await readManifest(rootPath)), manifestSnapshot)
+  }
+  finally {
+    await rm(rootPath, { recursive: true, force: true })
+    await rm(sourceRepoPath, { recursive: true, force: true })
+  }
+})
+
+it('skips symlinks when copying skills and reports skipped paths', async () => {
+  const sourcePath = await mkdtemp(path.join(tmpdir(), 'skillx-source-'))
+  const targetPath = await mkdtemp(path.join(tmpdir(), 'skillx-target-'))
+  const skippedSymlinks = []
+
+  try {
+    await writeFile(path.join(sourcePath, 'SKILL.md'), '# Skill\n', 'utf8')
+    await symlink('/tmp/outside-skillx-target', path.join(sourcePath, 'outside-link'))
+
+    await copyDirectory(sourcePath, path.join(targetPath, 'copied'), { skippedSymlinks })
+
+    assert.equal(await readFile(path.join(targetPath, 'copied', 'SKILL.md'), 'utf8'), '# Skill\n')
+    assert.equal(await pathExists(path.join(targetPath, 'copied', 'outside-link')), false)
+    assert.deepEqual(skippedSymlinks, [{ path: 'outside-link', target: '/tmp/outside-skillx-target' }])
+  }
+  finally {
+    await rm(sourcePath, { recursive: true, force: true })
+    await rm(targetPath, { recursive: true, force: true })
+  }
+})
+
 it('prevents resolved paths from escaping root', () => {
   assert.throws(() => resolveInside('/repo', '..', 'outside'), /escapes root/)
 })
@@ -429,11 +543,36 @@ async function createTempSkillTree(files) {
   return rootPath
 }
 
-async function createGitRepo(repoPath) {
+async function createGitRepo(repoPath, files = {}) {
   await execFileAsync('git', ['init', '-b', 'main'], { cwd: repoPath })
   await writeFile(path.join(repoPath, 'README.md'), '# Fixture\n', 'utf8')
-  await execFileAsync('git', ['add', 'README.md'], { cwd: repoPath })
-  await execFileAsync('git', ['-c', 'user.name=skillx-test', '-c', 'user.email=skillx-test@example.com', 'commit', '-m', 'test fixture'], { cwd: repoPath })
+
+  await Promise.all(Object.entries(files).map(async ([relativeFilePath, content]) => {
+    const absoluteFilePath = path.join(repoPath, ...relativeFilePath.split('/'))
+    await mkdir(path.dirname(absoluteFilePath), { recursive: true })
+    await writeFile(absoluteFilePath, `${content}\n`, 'utf8')
+  }))
+
+  await commitAll(repoPath, 'test fixture')
+}
+
+async function commitAll(repoPath, message) {
+  await execFileAsync('git', ['add', '-A'], { cwd: repoPath })
+  await execFileAsync('git', ['-c', 'user.name=skillx-test', '-c', 'user.email=skillx-test@example.com', 'commit', '-m', message], { cwd: repoPath })
+}
+
+async function writeSourceConfig(rootPath, sourceRepoPath) {
+  await writeFile(path.join(rootPath, 'skills-sources.yaml'), [
+    'version: 1',
+    'defaults:',
+    '  sourceConcurrency: 2',
+    'sources:',
+    '  - id: remote-fixture',
+    `    url: ${sourceRepoPath}`,
+    '    branch: main',
+    '    path: skills',
+    '',
+  ].join('\n'), 'utf8')
 }
 
 function createSilentLogger() {

@@ -1,5 +1,5 @@
 import { constants as fileConstants } from 'node:fs'
-import { access, cp, mkdir, readdir, readFile, rename, rm, stat, writeFile } from 'node:fs/promises'
+import { access, cp, lstat, mkdir, readdir, readFile, readlink, rename, rm, stat, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import process from 'node:process'
 import { minimatch } from 'minimatch'
@@ -15,6 +15,7 @@ const EXCLUDED_ROOT_FILES = ['.env', '.env.local', '.env.production', '.gitattri
  * @property {boolean} [dryRun]
  * @property {boolean} [keepTemp]
  * @property {string} [runId]
+ * @property {{ path: string, target: string }[]} [skippedSymlinks]
  */
 
 /**
@@ -405,7 +406,7 @@ export async function copyDirectory(sourcePath, targetPath, options = {}) {
     recursive: true,
     force: true,
     dereference: false,
-    filter: source => shouldCopyPath(sourcePath, source),
+    filter: source => shouldCopyPath(sourcePath, source, options.skippedSymlinks ?? []),
   })
 }
 
@@ -449,12 +450,23 @@ export async function atomicReplaceDirectory(targetPath, stagedPath, backupRoot,
 /**
  * @param {string} rootPath
  * @param {string} sourcePath
- * @returns {boolean}
+ * @param {{ path: string, target: string }[]} skippedSymlinks
+ * @returns {Promise<boolean>}
  */
-function shouldCopyPath(rootPath, sourcePath) {
+async function shouldCopyPath(rootPath, sourcePath, skippedSymlinks) {
   const relativePath = path.relative(rootPath, sourcePath)
   if (relativePath.length === 0) {
     return true
+  }
+
+  const sourceStat = await lstat(sourcePath)
+  if (sourceStat.isSymbolicLink()) {
+    skippedSymlinks.push({
+      path: relativePath.split(path.sep).join('/'),
+      target: await readlink(sourcePath),
+    })
+
+    return false
   }
 
   const pathSegments = relativePath.split(path.sep)
