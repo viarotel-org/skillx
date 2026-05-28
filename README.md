@@ -1,7 +1,6 @@
 # skillx
 
 [![Sync Skills](https://github.com/viarotel/skillx/actions/workflows/sync-skills.yml/badge.svg)](https://github.com/viarotel/skillx/actions/workflows/sync-skills.yml)
-[![Release](https://github.com/viarotel/skillx/actions/workflows/release.yml/badge.svg)](https://github.com/viarotel/skillx/actions/workflows/release.yml)
 
 A predictable hub for local and subscribed AI agent skills.
 
@@ -16,7 +15,7 @@ A predictable hub for local and subscribed AI agent skills.
 - Include and exclude glob filters per source.
 - Conservative cleanup based on `.skills-sync/manifest.json`.
 - Dry-run support for validating clones, filters, and target paths before writing generated skills.
-- GitHub Actions automation for scheduled skill sync and release automation.
+- GitHub Actions automation for post-commit skill sync and release automation.
 
 ## Tech Stack
 
@@ -177,7 +176,7 @@ The validator always includes the default protected id `subscribe`. Additional `
 
 ```txt
 .
-├── .github/workflows/       # Scheduled sync and release automation
+├── .github/workflows/       # Unified sync and release automation
 ├── .skills-sync/            # Generated manifest, summaries, and temporary sync workspace
 ├── scripts/
 │   ├── sync-skills.mjs      # Main sync command
@@ -245,13 +244,9 @@ pnpm test
 
 ### Sync Skills
 
-`.github/workflows/sync-skills.yml` runs manually and on the daily UTC cron schedule `17 3 * * *`. It installs dependencies, validates the source config, runs tests and linting, runs `pnpm sync`, uploads the sync summary artifact, and commits changed `skills/` content plus `.skills-sync/manifest.json` back to the default branch.
+`.github/workflows/sync-skills.yml` runs on pushes to `main` and on manual dispatch. It installs dependencies, validates the source config, runs tests and linting, runs `pnpm sync`, uploads the sync summary artifact, and commits changed `skills/` content plus `.skills-sync/manifest.json` back to the default branch.
 
-When a sync changes tracked generated output, the workflow also runs release-please so release metadata can follow the subscription update. The standalone release workflow continues to handle normal pushes and manual release runs.
-
-### Release
-
-`.github/workflows/release.yml` runs release-please on pushes to `main` and on manual dispatch. Release behavior is configured in `release-please-config.json` for the Node package at the repository root.
+After a successful sync job, the same workflow runs release-please so release metadata follows both normal code commits and subscription updates. Generated-only sync commits are ignored by the push trigger to avoid re-running the workflow for changes it just wrote. Release behavior is configured in `release-please-config.json` for the Node package at the repository root.
 
 ## Contributing
 

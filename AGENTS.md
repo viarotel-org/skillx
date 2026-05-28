@@ -45,5 +45,5 @@
 - Prefer focused changes in the existing module boundary instead of moving sync responsibilities across files.
 - Add or update tests in [tests/skills-sync.test.mjs](tests/skills-sync.test.mjs) for behavior changes in config parsing, discovery, filtering, target planning, manifest handling, or cleanup.
 - Validate YAML changes with `pnpm validate` before running sync commands.
-- The scheduled sync workflow runs `pnpm test` and `pnpm lint` before committing generated sync changes.
+- The sync workflow runs on pushes to `main` and manual dispatch, runs `pnpm test` and `pnpm lint` before committing generated sync changes, then runs release-please.
 - Avoid duplicating README content here; link to [README.md](README.md) for details that are already documented.
