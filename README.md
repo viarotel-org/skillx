@@ -13,6 +13,7 @@ A predictable hub for local and subscribed AI agent skills.
 - Recursive `SKILL.md` discovery, including dot-prefixed directories such as `.curated/`.
 - `flat` and `nested` output modes for generated skill directories.
 - Include and exclude glob filters per source.
+- Optional content-hash deduplication across sources, with source order deciding the winner.
 - Conservative cleanup based on `.skills-sync/manifest.json`.
 - Dry-run support for validating clones, filters, and target paths before writing generated skills.
 - GitHub Actions automation for post-commit skill sync and release automation.
@@ -101,6 +102,8 @@ defaults:
   includes: []
   excludes: []
 
+deduplicate: true
+
 sources:
   - id: skillx
     type: local
@@ -113,6 +116,31 @@ sources:
     branch: main
     path: skills
 ```
+
+### Deduplicate
+
+`deduplicate` is a top-level switch that removes duplicate skills across all configured sources.
+
+```yaml
+deduplicate: true
+```
+
+Or the explicit object form:
+
+```yaml
+deduplicate:
+  enabled: true
+  strategy: content-hash
+```
+
+Rules:
+
+- Deduplication is disabled by default for backward compatibility.
+- Only the bytes of `SKILL.md` are compared.
+- Names, source ids, directory paths, and generated target ids do not affect duplicate detection.
+- Source priority follows the `sources` array order in `skills-sources.yaml`.
+- When two skills have identical `SKILL.md` content, the first source wins and later duplicates are skipped.
+- When deduplication is disabled, behavior is unchanged and all selected skills are generated.
 
 ### Source Fields
 
@@ -131,6 +159,12 @@ sources:
 | `sourceConcurrency` | No | Maximum number of sources planned concurrently. Defaults to `3`. |
 | `includes` | No | Relative glob patterns for selected skill paths. Empty means include all discovered skills. |
 | `excludes` | No | Relative glob patterns to remove from the selected set. Excludes take precedence over includes. |
+
+Top-level fields:
+
+| Field | Required | Description |
+| --- | --- | --- |
+| `deduplicate` | No | Global deduplication config. Accepts `true`, `false`, or `{ enabled, strategy }`. The only supported strategy is `content-hash`. |
 
 ### Output Modes
 
@@ -151,6 +185,8 @@ openai + .                    -> skills/openai
 ```
 
 Flat mode checks for generated target collisions after slugging and fails fast when two source paths would map to the same target id.
+
+When deduplication is enabled, flat or nested mode keeps only the first skill whose `SKILL.md` content hash appears in the configured source order.
 
 ### Local Sources And Protected Inputs
 
@@ -195,6 +231,7 @@ The validator always includes the default protected id `subscribe`. Additional `
 `pnpm sync` writes these generated files:
 
 - `.skills-sync/manifest.json`: managed source metadata, commits, target ids, and selected skill paths.
+- `.skills-sync/manifest.json`: managed source metadata, commits, target ids, selected skill paths, and per-skill content hashes for deduplication and preserved-source recovery.
 - `.skills-sync/summary.md`: human-readable sync report.
 - `.skills-sync/summary.json`: machine-readable sync report.
 
@@ -230,6 +267,7 @@ The test suite focuses on the sync contract:
 - Recursive skill discovery.
 - Include and exclude filtering.
 - Flat and nested target planning.
+- Content-hash deduplication, disabled behavior parity, and preserved-source dedup recovery.
 - Stale generated directory detection.
 - Unknown directory reporting.
 - Path traversal prevention.

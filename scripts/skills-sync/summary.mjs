@@ -5,6 +5,15 @@ import process from 'node:process'
 const WRITE_STEP_SUMMARY_VALUE = '1'
 
 /**
+ * @typedef {object} DeduplicatedSummaryItem
+ * @property {string} source
+ * @property {string} path
+ * @property {string} target
+ * @property {string} duplicateOfSource
+ * @property {string} duplicateOfPath
+ */
+
+/**
  * @typedef {object} SummaryItem
  * @property {string} id
  * @property {string} [type]
@@ -30,6 +39,7 @@ const WRITE_STEP_SUMMARY_VALUE = '1'
  * @property {string[]} stalePlanned
  * @property {string[]} unknownDirs
  * @property {{ source: string, path: string, target: string }[]} skippedSymlinks
+ * @property {DeduplicatedSummaryItem[]} deduplicated
  */
 
 /**
@@ -48,6 +58,7 @@ export function createSummary(options = {}) {
     stalePlanned: [],
     unknownDirs: [],
     skippedSymlinks: [],
+    deduplicated: [],
   }
 }
 
@@ -65,6 +76,7 @@ export function formatSummaryMarkdown(summary) {
     `- Synced: ${summary.synced.length}`,
     `- Failed: ${summary.failed.length}`,
     `- Skipped: ${summary.skipped.length}`,
+    `- Deduplicated: ${summary.deduplicated.length}`,
     `- Stale removed: ${summary.staleRemoved.length}`,
     '',
     '## Sources',
@@ -72,6 +84,10 @@ export function formatSummaryMarkdown(summary) {
     '| Source | Status | Skills | Commit | Message |',
     '| --- | --- | ---: | --- | --- |',
     ...formatSourceRows(summary),
+    '',
+    '## Deduplication',
+    '',
+    ...formatDeduplicationLines(summary),
     '',
     '## Cleanup',
     '',
@@ -166,6 +182,18 @@ function formatCleanupLines(summary) {
   }
 
   return lines
+}
+
+/**
+ * @param {SyncSummary} summary
+ * @returns {string[]}
+ */
+function formatDeduplicationLines(summary) {
+  if (summary.deduplicated.length === 0) {
+    return ['- No duplicate skills removed.']
+  }
+
+  return summary.deduplicated.map(item => `- Dropped ${item.source}/${item.path} (${item.target}) because it matches ${item.duplicateOfSource}/${item.duplicateOfPath}.`)
 }
 
 /**

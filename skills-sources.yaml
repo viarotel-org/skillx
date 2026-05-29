@@ -1,4 +1,5 @@
 version: 1
+deduplicate: true
 
 defaults:
   branch: main

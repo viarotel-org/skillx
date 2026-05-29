@@ -5,6 +5,12 @@ import { minimatch } from 'minimatch'
 import YAML from 'yaml'
 
 /**
+ * @typedef {object} DeduplicateConfig
+ * @property {boolean} enabled
+ * @property {'content-hash'} strategy
+ */
+
+/**
  * @typedef {object} DefaultsConfig
  * @property {string} branch
  * @property {string} path
@@ -39,6 +45,10 @@ export const DEFAULT_CONFIG_PATH = 'skills-sources.yaml'
 
 const SOURCE_ID_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 const DEFAULT_PROTECTED_IDS = ['subscribe']
+const DEFAULT_DEDUPLICATE = {
+  enabled: false,
+  strategy: 'content-hash',
+}
 const DEFAULTS = {
   branch: 'main',
   path: 'skills',
@@ -101,6 +111,7 @@ export function validateConfigDocument(configDocument, options = {}) {
   }
 
   const defaults = normalizeDefaults(configDocument.defaults, issues)
+  const deduplicate = normalizeDeduplicate(configDocument.deduplicate, issues)
   const protectedIds = normalizeProtectedIds(configDocument.protectedIds, issues)
   const rawSources = configDocument.sources
 
@@ -120,8 +131,48 @@ export function validateConfigDocument(configDocument, options = {}) {
     configPath: options.configPath ?? DEFAULT_CONFIG_PATH,
     version: 1,
     defaults,
+    deduplicate,
     protectedIds,
     sources,
+  }
+}
+
+/**
+ * @param {unknown} rawDeduplicate
+ * @param {string[]} issues
+ * @returns {DeduplicateConfig}
+ */
+function normalizeDeduplicate(rawDeduplicate, issues) {
+  if (rawDeduplicate === undefined) {
+    return { ...DEFAULT_DEDUPLICATE }
+  }
+
+  if (typeof rawDeduplicate === 'boolean') {
+    return {
+      enabled: rawDeduplicate,
+      strategy: DEFAULT_DEDUPLICATE.strategy,
+    }
+  }
+
+  if (!isPlainObject(rawDeduplicate)) {
+    issues.push('`deduplicate` must be a boolean or an object when provided.')
+    return { ...DEFAULT_DEDUPLICATE }
+  }
+
+  const enabled = rawDeduplicate.enabled ?? true
+  const strategy = rawDeduplicate.strategy ?? DEFAULT_DEDUPLICATE.strategy
+
+  if (typeof enabled !== 'boolean') {
+    issues.push('`deduplicate.enabled` must be a boolean.')
+  }
+
+  if (strategy !== DEFAULT_DEDUPLICATE.strategy) {
+    issues.push('`deduplicate.strategy` must be "content-hash".')
+  }
+
+  return {
+    enabled: typeof enabled === 'boolean' ? enabled : DEFAULT_DEDUPLICATE.enabled,
+    strategy: DEFAULT_DEDUPLICATE.strategy,
   }
 }
 

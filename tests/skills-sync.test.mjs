@@ -34,6 +34,10 @@ it('validates a minimal skills source config', () => {
     ],
   })
 
+  assert.deepEqual(config.deduplicate, {
+    enabled: false,
+    strategy: 'content-hash',
+  })
   assert.equal(config.sources.length, 1)
   assert.equal(config.sources[0].type, 'remote')
   assert.equal(config.sources[0].location, 'https://github.com/anthropics/skills.git')
@@ -44,6 +48,59 @@ it('validates a minimal skills source config', () => {
   assert.equal(config.sources[0].preserveOnFailure, false)
   assert.deepEqual(config.sources[0].includes, [])
   assert.deepEqual(config.sources[0].excludes, [])
+})
+
+it('normalizes top-level deduplicate config', () => {
+  const enabledByBoolean = validateConfigDocument({
+    version: 1,
+    deduplicate: true,
+    sources: [
+      {
+        id: 'openai',
+        location: 'https://github.com/openai/skills.git',
+      },
+    ],
+  })
+
+  assert.deepEqual(enabledByBoolean.deduplicate, {
+    enabled: true,
+    strategy: 'content-hash',
+  })
+
+  const enabledByObject = validateConfigDocument({
+    version: 1,
+    deduplicate: {
+      enabled: true,
+      strategy: 'content-hash',
+    },
+    sources: [
+      {
+        id: 'anthropic',
+        location: 'https://github.com/anthropics/skills.git',
+      },
+    ],
+  })
+
+  assert.deepEqual(enabledByObject.deduplicate, {
+    enabled: true,
+    strategy: 'content-hash',
+  })
+})
+
+it('rejects invalid top-level deduplicate config', () => {
+  assert.throws(() => validateConfigDocument({
+    version: 1,
+    deduplicate: {
+      enabled: 'yes',
+      strategy: 'sha256',
+    },
+    sources: [
+      {
+        id: 'openai',
+        location: 'https://github.com/openai/skills.git',
+      },
+    ],
+  }), ConfigValidationError)
 })
 
 it('can import the sync orchestrator without executing the CLI', async () => {
@@ -549,6 +606,232 @@ it('syncs a local project directory and removes local skills deleted from the so
     assert.equal(await pathExists(path.join(rootPath, 'skills', 'skillx-alpha', 'SKILL.md')), true)
     assert.equal(await pathExists(path.join(rootPath, 'skills', 'skillx-beta')), false)
     assert.equal(await pathExists(path.join(rootPath, 'skillx', 'alpha', 'SKILL.md')), true)
+  }
+  finally {
+    await rm(rootPath, { recursive: true, force: true })
+  }
+})
+
+it('deduplicates identical skill content by source order when enabled', async () => {
+  const rootPath = await mkdtemp(path.join(tmpdir(), 'skillx-test-'))
+
+  try {
+    await mkdir(path.join(rootPath, 'source-a'), { recursive: true })
+    await mkdir(path.join(rootPath, 'source-b'), { recursive: true })
+    await writeFile(path.join(rootPath, 'source-a', 'SKILL.md'), '# Shared Skill\nSame content\n', 'utf8')
+    await writeFile(path.join(rootPath, 'source-b', 'SKILL.md'), '# Shared Skill\nSame content\n', 'utf8')
+    await writeFile(path.join(rootPath, 'skills-sources.yaml'), [
+      'version: 1',
+      'deduplicate: true',
+      'sources:',
+      '  - id: source-a',
+      '    type: local',
+      '    location: source-a',
+      '    path: .',
+      '  - id: source-b',
+      '    type: local',
+      '    location: source-b',
+      '    path: .',
+      '',
+    ].join('\n'), 'utf8')
+
+    const syncScriptUrl = pathToFileURL(path.resolve('scripts/sync-skills.mjs'))
+    syncScriptUrl.searchParams.set('deduplicateSourceOrderTest', String(Date.now()))
+    const { syncSkills } = await import(syncScriptUrl.href)
+
+    await syncSkills({ cwd: rootPath }, createSilentLogger())
+
+    assert.equal(await pathExists(path.join(rootPath, 'skills', 'source-a', 'SKILL.md')), true)
+    assert.equal(await pathExists(path.join(rootPath, 'skills', 'source-b')), false)
+
+    const manifest = await readManifest(rootPath)
+    assert.deepEqual(manifest?.sources['source-a']?.targets, ['source-a'])
+    assert.deepEqual(manifest?.sources['source-b']?.targets, [])
+  }
+  finally {
+    await rm(rootPath, { recursive: true, force: true })
+  }
+})
+
+it('keeps identical skill content when deduplicate is disabled', async () => {
+  const rootPath = await mkdtemp(path.join(tmpdir(), 'skillx-test-'))
+
+  try {
+    await mkdir(path.join(rootPath, 'source-a'), { recursive: true })
+    await mkdir(path.join(rootPath, 'source-b'), { recursive: true })
+    await writeFile(path.join(rootPath, 'source-a', 'SKILL.md'), '# Shared Skill\nSame content\n', 'utf8')
+    await writeFile(path.join(rootPath, 'source-b', 'SKILL.md'), '# Shared Skill\nSame content\n', 'utf8')
+    await writeFile(path.join(rootPath, 'skills-sources.yaml'), [
+      'version: 1',
+      'sources:',
+      '  - id: source-a',
+      '    type: local',
+      '    location: source-a',
+      '    path: .',
+      '  - id: source-b',
+      '    type: local',
+      '    location: source-b',
+      '    path: .',
+      '',
+    ].join('\n'), 'utf8')
+
+    const syncScriptUrl = pathToFileURL(path.resolve('scripts/sync-skills.mjs'))
+    syncScriptUrl.searchParams.set('deduplicateDisabledTest', String(Date.now()))
+    const { syncSkills } = await import(syncScriptUrl.href)
+
+    await syncSkills({ cwd: rootPath }, createSilentLogger())
+
+    assert.equal(await pathExists(path.join(rootPath, 'skills', 'source-a', 'SKILL.md')), true)
+    assert.equal(await pathExists(path.join(rootPath, 'skills', 'source-b', 'SKILL.md')), true)
+  }
+  finally {
+    await rm(rootPath, { recursive: true, force: true })
+  }
+})
+
+it('preserved higher-priority source still deduplicates later sources when manifest has hashes', async () => {
+  const rootPath = await mkdtemp(path.join(tmpdir(), 'skillx-test-'))
+
+  try {
+    await mkdir(path.join(rootPath, '.skills-sync'), { recursive: true })
+    await mkdir(path.join(rootPath, 'skills', 'source-a'), { recursive: true })
+    await writeFile(path.join(rootPath, 'skills', 'source-a', 'SKILL.md'), '# Shared Skill\nSame content\n', 'utf8')
+    await writeFile(path.join(rootPath, '.skills-sync', 'manifest.json'), `${JSON.stringify({
+      version: 3,
+      sources: {
+        'source-a': {
+          type: 'local',
+          location: 'source-a',
+          branch: 'main',
+          path: '.',
+          mode: 'flat',
+          includes: [],
+          excludes: [],
+          commit: null,
+          status: 'synced',
+          targets: ['source-a'],
+          skillPaths: ['.'],
+          skills: [
+            {
+              targetId: 'source-a',
+              relativePath: '.',
+              contentHash: '28e85c62deaf82b9dacc604df975a382f9c7d56c2c8b82f47d2e6a10bd4ad7dd',
+            },
+          ],
+        },
+      },
+    }, null, 2)}\n`, 'utf8')
+    await mkdir(path.join(rootPath, 'source-b'), { recursive: true })
+    await writeFile(path.join(rootPath, 'source-b', 'SKILL.md'), '# Shared Skill\nSame content\n', 'utf8')
+    await writeFile(path.join(rootPath, 'skills-sources.yaml'), [
+      'version: 1',
+      'deduplicate: true',
+      'sources:',
+      '  - id: source-a',
+      '    type: local',
+      '    location: source-a',
+      '    path: .',
+      '    preserveOnFailure: true',
+      '  - id: source-b',
+      '    type: local',
+      '    location: source-b',
+      '    path: .',
+      '',
+    ].join('\n'), 'utf8')
+
+    const syncScriptUrl = pathToFileURL(path.resolve('scripts/sync-skills.mjs'))
+    syncScriptUrl.searchParams.set('preservedDeduplicateTest', String(Date.now()))
+    const { syncSkills } = await import(syncScriptUrl.href)
+
+    await syncSkills({ cwd: rootPath }, createSilentLogger())
+
+    assert.equal(await pathExists(path.join(rootPath, 'skills', 'source-a', 'SKILL.md')), true)
+    assert.equal(await pathExists(path.join(rootPath, 'skills', 'source-b')), false)
+
+    const manifest = await readManifest(rootPath)
+    assert.equal(manifest?.version, 3)
+    assert.deepEqual(manifest?.sources['source-a']?.targets, ['source-a'])
+    assert.deepEqual(manifest?.sources['source-b']?.targets, [])
+  }
+  finally {
+    await rm(rootPath, { recursive: true, force: true })
+  }
+})
+
+it('does not report stale managed directories as unknown during dry-run', async () => {
+  const rootPath = await mkdtemp(path.join(tmpdir(), 'skillx-test-'))
+
+  try {
+    await mkdir(path.join(rootPath, '.skills-sync'), { recursive: true })
+    await mkdir(path.join(rootPath, 'source-a'), { recursive: true })
+    await mkdir(path.join(rootPath, 'skills', 'source-a'), { recursive: true })
+    await mkdir(path.join(rootPath, 'skills', 'source-b'), { recursive: true })
+    await writeFile(path.join(rootPath, 'source-a', 'SKILL.md'), '# Alpha\n', 'utf8')
+    await writeFile(path.join(rootPath, 'skills', 'source-b', 'SKILL.md'), '# Stale\n', 'utf8')
+    await writeFile(path.join(rootPath, '.skills-sync', 'manifest.json'), `${JSON.stringify({
+      version: 2,
+      sources: {
+        'source-a': {
+          targets: ['source-a'],
+        },
+        'source-b': {
+          targets: ['source-b'],
+        },
+      },
+    }, null, 2)}\n`, 'utf8')
+    await writeFile(path.join(rootPath, 'skills-sources.yaml'), [
+      'version: 1',
+      'sources:',
+      '  - id: source-a',
+      '    type: local',
+      '    location: source-a',
+      '    path: .',
+      '',
+    ].join('\n'), 'utf8')
+
+    const syncScriptUrl = pathToFileURL(path.resolve('scripts/sync-skills.mjs'))
+    syncScriptUrl.searchParams.set('dryRunStaleUnknownTest', String(Date.now()))
+    const { syncSkills } = await import(syncScriptUrl.href)
+
+    await syncSkills({ cwd: rootPath, dryRun: true }, createSilentLogger())
+
+    const summary = JSON.parse(await readFile(path.join(rootPath, '.skills-sync', 'summary.json'), 'utf8'))
+
+    assert.deepEqual(summary.stalePlanned, ['source-b'])
+    assert.deepEqual(summary.unknownDirs, [])
+  }
+  finally {
+    await rm(rootPath, { recursive: true, force: true })
+  }
+})
+
+it('writes content hashes into the v3 manifest after sync', async () => {
+  const rootPath = await mkdtemp(path.join(tmpdir(), 'skillx-test-'))
+
+  try {
+    await mkdir(path.join(rootPath, 'source-a'), { recursive: true })
+    await writeFile(path.join(rootPath, 'source-a', 'SKILL.md'), '# Alpha\n', 'utf8')
+    await writeFile(path.join(rootPath, 'skills-sources.yaml'), [
+      'version: 1',
+      'deduplicate: true',
+      'sources:',
+      '  - id: source-a',
+      '    type: local',
+      '    location: source-a',
+      '    path: .',
+      '',
+    ].join('\n'), 'utf8')
+
+    const syncScriptUrl = pathToFileURL(path.resolve('scripts/sync-skills.mjs'))
+    syncScriptUrl.searchParams.set('manifestHashTest', String(Date.now()))
+    const { syncSkills } = await import(syncScriptUrl.href)
+
+    await syncSkills({ cwd: rootPath }, createSilentLogger())
+
+    const manifest = await readManifest(rootPath)
+    assert.equal(manifest?.version, 3)
+    assert.equal(manifest?.sources['source-a']?.skills?.length, 1)
+    assert.match(manifest?.sources['source-a']?.skills?.[0]?.contentHash ?? '', /^[a-f0-9]{64}$/)
   }
   finally {
     await rm(rootPath, { recursive: true, force: true })

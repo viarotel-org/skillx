@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-import { rm } from 'node:fs/promises'
+import { createHash } from 'node:crypto'
+import { readFile, rm } from 'node:fs/promises'
 import path from 'node:path'
 import process from 'node:process'
 import { fileURLToPath } from 'node:url'
@@ -67,8 +68,15 @@ import { createSummary, writeSummaryFiles } from './skills-sync/summary.mjs'
  */
 
 /**
+ * @typedef {object} DeduplicateConfig
+ * @property {boolean} enabled
+ * @property {'content-hash'} strategy
+ */
+
+/**
  * @typedef {object} SkillsConfig
  * @property {string} configPath
+ * @property {DeduplicateConfig} deduplicate
  * @property {{ sourceConcurrency: number }} defaults
  * @property {string[]} protectedIds
  * @property {SourceConfig[]} sources
@@ -87,6 +95,7 @@ import { createSummary, writeSummaryFiles } from './skills-sync/summary.mjs'
  * @property {string} [commit]
  * @property {string[]} [targets]
  * @property {string[]} [skillPaths]
+ * @property {{ targetId: string, relativePath: string, contentHash: string }[]} [skills]
  */
 
 /**
@@ -163,6 +172,7 @@ async function syncSkillsWithLock(cwd, options, logger) {
 
     const syncedManifestSources = []
     const activeManagedTargets = []
+    const deduplicateState = createDeduplicateState(config.deduplicate)
 
     const sourcePlans = await mapWithConcurrency(
       enabledSources,
@@ -171,6 +181,11 @@ async function syncSkillsWithLock(cwd, options, logger) {
     )
 
     for (const result of sourcePlans) {
+      if (result.status === 'synced') {
+        applyContentDeduplication(result, deduplicateState, summary, config.deduplicate)
+        finalizeSyncedSourceResult(result)
+      }
+
       if (result.status === 'synced' && !options.dryRun) {
         const skippedSymlinks = await commitSourcePlan(cwd, result, runWorkspace)
         result.skippedSymlinks = skippedSymlinks
@@ -191,6 +206,7 @@ async function syncSkillsWithLock(cwd, options, logger) {
       const source = result.source
       const previousSource = previousManifest?.sources?.[source.id]
       if (source.preserveOnFailure && previousSource) {
+        registerPreservedSourceHashes(previousSource, source.id, deduplicateState, config.deduplicate)
         activeManagedTargets.push(...getPreviousManagedTargets(source.id, previousSource))
         syncedManifestSources.push({
           id: source.id,
@@ -205,12 +221,13 @@ async function syncSkillsWithLock(cwd, options, logger) {
           status: 'preserved',
           targets: getPreviousManagedTargets(source.id, previousSource),
           skillPaths: previousSource.skillPaths ?? [],
+          skills: previousSource.skills ?? [],
         })
       }
     }
 
     await handleStaleManagedDirectories(cwd, previousManifest, activeManagedTargets, config.protectedIds, summary, options, logger)
-    await reportUnknownDirectories(cwd, activeManagedTargets, config.protectedIds, summary, logger)
+    await reportUnknownDirectories(cwd, activeManagedTargets, config.protectedIds, summary, logger, summary.stalePlanned)
 
     const nextManifest = createManifest(syncedManifestSources)
     await writeManifest(cwd, nextManifest, { dryRun: options.dryRun })
@@ -266,10 +283,13 @@ async function handleStaleManagedDirectories(cwd, previousManifest, currentManag
  * @param {string[]} protectedIds
  * @param {import('./skills-sync/summary.mjs').SyncSummary} summary
  * @param {Logger} logger
+ * @param {string[]} [excludedDirectoryIds]
  * @returns {Promise<void>}
  */
-async function reportUnknownDirectories(cwd, knownDirectoryIds, protectedIds, summary, logger) {
-  const unknownDirs = await listUnknownSkillDirs(cwd, knownDirectoryIds, protectedIds)
+async function reportUnknownDirectories(cwd, knownDirectoryIds, protectedIds, summary, logger, excludedDirectoryIds = []) {
+  const excludedDirectoryIdSet = new Set(excludedDirectoryIds)
+  const unknownDirs = (await listUnknownSkillDirs(cwd, knownDirectoryIds, protectedIds))
+    .filter(directoryId => !excludedDirectoryIdSet.has(directoryId))
   summary.unknownDirs.push(...unknownDirs)
 
   for (const unknownDir of unknownDirs) {
@@ -292,7 +312,7 @@ async function planSource(cwd, source, runWorkspace, options, logger) {
     const sourcePlanInput = await prepareSourcePlanInput(cwd, source, runWorkspace, logger)
     const discoveredSkills = await discoverSkillDirs(sourcePlanInput.sourceSkillsPath)
     const selectedSkills = filterSkillDirs(discoveredSkills, source)
-    const plannedTargets = planSkillTargets(source, selectedSkills)
+    const plannedTargets = await attachSkillContentHashes(planSkillTargets(source, selectedSkills))
     const targets = getUniqueValues(plannedTargets.map(target => target.targetId))
     const skillPaths = plannedTargets.map(target => target.relativePath)
 
@@ -312,6 +332,7 @@ async function planSource(cwd, source, runWorkspace, options, logger) {
       commit: sourcePlanInput.commit,
       targets,
       skillPaths,
+      skills: createManifestSkills(plannedTargets),
       source,
       plannedTargets,
       message: options.dryRun ? 'Dry-run validated clone, filters, and target paths.' : 'Synced successfully.',
@@ -479,6 +500,146 @@ function getPreviousManagedTargets(sourceId, previousSource) {
  */
 function getUniqueValues(values) {
   return [...new Set(values)]
+}
+
+/**
+ * @param {import('./skills-sync/fs.mjs').PlannedSkillTarget[]} plannedTargets
+ * @returns {Promise<import('./skills-sync/fs.mjs').PlannedSkillTarget[]>}
+ */
+async function attachSkillContentHashes(plannedTargets) {
+  return Promise.all(plannedTargets.map(async plannedTarget => ({
+    ...plannedTarget,
+    contentHash: await createSkillContentHash(plannedTarget.absolutePath),
+  })))
+}
+
+/**
+ * @param {string} skillDirectoryPath
+ * @returns {Promise<string>}
+ */
+async function createSkillContentHash(skillDirectoryPath) {
+  const skillBuffer = await readFile(path.join(skillDirectoryPath, 'SKILL.md'))
+  return createHash('sha256').update(skillBuffer).digest('hex')
+}
+
+/**
+ * @param {DeduplicateConfig} deduplicate
+ * @returns {{ seenHashes: Map<string, { sourceId: string, relativePath: string, targetId: string }> }}
+ */
+function createDeduplicateState(deduplicate) {
+  if (!deduplicate.enabled) {
+    return {
+      seenHashes: new Map(),
+    }
+  }
+
+  return {
+    seenHashes: new Map(),
+  }
+}
+
+/**
+ * @param {import('./skills-sync/summary.mjs').SummaryItem & { plannedTargets: import('./skills-sync/fs.mjs').PlannedSkillTarget[], deduplicated?: Array<{ source: string, path: string, target: string, duplicateOfSource: string, duplicateOfPath: string }> }} sourcePlan
+ * @param {{ seenHashes: Map<string, { sourceId: string, relativePath: string, targetId: string }> }} deduplicateState
+ * @param {import('./skills-sync/summary.mjs').SyncSummary} summary
+ * @param {DeduplicateConfig} deduplicate
+ * @returns {void}
+ */
+function applyContentDeduplication(sourcePlan, deduplicateState, summary, deduplicate) {
+  if (!deduplicate.enabled) {
+    return
+  }
+
+  const keptTargets = []
+  const deduplicatedItems = []
+
+  for (const plannedTarget of sourcePlan.plannedTargets) {
+    const contentHash = plannedTarget.contentHash
+    if (!contentHash) {
+      keptTargets.push(plannedTarget)
+      continue
+    }
+
+    const duplicateOf = deduplicateState.seenHashes.get(contentHash)
+    if (!duplicateOf) {
+      deduplicateState.seenHashes.set(contentHash, {
+        sourceId: sourcePlan.id,
+        relativePath: plannedTarget.relativePath,
+        targetId: plannedTarget.targetId,
+      })
+      keptTargets.push(plannedTarget)
+      continue
+    }
+
+    deduplicatedItems.push({
+      source: sourcePlan.id,
+      path: plannedTarget.relativePath,
+      target: plannedTarget.targetId,
+      duplicateOfSource: duplicateOf.sourceId,
+      duplicateOfPath: duplicateOf.relativePath,
+    })
+  }
+
+  sourcePlan.plannedTargets = keptTargets
+  sourcePlan.deduplicated = deduplicatedItems
+  summary.deduplicated.push(...deduplicatedItems)
+}
+
+/**
+ * @param {import('./skills-sync/summary.mjs').SummaryItem & { plannedTargets: import('./skills-sync/fs.mjs').PlannedSkillTarget[], deduplicated?: Array<unknown>, message?: string, skills?: Array<{ targetId: string, relativePath: string, contentHash: string }> }} sourcePlan
+ * @returns {void}
+ */
+function finalizeSyncedSourceResult(sourcePlan) {
+  sourcePlan.targets = getUniqueValues(sourcePlan.plannedTargets.map(target => target.targetId))
+  sourcePlan.skillPaths = sourcePlan.plannedTargets.map(target => target.relativePath)
+  sourcePlan.skillCount = sourcePlan.plannedTargets.length
+  sourcePlan.skills = createManifestSkills(sourcePlan.plannedTargets)
+
+  const deduplicatedCount = sourcePlan.deduplicated?.length ?? 0
+  if (deduplicatedCount === 0) {
+    return
+  }
+
+  sourcePlan.message = `${sourcePlan.message ?? 'Synced successfully.'} Deduplicated ${deduplicatedCount} duplicate skill${deduplicatedCount === 1 ? '' : 's'}.`
+}
+
+/**
+ * @param {import('./skills-sync/fs.mjs').PlannedSkillTarget[]} plannedTargets
+ * @returns {{ targetId: string, relativePath: string, contentHash: string }[]}
+ */
+function createManifestSkills(plannedTargets) {
+  return plannedTargets
+    .filter(plannedTarget => typeof plannedTarget.contentHash === 'string')
+    .map(plannedTarget => ({
+      targetId: plannedTarget.targetId,
+      relativePath: plannedTarget.relativePath,
+      contentHash: plannedTarget.contentHash,
+    }))
+}
+
+/**
+ * @param {ManifestSource | undefined} previousSource
+ * @param {string} sourceId
+ * @param {{ seenHashes: Map<string, { sourceId: string, relativePath: string, targetId: string }> }} deduplicateState
+ * @param {DeduplicateConfig} deduplicate
+ * @returns {void}
+ */
+function registerPreservedSourceHashes(previousSource, sourceId, deduplicateState, deduplicate) {
+  if (!deduplicate.enabled || !Array.isArray(previousSource?.skills)) {
+    return
+  }
+
+  for (const skill of previousSource.skills) {
+    if (typeof skill?.contentHash !== 'string' || deduplicateState.seenHashes.has(skill.contentHash)) {
+      continue
+    }
+
+    deduplicateState.seenHashes.set(skill.contentHash, {
+      sourceId,
+      relativePath: typeof skill.relativePath === 'string' ? skill.relativePath : '.',
+      targetId: typeof skill.targetId === 'string' ? skill.targetId : sourceId,
+    })
+  }
 }
 
 /**

@@ -11,7 +11,7 @@
     },
     "version": {
       "type": "integer",
-      "const": 2
+      "const": 3
     },
     "sources": {
       "type": "object",
@@ -24,7 +24,7 @@
     "source": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["type", "location", "branch", "path", "mode", "includes", "excludes", "commit", "status", "targets", "skillPaths"],
+      "required": ["type", "location", "branch", "path", "mode", "includes", "excludes", "commit", "status", "targets", "skillPaths", "skills"],
       "properties": {
         "type": {
           "enum": ["local", "remote"]
@@ -70,6 +70,28 @@
           "items": {
             "type": "string"
           }
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/skill"
+          }
+        }
+      }
+    },
+    "skill": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["targetId", "relativePath", "contentHash"],
+      "properties": {
+        "targetId": {
+          "type": "string"
+        },
+        "relativePath": {
+          "type": "string"
+        },
+        "contentHash": {
+          "type": "string"
         }
       }
     }

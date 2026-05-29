@@ -28,6 +28,13 @@ const EXCLUDED_ROOT_FILES = ['.env', '.env.local', '.env.production', '.gitattri
  */
 
 /**
+ * @typedef {object} ManifestSkill
+ * @property {string} targetId
+ * @property {string} relativePath
+ * @property {string} contentHash
+ */
+
+/**
  * @typedef {object} ManifestSource
  * @property {string} [type]
  * @property {string} [location]
@@ -42,6 +49,7 @@ const EXCLUDED_ROOT_FILES = ['.env', '.env.local', '.env.production', '.gitattri
  * @property {number} [discoveredSkillCount]
  * @property {string[]} [targets]
  * @property {string[]} [skillPaths]
+ * @property {ManifestSkill[]} [skills]
  * @property {string} [message]
  */
 
@@ -66,6 +74,7 @@ const EXCLUDED_ROOT_FILES = ['.env', '.env.local', '.env.production', '.gitattri
  * @property {string} [status]
  * @property {string[]} [targets]
  * @property {string[]} [skillPaths]
+ * @property {ManifestSkill[]} [skills]
  */
 
 /**
@@ -75,7 +84,7 @@ const EXCLUDED_ROOT_FILES = ['.env', '.env.local', '.env.production', '.gitattri
  */
 
 /**
- * @typedef {DiscoveredSkill & { targetId: string, nestedPath: string }} PlannedSkillTarget
+ * @typedef {DiscoveredSkill & { targetId: string, nestedPath: string, contentHash?: string }} PlannedSkillTarget
  */
 
 /**
@@ -258,11 +267,12 @@ export function createManifest(sources) {
       status: source.status,
       targets: source.targets ?? [source.id],
       skillPaths: source.skillPaths ?? [],
+      skills: source.skills ?? [],
     }])
 
   return {
     $schema: '../schemas/skills-sync-manifest.schema.json',
-    version: 2,
+    version: 3,
     sources: Object.fromEntries(sourceEntries),
   }
 }
