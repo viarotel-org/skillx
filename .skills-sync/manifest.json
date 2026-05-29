@@ -29,7 +29,7 @@
       "mode": "flat",
       "includes": [],
       "excludes": [],
-      "commit": "53cf519185057f72780a1a5f6c8a26cc70cbb0be",
+      "commit": "bcfaa53511b177b72fe9ae6c97915b96384d98b9",
       "status": "synced",
       "targets": [
         "awesome-copilot-acquire-codebase-knowledge",
@@ -772,7 +772,7 @@
       "mode": "flat",
       "includes": [],
       "excludes": [],
-      "commit": "690f15cac7f7b4c055c5ab109c79ed9259934081",
+      "commit": "da20c92503b2e8ff1cf28ca81a0df4673debdbf7",
       "status": "synced",
       "targets": [
         "anthropic-algorithmic-art",
@@ -973,7 +973,7 @@
       "mode": "flat",
       "includes": [],
       "excludes": [],
-      "commit": "0288510dd61ff6ef7c2003834082ab8f2387e80e",
+      "commit": "e3b90b5238f38cdea5996e16861dcae28ef52eda",
       "status": "synced",
       "targets": [
         "mattpocock-deprecated-design-an-interface",
