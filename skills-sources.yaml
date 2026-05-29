@@ -72,3 +72,15 @@ sources:
     location: https://github.com/vuejs-ai/skills.git
     branch: main
     path: skills
+
+  - id: shopify-ai-toolkit
+    type: remote
+    location: https://github.com/Shopify/Shopify-AI-Toolkit.git
+    branch: main
+    path: skills
+
+  - id: netlify-context-and-tools
+    type: remote
+    location: https://github.com/netlify/context-and-tools.git
+    branch: main
+    path: skills
