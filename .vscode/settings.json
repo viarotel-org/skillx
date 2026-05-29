@@ -1,4 +1,8 @@
 {
+  "yaml.schemas": {
+    "./schemas/skills-sources.schema.json": "skills-sources.yaml"
+  },
+
   // Disable the default formatter, use eslint instead
   "prettier.enable": false,
   "editor.formatOnSave": false,
