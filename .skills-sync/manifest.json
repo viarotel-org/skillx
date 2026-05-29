@@ -41,7 +41,7 @@
       "mode": "flat",
       "includes": [],
       "excludes": [],
-      "commit": "bcfaa53511b177b72fe9ae6c97915b96384d98b9",
+      "commit": "9b74459b5ae5aad67781c4a9de1093605d620f23",
       "status": "synced",
       "targets": [
         "awesome-copilot-acquire-codebase-knowledge",
@@ -4102,6 +4102,414 @@
           "targetId": "netlify-context-and-tools-netlify-image-cdn",
           "relativePath": "netlify-image-cdn",
           "contentHash": "7a09bfa2e9b8506c118af691d464384d0b2fa5c68ee97e237d7d66d3011d230b"
+        }
+      ]
+    },
+    "full-stack-skills": {
+      "type": "remote",
+      "location": "https://github.com/partme-ai/full-stack-skills.git",
+      "branch": "main",
+      "path": "skills",
+      "mode": "flat",
+      "includes": [
+        "vue-skills/**",
+        "vue-ui-skills/**",
+        "electron-skills/**",
+        "uniapp-skills/**",
+        "stitch-skills/**"
+      ],
+      "excludes": [],
+      "commit": "aed23d528f0f5517f7ac2e5303baa7ab33c4b1d6",
+      "status": "synced",
+      "targets": [
+        "full-stack-skills-electron-skills-electron",
+        "full-stack-skills-electron-skills-electron-egg",
+        "full-stack-skills-electron-skills-upgradelink",
+        "full-stack-skills-stitch-skills-stitch-design-md",
+        "full-stack-skills-stitch-skills-stitch-mcp-create-project",
+        "full-stack-skills-stitch-skills-stitch-mcp-generate-screen-from-text",
+        "full-stack-skills-stitch-skills-stitch-mcp-get-project",
+        "full-stack-skills-stitch-skills-stitch-mcp-get-screen",
+        "full-stack-skills-stitch-skills-stitch-mcp-list-projects",
+        "full-stack-skills-stitch-skills-stitch-mcp-list-screens",
+        "full-stack-skills-stitch-skills-stitch-react-components",
+        "full-stack-skills-stitch-skills-stitch-remotion",
+        "full-stack-skills-stitch-skills-stitch-shadcn-ui",
+        "full-stack-skills-stitch-skills-stitch-skill-creator",
+        "full-stack-skills-stitch-skills-stitch-ued-guide",
+        "full-stack-skills-stitch-skills-stitch-ui-design-spec-bootstrap",
+        "full-stack-skills-stitch-skills-stitch-ui-design-spec-element-plus",
+        "full-stack-skills-stitch-skills-stitch-ui-design-spec-generator",
+        "full-stack-skills-stitch-skills-stitch-ui-design-spec-layui",
+        "full-stack-skills-stitch-skills-stitch-ui-design-spec-uview",
+        "full-stack-skills-stitch-skills-stitch-ui-design-spec-uviewpro",
+        "full-stack-skills-stitch-skills-stitch-ui-design-spec-vant",
+        "full-stack-skills-stitch-skills-stitch-ui-design-variants",
+        "full-stack-skills-stitch-skills-stitch-ui-designer",
+        "full-stack-skills-stitch-skills-stitch-ui-prompt-architect",
+        "full-stack-skills-stitch-skills-stitch-uview-components",
+        "full-stack-skills-stitch-skills-stitch-uviewpro-components",
+        "full-stack-skills-stitch-skills-stitch-vue-bootstrap-components",
+        "full-stack-skills-stitch-skills-stitch-vue-element-components",
+        "full-stack-skills-stitch-skills-stitch-vue-layui-components",
+        "full-stack-skills-stitch-skills-stitch-vue-vant-components",
+        "full-stack-skills-uniapp-skills-uniapp-ad",
+        "full-stack-skills-uniapp-skills-uniapp-cloud",
+        "full-stack-skills-uniapp-skills-uniapp-mini",
+        "full-stack-skills-uniapp-skills-uniapp-native-app",
+        "full-stack-skills-uniapp-skills-uniapp-native-plugin",
+        "full-stack-skills-uniapp-skills-uniapp-plugin",
+        "full-stack-skills-uniapp-skills-uniapp-project",
+        "full-stack-skills-uniapp-skills-uniapp-project-creator",
+        "full-stack-skills-uniapp-skills-uniapp-ucharts",
+        "full-stack-skills-uniapp-skills-uniapp-uview",
+        "full-stack-skills-uniapp-skills-uniappx-project",
+        "full-stack-skills-uniapp-skills-uniappx-project-creator",
+        "full-stack-skills-uniapp-skills-uniappx-uview-pro",
+        "full-stack-skills-vue-skills-pinia",
+        "full-stack-skills-vue-skills-vue-router",
+        "full-stack-skills-vue-skills-vue-router-v3",
+        "full-stack-skills-vue-skills-vue-router-v4",
+        "full-stack-skills-vue-skills-vue2",
+        "full-stack-skills-vue-skills-vue3",
+        "full-stack-skills-vue-skills-vuex-vue2",
+        "full-stack-skills-vue-ui-skills-bootstrap-vue3",
+        "full-stack-skills-vue-ui-skills-element-plus-vue3",
+        "full-stack-skills-vue-ui-skills-layui-vue3",
+        "full-stack-skills-vue-ui-skills-vant-vue3"
+      ],
+      "skillPaths": [
+        "electron-skills/electron",
+        "electron-skills/electron-egg",
+        "electron-skills/upgradeLink",
+        "stitch-skills/stitch-design-md",
+        "stitch-skills/stitch-mcp-create-project",
+        "stitch-skills/stitch-mcp-generate-screen-from-text",
+        "stitch-skills/stitch-mcp-get-project",
+        "stitch-skills/stitch-mcp-get-screen",
+        "stitch-skills/stitch-mcp-list-projects",
+        "stitch-skills/stitch-mcp-list-screens",
+        "stitch-skills/stitch-react-components",
+        "stitch-skills/stitch-remotion",
+        "stitch-skills/stitch-shadcn-ui",
+        "stitch-skills/stitch-skill-creator",
+        "stitch-skills/stitch-ued-guide",
+        "stitch-skills/stitch-ui-design-spec-bootstrap",
+        "stitch-skills/stitch-ui-design-spec-element-plus",
+        "stitch-skills/stitch-ui-design-spec-generator",
+        "stitch-skills/stitch-ui-design-spec-layui",
+        "stitch-skills/stitch-ui-design-spec-uview",
+        "stitch-skills/stitch-ui-design-spec-uviewpro",
+        "stitch-skills/stitch-ui-design-spec-vant",
+        "stitch-skills/stitch-ui-design-variants",
+        "stitch-skills/stitch-ui-designer",
+        "stitch-skills/stitch-ui-prompt-architect",
+        "stitch-skills/stitch-uview-components",
+        "stitch-skills/stitch-uviewpro-components",
+        "stitch-skills/stitch-vue-bootstrap-components",
+        "stitch-skills/stitch-vue-element-components",
+        "stitch-skills/stitch-vue-layui-components",
+        "stitch-skills/stitch-vue-vant-components",
+        "uniapp-skills/uniapp-ad",
+        "uniapp-skills/uniapp-cloud",
+        "uniapp-skills/uniapp-mini",
+        "uniapp-skills/uniapp-native-app",
+        "uniapp-skills/uniapp-native-plugin",
+        "uniapp-skills/uniapp-plugin",
+        "uniapp-skills/uniapp-project",
+        "uniapp-skills/uniapp-project-creator",
+        "uniapp-skills/uniapp-ucharts",
+        "uniapp-skills/uniapp-uview",
+        "uniapp-skills/uniappx-project",
+        "uniapp-skills/uniappx-project-creator",
+        "uniapp-skills/uniappx-uview-pro",
+        "vue-skills/pinia",
+        "vue-skills/vue-router",
+        "vue-skills/vue-router-v3",
+        "vue-skills/vue-router-v4",
+        "vue-skills/vue2",
+        "vue-skills/vue3",
+        "vue-skills/vuex-vue2",
+        "vue-ui-skills/bootstrap-vue3",
+        "vue-ui-skills/element-plus-vue3",
+        "vue-ui-skills/layui-vue3",
+        "vue-ui-skills/vant-vue3"
+      ],
+      "skills": [
+        {
+          "targetId": "full-stack-skills-electron-skills-electron",
+          "relativePath": "electron-skills/electron",
+          "contentHash": "5c84770f1909ee81db570b5f06dd9fd6962fd5279a8c061fe13a4a4c2401f210"
+        },
+        {
+          "targetId": "full-stack-skills-electron-skills-electron-egg",
+          "relativePath": "electron-skills/electron-egg",
+          "contentHash": "c699ecc2af0a766e4e487e7ad28734e84eea356ea4169cd2cfd006aa09aa0801"
+        },
+        {
+          "targetId": "full-stack-skills-electron-skills-upgradelink",
+          "relativePath": "electron-skills/upgradeLink",
+          "contentHash": "2ada2ccb43bd45e3633fbf5ec1d4e4cb249aa101960daf9c0cfb26a10606a63c"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-skills-stitch-design-md",
+          "relativePath": "stitch-skills/stitch-design-md",
+          "contentHash": "43a20299fdc30aa9ae083a41077635bc37f4d9daa4dbac60b30c82d6c657ddc7"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-skills-stitch-mcp-create-project",
+          "relativePath": "stitch-skills/stitch-mcp-create-project",
+          "contentHash": "70d51e3fdfb154fd78347ea057bbcf912b6c9ba85bd857f0335db83087c6d67c"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-skills-stitch-mcp-generate-screen-from-text",
+          "relativePath": "stitch-skills/stitch-mcp-generate-screen-from-text",
+          "contentHash": "7fad711adcca831fd6815f4d48db2e3f411f846108c99cde076299c1f3d0575d"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-skills-stitch-mcp-get-project",
+          "relativePath": "stitch-skills/stitch-mcp-get-project",
+          "contentHash": "20369df16ce5f965db7c90fcb734f20bd1180f0a1d697ac5eb690686174626a0"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-skills-stitch-mcp-get-screen",
+          "relativePath": "stitch-skills/stitch-mcp-get-screen",
+          "contentHash": "e44b475d2881d3cf98b98b71e529790036f77dcffe8ea729d05b425b1a17b279"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-skills-stitch-mcp-list-projects",
+          "relativePath": "stitch-skills/stitch-mcp-list-projects",
+          "contentHash": "5ea6f1158282d620eecec5a94a17471588743d279dbdd8287735062453923e3e"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-skills-stitch-mcp-list-screens",
+          "relativePath": "stitch-skills/stitch-mcp-list-screens",
+          "contentHash": "184e607fd862b7dc12c3f05ab160ab568b127438a6f9eb05d58f916c20ff038e"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-skills-stitch-react-components",
+          "relativePath": "stitch-skills/stitch-react-components",
+          "contentHash": "4b96c18df5c1cceb58d019fd90709db7c3a52278db6edc17fb66cde4c927250c"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-skills-stitch-remotion",
+          "relativePath": "stitch-skills/stitch-remotion",
+          "contentHash": "0a25488de0dbbf34193bc42bccf3dc559913b3a1cd6e96586d2f36c898526b53"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-skills-stitch-shadcn-ui",
+          "relativePath": "stitch-skills/stitch-shadcn-ui",
+          "contentHash": "d5ea50781a0ee4f4485dff5acdea4bf4a7c56dc14e551755cd78ee2a67228aed"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-skills-stitch-skill-creator",
+          "relativePath": "stitch-skills/stitch-skill-creator",
+          "contentHash": "28df5225c2db96cd61e97810b3bd440a8047e72ac63ce32c757da44e9b4a5ce1"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-skills-stitch-ued-guide",
+          "relativePath": "stitch-skills/stitch-ued-guide",
+          "contentHash": "5c4b1bec8095f9572ab49471d201572ac555975a167bcba8e109322e6eeb0054"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-skills-stitch-ui-design-spec-bootstrap",
+          "relativePath": "stitch-skills/stitch-ui-design-spec-bootstrap",
+          "contentHash": "3ad0249e1865c9ec7884f5df0bfed2c59ce9cbd7cb944aca2fc5964e6600fc7c"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-skills-stitch-ui-design-spec-element-plus",
+          "relativePath": "stitch-skills/stitch-ui-design-spec-element-plus",
+          "contentHash": "b47d937be13a56f366e93c5619c4608839817b6623dcf4d4b47ef6157c2bd628"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-skills-stitch-ui-design-spec-generator",
+          "relativePath": "stitch-skills/stitch-ui-design-spec-generator",
+          "contentHash": "945b6ff9bcf610101747928d5709847f805d63a78811167b0143052b3a889d79"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-skills-stitch-ui-design-spec-layui",
+          "relativePath": "stitch-skills/stitch-ui-design-spec-layui",
+          "contentHash": "38a26a45c96a4d8d433238830b53b50137fe8348725384f8e0f5a2442593819e"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-skills-stitch-ui-design-spec-uview",
+          "relativePath": "stitch-skills/stitch-ui-design-spec-uview",
+          "contentHash": "ee8ef4c696e88ae1c808fb5a9bb3e2ce018af8b7aa0553b9509a3d8808adec73"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-skills-stitch-ui-design-spec-uviewpro",
+          "relativePath": "stitch-skills/stitch-ui-design-spec-uviewpro",
+          "contentHash": "c70851ce5c295fcea59322b6ee13d4ac67a4d308dbe1d02754372d5b3622dbc3"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-skills-stitch-ui-design-spec-vant",
+          "relativePath": "stitch-skills/stitch-ui-design-spec-vant",
+          "contentHash": "494c4b3499a81d2817f8ef2362a20184bdae4bc6bc722d799ab7940157bbd85f"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-skills-stitch-ui-design-variants",
+          "relativePath": "stitch-skills/stitch-ui-design-variants",
+          "contentHash": "ee37d4ee7c478e636418debd0e330769462ce497a44c5800f7d8960e1af4b53e"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-skills-stitch-ui-designer",
+          "relativePath": "stitch-skills/stitch-ui-designer",
+          "contentHash": "ff63fa7f6ef6d5ab438e76e44b5626f4819c6cb87b5a64f7a7045b37c34e3358"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-skills-stitch-ui-prompt-architect",
+          "relativePath": "stitch-skills/stitch-ui-prompt-architect",
+          "contentHash": "aa81aebcd55e5cc750a3c5dce87a14c3159c57cf16cb4c4304823c26484b6bcf"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-skills-stitch-uview-components",
+          "relativePath": "stitch-skills/stitch-uview-components",
+          "contentHash": "b0ff277fa6dad2112dd0d4ae44ec256f89ee3bcb7ce3e62659922b19fd522727"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-skills-stitch-uviewpro-components",
+          "relativePath": "stitch-skills/stitch-uviewpro-components",
+          "contentHash": "d9dab7e3301884eece497f6d066eee755c5d865c0e9ab5c4efaa8424b0760294"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-skills-stitch-vue-bootstrap-components",
+          "relativePath": "stitch-skills/stitch-vue-bootstrap-components",
+          "contentHash": "432369f621afaf0fc126b8f1e49490a3fb9340a6195e1f26827d2f6cfc5e322d"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-skills-stitch-vue-element-components",
+          "relativePath": "stitch-skills/stitch-vue-element-components",
+          "contentHash": "558bf0294c6a0bff10249d0df96b0b9997cf4ee1da2acae14f2a7b22b60cef6b"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-skills-stitch-vue-layui-components",
+          "relativePath": "stitch-skills/stitch-vue-layui-components",
+          "contentHash": "4689c563b4e14a3e72b0d6236b14e972b528c7e7d47e447c32d356ad5620b23e"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-skills-stitch-vue-vant-components",
+          "relativePath": "stitch-skills/stitch-vue-vant-components",
+          "contentHash": "368aef245f79fe70276c68c2abe4601912747e1dde85e1af2b78d5ac269e17b5"
+        },
+        {
+          "targetId": "full-stack-skills-uniapp-skills-uniapp-ad",
+          "relativePath": "uniapp-skills/uniapp-ad",
+          "contentHash": "7696a3a683ef67d3ad81da147188d743872cc6c84ece056d016c99c78aabe516"
+        },
+        {
+          "targetId": "full-stack-skills-uniapp-skills-uniapp-cloud",
+          "relativePath": "uniapp-skills/uniapp-cloud",
+          "contentHash": "61d846ffeda8e6226b4df8a1d316d7b51f09fae48ccfc50e0a09378285195aa9"
+        },
+        {
+          "targetId": "full-stack-skills-uniapp-skills-uniapp-mini",
+          "relativePath": "uniapp-skills/uniapp-mini",
+          "contentHash": "c16a2f407a6b2baa7b678277699f90d453cae90e249bc252368746ca993c82c6"
+        },
+        {
+          "targetId": "full-stack-skills-uniapp-skills-uniapp-native-app",
+          "relativePath": "uniapp-skills/uniapp-native-app",
+          "contentHash": "09fd7e7024ba2c9cad35df06d8027006a328d76f8db365fe17a6d7e32d03809c"
+        },
+        {
+          "targetId": "full-stack-skills-uniapp-skills-uniapp-native-plugin",
+          "relativePath": "uniapp-skills/uniapp-native-plugin",
+          "contentHash": "30bf9b1d9ebda6aeaa717fa4684a1fe0122e6a86e1801657b00c13fdee98f2a5"
+        },
+        {
+          "targetId": "full-stack-skills-uniapp-skills-uniapp-plugin",
+          "relativePath": "uniapp-skills/uniapp-plugin",
+          "contentHash": "fab9e551cf976f2a8d2b8a825f31315699d162d4de09277f5af8f8c171994d0b"
+        },
+        {
+          "targetId": "full-stack-skills-uniapp-skills-uniapp-project",
+          "relativePath": "uniapp-skills/uniapp-project",
+          "contentHash": "bc71f04c243ff13cec69638b4a8bdfff11fedaa222a060e92027a69e44e4a739"
+        },
+        {
+          "targetId": "full-stack-skills-uniapp-skills-uniapp-project-creator",
+          "relativePath": "uniapp-skills/uniapp-project-creator",
+          "contentHash": "3db80050f30d3a006a71eaca3d4bacb686531e37d4973e8b60b9c2b0ea8e75c0"
+        },
+        {
+          "targetId": "full-stack-skills-uniapp-skills-uniapp-ucharts",
+          "relativePath": "uniapp-skills/uniapp-ucharts",
+          "contentHash": "f6e7c60eea2550efbf873f5cab914183f5c50f001cce2df46812a1351c865828"
+        },
+        {
+          "targetId": "full-stack-skills-uniapp-skills-uniapp-uview",
+          "relativePath": "uniapp-skills/uniapp-uview",
+          "contentHash": "79b192379a6dd08333070959b7e54da11021aab020db6d658a2964e5598d1ea9"
+        },
+        {
+          "targetId": "full-stack-skills-uniapp-skills-uniappx-project",
+          "relativePath": "uniapp-skills/uniappx-project",
+          "contentHash": "4989106583beb390fd1f9a32f80c2e0cc1629196ec1964d73d39d34a28c2d183"
+        },
+        {
+          "targetId": "full-stack-skills-uniapp-skills-uniappx-project-creator",
+          "relativePath": "uniapp-skills/uniappx-project-creator",
+          "contentHash": "5052a6a9b8ab171f999864a8e97f6bf8592561697eb210dd05d2bc8ac6c6bad8"
+        },
+        {
+          "targetId": "full-stack-skills-uniapp-skills-uniappx-uview-pro",
+          "relativePath": "uniapp-skills/uniappx-uview-pro",
+          "contentHash": "75b24cc502d2ba31756b5258285c35a0d806b72bfc91570b14bd890f5741d0b0"
+        },
+        {
+          "targetId": "full-stack-skills-vue-skills-pinia",
+          "relativePath": "vue-skills/pinia",
+          "contentHash": "804313a3d54322a13f7296767129e952a1ee0912fd004430b80dd27cd09f80f2"
+        },
+        {
+          "targetId": "full-stack-skills-vue-skills-vue-router",
+          "relativePath": "vue-skills/vue-router",
+          "contentHash": "bd20b158c68b7ffaf51cd690f6ba4a94da574a2972cc029d558d6e1cafe3f829"
+        },
+        {
+          "targetId": "full-stack-skills-vue-skills-vue-router-v3",
+          "relativePath": "vue-skills/vue-router-v3",
+          "contentHash": "43c36af2d97f4154fbd32133fd53cb5915e6cc1954fcd48cd7946217c9613ef5"
+        },
+        {
+          "targetId": "full-stack-skills-vue-skills-vue-router-v4",
+          "relativePath": "vue-skills/vue-router-v4",
+          "contentHash": "c544902c07fcacff3ed9707f40232f1b5db91a81a5bd3a2670c63df9cffba124"
+        },
+        {
+          "targetId": "full-stack-skills-vue-skills-vue2",
+          "relativePath": "vue-skills/vue2",
+          "contentHash": "9a691cdcc0bb584619325246aea906aaed0cc9c79dcf5df35b221d47341801d1"
+        },
+        {
+          "targetId": "full-stack-skills-vue-skills-vue3",
+          "relativePath": "vue-skills/vue3",
+          "contentHash": "5c900cf9e762f3a58c1c8a7396140ab198e2e0cc7b20d1bd3a7944ab9cabd9ef"
+        },
+        {
+          "targetId": "full-stack-skills-vue-skills-vuex-vue2",
+          "relativePath": "vue-skills/vuex-vue2",
+          "contentHash": "7727fe087c23f56b44aa091fff8e02283fd69d159f6b2bdbc11458bd08ab265a"
+        },
+        {
+          "targetId": "full-stack-skills-vue-ui-skills-bootstrap-vue3",
+          "relativePath": "vue-ui-skills/bootstrap-vue3",
+          "contentHash": "3e529825e39cbd8fb614586df5beba0fa40730834fca1aaf8479991afb370e2f"
+        },
+        {
+          "targetId": "full-stack-skills-vue-ui-skills-element-plus-vue3",
+          "relativePath": "vue-ui-skills/element-plus-vue3",
+          "contentHash": "1c5ac95d851a52b5c26b95ccf4db6c62255ac2454dc338dc648b00c962e9a748"
+        },
+        {
+          "targetId": "full-stack-skills-vue-ui-skills-layui-vue3",
+          "relativePath": "vue-ui-skills/layui-vue3",
+          "contentHash": "af76693ab36edf39d7a710928e9f108092d5d8dc1ae89144e64c3f03f05cc33c"
+        },
+        {
+          "targetId": "full-stack-skills-vue-ui-skills-vant-vue3",
+          "relativePath": "vue-ui-skills/vant-vue3",
+          "contentHash": "e126035df290c1f4b4f783bdcc493e988571900f843c04d52e420b2a44c6de01"
         }
       ]
     }
