@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.6.0](https://github.com/viarotel-org/skillx/compare/skillx-v0.5.0...skillx-v0.6.0) (2026-05-29)
+
+
+### Features
+
+* 🚀 Add shopify-ai-toolkit and netlify-context-and-tools repository sources ([e1d185f](https://github.com/viarotel-org/skillx/commit/e1d185f9e7a15efbf069dc408bbf4b8e7f9cfdc9))
+
+
+### Miscellaneous Chores
+
+* sync skills subscriptions ([a644fdc](https://github.com/viarotel-org/skillx/commit/a644fdc151270d78a31496c7bb7a7084e9073108))
+
 ## [0.5.0](https://github.com/viarotel-org/skillx/compare/skillx-v0.4.0...skillx-v0.5.0) (2026-05-29)
 
 
