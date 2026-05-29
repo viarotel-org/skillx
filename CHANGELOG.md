@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.5.0](https://github.com/viarotel-org/skillx/compare/skillx-v0.4.0...skillx-v0.5.0) (2026-05-29)
+
+
+### Features
+
+* 🚀 Support deduplication of skills in subscription sources ([0994417](https://github.com/viarotel-org/skillx/commit/09944175f1a6f1dcb672827049e6e8dcbd161b44))
+
+
+### Miscellaneous Chores
+
+* sync skills subscriptions ([f4e4443](https://github.com/viarotel-org/skillx/commit/f4e44432e700843c0f8eb2e7178c6b567b780a57))
+* sync skills subscriptions ([0d0fac0](https://github.com/viarotel-org/skillx/commit/0d0fac0c3082c03e37e05f0222149c00ec5faa42))
+
 ## [0.4.0](https://github.com/viarotel-org/skillx/compare/skillx-v0.3.2...skillx-v0.4.0) (2026-05-28)
 
 
