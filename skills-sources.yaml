@@ -84,3 +84,15 @@ sources:
     location: https://github.com/netlify/context-and-tools.git
     branch: main
     path: skills
+
+  - id: full-stack-skills
+    type: remote
+    location: https://github.com/partme-ai/full-stack-skills.git
+    branch: main
+    path: skills
+    includes:
+      - vue-skills/**
+      - vue-ui-skills/**
+      - electron-skills/**
+      - uniapp-skills/**
+      - stitch-skills/**
