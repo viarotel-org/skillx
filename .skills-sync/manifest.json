@@ -3839,6 +3839,271 @@
           "contentHash": "70c5fae1e97d1df1d7a1207ad1df606d0c7375855f0c1cb0c9c94351931ab862"
         }
       ]
+    },
+    "shopify-ai-toolkit": {
+      "type": "remote",
+      "location": "https://github.com/Shopify/Shopify-AI-Toolkit.git",
+      "branch": "main",
+      "path": "skills",
+      "mode": "flat",
+      "includes": [],
+      "excludes": [],
+      "commit": "859be93bfc858f183ff5eb40183e35a4d91d2950",
+      "status": "synced",
+      "targets": [
+        "shopify-ai-toolkit-shopify-admin",
+        "shopify-ai-toolkit-shopify-app-store-review",
+        "shopify-ai-toolkit-shopify-custom-data",
+        "shopify-ai-toolkit-shopify-customer",
+        "shopify-ai-toolkit-shopify-dev",
+        "shopify-ai-toolkit-shopify-functions",
+        "shopify-ai-toolkit-shopify-hydrogen",
+        "shopify-ai-toolkit-shopify-liquid",
+        "shopify-ai-toolkit-shopify-onboarding-dev",
+        "shopify-ai-toolkit-shopify-onboarding-merchant",
+        "shopify-ai-toolkit-shopify-partner",
+        "shopify-ai-toolkit-shopify-payments-apps",
+        "shopify-ai-toolkit-shopify-polaris-admin-extensions",
+        "shopify-ai-toolkit-shopify-polaris-app-home",
+        "shopify-ai-toolkit-shopify-polaris-checkout-extensions",
+        "shopify-ai-toolkit-shopify-polaris-customer-account-extensions",
+        "shopify-ai-toolkit-shopify-pos-ui",
+        "shopify-ai-toolkit-shopify-storefront-graphql",
+        "shopify-ai-toolkit-shopify-use-shopify-cli",
+        "shopify-ai-toolkit-ucp"
+      ],
+      "skillPaths": [
+        "shopify-admin",
+        "shopify-app-store-review",
+        "shopify-custom-data",
+        "shopify-customer",
+        "shopify-dev",
+        "shopify-functions",
+        "shopify-hydrogen",
+        "shopify-liquid",
+        "shopify-onboarding-dev",
+        "shopify-onboarding-merchant",
+        "shopify-partner",
+        "shopify-payments-apps",
+        "shopify-polaris-admin-extensions",
+        "shopify-polaris-app-home",
+        "shopify-polaris-checkout-extensions",
+        "shopify-polaris-customer-account-extensions",
+        "shopify-pos-ui",
+        "shopify-storefront-graphql",
+        "shopify-use-shopify-cli",
+        "ucp"
+      ],
+      "skills": [
+        {
+          "targetId": "shopify-ai-toolkit-shopify-admin",
+          "relativePath": "shopify-admin",
+          "contentHash": "1d64a253d1b34651e3ed181de95d182ac1cdce63c1ec7b0eabc9381dcf4b03b0"
+        },
+        {
+          "targetId": "shopify-ai-toolkit-shopify-app-store-review",
+          "relativePath": "shopify-app-store-review",
+          "contentHash": "418e521a56613a4b5922884e512a57d184a5c5085e868649e94be00f63da71d9"
+        },
+        {
+          "targetId": "shopify-ai-toolkit-shopify-custom-data",
+          "relativePath": "shopify-custom-data",
+          "contentHash": "5abf06cc046c6ea32e03cefa398b0f4ee7387755ec013f0de2d72c6b34c46e23"
+        },
+        {
+          "targetId": "shopify-ai-toolkit-shopify-customer",
+          "relativePath": "shopify-customer",
+          "contentHash": "d282a33f0936b53da1617336f442948916fc37854b5449fe6a1c57d431135f3e"
+        },
+        {
+          "targetId": "shopify-ai-toolkit-shopify-dev",
+          "relativePath": "shopify-dev",
+          "contentHash": "ba5e5a39351173c8bdd3e506e398eb4f8e3b5f810c07c4c3d34b13fc2a65bde2"
+        },
+        {
+          "targetId": "shopify-ai-toolkit-shopify-functions",
+          "relativePath": "shopify-functions",
+          "contentHash": "2246db3bb9b8a34116d44f2e0c210543e96fb94580ac6742de7aaec3107c657a"
+        },
+        {
+          "targetId": "shopify-ai-toolkit-shopify-hydrogen",
+          "relativePath": "shopify-hydrogen",
+          "contentHash": "0d7f8b77d5ab9f60da30d3fe6ce7c804bce1dbe330076fd96989222d58ddd6b6"
+        },
+        {
+          "targetId": "shopify-ai-toolkit-shopify-liquid",
+          "relativePath": "shopify-liquid",
+          "contentHash": "9256e69c714ba02cb8941cb30949ba5e27e3913253489339190d07732916c810"
+        },
+        {
+          "targetId": "shopify-ai-toolkit-shopify-onboarding-dev",
+          "relativePath": "shopify-onboarding-dev",
+          "contentHash": "2cf4f4894b2a2a98513cf8e9b4af440f3b4aa0c35214bab781a29809afa5244e"
+        },
+        {
+          "targetId": "shopify-ai-toolkit-shopify-onboarding-merchant",
+          "relativePath": "shopify-onboarding-merchant",
+          "contentHash": "b7a30d0c177ed3f21f7b45bd1747c42f4d9aa21e6166eb9801560c57ae88b1ce"
+        },
+        {
+          "targetId": "shopify-ai-toolkit-shopify-partner",
+          "relativePath": "shopify-partner",
+          "contentHash": "56779bddc648e09652f38e880215fcf8e7a908933796ca76e6de74b0eb78b6ec"
+        },
+        {
+          "targetId": "shopify-ai-toolkit-shopify-payments-apps",
+          "relativePath": "shopify-payments-apps",
+          "contentHash": "d6c5cb681b17f94739e6dada8e205c70c282f8ae7047ca7926e27492daa47ea3"
+        },
+        {
+          "targetId": "shopify-ai-toolkit-shopify-polaris-admin-extensions",
+          "relativePath": "shopify-polaris-admin-extensions",
+          "contentHash": "709fc498588039ab412e610b4d618edcbc1fdd1cb37d110c21a683ab17618a0a"
+        },
+        {
+          "targetId": "shopify-ai-toolkit-shopify-polaris-app-home",
+          "relativePath": "shopify-polaris-app-home",
+          "contentHash": "6be8e236ce2a9a5385c1f0a38fd89aa7d762d1a406feacea665529bf47fad8ab"
+        },
+        {
+          "targetId": "shopify-ai-toolkit-shopify-polaris-checkout-extensions",
+          "relativePath": "shopify-polaris-checkout-extensions",
+          "contentHash": "f328a8af175a28b98c9948526a493ccbf71e917c74b011f0a994523f0ebbd8ad"
+        },
+        {
+          "targetId": "shopify-ai-toolkit-shopify-polaris-customer-account-extensions",
+          "relativePath": "shopify-polaris-customer-account-extensions",
+          "contentHash": "cf7e340910fbd73c4a92ef4f09119fd49bcab775c60d254afcb26b03797c33f8"
+        },
+        {
+          "targetId": "shopify-ai-toolkit-shopify-pos-ui",
+          "relativePath": "shopify-pos-ui",
+          "contentHash": "c864595a912de232ec686f08051d001806bf361cc684b293dd52015239a891a6"
+        },
+        {
+          "targetId": "shopify-ai-toolkit-shopify-storefront-graphql",
+          "relativePath": "shopify-storefront-graphql",
+          "contentHash": "272caca4abb9c11041047d4b01a47ea4f7f9273734d560e7057c8a1e63bfdf52"
+        },
+        {
+          "targetId": "shopify-ai-toolkit-shopify-use-shopify-cli",
+          "relativePath": "shopify-use-shopify-cli",
+          "contentHash": "f302efc37c4fb8179f3a90c2714a270fc7b9c5caf9c958cab087edc528a7df24"
+        },
+        {
+          "targetId": "shopify-ai-toolkit-ucp",
+          "relativePath": "ucp",
+          "contentHash": "387161a2505a95c02c3f4af3dd0bdbd1ca902ae6f044496a485fca7625236079"
+        }
+      ]
+    },
+    "netlify-context-and-tools": {
+      "type": "remote",
+      "location": "https://github.com/netlify/context-and-tools.git",
+      "branch": "main",
+      "path": "skills",
+      "mode": "flat",
+      "includes": [],
+      "excludes": [],
+      "commit": "cffaf74f79128620b8200956222aeb819f5f8fd5",
+      "status": "synced",
+      "targets": [
+        "netlify-context-and-tools-netlify-ai-gateway",
+        "netlify-context-and-tools-netlify-blobs",
+        "netlify-context-and-tools-netlify-caching",
+        "netlify-context-and-tools-netlify-cli-and-deploy",
+        "netlify-context-and-tools-netlify-config",
+        "netlify-context-and-tools-netlify-database",
+        "netlify-context-and-tools-netlify-deploy",
+        "netlify-context-and-tools-netlify-edge-functions",
+        "netlify-context-and-tools-netlify-forms",
+        "netlify-context-and-tools-netlify-frameworks",
+        "netlify-context-and-tools-netlify-functions",
+        "netlify-context-and-tools-netlify-identity",
+        "netlify-context-and-tools-netlify-image-cdn"
+      ],
+      "skillPaths": [
+        "netlify-ai-gateway",
+        "netlify-blobs",
+        "netlify-caching",
+        "netlify-cli-and-deploy",
+        "netlify-config",
+        "netlify-database",
+        "netlify-deploy",
+        "netlify-edge-functions",
+        "netlify-forms",
+        "netlify-frameworks",
+        "netlify-functions",
+        "netlify-identity",
+        "netlify-image-cdn"
+      ],
+      "skills": [
+        {
+          "targetId": "netlify-context-and-tools-netlify-ai-gateway",
+          "relativePath": "netlify-ai-gateway",
+          "contentHash": "76a9ee1dbe68431fac1ae90f2d3a52591491d67f17185fa9ddce2021d43e0075"
+        },
+        {
+          "targetId": "netlify-context-and-tools-netlify-blobs",
+          "relativePath": "netlify-blobs",
+          "contentHash": "af17c313be786c47ea66cad7558a0fb572f35ba0c531185e17dccc956ae9c881"
+        },
+        {
+          "targetId": "netlify-context-and-tools-netlify-caching",
+          "relativePath": "netlify-caching",
+          "contentHash": "2d8d4358454ef49c25668c1f549b3ea25f708365026a13e92160071ccdf762b2"
+        },
+        {
+          "targetId": "netlify-context-and-tools-netlify-cli-and-deploy",
+          "relativePath": "netlify-cli-and-deploy",
+          "contentHash": "dccc4b22dc4a5ddec35a10b93588dd34ecb655a30d6e63e598c1a5e47d0411f0"
+        },
+        {
+          "targetId": "netlify-context-and-tools-netlify-config",
+          "relativePath": "netlify-config",
+          "contentHash": "bcc297f4f93407a235b74025404ae81f2c8082edfa40313946cc8b385735bb0d"
+        },
+        {
+          "targetId": "netlify-context-and-tools-netlify-database",
+          "relativePath": "netlify-database",
+          "contentHash": "2ee2b530df5ae35a8a4db070f51ab11febdf8c08711ef13e8b7fa3bbbe6b3c2c"
+        },
+        {
+          "targetId": "netlify-context-and-tools-netlify-deploy",
+          "relativePath": "netlify-deploy",
+          "contentHash": "acd44a15aa355853b6fc2c23b9be9713cd7e36bdcf39e6604b94fc1968aaa2c2"
+        },
+        {
+          "targetId": "netlify-context-and-tools-netlify-edge-functions",
+          "relativePath": "netlify-edge-functions",
+          "contentHash": "c30e744bea2eb68de5995bf1e8e4cbee1849f4b319dd04df79f54262d034124d"
+        },
+        {
+          "targetId": "netlify-context-and-tools-netlify-forms",
+          "relativePath": "netlify-forms",
+          "contentHash": "f26fc3198010fff39d9d12113e2bd13f5278ba749c52cb90f5cea5c7e0ef9aa5"
+        },
+        {
+          "targetId": "netlify-context-and-tools-netlify-frameworks",
+          "relativePath": "netlify-frameworks",
+          "contentHash": "49c66d5db590e917c469ebba77e656f065bdad41aca3fc0d2311bb81aaf02708"
+        },
+        {
+          "targetId": "netlify-context-and-tools-netlify-functions",
+          "relativePath": "netlify-functions",
+          "contentHash": "b1f56e7099ce4b703a0c0b29a0e7cde03837d58fdefc3544f7de0d511fac0caa"
+        },
+        {
+          "targetId": "netlify-context-and-tools-netlify-identity",
+          "relativePath": "netlify-identity",
+          "contentHash": "d432e8b29135f409a68557ba0413d3e1f1db4040e8638b68c126ee060736efc7"
+        },
+        {
+          "targetId": "netlify-context-and-tools-netlify-image-cdn",
+          "relativePath": "netlify-image-cdn",
+          "contentHash": "7a09bfa2e9b8506c118af691d464384d0b2fa5c68ee97e237d7d66d3011d230b"
+        }
+      ]
     }
   }
 }
