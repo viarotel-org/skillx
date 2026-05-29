@@ -1,6 +1,6 @@
 {
   "$schema": "../schemas/skills-sync-manifest.schema.json",
-  "version": 2,
+  "version": 3,
   "sources": {
     "skillx": {
       "type": "local",
@@ -19,6 +19,18 @@
       "skillPaths": [
         "escrcpy",
         "viarotel"
+      ],
+      "skills": [
+        {
+          "targetId": "skillx-escrcpy",
+          "relativePath": "escrcpy",
+          "contentHash": "4a1d0ddf6b61530bcf6b79114016e90f7800ac6d6a84f9e40094f115759a09ab"
+        },
+        {
+          "targetId": "skillx-viarotel",
+          "relativePath": "viarotel",
+          "contentHash": "5eb05f7a066b7c41e9687abffba839eee58c025da902841fae7a2322c7c30e9f"
+        }
       ]
     },
     "awesome-copilot": {
@@ -762,6 +774,1828 @@
         "workiq-copilot",
         "write-coding-standards-from-file",
         "x-twitter-scraper"
+      ],
+      "skills": [
+        {
+          "targetId": "awesome-copilot-acquire-codebase-knowledge",
+          "relativePath": "acquire-codebase-knowledge",
+          "contentHash": "7ca01711e1615171b26ce9e2729bedf041348d7fd0f24bc04e0d400dc93e41b9"
+        },
+        {
+          "targetId": "awesome-copilot-acreadiness-assess",
+          "relativePath": "acreadiness-assess",
+          "contentHash": "e632ae0d57b87accd0ca1488dba27bd842c6e6c4c28670f2da101f1322ba5f8d"
+        },
+        {
+          "targetId": "awesome-copilot-acreadiness-generate-instructions",
+          "relativePath": "acreadiness-generate-instructions",
+          "contentHash": "b0f4f82099fbfdcd2a45d54b8db9392d6ebe26cd396843453e9dcae14de513e8"
+        },
+        {
+          "targetId": "awesome-copilot-acreadiness-policy",
+          "relativePath": "acreadiness-policy",
+          "contentHash": "e563c5e334e1dac21a7d6a43ae43abb96721395e7af7b97f49ef764ad8325550"
+        },
+        {
+          "targetId": "awesome-copilot-add-educational-comments",
+          "relativePath": "add-educational-comments",
+          "contentHash": "5273774d9b6628dcec97bc0b5ed66ff36bf235e65d4d79a43917d60e91df348d"
+        },
+        {
+          "targetId": "awesome-copilot-adobe-illustrator-scripting",
+          "relativePath": "adobe-illustrator-scripting",
+          "contentHash": "6a3b601bb3d7ae8a2a527aad788c7266001feadd5aca43db7e9926af1cda3518"
+        },
+        {
+          "targetId": "awesome-copilot-agent-governance",
+          "relativePath": "agent-governance",
+          "contentHash": "efc0abaa0dff7d5567a27e1a5b9126ef70410e0a213225dab1b109f3f129db68"
+        },
+        {
+          "targetId": "awesome-copilot-agent-owasp-compliance",
+          "relativePath": "agent-owasp-compliance",
+          "contentHash": "5c1f92c48888beb811d2435e58aa02b2619422a921d6f70e3cc15e5c5be8e7da"
+        },
+        {
+          "targetId": "awesome-copilot-agent-supply-chain",
+          "relativePath": "agent-supply-chain",
+          "contentHash": "5b678338dca40c92051ff46da592e6be13ffc2f843a2238cbf1c91368fe75fa7"
+        },
+        {
+          "targetId": "awesome-copilot-agentic-eval",
+          "relativePath": "agentic-eval",
+          "contentHash": "fb198a5c9b12e746d01a43c9ff3368598fdc1134bb458766f580186f31001573"
+        },
+        {
+          "targetId": "awesome-copilot-ai-prompt-engineering-safety-review",
+          "relativePath": "ai-prompt-engineering-safety-review",
+          "contentHash": "8ff9d227e96fb3364b9b2e0bd28d73ef0e49cc33fa832dfe8c87d79ddef9a7a7"
+        },
+        {
+          "targetId": "awesome-copilot-ai-ready",
+          "relativePath": "ai-ready",
+          "contentHash": "eafb73ade36a0c3c6280ad2e87d1a87a286a26e65f26f7fa90c0815ced2dfaa4"
+        },
+        {
+          "targetId": "awesome-copilot-ai-team-orchestration",
+          "relativePath": "ai-team-orchestration",
+          "contentHash": "be73d0a778f7f4027f17bb5b7783b18c37a74f6782eec0baab40346139e65865"
+        },
+        {
+          "targetId": "awesome-copilot-appinsights-instrumentation",
+          "relativePath": "appinsights-instrumentation",
+          "contentHash": "15d281900b1fa0d7d29b086257c54b5852e0ba652b62fe877c6342fa1a8554af"
+        },
+        {
+          "targetId": "awesome-copilot-apple-appstore-reviewer",
+          "relativePath": "apple-appstore-reviewer",
+          "contentHash": "8e24825ff85137d497119bff6c2b91ce37238cad67493e44af7c5ca95b4e4058"
+        },
+        {
+          "targetId": "awesome-copilot-arch-linux-triage",
+          "relativePath": "arch-linux-triage",
+          "contentHash": "4ee4e77a8b3a1d7463b4e525c491ad1ea7ef52c6f6f01f12f84f7b8504a1cd44"
+        },
+        {
+          "targetId": "awesome-copilot-architecture-blueprint-generator",
+          "relativePath": "architecture-blueprint-generator",
+          "contentHash": "a6a6f7a3b7a8210a9a391f2da3f3945bf86505341fd677eb2eb62e599520f512"
+        },
+        {
+          "targetId": "awesome-copilot-arduino-azure-iot-edge-integration",
+          "relativePath": "arduino-azure-iot-edge-integration",
+          "contentHash": "62793a150018d86cd56fd0ba90528f6d1379c5a1347c3021a7dec2e07516ea73"
+        },
+        {
+          "targetId": "awesome-copilot-arize-ai-provider-integration",
+          "relativePath": "arize-ai-provider-integration",
+          "contentHash": "c1fe70e2c0bd7950d48eb5910cbed9bcb6893d0af3bca3983f232dacc48adf03"
+        },
+        {
+          "targetId": "awesome-copilot-arize-annotation",
+          "relativePath": "arize-annotation",
+          "contentHash": "7c8370632bfb017a36c4c1315c60410a334f2cd3e2054165fba1bac37df40af3"
+        },
+        {
+          "targetId": "awesome-copilot-arize-dataset",
+          "relativePath": "arize-dataset",
+          "contentHash": "29a40d67885277ff82cf623a4d260de3e02c9267bffe7098952f3e9ff8efa7c8"
+        },
+        {
+          "targetId": "awesome-copilot-arize-evaluator",
+          "relativePath": "arize-evaluator",
+          "contentHash": "00dda4378a6b8ab1caad0ed099bf86a890e6fdd4b03459e2c5154136c3067715"
+        },
+        {
+          "targetId": "awesome-copilot-arize-experiment",
+          "relativePath": "arize-experiment",
+          "contentHash": "388c2ed4e5ca253ea11a1bea5975bf3fa763c02d2b297a7f5eaabe629e3c79cc"
+        },
+        {
+          "targetId": "awesome-copilot-arize-instrumentation",
+          "relativePath": "arize-instrumentation",
+          "contentHash": "9f591abcf628b13e682a9e838cce58aaa569c5bd513a88853696a352a3fe2798"
+        },
+        {
+          "targetId": "awesome-copilot-arize-link",
+          "relativePath": "arize-link",
+          "contentHash": "e7ca578678df826fbcb6e5498bea3ba8bd4fc5251c0eb3446d63023adef6a073"
+        },
+        {
+          "targetId": "awesome-copilot-arize-prompt-optimization",
+          "relativePath": "arize-prompt-optimization",
+          "contentHash": "c46bfbea3014681cc140827d9bed11834371b74dc26d792a31ba615bb60f919e"
+        },
+        {
+          "targetId": "awesome-copilot-arize-trace",
+          "relativePath": "arize-trace",
+          "contentHash": "24deaee5ea952bb3d57fe7af692b0d4bbfd6d7c4f40a1f60a1f800bf99e01bca"
+        },
+        {
+          "targetId": "awesome-copilot-aspire",
+          "relativePath": "aspire",
+          "contentHash": "f4cb7a6c3d437edd447a097d984ed43e519c8c53433ddf131a3061c477753542"
+        },
+        {
+          "targetId": "awesome-copilot-aspnet-minimal-api-openapi",
+          "relativePath": "aspnet-minimal-api-openapi",
+          "contentHash": "16e632ce8cb514d413e968811a2e07b8e0f1e97c6e2e93174efd6cec2e49e86f"
+        },
+        {
+          "targetId": "awesome-copilot-audit-integrity",
+          "relativePath": "audit-integrity",
+          "contentHash": "53b662856bf68ca310d68803a3b3a0533812a40e2444bb7bd8ec7522996bbf08"
+        },
+        {
+          "targetId": "awesome-copilot-automate-this",
+          "relativePath": "automate-this",
+          "contentHash": "4f45d8a3ce3e8c0e53e0e1ab0b81ba01d10236ff64ff3c397a272af9486ac59f"
+        },
+        {
+          "targetId": "awesome-copilot-autoresearch",
+          "relativePath": "autoresearch",
+          "contentHash": "754179e987519dac86e01f79c1e015345d9b07c09f4bc34c324d89165d10fbd5"
+        },
+        {
+          "targetId": "awesome-copilot-aws-cdk-python-setup",
+          "relativePath": "aws-cdk-python-setup",
+          "contentHash": "ffc9ecadc84bdeaf29c4e5616d497254339e5bad77f05e6c370da569ce9c98c3"
+        },
+        {
+          "targetId": "awesome-copilot-az-cost-optimize",
+          "relativePath": "az-cost-optimize",
+          "contentHash": "d27f8311b57d02dedd48a0d563be0964dc458578e4de51b4730516b4e8083829"
+        },
+        {
+          "targetId": "awesome-copilot-azure-architecture-autopilot",
+          "relativePath": "azure-architecture-autopilot",
+          "contentHash": "2e8c7088c3df5ee8058a0c13147277f866d993c518920adc63a2facff5ad215f"
+        },
+        {
+          "targetId": "awesome-copilot-azure-deployment-preflight",
+          "relativePath": "azure-deployment-preflight",
+          "contentHash": "dab815a49ff9fda7d48631c40df7e2540bb3fa7ba1cce63ce219aaa0a830b6a1"
+        },
+        {
+          "targetId": "awesome-copilot-azure-devops-cli",
+          "relativePath": "azure-devops-cli",
+          "contentHash": "5e4c5e62be6683daef60db4d9628982cc9af02cc8ee78c7412f9ee8f3a61d6a8"
+        },
+        {
+          "targetId": "awesome-copilot-azure-pricing",
+          "relativePath": "azure-pricing",
+          "contentHash": "905bd90f658435e9812dca1aa613675fce948ad878e29c9f1bbe19b237edc3ee"
+        },
+        {
+          "targetId": "awesome-copilot-azure-resource-health-diagnose",
+          "relativePath": "azure-resource-health-diagnose",
+          "contentHash": "b23ce684d839475f5ae397ce6d1973106f481d4a73d40bc1bebb45012a6ff436"
+        },
+        {
+          "targetId": "awesome-copilot-azure-resource-visualizer",
+          "relativePath": "azure-resource-visualizer",
+          "contentHash": "c22324fcf556d4441320a49360fafe4707440b0c376d7f15ce97f12dd233fe04"
+        },
+        {
+          "targetId": "awesome-copilot-azure-role-selector",
+          "relativePath": "azure-role-selector",
+          "contentHash": "b4de898de0d72f258606efff41841bd31145db5ac18a57a7bd416450eaabe670"
+        },
+        {
+          "targetId": "awesome-copilot-azure-smart-city-iot-solution-builder",
+          "relativePath": "azure-smart-city-iot-solution-builder",
+          "contentHash": "ed187e6a2b251bef6f15c4320da774885fb5e1283c71384f0aed75c71ecd7127"
+        },
+        {
+          "targetId": "awesome-copilot-azure-static-web-apps",
+          "relativePath": "azure-static-web-apps",
+          "contentHash": "01540172e164a281b585de653406e8c5c4917f28dd1639dadf29f4f58371dc94"
+        },
+        {
+          "targetId": "awesome-copilot-batch-files",
+          "relativePath": "batch-files",
+          "contentHash": "64915b51fab7af2111809a3c787fcf572d3944dcc1310d2478e97e3f9df5ee3c"
+        },
+        {
+          "targetId": "awesome-copilot-bigquery-pipeline-audit",
+          "relativePath": "bigquery-pipeline-audit",
+          "contentHash": "9dca6a922c1fc7599ba12ebaa38cf7336dbd09b064245f57c33f4f5b72ed3b5a"
+        },
+        {
+          "targetId": "awesome-copilot-boost-prompt",
+          "relativePath": "boost-prompt",
+          "contentHash": "e8302572e9f47fd811b025fe7cc2a7d51a2330f665ec62226412183e0a508a21"
+        },
+        {
+          "targetId": "awesome-copilot-brag-sheet",
+          "relativePath": "brag-sheet",
+          "contentHash": "b7c9b04c81fdedbbd5d9dfcd09235e3122523be52c2bc4482590dd7b2945b4a4"
+        },
+        {
+          "targetId": "awesome-copilot-breakdown-epic-arch",
+          "relativePath": "breakdown-epic-arch",
+          "contentHash": "27d126ec1ab88dd60dadb41d7434036aa7480df8757e9a076cf5d0a8bbb711c9"
+        },
+        {
+          "targetId": "awesome-copilot-breakdown-epic-pm",
+          "relativePath": "breakdown-epic-pm",
+          "contentHash": "0818b54601c15a0360978c530e0f6f2560626a8024773587a7da57fe211b458b"
+        },
+        {
+          "targetId": "awesome-copilot-breakdown-feature-implementation",
+          "relativePath": "breakdown-feature-implementation",
+          "contentHash": "97024b9a3e6643debabd5e0cb436216d4b0e319285acfd162221e85efa04d3fd"
+        },
+        {
+          "targetId": "awesome-copilot-breakdown-feature-prd",
+          "relativePath": "breakdown-feature-prd",
+          "contentHash": "68cfda19baafdea722b58adfa63b67f8cc00d704f64dee40fa6b975b6fadc151"
+        },
+        {
+          "targetId": "awesome-copilot-breakdown-plan",
+          "relativePath": "breakdown-plan",
+          "contentHash": "ce46dc0485b0ee3e7fc4172a507df685207b17806c9fa431bbf723308b8a2125"
+        },
+        {
+          "targetId": "awesome-copilot-breakdown-test",
+          "relativePath": "breakdown-test",
+          "contentHash": "83727ec30a986686f1bc8eaeeb42360379c11416a280c4e77d38d39e0e02555f"
+        },
+        {
+          "targetId": "awesome-copilot-centos-linux-triage",
+          "relativePath": "centos-linux-triage",
+          "contentHash": "5e8772f91cee723a1f9c79f5bcc343f20941a61ed04abefdca22e07868ce4fe1"
+        },
+        {
+          "targetId": "awesome-copilot-chrome-devtools",
+          "relativePath": "chrome-devtools",
+          "contentHash": "e85ec55f68317923033375f00b431e9d5822283ea4bfad967f5fa7cbc61e6265"
+        },
+        {
+          "targetId": "awesome-copilot-cli-mastery",
+          "relativePath": "cli-mastery",
+          "contentHash": "d3e4194d69f973aa5bf8993c8e68b09fea9f0f2c0427e740a18fd4175d956879"
+        },
+        {
+          "targetId": "awesome-copilot-cloud-design-patterns",
+          "relativePath": "cloud-design-patterns",
+          "contentHash": "69b0e14a0011137f7253f90b85745eba1710d8849710e3b5b677e3bf9dfe6320"
+        },
+        {
+          "targetId": "awesome-copilot-code-exemplars-blueprint-generator",
+          "relativePath": "code-exemplars-blueprint-generator",
+          "contentHash": "005a023337c8c7edf7dc55b9317fd246f9093f8d6e7eb9072fff7e2e51b38f95"
+        },
+        {
+          "targetId": "awesome-copilot-code-tour",
+          "relativePath": "code-tour",
+          "contentHash": "365f0d06c564e6bb0f950a28f92e875780d4f0fef0ff6b86e05151a17f658f09"
+        },
+        {
+          "targetId": "awesome-copilot-codeql",
+          "relativePath": "codeql",
+          "contentHash": "81503394c7c0595756d18a47e0b626dfd1dc6cf4673d40e9be23349a66fa5d27"
+        },
+        {
+          "targetId": "awesome-copilot-comment-code-generate-a-tutorial",
+          "relativePath": "comment-code-generate-a-tutorial",
+          "contentHash": "eb6189f8148067297e446dd284559d12397658980d35335bd091236dcd666542"
+        },
+        {
+          "targetId": "awesome-copilot-commit-message-storyteller",
+          "relativePath": "commit-message-storyteller",
+          "contentHash": "9a351d6276d9c17c5e5ac0920efc1dfa054cf9e17c7db52a9fc2a0e38f39e65a"
+        },
+        {
+          "targetId": "awesome-copilot-containerize-aspnet-framework",
+          "relativePath": "containerize-aspnet-framework",
+          "contentHash": "ba98c33a7b4fdb0648cff5142e652ce78946f0699e235ab8af25fcd58df244e9"
+        },
+        {
+          "targetId": "awesome-copilot-containerize-aspnetcore",
+          "relativePath": "containerize-aspnetcore",
+          "contentHash": "ad4057ce6e1cca41005e1955df84e121d6b760a8d259e55ca9d051c679df37e0"
+        },
+        {
+          "targetId": "awesome-copilot-content-management-systems",
+          "relativePath": "content-management-systems",
+          "contentHash": "919c83458a358435b234e8d2d8e35514cdcaec0163b58886dd95fc1a736cc50c"
+        },
+        {
+          "targetId": "awesome-copilot-context-map",
+          "relativePath": "context-map",
+          "contentHash": "af0037b06a0b56a5014e16a32538ac419725638659428b7e229ed5bbb9087a37"
+        },
+        {
+          "targetId": "awesome-copilot-conventional-branch",
+          "relativePath": "conventional-branch",
+          "contentHash": "94b962ff93ac639c8b760a29465ca48f51d6af1ad1b4bdd242d52f1260959b07"
+        },
+        {
+          "targetId": "awesome-copilot-conventional-commit",
+          "relativePath": "conventional-commit",
+          "contentHash": "250235f71b8c501a7744ded911281292324bcd1a2d014e34b25041e2d2c8bf73"
+        },
+        {
+          "targetId": "awesome-copilot-convert-plaintext-to-md",
+          "relativePath": "convert-plaintext-to-md",
+          "contentHash": "e349f990ac578a6c68336c3d248b071bd70b0089de2d5db5cf805a440e7af587"
+        },
+        {
+          "targetId": "awesome-copilot-copilot-cli-quickstart",
+          "relativePath": "copilot-cli-quickstart",
+          "contentHash": "a7de35da1454e0858d443d681cc468ed109de6d33d9014e75556103895e64ff0"
+        },
+        {
+          "targetId": "awesome-copilot-copilot-instructions-blueprint-generator",
+          "relativePath": "copilot-instructions-blueprint-generator",
+          "contentHash": "e53409119442128e2afbc2b48ad1b286fb23b884934de26dd088b3a375fcfb2b"
+        },
+        {
+          "targetId": "awesome-copilot-copilot-sdk",
+          "relativePath": "copilot-sdk",
+          "contentHash": "4e01b9426f645b291cc5e91a118ae9e5ef1307da63d038326df7f02bccc462c6"
+        },
+        {
+          "targetId": "awesome-copilot-copilot-spaces",
+          "relativePath": "copilot-spaces",
+          "contentHash": "6069534e09f04fef7dc02113fe5981c23c73e8faeab3e68d6db21a2c48b80f73"
+        },
+        {
+          "targetId": "awesome-copilot-copilot-usage-metrics",
+          "relativePath": "copilot-usage-metrics",
+          "contentHash": "5ebe9cf0fd07a9be9dacb36c0dfd00c00bd30328ef086928be6d850bda9cebe6"
+        },
+        {
+          "targetId": "awesome-copilot-cosmosdb-datamodeling",
+          "relativePath": "cosmosdb-datamodeling",
+          "contentHash": "d68d169870b9d2ccbebd277ee73c43f275e295e0c6554acacefdb11afa9b0d28"
+        },
+        {
+          "targetId": "awesome-copilot-create-agentsmd",
+          "relativePath": "create-agentsmd",
+          "contentHash": "97b71d3f7c5e30e9f1740fcd7a45d4bf107b7887947cfd3ab92ac99dee294855"
+        },
+        {
+          "targetId": "awesome-copilot-create-architectural-decision-record",
+          "relativePath": "create-architectural-decision-record",
+          "contentHash": "c11af0c34fa034e36e622ad97f1194824c3cbbe675a8b17cdc0bedc91b188a72"
+        },
+        {
+          "targetId": "awesome-copilot-create-github-action-workflow-specification",
+          "relativePath": "create-github-action-workflow-specification",
+          "contentHash": "25b57a8e4ed35e2e640dc9f6f255dc6c8f86574b98d2abc5153b5a8c9b22491c"
+        },
+        {
+          "targetId": "awesome-copilot-create-github-issue-feature-from-specification",
+          "relativePath": "create-github-issue-feature-from-specification",
+          "contentHash": "8398e075cb4a89daccef2bb003779eeeb199b24b8e319e11571e488fa0da8132"
+        },
+        {
+          "targetId": "awesome-copilot-create-github-issues-feature-from-implementation-plan",
+          "relativePath": "create-github-issues-feature-from-implementation-plan",
+          "contentHash": "6cc82a68a65904fed67fa7da9ae797f18b245bc9e1a6a3370a8af842dd0816d0"
+        },
+        {
+          "targetId": "awesome-copilot-create-github-issues-for-unmet-specification-requirements",
+          "relativePath": "create-github-issues-for-unmet-specification-requirements",
+          "contentHash": "403939f1a02b5d08c571dc9f973bdb98a87b4f84b5e4fbe5b93284f78472b299"
+        },
+        {
+          "targetId": "awesome-copilot-create-implementation-plan",
+          "relativePath": "create-implementation-plan",
+          "contentHash": "58f9876006d632bc364794b0270e2c13a8e4de937e4641e6928927a08200aa67"
+        },
+        {
+          "targetId": "awesome-copilot-create-llms",
+          "relativePath": "create-llms",
+          "contentHash": "713aff883a2c8b2b2d2b9d450e2adedbf96b390245511c0f0aa3839367fd6ea6"
+        },
+        {
+          "targetId": "awesome-copilot-create-readme",
+          "relativePath": "create-readme",
+          "contentHash": "a93f9161bef324e3a1550fc79d4f01b660a3fb7eadc4455677d9ace4da2965ac"
+        },
+        {
+          "targetId": "awesome-copilot-create-specification",
+          "relativePath": "create-specification",
+          "contentHash": "ae2c3ca87d871056b4b7d8e11758ee8c29fcb307ba890b1407ab5a88b8d2a5d8"
+        },
+        {
+          "targetId": "awesome-copilot-create-spring-boot-java-project",
+          "relativePath": "create-spring-boot-java-project",
+          "contentHash": "353f26c4ff608b0e9a00e6f0d75916cae2fb5680358285e06f6c1862c4b459e4"
+        },
+        {
+          "targetId": "awesome-copilot-create-spring-boot-kotlin-project",
+          "relativePath": "create-spring-boot-kotlin-project",
+          "contentHash": "75722e39c0294d6fc3eb5b368ec890376707127c944426ed91ad7644621e2f83"
+        },
+        {
+          "targetId": "awesome-copilot-create-technical-spike",
+          "relativePath": "create-technical-spike",
+          "contentHash": "2caccb0ba3b9851b82c648870330b6d22a47ee7cda4d3770ef8b5f8d6e439281"
+        },
+        {
+          "targetId": "awesome-copilot-create-tldr-page",
+          "relativePath": "create-tldr-page",
+          "contentHash": "84f5de3042628b193ea9316518542454caef11007635229ca4262445b510356b"
+        },
+        {
+          "targetId": "awesome-copilot-creating-oracle-to-postgres-master-migration-plan",
+          "relativePath": "creating-oracle-to-postgres-master-migration-plan",
+          "contentHash": "401eb4f0a7b6617304bbf299b16bfcf73aada44c24006c2ca34c8983195f7f47"
+        },
+        {
+          "targetId": "awesome-copilot-creating-oracle-to-postgres-migration-bug-report",
+          "relativePath": "creating-oracle-to-postgres-migration-bug-report",
+          "contentHash": "4f7c01e3b82014701473a4b4a73caaa89bfffb66aa44e7df147cdc3f744a5878"
+        },
+        {
+          "targetId": "awesome-copilot-creating-oracle-to-postgres-migration-integration-tests",
+          "relativePath": "creating-oracle-to-postgres-migration-integration-tests",
+          "contentHash": "60eef0db1f730fe869fe682a829f5d9ec06f08d5029f05f135cd17d9e4b18a0f"
+        },
+        {
+          "targetId": "awesome-copilot-csharp-async",
+          "relativePath": "csharp-async",
+          "contentHash": "d52c0812a3e4325ab0d89aebd074efe5e6246e722522180f8613ef3c72a72acc"
+        },
+        {
+          "targetId": "awesome-copilot-csharp-docs",
+          "relativePath": "csharp-docs",
+          "contentHash": "ddcc59c5f0320af04a59ba090b8e6490ce537aad2d8b2667fdf386686d037826"
+        },
+        {
+          "targetId": "awesome-copilot-csharp-mstest",
+          "relativePath": "csharp-mstest",
+          "contentHash": "325e70e82f3edecb7312a7e504a89e87c8fb684c8f2aa55df6f29905ef1bf859"
+        },
+        {
+          "targetId": "awesome-copilot-csharp-nunit",
+          "relativePath": "csharp-nunit",
+          "contentHash": "f03540e3fc328ca1325293a7339e2268f2cbf0d5698a2741b79dabb1c94335ba"
+        },
+        {
+          "targetId": "awesome-copilot-csharp-tunit",
+          "relativePath": "csharp-tunit",
+          "contentHash": "60bda4de96d73461f44acea9ef0978a5b4eadb0a1d764fd0398b66a75bfd2e03"
+        },
+        {
+          "targetId": "awesome-copilot-csharp-xunit",
+          "relativePath": "csharp-xunit",
+          "contentHash": "7a2d020e24a5788c4999c05c86902599bb31a5df70b2595b37c00beb802cdb49"
+        },
+        {
+          "targetId": "awesome-copilot-daily-prep",
+          "relativePath": "daily-prep",
+          "contentHash": "ea2800856b936cb83aed9b43f9c5e431ac2de436f8f00df546db4253ab4076f3"
+        },
+        {
+          "targetId": "awesome-copilot-data-breach-blast-radius",
+          "relativePath": "data-breach-blast-radius",
+          "contentHash": "d61d7e6036a67fa25afa016b61d4130448f3e74896dfafef1847f1f01fc86bbe"
+        },
+        {
+          "targetId": "awesome-copilot-datanalysis-credit-risk",
+          "relativePath": "datanalysis-credit-risk",
+          "contentHash": "c54807b18fa6118cb732b6975937ddf696dca295711e34ada9a9515fc2112e9e"
+        },
+        {
+          "targetId": "awesome-copilot-dataverse-python-advanced-patterns",
+          "relativePath": "dataverse-python-advanced-patterns",
+          "contentHash": "b46a0947c9683dffc0969bfdd80c0b0e2af662583f8909b9c98d8c6a22f458dc"
+        },
+        {
+          "targetId": "awesome-copilot-dataverse-python-production-code",
+          "relativePath": "dataverse-python-production-code",
+          "contentHash": "ca94ff0124379fa15b28e15fa36d3568524c5f9386ae8b8d6a768356313714ff"
+        },
+        {
+          "targetId": "awesome-copilot-dataverse-python-quickstart",
+          "relativePath": "dataverse-python-quickstart",
+          "contentHash": "f8553b9dc0effb7e367c74775f59ab0bb11696ede69323ee75703194d67d5572"
+        },
+        {
+          "targetId": "awesome-copilot-dataverse-python-usecase-builder",
+          "relativePath": "dataverse-python-usecase-builder",
+          "contentHash": "ce508ea0fc88dd380fe8b0865c2555d5cca7b4edc4ed215a63547a73b512c5c2"
+        },
+        {
+          "targetId": "awesome-copilot-debian-linux-triage",
+          "relativePath": "debian-linux-triage",
+          "contentHash": "75ed743f3862662099c0c0af8aeeea61b93812656dd93cbd2305fbe74e6177f9"
+        },
+        {
+          "targetId": "awesome-copilot-declarative-agents",
+          "relativePath": "declarative-agents",
+          "contentHash": "7a0913860f4478f8db00963c70d2fbdf32118ff8802a62175a9d5c0c77adb37f"
+        },
+        {
+          "targetId": "awesome-copilot-dependabot",
+          "relativePath": "dependabot",
+          "contentHash": "85179928b0838c542078747ed9f749209fa656590df593abeb9853ee43426edf"
+        },
+        {
+          "targetId": "awesome-copilot-devops-rollout-plan",
+          "relativePath": "devops-rollout-plan",
+          "contentHash": "4895d403e08e9ea4cf59ef06ef843745aa5dd574a1faad83d4140c1f2554b7d4"
+        },
+        {
+          "targetId": "awesome-copilot-diagnose",
+          "relativePath": "diagnose",
+          "contentHash": "48e2d7e9b9123dc0b9a82e1165b2d8879a43cb5cfd0460b55edfd820d5cb11a2"
+        },
+        {
+          "targetId": "awesome-copilot-documentation-writer",
+          "relativePath": "documentation-writer",
+          "contentHash": "7e8244988c9f4eb63bf8c0edf160578544621eb96e5e51e2d848f1401c5de8f1"
+        },
+        {
+          "targetId": "awesome-copilot-dotnet-best-practices",
+          "relativePath": "dotnet-best-practices",
+          "contentHash": "3181f44dfc866313c96cd784a7f003b4b109836a6f02648f95b3323e73e85d62"
+        },
+        {
+          "targetId": "awesome-copilot-dotnet-design-pattern-review",
+          "relativePath": "dotnet-design-pattern-review",
+          "contentHash": "e94f172c8e6cb96d962fe9f67d64c1b2b9886ef078eda4d41c9fc3e9dcbfa97b"
+        },
+        {
+          "targetId": "awesome-copilot-dotnet-mcp-builder",
+          "relativePath": "dotnet-mcp-builder",
+          "contentHash": "ce5efce47a11ed3c6d9690bc5a2250b4bd4565b8c4e973e98695c077ff0a62ac"
+        },
+        {
+          "targetId": "awesome-copilot-dotnet-timezone",
+          "relativePath": "dotnet-timezone",
+          "contentHash": "9514bd6f6e227171ae762460697e19ac545d88be6400171bfd085819717c093c"
+        },
+        {
+          "targetId": "awesome-copilot-dotnet-upgrade",
+          "relativePath": "dotnet-upgrade",
+          "contentHash": "9e3e789579cc333971b04deaa3627e4e6fadfa2ad237f60a63730c34e8554587"
+        },
+        {
+          "targetId": "awesome-copilot-doublecheck",
+          "relativePath": "doublecheck",
+          "contentHash": "ea16d7eb9d144a1f8d6287695a71be900a37efda468e899af4016361b233bdc7"
+        },
+        {
+          "targetId": "awesome-copilot-draw-io-diagram-generator",
+          "relativePath": "draw-io-diagram-generator",
+          "contentHash": "0d5d86c1fe7dc596f9bb7058291469cf5671ab55fcfeabce8451eb513a705868"
+        },
+        {
+          "targetId": "awesome-copilot-drawio",
+          "relativePath": "drawio",
+          "contentHash": "b7ea3e77d64adb6ae4ab5f08c0f7dbe9b238f7033486523e8cc324f80e649256"
+        },
+        {
+          "targetId": "awesome-copilot-editorconfig",
+          "relativePath": "editorconfig",
+          "contentHash": "f8968d1e11837f312eddeaa49bb1d95508f0b7c709ff52198aceaf201758eacc"
+        },
+        {
+          "targetId": "awesome-copilot-ef-core",
+          "relativePath": "ef-core",
+          "contentHash": "bd7f6824d9b7bad10b18fec05edbbba1208bd1f2a42603d820187aff5ddc3ec8"
+        },
+        {
+          "targetId": "awesome-copilot-efcore-d2-db-diagram",
+          "relativePath": "efcore-d2-db-diagram",
+          "contentHash": "e0689c25df306906b3d916a90fa63a8a5bf78f8ee41328befcbe7f475a58d011"
+        },
+        {
+          "targetId": "awesome-copilot-email-drafter",
+          "relativePath": "email-drafter",
+          "contentHash": "c3324d26f899149e5b664a02cad9fa4b1a615d9b2ce5bb7f6dfd908c17c622e8"
+        },
+        {
+          "targetId": "awesome-copilot-entra-agent-user",
+          "relativePath": "entra-agent-user",
+          "contentHash": "1d36474ce96eb53bc1aabe1f0005fa9df18e7502af1e412d7c679ce45c4e6807"
+        },
+        {
+          "targetId": "awesome-copilot-eval-driven-dev",
+          "relativePath": "eval-driven-dev",
+          "contentHash": "dbaac08a46bdd0ae865363b53265f2e5a4ae4e95d8ccd11f7fa38e8dc87c40ba"
+        },
+        {
+          "targetId": "awesome-copilot-exam-ready",
+          "relativePath": "exam-ready",
+          "contentHash": "c3551239018434cb3cf080ce505b279efeaca8211a5c2d513d7c91b1a157e2ad"
+        },
+        {
+          "targetId": "awesome-copilot-excalidraw-diagram-generator",
+          "relativePath": "excalidraw-diagram-generator",
+          "contentHash": "60df556e63d85ad51350fa448c097a1473d2e6e0adf4aad6e1a6c22eb536cfe9"
+        },
+        {
+          "targetId": "awesome-copilot-eyeball",
+          "relativePath": "eyeball",
+          "contentHash": "4f9d6460e4a68ef7cea70f2a4515a1ee66b36e698f1d3394b2980f84e501f3e3"
+        },
+        {
+          "targetId": "awesome-copilot-fabric-lakehouse",
+          "relativePath": "fabric-lakehouse",
+          "contentHash": "987b1c1e29a6d52c6e982a046f626ff3444ad44000a046cfdb3e3983cbb5bdc4"
+        },
+        {
+          "targetId": "awesome-copilot-fedora-linux-triage",
+          "relativePath": "fedora-linux-triage",
+          "contentHash": "5d615da84432e0b2de47679743697a7718129c2800d672b0734000b03b74daaf"
+        },
+        {
+          "targetId": "awesome-copilot-finalize-agent-prompt",
+          "relativePath": "finalize-agent-prompt",
+          "contentHash": "4b9b7f83671ea1992d3b8b165d384cc9f9abfd955a76a84d5c5be1d30a284248"
+        },
+        {
+          "targetId": "awesome-copilot-finnish-humanizer",
+          "relativePath": "finnish-humanizer",
+          "contentHash": "a21c9d7e4fb7a6a1dd814c9ea68dc7a85a3333596ec4426b4c9122b2fb936820"
+        },
+        {
+          "targetId": "awesome-copilot-first-ask",
+          "relativePath": "first-ask",
+          "contentHash": "cb38b8e48917ba6e0480f4c2e6993fca24491603046f653ef244d3e8a915f1e1"
+        },
+        {
+          "targetId": "awesome-copilot-flowstudio-power-automate-build",
+          "relativePath": "flowstudio-power-automate-build",
+          "contentHash": "ae4db2faf3291cf9d0d6bc0af2818f1bd37e739c6fdb30afc35b973e65f1bcaa"
+        },
+        {
+          "targetId": "awesome-copilot-flowstudio-power-automate-debug",
+          "relativePath": "flowstudio-power-automate-debug",
+          "contentHash": "0c78590659507740b0b2f38988a66992f11aafca4aaae88d989af0c8907b098b"
+        },
+        {
+          "targetId": "awesome-copilot-flowstudio-power-automate-governance",
+          "relativePath": "flowstudio-power-automate-governance",
+          "contentHash": "e0d2b62d51ca2e5b0d0c9762783960750fe25841cd200cb931506db3ffd63871"
+        },
+        {
+          "targetId": "awesome-copilot-flowstudio-power-automate-mcp",
+          "relativePath": "flowstudio-power-automate-mcp",
+          "contentHash": "371b2dbdd28805047a9cabb9e374f2773bc09e9846279e0436d029219c1ded95"
+        },
+        {
+          "targetId": "awesome-copilot-flowstudio-power-automate-monitoring",
+          "relativePath": "flowstudio-power-automate-monitoring",
+          "contentHash": "a2e7e9c8d4f94441754ec6ebebd64ce44689f4a619acd214a328ae3406641170"
+        },
+        {
+          "targetId": "awesome-copilot-fluentui-blazor",
+          "relativePath": "fluentui-blazor",
+          "contentHash": "d23fbc5dfb9a1580f930652bdfbf8c891edbaaa3bf162fb4904de9cba74f01b0"
+        },
+        {
+          "targetId": "awesome-copilot-folder-structure-blueprint-generator",
+          "relativePath": "folder-structure-blueprint-generator",
+          "contentHash": "6e0c362502ea65b3c929fb02baecaf6da2420352c4aa27eebbd2b89643198be3"
+        },
+        {
+          "targetId": "awesome-copilot-foundry-agent-sync",
+          "relativePath": "foundry-agent-sync",
+          "contentHash": "462c67ae7d4a389f9efb3ad9c25bb6b329277ce6001059cd3a4b32af8e377af2"
+        },
+        {
+          "targetId": "awesome-copilot-freecad-scripts",
+          "relativePath": "freecad-scripts",
+          "contentHash": "d7cf141375e743f9f56811a0d16877aaf8e9a2d0dfc31cd48378bd17720ba840"
+        },
+        {
+          "targetId": "awesome-copilot-from-the-other-side-anitta",
+          "relativePath": "from-the-other-side-anitta",
+          "contentHash": "304c3e6616c8987d3280beb415d28183f24781ded7afeeb5abc5c9459db92283"
+        },
+        {
+          "targetId": "awesome-copilot-from-the-other-side-quinn",
+          "relativePath": "from-the-other-side-quinn",
+          "contentHash": "9ac3500bc9972af2248d43eb49a81f7968beb0526afdf6d93dd40ce81445c3ed"
+        },
+        {
+          "targetId": "awesome-copilot-from-the-other-side-vega",
+          "relativePath": "from-the-other-side-vega",
+          "contentHash": "4ec9c5ca8eed89a9aae505f369bd5cc1d9482b8b297bc42e4a85886319d7d455"
+        },
+        {
+          "targetId": "awesome-copilot-from-the-other-side-wiggins",
+          "relativePath": "from-the-other-side-wiggins",
+          "contentHash": "0778321d844cfcd2f1ce86d2111edebb56d16b0ce4aba86317cfef2fabd94c27"
+        },
+        {
+          "targetId": "awesome-copilot-game-engine",
+          "relativePath": "game-engine",
+          "contentHash": "af6d0628e806be430903743ca1795f715937e65ef81d4c3f0544fb326d23dce2"
+        },
+        {
+          "targetId": "awesome-copilot-gdpr-compliant",
+          "relativePath": "gdpr-compliant",
+          "contentHash": "e1f33a817a1d0f7165f4f6652cfeb52632ba124067c3f46c37f867cde730242e"
+        },
+        {
+          "targetId": "awesome-copilot-gen-specs-as-issues",
+          "relativePath": "gen-specs-as-issues",
+          "contentHash": "800a30f8ef7628338de6e19d4b119c0e7af4b68dde23e38c84deed87d11bfe49"
+        },
+        {
+          "targetId": "awesome-copilot-generate-custom-instructions-from-codebase",
+          "relativePath": "generate-custom-instructions-from-codebase",
+          "contentHash": "b0be02c9acdbffae5a1e39509c3e24567696cba666d666cece24ded66afa885b"
+        },
+        {
+          "targetId": "awesome-copilot-generate-image",
+          "relativePath": "generate-image",
+          "contentHash": "95e604ccc07f7c81370361ef5afe63de3d99c8165eb5f700fc464d175d79a206"
+        },
+        {
+          "targetId": "awesome-copilot-geofeed-tuner",
+          "relativePath": "geofeed-tuner",
+          "contentHash": "ed41870febc5e551257fa638baef209daa46fc27f28879cbc2541c56bedf50aa"
+        },
+        {
+          "targetId": "awesome-copilot-git-commit",
+          "relativePath": "git-commit",
+          "contentHash": "554d1a3c6d95f15bc1170160659ecdc9a9958b64f377f3988941b672c249b13f"
+        },
+        {
+          "targetId": "awesome-copilot-git-flow-branch-creator",
+          "relativePath": "git-flow-branch-creator",
+          "contentHash": "7674b5753d7d72e6e9698d8d8f857c017e0650364f3b96fcaac743fe21f7f9d9"
+        },
+        {
+          "targetId": "awesome-copilot-github-actions-efficiency",
+          "relativePath": "github-actions-efficiency",
+          "contentHash": "9c41e860468e5c88d83ab6eec70c585b0f122facec2632ea65497b3389139e43"
+        },
+        {
+          "targetId": "awesome-copilot-github-codespaces-efficiency",
+          "relativePath": "github-codespaces-efficiency",
+          "contentHash": "933339dc228208ba51428186d31407e186604ddaa8611bc307c9de1ad712e5b1"
+        },
+        {
+          "targetId": "awesome-copilot-github-copilot-starter",
+          "relativePath": "github-copilot-starter",
+          "contentHash": "7288f9613ffd1bccd46a688a717b26f3c13e3821236bb1b29d4a6699d79bb6ba"
+        },
+        {
+          "targetId": "awesome-copilot-github-issues",
+          "relativePath": "github-issues",
+          "contentHash": "0b015612542646ddca605ca6ba2de65863b2f367c48ad5badbe90b2c988f83a1"
+        },
+        {
+          "targetId": "awesome-copilot-github-release",
+          "relativePath": "github-release",
+          "contentHash": "952f28b24512920dd9112621b3c8fd2d0ec53d7b0bf27df77a1786b9f0fa0872"
+        },
+        {
+          "targetId": "awesome-copilot-go-mcp-server-generator",
+          "relativePath": "go-mcp-server-generator",
+          "contentHash": "70d1f1f45ab175da155c5d1109394a8eab074bdd85fa01e452d68347cf132ccb"
+        },
+        {
+          "targetId": "awesome-copilot-gsap-framer-scroll-animation",
+          "relativePath": "gsap-framer-scroll-animation",
+          "contentHash": "1ae197bfe22da3f51b7e77e67af01f87f12b9e797c237ce87e64f644b6528238"
+        },
+        {
+          "targetId": "awesome-copilot-gtm-0-to-1-launch",
+          "relativePath": "gtm-0-to-1-launch",
+          "contentHash": "3a919ad65a5537d81dcc245dec8062eb747d08e0f22991f25f87e6bee9f3230e"
+        },
+        {
+          "targetId": "awesome-copilot-gtm-ai-gtm",
+          "relativePath": "gtm-ai-gtm",
+          "contentHash": "eddccd76f45054b529962ca7f2db6076211db431b7185f63ee205736e8a2d914"
+        },
+        {
+          "targetId": "awesome-copilot-gtm-board-and-investor-communication",
+          "relativePath": "gtm-board-and-investor-communication",
+          "contentHash": "6db3e16149c2c08fc30e452309714e693d0a6210d1183952a6a9b7c8deb27c71"
+        },
+        {
+          "targetId": "awesome-copilot-gtm-developer-ecosystem",
+          "relativePath": "gtm-developer-ecosystem",
+          "contentHash": "52dfe739ae185d89c19639876e0cb884d5fd2851ea986b7b1ca4fa44b362907b"
+        },
+        {
+          "targetId": "awesome-copilot-gtm-enterprise-account-planning",
+          "relativePath": "gtm-enterprise-account-planning",
+          "contentHash": "92441114f77b1dd72d2edf1d55e369a00e0dce0bf8b4a749fbbc5198de4ddf78"
+        },
+        {
+          "targetId": "awesome-copilot-gtm-enterprise-onboarding",
+          "relativePath": "gtm-enterprise-onboarding",
+          "contentHash": "d70746655ff049c6600cd7e7e3ba8aeb5bc318f4a8996979b8db2be096f003de"
+        },
+        {
+          "targetId": "awesome-copilot-gtm-operating-cadence",
+          "relativePath": "gtm-operating-cadence",
+          "contentHash": "59deb368b2474c810c6b2607f10575d3e1ad65a0edc1159c259bf387d33f27b8"
+        },
+        {
+          "targetId": "awesome-copilot-gtm-partnership-architecture",
+          "relativePath": "gtm-partnership-architecture",
+          "contentHash": "d7dab398f7ce5c16cb5a7026f7e9465a6cb077a7b16caf024b3b120502d924b4"
+        },
+        {
+          "targetId": "awesome-copilot-gtm-positioning-strategy",
+          "relativePath": "gtm-positioning-strategy",
+          "contentHash": "332c1426936c92ffba2173b00d92fcb388991d88f25f9e0f4531aed55de7f27f"
+        },
+        {
+          "targetId": "awesome-copilot-gtm-product-led-growth",
+          "relativePath": "gtm-product-led-growth",
+          "contentHash": "c938e886e38cd6d6ad89da3ec005053bc1adb37db4ccfd473b242a4f0aad33de"
+        },
+        {
+          "targetId": "awesome-copilot-gtm-technical-product-pricing",
+          "relativePath": "gtm-technical-product-pricing",
+          "contentHash": "afb71bdbcbc0bfe8ec1ba210b0184e9b03466f3db9c3e9805fb898d76bb90460"
+        },
+        {
+          "targetId": "awesome-copilot-image-annotations",
+          "relativePath": "image-annotations",
+          "contentHash": "040fa10ab7e4ba741a1be447d14dc6b293d8019c91fbbf4c69097cb34272d347"
+        },
+        {
+          "targetId": "awesome-copilot-image-manipulation-image-magick",
+          "relativePath": "image-manipulation-image-magick",
+          "contentHash": "fba25bd07b134f456f7f6d217fd4d385f67286957387f59115a8275c391769c4"
+        },
+        {
+          "targetId": "awesome-copilot-impediment-prioritization",
+          "relativePath": "impediment-prioritization",
+          "contentHash": "dd6c9adda40b97375f9a72537d536ef9c9e98a1f43827d9f84bea4e699bece43"
+        },
+        {
+          "targetId": "awesome-copilot-import-infrastructure-as-code",
+          "relativePath": "import-infrastructure-as-code",
+          "contentHash": "66f2e1461aa2ec1459ed1ce16d28213b0f27375021b7f7f69d2f2e5c049f5b7d"
+        },
+        {
+          "targetId": "awesome-copilot-integrate-context-matic",
+          "relativePath": "integrate-context-matic",
+          "contentHash": "1251b1a1afebe0c881241dd7b87ed7688b01696866fada8f3071e0336f39ba43"
+        },
+        {
+          "targetId": "awesome-copilot-issue-fields-migration",
+          "relativePath": "issue-fields-migration",
+          "contentHash": "a1538bbbb18f528fe3655534984a3be110c3411b4c10786507365982d8f5d950"
+        },
+        {
+          "targetId": "awesome-copilot-java-add-graalvm-native-image-support",
+          "relativePath": "java-add-graalvm-native-image-support",
+          "contentHash": "e42d037610caf71805e809d2d38bff3f541883fe598532e3438101222561b67c"
+        },
+        {
+          "targetId": "awesome-copilot-java-docs",
+          "relativePath": "java-docs",
+          "contentHash": "9f837092e00114d9f18a9e744707ef11bfc68913247d8014adc534a29e46d087"
+        },
+        {
+          "targetId": "awesome-copilot-java-junit",
+          "relativePath": "java-junit",
+          "contentHash": "beeae246a2b1a8debffb53b005eba0e025f70923fa26a11f3c4bfefd99388fa3"
+        },
+        {
+          "targetId": "awesome-copilot-java-mcp-server-generator",
+          "relativePath": "java-mcp-server-generator",
+          "contentHash": "d4e55dbfac0c7d0bcc778543c8760abf93e365952a0b22549ce3374414504a1a"
+        },
+        {
+          "targetId": "awesome-copilot-java-refactoring-extract-method",
+          "relativePath": "java-refactoring-extract-method",
+          "contentHash": "4f23304d1c3ea81035cae02381e6f6bf70d4652a46990cfd71620f384ad78a2b"
+        },
+        {
+          "targetId": "awesome-copilot-java-refactoring-remove-parameter",
+          "relativePath": "java-refactoring-remove-parameter",
+          "contentHash": "40860d758c5a9ce679f4226d6d0c6bd8e6f220157bb2609fa111d2dbaee08c32"
+        },
+        {
+          "targetId": "awesome-copilot-java-springboot",
+          "relativePath": "java-springboot",
+          "contentHash": "574898202ce298557226c49d35036a6e9e66a1cb205ea15c44db298e6d74e3bd"
+        },
+        {
+          "targetId": "awesome-copilot-javascript-typescript-jest",
+          "relativePath": "javascript-typescript-jest",
+          "contentHash": "cb9a552dfe63cae4f310b27067ba28351b59ad17e83a9e1c5ff23c542ce6fdd8"
+        },
+        {
+          "targetId": "awesome-copilot-javax-to-jakarta-migration",
+          "relativePath": "javax-to-jakarta-migration",
+          "contentHash": "f93b85539e4f58f0254f935c053fb8a1923b1482ff17062046d884b6ed910c79"
+        },
+        {
+          "targetId": "awesome-copilot-kotlin-mcp-server-generator",
+          "relativePath": "kotlin-mcp-server-generator",
+          "contentHash": "4bedcbc52a3f47f831552d7e0e3599c6653e62918ae8bd0b535e2147b8ce1f1e"
+        },
+        {
+          "targetId": "awesome-copilot-kotlin-springboot",
+          "relativePath": "kotlin-springboot",
+          "contentHash": "0ddd1ab19b608348a3728443160cc7a3a7feaa61ed1ae7cc812cdcd62b574ca2"
+        },
+        {
+          "targetId": "awesome-copilot-legacy-circuit-mockups",
+          "relativePath": "legacy-circuit-mockups",
+          "contentHash": "2087521d62e0f99d15db3a73389d0d8bcdf45b4913f3fcfc7ef2657eae6df4de"
+        },
+        {
+          "targetId": "awesome-copilot-linkedin-post-formatter",
+          "relativePath": "linkedin-post-formatter",
+          "contentHash": "10fbdf86b0e01ea59922138ff7d6568d1b5a70a7aafd902c31ac4c45d96a19a9"
+        },
+        {
+          "targetId": "awesome-copilot-lsp-setup",
+          "relativePath": "lsp-setup",
+          "contentHash": "7a49f98b82b66454ad66a0b8506a50028a16a5c91be73cb39669a18bfba3cb01"
+        },
+        {
+          "targetId": "awesome-copilot-make-repo-contribution",
+          "relativePath": "make-repo-contribution",
+          "contentHash": "8452ae255064604f38942a920ff92bd05a6a4d5bcd0b94ad58b13b07d1abd1b7"
+        },
+        {
+          "targetId": "awesome-copilot-markdown-to-html",
+          "relativePath": "markdown-to-html",
+          "contentHash": "a51376b7c8e88e009c60f20af5b9c1157d4e5c3b40dd62f43abc0e873381e0e4"
+        },
+        {
+          "targetId": "awesome-copilot-mcp-cli",
+          "relativePath": "mcp-cli",
+          "contentHash": "54081db970e9333dad51f8458bc623912fab2087ecacccb6298f2c53833d6070"
+        },
+        {
+          "targetId": "awesome-copilot-mcp-copilot-studio-server-generator",
+          "relativePath": "mcp-copilot-studio-server-generator",
+          "contentHash": "55a4523e7480cc4fc7c0524b5c50d471bebe8100b408131aebb1fbab064e181d"
+        },
+        {
+          "targetId": "awesome-copilot-mcp-create-adaptive-cards",
+          "relativePath": "mcp-create-adaptive-cards",
+          "contentHash": "e0fd8c15020fbdb4383804cccf457eda5adaa738a03020ede1712b4a5ef3f377"
+        },
+        {
+          "targetId": "awesome-copilot-mcp-create-declarative-agent",
+          "relativePath": "mcp-create-declarative-agent",
+          "contentHash": "8aa6694de0da94ea8e1231555cca446d50a1c4553c898e7382e04b30120a2820"
+        },
+        {
+          "targetId": "awesome-copilot-mcp-deploy-manage-agents",
+          "relativePath": "mcp-deploy-manage-agents",
+          "contentHash": "9da69b1360ab1e8cfa07e0d1900e0dbdd2ec3927136985d34ad17d0ad099f58d"
+        },
+        {
+          "targetId": "awesome-copilot-mcp-security-audit",
+          "relativePath": "mcp-security-audit",
+          "contentHash": "2bbe95278d4ca17d1f836b8c66ec19189ffce7e939f53c400e7ab79e7490a1f7"
+        },
+        {
+          "targetId": "awesome-copilot-md-to-docx",
+          "relativePath": "md-to-docx",
+          "contentHash": "2f47a261fac808051f10f023f258c4b34a89ee909f82f280ad14a6e9fcf22f06"
+        },
+        {
+          "targetId": "awesome-copilot-meeting-minutes",
+          "relativePath": "meeting-minutes",
+          "contentHash": "69420bbe78b2f6c81f9689672360dd97e71e9fc83045a70e3d6924f24973a789"
+        },
+        {
+          "targetId": "awesome-copilot-memory-merger",
+          "relativePath": "memory-merger",
+          "contentHash": "a98f9bbd157755bfcaa8914095990d13a8d614afa18c882f3892f81e257e221c"
+        },
+        {
+          "targetId": "awesome-copilot-mentoring-juniors",
+          "relativePath": "mentoring-juniors",
+          "contentHash": "09bc1b382bc94670b8d4724fc8a204b0170121ebd1a5e091a0cc46a18787967e"
+        },
+        {
+          "targetId": "awesome-copilot-microsoft-agent-framework",
+          "relativePath": "microsoft-agent-framework",
+          "contentHash": "7724dce33f8904f4c94b5952926a3ff6e4917938c6c3a0573a9bc11ffa18b757"
+        },
+        {
+          "targetId": "awesome-copilot-microsoft-code-reference",
+          "relativePath": "microsoft-code-reference",
+          "contentHash": "19f13822dd8674ac0a24787ac15472c9137d0db5b03750ba43ee9dcdac8ddd03"
+        },
+        {
+          "targetId": "awesome-copilot-microsoft-docs",
+          "relativePath": "microsoft-docs",
+          "contentHash": "2c2e0b361eab0d0f2526cf8c3c5df63b996fcdd4c12ffccdccf08f8f8f1f1f9c"
+        },
+        {
+          "targetId": "awesome-copilot-microsoft-skill-creator",
+          "relativePath": "microsoft-skill-creator",
+          "contentHash": "2b1e9f91f7088d8ac7f774f933adf336e8fb47a2e0926d8373884c5e486c74c6"
+        },
+        {
+          "targetId": "awesome-copilot-migrating-oracle-to-postgres-stored-procedures",
+          "relativePath": "migrating-oracle-to-postgres-stored-procedures",
+          "contentHash": "894bd0093dbc2ee5ffb66a5edf29d8e56ff69bf2e84375490256e8577e8f76c8"
+        },
+        {
+          "targetId": "awesome-copilot-minecraft-plugin-development",
+          "relativePath": "minecraft-plugin-development",
+          "contentHash": "49cae402f5313d85323a0381c9ed3d9d2e1279ce5bc43cef17c40d497d1c8328"
+        },
+        {
+          "targetId": "awesome-copilot-mini-context-graph",
+          "relativePath": "mini-context-graph",
+          "contentHash": "872f1acea4f2db44cc592d2346d57782a1c949425bad485a8b0cee19ee5666e9"
+        },
+        {
+          "targetId": "awesome-copilot-mkdocs-translations",
+          "relativePath": "mkdocs-translations",
+          "contentHash": "ff506b38ec44f8cd7f5252476a6720247ad3d3bb6298a1481fcbc4b5ccf478cf"
+        },
+        {
+          "targetId": "awesome-copilot-msgraph-sdk",
+          "relativePath": "msgraph-sdk",
+          "contentHash": "cafac367eb3fdc99e05aedc76d46ad77f49e6c3fbc549e3cc6ec86d657638d8b"
+        },
+        {
+          "targetId": "awesome-copilot-msstore-cli",
+          "relativePath": "msstore-cli",
+          "contentHash": "21e91394eba73ae19bea53225da04f9a5273be5cf42df847aea0f839959daf68"
+        },
+        {
+          "targetId": "awesome-copilot-multi-stage-dockerfile",
+          "relativePath": "multi-stage-dockerfile",
+          "contentHash": "7dfea7d31f3744930cb07869e15a79f90dbd47d2ddc56d165715fbd257db9ba7"
+        },
+        {
+          "targetId": "awesome-copilot-mvvm-toolkit",
+          "relativePath": "mvvm-toolkit",
+          "contentHash": "25fc1d882a92163b96e2990272af75db0a70a329b9dd6b7cb49e1b058c8bff9d"
+        },
+        {
+          "targetId": "awesome-copilot-mvvm-toolkit-di",
+          "relativePath": "mvvm-toolkit-di",
+          "contentHash": "1cb004175f6c732d684c78df2d6ad8fe7b597a503bc6f6fa031b41613da0b8d6"
+        },
+        {
+          "targetId": "awesome-copilot-mvvm-toolkit-messenger",
+          "relativePath": "mvvm-toolkit-messenger",
+          "contentHash": "05fe9691a670b8d5d43184f66f40e36d980c9e878673d11639a3ac48375fa563"
+        },
+        {
+          "targetId": "awesome-copilot-nano-banana-pro-openrouter",
+          "relativePath": "nano-banana-pro-openrouter",
+          "contentHash": "3e0ce50fe4b76ad1fa7adcaaceb88f3e8c3c1ecb251f980fbe58a8edc2470fb8"
+        },
+        {
+          "targetId": "awesome-copilot-napkin",
+          "relativePath": "napkin",
+          "contentHash": "20d370bbfb5c6c7efbdfe5d86ca42f5c49ef968b7b84821abc85089a96aa6bb9"
+        },
+        {
+          "targetId": "awesome-copilot-next-intl-add-language",
+          "relativePath": "next-intl-add-language",
+          "contentHash": "67f02613e2001e601e8ac1b07c35af9b8428c50b6abb77218e752d0898735e35"
+        },
+        {
+          "targetId": "awesome-copilot-noob-mode",
+          "relativePath": "noob-mode",
+          "contentHash": "8c9787dae002acfc9f8d49ffd1792df23f07aa6b8350ed942dad47a79d7a6706"
+        },
+        {
+          "targetId": "awesome-copilot-nuget-manager",
+          "relativePath": "nuget-manager",
+          "contentHash": "0da298a7ede2c1267b2e9eca0ad394f9df7296689d010bbbc7cd818ed4a59567"
+        },
+        {
+          "targetId": "awesome-copilot-onboard-context-matic",
+          "relativePath": "onboard-context-matic",
+          "contentHash": "db5b6ff9092017ab254334daee1df36ee526b3f1af42d9d8197d6dc6f7a4edb9"
+        },
+        {
+          "targetId": "awesome-copilot-oo-component-documentation",
+          "relativePath": "oo-component-documentation",
+          "contentHash": "27716aa29ebc98e0b21c2f09e6694eecf1449896cc1070e2460fe5d4285357cc"
+        },
+        {
+          "targetId": "awesome-copilot-openapi-to-application-code",
+          "relativePath": "openapi-to-application-code",
+          "contentHash": "4ac9c35e14140129df922091b62288258887e5d0efc0760ab390b3b248a35c16"
+        },
+        {
+          "targetId": "awesome-copilot-optimize-simplicite-logs",
+          "relativePath": "optimize-simplicite-logs",
+          "contentHash": "536f90efa4d056fe6e2012d056722f3a8f88f57a865cced77d3a0b9e963cece1"
+        },
+        {
+          "targetId": "awesome-copilot-pdftk-server",
+          "relativePath": "pdftk-server",
+          "contentHash": "4fd8d834d63000642697089da926f177f542a0b3a7896dc8d5978ee780939743"
+        },
+        {
+          "targetId": "awesome-copilot-penpot-uiux-design",
+          "relativePath": "penpot-uiux-design",
+          "contentHash": "d15c5f2607fc96c272738343f58d054357bf54042be36f7d68a1f473fc78bdfe"
+        },
+        {
+          "targetId": "awesome-copilot-performance-review-writer",
+          "relativePath": "performance-review-writer",
+          "contentHash": "0bec62e91b3698d3fb2089fd853d3ada8e07b6cbd4c355ae85e09bfd6ea34bc6"
+        },
+        {
+          "targetId": "awesome-copilot-phoenix-cli",
+          "relativePath": "phoenix-cli",
+          "contentHash": "dde98a935bea2f498567860dbb1577a3064b06a27178ee8ebbb76b48e79d26e1"
+        },
+        {
+          "targetId": "awesome-copilot-phoenix-evals",
+          "relativePath": "phoenix-evals",
+          "contentHash": "3e4e92f3c3bbf1c3d227063bbcd799ec026525d9e71b89134b2c97698b9f5d11"
+        },
+        {
+          "targetId": "awesome-copilot-phoenix-tracing",
+          "relativePath": "phoenix-tracing",
+          "contentHash": "bb291aaa0c562ef6bd912bca8dc29dd18d9ef439ba3f9c4ec56e380314acb7c2"
+        },
+        {
+          "targetId": "awesome-copilot-php-mcp-server-generator",
+          "relativePath": "php-mcp-server-generator",
+          "contentHash": "e4ac56da9b7bfea6a03dece665b2c959ba8862da2ab97dc4041b891662620e37"
+        },
+        {
+          "targetId": "awesome-copilot-planning-oracle-to-postgres-migration-integration-testing",
+          "relativePath": "planning-oracle-to-postgres-migration-integration-testing",
+          "contentHash": "5b5bd61ee92cb67fd6a06f28c208385a55ca110fc17d9d15dc8ab126be287820"
+        },
+        {
+          "targetId": "awesome-copilot-plantuml-ascii",
+          "relativePath": "plantuml-ascii",
+          "contentHash": "8bfd83efc42a70cdb9d1e3d64ec305bd4d6f09e1753a03bbb7d3805d9bd13e53"
+        },
+        {
+          "targetId": "awesome-copilot-playwright-automation-fill-in-form",
+          "relativePath": "playwright-automation-fill-in-form",
+          "contentHash": "ed10ea649ed942b29707738ceb78de7f1a5bfddafe348d23b2ef81e8e3a4b80b"
+        },
+        {
+          "targetId": "awesome-copilot-playwright-explore-website",
+          "relativePath": "playwright-explore-website",
+          "contentHash": "1496280e250b5b79c2c3081f093fa1fea22ac19a2fdc05074589875cdd9f55d3"
+        },
+        {
+          "targetId": "awesome-copilot-playwright-generate-test",
+          "relativePath": "playwright-generate-test",
+          "contentHash": "79dbb1a49fc5a6502788ccba1a4bd30769a017a1cc31d9db329d1326ea3d898f"
+        },
+        {
+          "targetId": "awesome-copilot-postgresql-code-review",
+          "relativePath": "postgresql-code-review",
+          "contentHash": "5c2f68120440692ae4b030b17e2a3553c1204d63ee871d6d994c6925b1f874cb"
+        },
+        {
+          "targetId": "awesome-copilot-postgresql-optimization",
+          "relativePath": "postgresql-optimization",
+          "contentHash": "9b511a7d706302761a7700cd6b87df9793650fa7f7f3299fe33243fc339e3c9f"
+        },
+        {
+          "targetId": "awesome-copilot-power-apps-code-app-scaffold",
+          "relativePath": "power-apps-code-app-scaffold",
+          "contentHash": "2418cc29dd18c22377792ce9662e5b5281609b1f3ed0091e54f416af6ef37720"
+        },
+        {
+          "targetId": "awesome-copilot-power-bi-dax-optimization",
+          "relativePath": "power-bi-dax-optimization",
+          "contentHash": "5c94805ea59a827571464d169571db6f9100859c9072ef7af4aba24aba4ea5be"
+        },
+        {
+          "targetId": "awesome-copilot-power-bi-model-design-review",
+          "relativePath": "power-bi-model-design-review",
+          "contentHash": "bf6268e3d75446533b54887db6263302fde01f516634d4bd60a1cc21928add4c"
+        },
+        {
+          "targetId": "awesome-copilot-power-bi-performance-troubleshooting",
+          "relativePath": "power-bi-performance-troubleshooting",
+          "contentHash": "3901de5f09fff6a226b9a458f147875084d2aac30329c3f4c3b1bb3318316921"
+        },
+        {
+          "targetId": "awesome-copilot-power-bi-report-design-consultation",
+          "relativePath": "power-bi-report-design-consultation",
+          "contentHash": "0151c2ebaed4d6fde6c747cfd14c324b54013ec59ef4f43872e043976d880b2b"
+        },
+        {
+          "targetId": "awesome-copilot-power-platform-architect",
+          "relativePath": "power-platform-architect",
+          "contentHash": "6297fd58c421beed40cd39d7acf771f964460178311cf12f3ac106e8ec94e111"
+        },
+        {
+          "targetId": "awesome-copilot-power-platform-mcp-connector-suite",
+          "relativePath": "power-platform-mcp-connector-suite",
+          "contentHash": "0b7764050e18c8257335da89594192c462aa33e2fcd2cef8c1f066ba1fe496d3"
+        },
+        {
+          "targetId": "awesome-copilot-powerbi-modeling",
+          "relativePath": "powerbi-modeling",
+          "contentHash": "0730f587a313065335e1ff58f5b5dcb60a150c1632451a365f9d232ada0e54ff"
+        },
+        {
+          "targetId": "awesome-copilot-pr-dashboard",
+          "relativePath": "pr-dashboard",
+          "contentHash": "1c5dfa5d5c9b0a849d442b2b34580d49b8f993eebf3402e1eb622d82ca57d3b1"
+        },
+        {
+          "targetId": "awesome-copilot-pr-screenshots",
+          "relativePath": "pr-screenshots",
+          "contentHash": "9f385d36d5341c16005ed107568b9826ebdf5c9cd4475bfb1a4226defc641622"
+        },
+        {
+          "targetId": "awesome-copilot-prd",
+          "relativePath": "prd",
+          "contentHash": "6772e6f0fcc7110d625c7f4595e4990e1910007676c36d217eda4e779041d5e5"
+        },
+        {
+          "targetId": "awesome-copilot-premium-frontend-ui",
+          "relativePath": "premium-frontend-ui",
+          "contentHash": "b7edf35b33931d15ea0c1d271f3c05d469e2b6923ed4df1c955d4da86287d9fb"
+        },
+        {
+          "targetId": "awesome-copilot-project-workflow-analysis-blueprint-generator",
+          "relativePath": "project-workflow-analysis-blueprint-generator",
+          "contentHash": "1563be31e5dd0568317b196dc92e10282a41d628db7bc04a990ad9019d35c37b"
+        },
+        {
+          "targetId": "awesome-copilot-prompt-optimizer",
+          "relativePath": "prompt-optimizer",
+          "contentHash": "191e2544ccf5890c4d7134b116d5fc2b554571d596d1b8a43ef260d77168caab"
+        },
+        {
+          "targetId": "awesome-copilot-publish-to-pages",
+          "relativePath": "publish-to-pages",
+          "contentHash": "0f970c26b1c167f3d230258d6c32530fd5c32bfd2c9da439c1d9ad376f7f23cc"
+        },
+        {
+          "targetId": "awesome-copilot-pytest-coverage",
+          "relativePath": "pytest-coverage",
+          "contentHash": "3778add8809c5aac585ab764090f46e7cfdb009ae3fc9fb308710538627970f9"
+        },
+        {
+          "targetId": "awesome-copilot-python-azure-iot-edge-modules",
+          "relativePath": "python-azure-iot-edge-modules",
+          "contentHash": "44361424ef20efbe7eb153dc1c545067c3bbdfe8ab0750adabea9b52ba3b623b"
+        },
+        {
+          "targetId": "awesome-copilot-python-mcp-server-generator",
+          "relativePath": "python-mcp-server-generator",
+          "contentHash": "e3d726a3ea74763f0602c477a44cc75936f7de7c291358b3a635db17f5d2e9d2"
+        },
+        {
+          "targetId": "awesome-copilot-python-pypi-package-builder",
+          "relativePath": "python-pypi-package-builder",
+          "contentHash": "a936499b350cc292fead873345f54893c2e91c46ce0bae8620bd2f1734376f3e"
+        },
+        {
+          "targetId": "awesome-copilot-qdrant-clients-sdk",
+          "relativePath": "qdrant-clients-sdk",
+          "contentHash": "eac9386970303787ccff5ce65f77e2bc51286a07b27977a8fba1f256f4c95426"
+        },
+        {
+          "targetId": "awesome-copilot-qdrant-deployment-options",
+          "relativePath": "qdrant-deployment-options",
+          "contentHash": "31afa639420a3434cc8c48039b38820e8248e1ba47074b3f58a724e73af20516"
+        },
+        {
+          "targetId": "awesome-copilot-qdrant-model-migration",
+          "relativePath": "qdrant-model-migration",
+          "contentHash": "811cc59e1b1f421449e898f4e2e3f6d4b43fd220af2d544aaed0e7e134639b07"
+        },
+        {
+          "targetId": "awesome-copilot-qdrant-monitoring",
+          "relativePath": "qdrant-monitoring",
+          "contentHash": "5264e89c01d4e02fb3db9ad9bebd0132c7de951a249c1ebc93d863a834529af2"
+        },
+        {
+          "targetId": "awesome-copilot-qdrant-monitoring-debugging",
+          "relativePath": "qdrant-monitoring/debugging",
+          "contentHash": "f27aa8d722235a0bb5ef56c87c0a5f00d38a5ec7fdf87603f4f28d77c6aab88a"
+        },
+        {
+          "targetId": "awesome-copilot-qdrant-monitoring-setup",
+          "relativePath": "qdrant-monitoring/setup",
+          "contentHash": "5659b271b878467cdf7631c918635c79c64e89ebc97733acd0296fe1d483f635"
+        },
+        {
+          "targetId": "awesome-copilot-qdrant-performance-optimization",
+          "relativePath": "qdrant-performance-optimization",
+          "contentHash": "5323301ea670baa98623e53f8c363845f6edde59a2f0f88e0c6e948d61438a3f"
+        },
+        {
+          "targetId": "awesome-copilot-qdrant-performance-optimization-indexing-performance-optimization",
+          "relativePath": "qdrant-performance-optimization/indexing-performance-optimization",
+          "contentHash": "344b4283daa2a2977525bccedaee4f96aed8a5bccaeb562c46816c3380c27c29"
+        },
+        {
+          "targetId": "awesome-copilot-qdrant-performance-optimization-memory-usage-optimization",
+          "relativePath": "qdrant-performance-optimization/memory-usage-optimization",
+          "contentHash": "d3be8c9d207f4b625b4724048e45e438f0efeb4650e7cca1da2d40e2ba37dd9d"
+        },
+        {
+          "targetId": "awesome-copilot-qdrant-performance-optimization-search-speed-optimization",
+          "relativePath": "qdrant-performance-optimization/search-speed-optimization",
+          "contentHash": "ede068e053005c19718bf11853e99ab94b337db2769f74e52fe63f81fc525131"
+        },
+        {
+          "targetId": "awesome-copilot-qdrant-scaling",
+          "relativePath": "qdrant-scaling",
+          "contentHash": "6dee402516b353fec38f39eeb8aacf9aa96b504bdd9d3fa5977f96163c642bcf"
+        },
+        {
+          "targetId": "awesome-copilot-qdrant-scaling-minimize-latency",
+          "relativePath": "qdrant-scaling/minimize-latency",
+          "contentHash": "e8f0c32d41e69d807a40e68a8da36eb5789c3bf349320dccd8e758eb533f1650"
+        },
+        {
+          "targetId": "awesome-copilot-qdrant-scaling-scaling-data-volume",
+          "relativePath": "qdrant-scaling/scaling-data-volume",
+          "contentHash": "4abc9a1509251b6126ff4aa62d75cf473462576c3aa8ae1e709cd4de2504c1b0"
+        },
+        {
+          "targetId": "awesome-copilot-qdrant-scaling-scaling-data-volume-horizontal-scaling",
+          "relativePath": "qdrant-scaling/scaling-data-volume/horizontal-scaling",
+          "contentHash": "e768679bda54dd9f333a9b1861bfc239922d5c07725418b72df69dcd0fe020c4"
+        },
+        {
+          "targetId": "awesome-copilot-qdrant-scaling-scaling-data-volume-sliding-time-window",
+          "relativePath": "qdrant-scaling/scaling-data-volume/sliding-time-window",
+          "contentHash": "cc055f73d7c163fb7ea0e9400497ed4ed4b2d350169ca08cc34ede524f71a753"
+        },
+        {
+          "targetId": "awesome-copilot-qdrant-scaling-scaling-data-volume-tenant-scaling",
+          "relativePath": "qdrant-scaling/scaling-data-volume/tenant-scaling",
+          "contentHash": "d4d730dd3f9ba60519f5519f50022a34ea1e1d56aea9fdd30d53784785ec6954"
+        },
+        {
+          "targetId": "awesome-copilot-qdrant-scaling-scaling-data-volume-vertical-scaling",
+          "relativePath": "qdrant-scaling/scaling-data-volume/vertical-scaling",
+          "contentHash": "8f2cfdbcfa9987714633fe8d665c959d5875eafc63aa5ed64be044cf083e2ac6"
+        },
+        {
+          "targetId": "awesome-copilot-qdrant-scaling-scaling-qps",
+          "relativePath": "qdrant-scaling/scaling-qps",
+          "contentHash": "fe26245826d3e4be330bcb61bf38df5d48d0dc31cc2ffa512997903f91e91dfa"
+        },
+        {
+          "targetId": "awesome-copilot-qdrant-scaling-scaling-query-volume",
+          "relativePath": "qdrant-scaling/scaling-query-volume",
+          "contentHash": "992e499c8897fca3de1f07838d7a01317d1300d22473a09d8ca5953bb169cf29"
+        },
+        {
+          "targetId": "awesome-copilot-qdrant-search-quality",
+          "relativePath": "qdrant-search-quality",
+          "contentHash": "3af84e9019065cd90cc79210c5833153fc62acdcf55bda359ab7876809be0803"
+        },
+        {
+          "targetId": "awesome-copilot-qdrant-search-quality-diagnosis",
+          "relativePath": "qdrant-search-quality/diagnosis",
+          "contentHash": "faaed6cd9af51548bfc3a0c77d61bb4b96903cb5c0e17b2f3b722c41d1fb350c"
+        },
+        {
+          "targetId": "awesome-copilot-qdrant-search-quality-search-strategies",
+          "relativePath": "qdrant-search-quality/search-strategies",
+          "contentHash": "ed5044af012df8b84eca9e7cef6888dec798e5aa5b32144cf72646e93847d469"
+        },
+        {
+          "targetId": "awesome-copilot-qdrant-version-upgrade",
+          "relativePath": "qdrant-version-upgrade",
+          "contentHash": "1a6722e67b24970d52ef94386e162e97f4b4c10eb1599d6d0165050df2ba4993"
+        },
+        {
+          "targetId": "awesome-copilot-quality-playbook",
+          "relativePath": "quality-playbook",
+          "contentHash": "2b6f0e36e5427d81d94b2ac35ec6e657c57fb9434ba0d9a011b0e462b04ae729"
+        },
+        {
+          "targetId": "awesome-copilot-quasi-coder",
+          "relativePath": "quasi-coder",
+          "contentHash": "5bd225b43ce82a866b25477d11df02fa8ad35305afa66d56ebb878ec6d9f9dce"
+        },
+        {
+          "targetId": "awesome-copilot-react-audit-grep-patterns",
+          "relativePath": "react-audit-grep-patterns",
+          "contentHash": "786b14c055e6182ed04e606bae7c7489cf9a4dc83f866f3f2c317d032cdaf023"
+        },
+        {
+          "targetId": "awesome-copilot-react18-batching-patterns",
+          "relativePath": "react18-batching-patterns",
+          "contentHash": "f4bdb6d5b817c19b00062392ff51965d42fe185facbb5724653dd9aa39c3140e"
+        },
+        {
+          "targetId": "awesome-copilot-react18-dep-compatibility",
+          "relativePath": "react18-dep-compatibility",
+          "contentHash": "1578a05b72d487c3ff55256d9824f8f60dc47bb421e669d1705c977d86ab81c7"
+        },
+        {
+          "targetId": "awesome-copilot-react18-enzyme-to-rtl",
+          "relativePath": "react18-enzyme-to-rtl",
+          "contentHash": "948b578f25740476a29074902cfd6c0886bee07cdbe99fcfe76dd58072f422a4"
+        },
+        {
+          "targetId": "awesome-copilot-react18-legacy-context",
+          "relativePath": "react18-legacy-context",
+          "contentHash": "688905b5520f59b3e1c3990391dd8a6bcdb75b59dd80ec6414c6fea70fd51f2f"
+        },
+        {
+          "targetId": "awesome-copilot-react18-lifecycle-patterns",
+          "relativePath": "react18-lifecycle-patterns",
+          "contentHash": "5d2a1220ef18d5344f18de537877ff2a192260142ae3e40810967d5047745470"
+        },
+        {
+          "targetId": "awesome-copilot-react18-string-refs",
+          "relativePath": "react18-string-refs",
+          "contentHash": "c876a43c2aaaac6746c48364ebadf050787922d259ef6f021b51d36f2db9fc67"
+        },
+        {
+          "targetId": "awesome-copilot-react19-concurrent-patterns",
+          "relativePath": "react19-concurrent-patterns",
+          "contentHash": "f953aa23d213b4a7f7800f8f59529c3d1321e12f49ef7f7bf7ab7a5e0235fbc3"
+        },
+        {
+          "targetId": "awesome-copilot-react19-source-patterns",
+          "relativePath": "react19-source-patterns",
+          "contentHash": "cbbf1227b3f46f9b91c948c3846611a539496b363e4dc1bbd3faff2e913dff86"
+        },
+        {
+          "targetId": "awesome-copilot-react19-test-patterns",
+          "relativePath": "react19-test-patterns",
+          "contentHash": "3f0e423124fb2e7f719c5e88a0c231c35d0c95c8235ddd20e44d4d28d3699665"
+        },
+        {
+          "targetId": "awesome-copilot-readme-blueprint-generator",
+          "relativePath": "readme-blueprint-generator",
+          "contentHash": "571094038e74bd3de56356f67d1e73af69afc4ce63f886c2b047f351b85a3183"
+        },
+        {
+          "targetId": "awesome-copilot-refactor",
+          "relativePath": "refactor",
+          "contentHash": "58a38edd230cdcdd866939906321c8ba6f47c98a70d0cda373360196ee2ca1a7"
+        },
+        {
+          "targetId": "awesome-copilot-refactor-method-complexity-reduce",
+          "relativePath": "refactor-method-complexity-reduce",
+          "contentHash": "445cc1f9afff9cb74946f0a72af936b450e8dc513423607857d59304c84892b2"
+        },
+        {
+          "targetId": "awesome-copilot-refactor-plan",
+          "relativePath": "refactor-plan",
+          "contentHash": "93741df0042a15c01ae8589e72014dcf53c557c11ca1df69c29737534c312c29"
+        },
+        {
+          "targetId": "awesome-copilot-remember",
+          "relativePath": "remember",
+          "contentHash": "5048a392120b00f8ef0db0645d5031fd97b68efda98a2159882c8809aed21180"
+        },
+        {
+          "targetId": "awesome-copilot-remember-interactive-programming",
+          "relativePath": "remember-interactive-programming",
+          "contentHash": "9397a72a1af17c5eab9337ab027637fafc08c9cd95bfb8ecbe43c2c981780d6d"
+        },
+        {
+          "targetId": "awesome-copilot-repo-story-time",
+          "relativePath": "repo-story-time",
+          "contentHash": "1b5e89152b3c3201726c4e12d582c90c952f61a99bfc94c0e34f633391be324a"
+        },
+        {
+          "targetId": "awesome-copilot-resemble-detect",
+          "relativePath": "resemble-detect",
+          "contentHash": "54fd45fbb68e01beda1d71f1a9e0f23da1cb0d3022ff2992fc4d4ec415cd9530"
+        },
+        {
+          "targetId": "awesome-copilot-review-and-refactor",
+          "relativePath": "review-and-refactor",
+          "contentHash": "95b48ed4b137777ddc87b77cb0873ed7f485141a517825e71af1a984cf5a6cd6"
+        },
+        {
+          "targetId": "awesome-copilot-reviewing-oracle-to-postgres-migration",
+          "relativePath": "reviewing-oracle-to-postgres-migration",
+          "contentHash": "669a24631a66f2745d5d9a81f50b6c18f32f8be3453e6a17cf0fecfa446ad34a"
+        },
+        {
+          "targetId": "awesome-copilot-rhino3d-scripts",
+          "relativePath": "rhino3d-scripts",
+          "contentHash": "6618e636ac83c50a034a477e2ce6b2c0b2f4d8a0fc9dfd4ea0d676a8d32c4c80"
+        },
+        {
+          "targetId": "awesome-copilot-roundup",
+          "relativePath": "roundup",
+          "contentHash": "a430c45fba6dac39f2325ee17d9a01e460b4c2f0fc6ff63eba76b688fd12384f"
+        },
+        {
+          "targetId": "awesome-copilot-roundup-setup",
+          "relativePath": "roundup-setup",
+          "contentHash": "c5f936c3e8a5b0884cbe89e8cdd9d93b16b359ff5510cfa3f9b0539165a5ce20"
+        },
+        {
+          "targetId": "awesome-copilot-ruby-mcp-server-generator",
+          "relativePath": "ruby-mcp-server-generator",
+          "contentHash": "93b219e2584a86b9aa9437263a49544a0202cd162dc26140ce1a880ae4ddf6f9"
+        },
+        {
+          "targetId": "awesome-copilot-ruff-recursive-fix",
+          "relativePath": "ruff-recursive-fix",
+          "contentHash": "92151e328fbccab628de9496797fce39636555e65dd7434687751673b4b57f8c"
+        },
+        {
+          "targetId": "awesome-copilot-rust-mcp-server-generator",
+          "relativePath": "rust-mcp-server-generator",
+          "contentHash": "7d60ebdec91be10f4f9a3b2560559d1a9ef4f7adc0e4a310f868e943e362cf03"
+        },
+        {
+          "targetId": "awesome-copilot-salesforce-apex-quality",
+          "relativePath": "salesforce-apex-quality",
+          "contentHash": "1424428af68ba207d5763ac0f885b49741722a1f0e875bb880597f9ea27873a0"
+        },
+        {
+          "targetId": "awesome-copilot-salesforce-component-standards",
+          "relativePath": "salesforce-component-standards",
+          "contentHash": "cbc52d34e7f41a125996ae8573b800a43881c3fab4b81a11a6bd7ba2ee9ff13b"
+        },
+        {
+          "targetId": "awesome-copilot-salesforce-flow-design",
+          "relativePath": "salesforce-flow-design",
+          "contentHash": "588eccf48f0ec2c826ea7aea2e75c49a57e93cbfd2395b4181c0e4672b977300"
+        },
+        {
+          "targetId": "awesome-copilot-sandbox-npm-install",
+          "relativePath": "sandbox-npm-install",
+          "contentHash": "efbad94eaadd3b4284dd4fb3e2dfab71e528bcad4dfbfe4dc8c03c34a35439b3"
+        },
+        {
+          "targetId": "awesome-copilot-scaffolding-oracle-to-postgres-migration-test-project",
+          "relativePath": "scaffolding-oracle-to-postgres-migration-test-project",
+          "contentHash": "2c2ca06aab11f662541be5a5ceda500323ce639feb64117afdc2bdd080901a39"
+        },
+        {
+          "targetId": "awesome-copilot-scoutqa-test",
+          "relativePath": "scoutqa-test",
+          "contentHash": "6c09a43984b05b6a108e79c2defb51d8f7fee7e230610a5e220f63dde8bcdee1"
+        },
+        {
+          "targetId": "awesome-copilot-screen-recording",
+          "relativePath": "screen-recording",
+          "contentHash": "36745737c09d07632f6cde3aca1ef8edd4e2050130a3cd1eb4220838d85d8713"
+        },
+        {
+          "targetId": "awesome-copilot-secret-scanning",
+          "relativePath": "secret-scanning",
+          "contentHash": "ebbaf8a49777e8be6d8c220b91bbee935b2aaab81b3ee976562484a339d750db"
+        },
+        {
+          "targetId": "awesome-copilot-security-review",
+          "relativePath": "security-review",
+          "contentHash": "002392d88637b89e4cbc409a0531834970937f3b57c0b448a17e04b5ca6d356c"
+        },
+        {
+          "targetId": "awesome-copilot-semantic-kernel",
+          "relativePath": "semantic-kernel",
+          "contentHash": "cf85400071b8b052618541a2a450e7d3299d7af08ae9db08108f1d4d5111c11e"
+        },
+        {
+          "targetId": "awesome-copilot-shuffle-json-data",
+          "relativePath": "shuffle-json-data",
+          "contentHash": "00adbbd1ab1f7e525a2f34cfda9fe710c00925920b556751bbfe3a318f9faa3f"
+        },
+        {
+          "targetId": "awesome-copilot-slang-shader-engineer",
+          "relativePath": "slang-shader-engineer",
+          "contentHash": "cab49bbddf84fbc05c6ff23d505a07757b46cd30fd64898b68e5b66ecb4f4f79"
+        },
+        {
+          "targetId": "awesome-copilot-snowflake-semanticview",
+          "relativePath": "snowflake-semanticview",
+          "contentHash": "f9fd64e6980ec2016956afa1dbc3997da9a5d3f3c80a5df0aa78f133a5a4fbb6"
+        },
+        {
+          "targetId": "awesome-copilot-sponsor-finder",
+          "relativePath": "sponsor-finder",
+          "contentHash": "f150e859624fec421a0c93d582a154891dab14c052ce67399c8df0ff12f93aee"
+        },
+        {
+          "targetId": "awesome-copilot-spring-boot-testing",
+          "relativePath": "spring-boot-testing",
+          "contentHash": "8161940340dc52766242ab30589369623b31089b41ebd7baa19a27f411648550"
+        },
+        {
+          "targetId": "awesome-copilot-sql-code-review",
+          "relativePath": "sql-code-review",
+          "contentHash": "2e67c2fa2875f299d5f839942a72822d30981d4e19052dfe32455a0482a9267d"
+        },
+        {
+          "targetId": "awesome-copilot-sql-optimization",
+          "relativePath": "sql-optimization",
+          "contentHash": "d87639dea8e0208e2161b78b22f6427b0fdf59e95e693b40d48b1226a0c35ccf"
+        },
+        {
+          "targetId": "awesome-copilot-sql-server-table-reconciliation",
+          "relativePath": "sql-server-table-reconciliation",
+          "contentHash": "f09e45ab5e9df130b9109cc7f88510680153ee6c33c14d519cc33d6dcd1fdeda"
+        },
+        {
+          "targetId": "awesome-copilot-ssma-console",
+          "relativePath": "ssma-console",
+          "contentHash": "68bf5e87b2f6a2c42b795989f3199c74d84c0a3f015cca59576b2e43e603107a"
+        },
+        {
+          "targetId": "awesome-copilot-structured-autonomy-generate",
+          "relativePath": "structured-autonomy-generate",
+          "contentHash": "5fc7a8560d1d540a6c5208b59aaa51c153963fca93ac69055777592f9a1133bb"
+        },
+        {
+          "targetId": "awesome-copilot-structured-autonomy-implement",
+          "relativePath": "structured-autonomy-implement",
+          "contentHash": "67d3e02344661ba99b4a72641c786ce80bd63caa51d7b969ebd01169773884d5"
+        },
+        {
+          "targetId": "awesome-copilot-structured-autonomy-plan",
+          "relativePath": "structured-autonomy-plan",
+          "contentHash": "5272f19e7c68639078a0baa61585f6be413853cdfa8e8a71465c5bcd5ffb8fdc"
+        },
+        {
+          "targetId": "awesome-copilot-suggest-awesome-github-copilot-agents",
+          "relativePath": "suggest-awesome-github-copilot-agents",
+          "contentHash": "cc8ed3c9857b116d837d9742120a8d6029ae460b91399bae4f3c0a19e690ff49"
+        },
+        {
+          "targetId": "awesome-copilot-suggest-awesome-github-copilot-instructions",
+          "relativePath": "suggest-awesome-github-copilot-instructions",
+          "contentHash": "9bdff877d0d4797d6fe4843e1f134b9935bf45adb3b0dca25514292b41d8fd74"
+        },
+        {
+          "targetId": "awesome-copilot-suggest-awesome-github-copilot-skills",
+          "relativePath": "suggest-awesome-github-copilot-skills",
+          "contentHash": "52c541422d1a5667e6128677fa32f691f0a613fe274cbf23bb604633c8baa113"
+        },
+        {
+          "targetId": "awesome-copilot-swift-mcp-server-generator",
+          "relativePath": "swift-mcp-server-generator",
+          "contentHash": "ca0b454b3f2125d370397c69509fc6ac739180c07385c239bb36323bda03cf69"
+        },
+        {
+          "targetId": "awesome-copilot-technology-stack-blueprint-generator",
+          "relativePath": "technology-stack-blueprint-generator",
+          "contentHash": "a510e19ed3be672c6dc30b2498fb8342f5ad71d73b52f5f80f40f92170579584"
+        },
+        {
+          "targetId": "awesome-copilot-terraform-azurerm-set-diff-analyzer",
+          "relativePath": "terraform-azurerm-set-diff-analyzer",
+          "contentHash": "b7efae1dd84de6f644daeac4e6f2f6a7f281b5edf68bb864fb79bb36cd3c4195"
+        },
+        {
+          "targetId": "awesome-copilot-threat-model-analyst",
+          "relativePath": "threat-model-analyst",
+          "contentHash": "cdd72b75b224b20f006cb31602b0b68d0ea27c22a25c9a6458a2cf0b90a25fb3"
+        },
+        {
+          "targetId": "awesome-copilot-tldr-prompt",
+          "relativePath": "tldr-prompt",
+          "contentHash": "050f2dd8319fcddebfca3a9d9ddc375efbf66df792c4f63219c7e3f1bdb29a3f"
+        },
+        {
+          "targetId": "awesome-copilot-transloadit-media-processing",
+          "relativePath": "transloadit-media-processing",
+          "contentHash": "ac5dc3cdaec786c94d6f876c2038d7ea35919ba134d022248c18b629cd8d516f"
+        },
+        {
+          "targetId": "awesome-copilot-typescript-mcp-server-generator",
+          "relativePath": "typescript-mcp-server-generator",
+          "contentHash": "3a39ecdfd4ddc2886baa10cdb12b5117484ea6d40b14309304c6d7908d79655a"
+        },
+        {
+          "targetId": "awesome-copilot-typespec-api-operations",
+          "relativePath": "typespec-api-operations",
+          "contentHash": "882751e73fb23048fcffd739345cabec0b3176a922b528f271c3dc7ce78ddd8a"
+        },
+        {
+          "targetId": "awesome-copilot-typespec-create-agent",
+          "relativePath": "typespec-create-agent",
+          "contentHash": "a25c02160da90770d824b693bd408c94e830942a657c99511a00174506ec1672"
+        },
+        {
+          "targetId": "awesome-copilot-typespec-create-api-plugin",
+          "relativePath": "typespec-create-api-plugin",
+          "contentHash": "b48f961f80c931a0a31f43adf2954d60c8b9006170e45b85c01f5824d3427002"
+        },
+        {
+          "targetId": "awesome-copilot-ui-screenshots",
+          "relativePath": "ui-screenshots",
+          "contentHash": "b496e7967ad7d88e9c99a7c23a7544375c24ae483b82415c6440946a3ce68c9d"
+        },
+        {
+          "targetId": "awesome-copilot-unit-test-vue-pinia",
+          "relativePath": "unit-test-vue-pinia",
+          "contentHash": "4239e4c27c148bf4bbafd338bf8aeeb7993eda9e544eb80f0f15c68d5536e167"
+        },
+        {
+          "targetId": "awesome-copilot-update-avm-modules-in-bicep",
+          "relativePath": "update-avm-modules-in-bicep",
+          "contentHash": "b8ca2755d0ae9b57ea4d90776eb6495a29f614adce765704f02cb352a72c0f18"
+        },
+        {
+          "targetId": "awesome-copilot-update-implementation-plan",
+          "relativePath": "update-implementation-plan",
+          "contentHash": "08f62222ba518b54dd0f369c539f6f75dabb32893768e0cb2ff49ecb1e8cb7a9"
+        },
+        {
+          "targetId": "awesome-copilot-update-llms",
+          "relativePath": "update-llms",
+          "contentHash": "7377a6b500b054bf41a50b744faba999a44d64dce0201e0a0108ce06e6726fcf"
+        },
+        {
+          "targetId": "awesome-copilot-update-markdown-file-index",
+          "relativePath": "update-markdown-file-index",
+          "contentHash": "d1abb1eb4685fc941376f29a6ef309c07bc4aea02b8d88c065ef81e2b8065707"
+        },
+        {
+          "targetId": "awesome-copilot-update-specification",
+          "relativePath": "update-specification",
+          "contentHash": "dd9bb2d572206e93de6cfd9555bbbc27314afea527d568219a3a0e3649ccc393"
+        },
+        {
+          "targetId": "awesome-copilot-vardoger-analyze",
+          "relativePath": "vardoger-analyze",
+          "contentHash": "b591aabb62aa9876039938220e346e93fa929788b23c07b73be05d2686d41525"
+        },
+        {
+          "targetId": "awesome-copilot-vscode-ext-commands",
+          "relativePath": "vscode-ext-commands",
+          "contentHash": "64067e4a8188d5c7598f8b208698d7c4f5e1c233f3e6e8e628ec96acd65fdeb6"
+        },
+        {
+          "targetId": "awesome-copilot-vscode-ext-localization",
+          "relativePath": "vscode-ext-localization",
+          "contentHash": "a238b58545bc23476ac0bd6451e9b01a225cb125096b90b3425e8e08943e3d6c"
+        },
+        {
+          "targetId": "awesome-copilot-web-design-reviewer",
+          "relativePath": "web-design-reviewer",
+          "contentHash": "2b324a0a6b44f16ddd2259f3cb2cb326b315ff5c42b5bf5c99132cd6f77835e5"
+        },
+        {
+          "targetId": "awesome-copilot-webapp-testing",
+          "relativePath": "webapp-testing",
+          "contentHash": "c4629221463d79c84555721ae2a30a6c345dd4d16c38cf6dbe735126e2426044"
+        },
+        {
+          "targetId": "awesome-copilot-what-context-needed",
+          "relativePath": "what-context-needed",
+          "contentHash": "65ed7445bf561a5e5199ac77478d2691c05019e0dc32fdddc23db9e45bd9d135"
+        },
+        {
+          "targetId": "awesome-copilot-winmd-api-search",
+          "relativePath": "winmd-api-search",
+          "contentHash": "d777e47317ae46772d5fadb37ebc322bd2a3610c315d9b782748e2fb205b93f3"
+        },
+        {
+          "targetId": "awesome-copilot-winui3-migration-guide",
+          "relativePath": "winui3-migration-guide",
+          "contentHash": "dcd44fcb881e370a52cb826dd2134633e297b1c905030828778fc1145b8db23b"
+        },
+        {
+          "targetId": "awesome-copilot-workiq-copilot",
+          "relativePath": "workiq-copilot",
+          "contentHash": "29ed1f4026b4676d5f50e13169f8c64cb4a8ce4f58e9f2261acfd17f069b2e69"
+        },
+        {
+          "targetId": "awesome-copilot-write-coding-standards-from-file",
+          "relativePath": "write-coding-standards-from-file",
+          "contentHash": "4dee1de37bdad7e02f4f9ae60b91324eb6b1f19fcd5122222e2ff88dfda99702"
+        },
+        {
+          "targetId": "awesome-copilot-x-twitter-scraper",
+          "relativePath": "x-twitter-scraper",
+          "contentHash": "87684229b882dad2e05c4a9b37cf980932978b931eeb43f65cc54115067a3aa9"
+        }
       ]
     },
     "anthropic": {
@@ -811,6 +2645,93 @@
         "web-artifacts-builder",
         "webapp-testing",
         "xlsx"
+      ],
+      "skills": [
+        {
+          "targetId": "anthropic-algorithmic-art",
+          "relativePath": "algorithmic-art",
+          "contentHash": "3bc4092c09804853186524c826bc0621b940bb6122c05b84496dff95388e6eef"
+        },
+        {
+          "targetId": "anthropic-brand-guidelines",
+          "relativePath": "brand-guidelines",
+          "contentHash": "1120b3769e2985cefb3d25be981b1f914abeba57ae079b83c20c666c164fa9fe"
+        },
+        {
+          "targetId": "anthropic-canvas-design",
+          "relativePath": "canvas-design",
+          "contentHash": "a1f288079624402f30682753c1d43920b6664785698d21d3e7aa197450a6448b"
+        },
+        {
+          "targetId": "anthropic-claude-api",
+          "relativePath": "claude-api",
+          "contentHash": "47d67884657fabc19a3d00b9a69ca0daa25efbd91d2dd2b732a88b862dfc35f0"
+        },
+        {
+          "targetId": "anthropic-doc-coauthoring",
+          "relativePath": "doc-coauthoring",
+          "contentHash": "2e47d78846faeea4a56e9809c52700087a15a2155a3f293a3efbaded81398ef4"
+        },
+        {
+          "targetId": "anthropic-docx",
+          "relativePath": "docx",
+          "contentHash": "cfbabd72b1aec7dfaad988fb6e5e16b27dc744b9a00cae15db9045e95f53903e"
+        },
+        {
+          "targetId": "anthropic-frontend-design",
+          "relativePath": "frontend-design",
+          "contentHash": "b81e2ff87ed8fa4d6c377ccb127a7254c9e6a77e3ae94f21e6b514f7bb2945a0"
+        },
+        {
+          "targetId": "anthropic-internal-comms",
+          "relativePath": "internal-comms",
+          "contentHash": "067b7587a344a928fc6534ef66b1bcd591fc7c26d207ea7ca3334aeb678d6475"
+        },
+        {
+          "targetId": "anthropic-mcp-builder",
+          "relativePath": "mcp-builder",
+          "contentHash": "0f4592dcb53cf2b5d6b7febee6b4152018b565551a1c29e3c612f57b218ab295"
+        },
+        {
+          "targetId": "anthropic-pdf",
+          "relativePath": "pdf",
+          "contentHash": "9f78b8359fbd4943ad260a7a1e436e5a96503406d6c34e99f69223d647d85b9c"
+        },
+        {
+          "targetId": "anthropic-pptx",
+          "relativePath": "pptx",
+          "contentHash": "e5b0df918cbe9d62508b3cf808d73899633f82fc19f6258a25ef9f0de7e62125"
+        },
+        {
+          "targetId": "anthropic-skill-creator",
+          "relativePath": "skill-creator",
+          "contentHash": "dcd4803e61e913e6fc27294184cd3a71f09f5e924ff20c8a9a20173e7b3c2bcf"
+        },
+        {
+          "targetId": "anthropic-slack-gif-creator",
+          "relativePath": "slack-gif-creator",
+          "contentHash": "2efca615ce55a3edd8fc05c779068a8085816617991987e446606403cd3abb22"
+        },
+        {
+          "targetId": "anthropic-theme-factory",
+          "relativePath": "theme-factory",
+          "contentHash": "c35893e221e28895c52143cc11bf30e41a44817796b39d4b15727dadc9796552"
+        },
+        {
+          "targetId": "anthropic-web-artifacts-builder",
+          "relativePath": "web-artifacts-builder",
+          "contentHash": "81c5002c6643b0de7b8710b00e7a9038daa6fb9b68d59870ee6adb12da8d10f8"
+        },
+        {
+          "targetId": "anthropic-webapp-testing",
+          "relativePath": "webapp-testing",
+          "contentHash": "51b7349e77ec63b7744a6f63647e7566a0b4d2e301121cc10e8c2113af6556a2"
+        },
+        {
+          "targetId": "anthropic-xlsx",
+          "relativePath": "xlsx",
+          "contentHash": "dd316db7785a6be12966c2a2d848931fbf5f518b3cdb0a66fa62ee835ead1cfc"
+        }
       ]
     },
     "openai": {
@@ -914,6 +2835,228 @@
         ".system/plugin-creator",
         ".system/skill-creator",
         ".system/skill-installer"
+      ],
+      "skills": [
+        {
+          "targetId": "openai-curated-aspnet-core",
+          "relativePath": ".curated/aspnet-core",
+          "contentHash": "1f487ef3565e5ac1ee6c93cbeb9ac666292b30285877c82ddb0a77c9777fe92f"
+        },
+        {
+          "targetId": "openai-curated-chatgpt-apps",
+          "relativePath": ".curated/chatgpt-apps",
+          "contentHash": "c3a13a659ce26e9d067b5a97c321e8abec6d8e878afce31b7e841dfcf2635c3a"
+        },
+        {
+          "targetId": "openai-curated-cli-creator",
+          "relativePath": ".curated/cli-creator",
+          "contentHash": "24058eabf0aafce6def3fb937ac93cbe3fa341c653c658dc589edb77f73d6152"
+        },
+        {
+          "targetId": "openai-curated-cloudflare-deploy",
+          "relativePath": ".curated/cloudflare-deploy",
+          "contentHash": "d7632537cf19be17cf33d2c696b9d9c2ea3ee51026030e9b203d5b9255e75b15"
+        },
+        {
+          "targetId": "openai-curated-define-goal",
+          "relativePath": ".curated/define-goal",
+          "contentHash": "708df89ff19cbae82a762efae036735d1914b5c7e44df1832e0b723f6cd9ee30"
+        },
+        {
+          "targetId": "openai-curated-figma",
+          "relativePath": ".curated/figma",
+          "contentHash": "5b11f7c8d0ce4c047b401323e7b8fe6559bd3162a3397bf5248634a5444609d5"
+        },
+        {
+          "targetId": "openai-curated-figma-code-connect-components",
+          "relativePath": ".curated/figma-code-connect-components",
+          "contentHash": "0f19edad8aed28063a3517c419fbcbef5421d024f189fd02a17fae25093ec69d"
+        },
+        {
+          "targetId": "openai-curated-figma-create-design-system-rules",
+          "relativePath": ".curated/figma-create-design-system-rules",
+          "contentHash": "1f4d7e16ba5325a80da32e2e6bde0ea850ba9287f35f4675d51d55d2f0dc6e2a"
+        },
+        {
+          "targetId": "openai-curated-figma-create-new-file",
+          "relativePath": ".curated/figma-create-new-file",
+          "contentHash": "23f429203bd57f186905b2523d4ff8bdf10d3b85b39fc7eed4786097d81f1adc"
+        },
+        {
+          "targetId": "openai-curated-figma-generate-design",
+          "relativePath": ".curated/figma-generate-design",
+          "contentHash": "45d2b97103bdeb31cb2744fca2c79bcefb659c88faca626bea30ec2f9342dcc9"
+        },
+        {
+          "targetId": "openai-curated-figma-generate-library",
+          "relativePath": ".curated/figma-generate-library",
+          "contentHash": "7f42103c59fc181d7081404a56545f321c458d97f5ee7f7a0ab2af75ea69a85f"
+        },
+        {
+          "targetId": "openai-curated-figma-implement-design",
+          "relativePath": ".curated/figma-implement-design",
+          "contentHash": "63f3d12d444547bbf68c10a12982b1f42e0f6e26fc074324564a13184d4b15ad"
+        },
+        {
+          "targetId": "openai-curated-figma-use",
+          "relativePath": ".curated/figma-use",
+          "contentHash": "afa9c4ae068a18b93e4914b2d224180ace113db7713dd66f4df397f16ba9c4b4"
+        },
+        {
+          "targetId": "openai-curated-gh-address-comments",
+          "relativePath": ".curated/gh-address-comments",
+          "contentHash": "77389eefd3fb6584210668ca8e43f4b8de87e7722ddd953474bc9e24cdfaaedd"
+        },
+        {
+          "targetId": "openai-curated-gh-fix-ci",
+          "relativePath": ".curated/gh-fix-ci",
+          "contentHash": "7b326b4a2f0f5f85122144628ec02077e48841e0e0e82efce88b3415bcfb7c26"
+        },
+        {
+          "targetId": "openai-curated-hatch-pet",
+          "relativePath": ".curated/hatch-pet",
+          "contentHash": "7ab0f01e8561085d1b494a6ca74abed766c655da8ec98284fb38a362c19d6871"
+        },
+        {
+          "targetId": "openai-curated-jupyter-notebook",
+          "relativePath": ".curated/jupyter-notebook",
+          "contentHash": "62f102e8554b25716dccef0ffab4572d4e3eaf05ccc76562d33a065bc9c521fb"
+        },
+        {
+          "targetId": "openai-curated-linear",
+          "relativePath": ".curated/linear",
+          "contentHash": "ce0f39c95b6c9190f8ea33614393cdb556b2684dd8388ded394e9cb915f42601"
+        },
+        {
+          "targetId": "openai-curated-migrate-to-codex",
+          "relativePath": ".curated/migrate-to-codex",
+          "contentHash": "145b7fe48360642cb7a42bad3a817f10833fa8a387ffcb4c2df8a47c01a832e2"
+        },
+        {
+          "targetId": "openai-curated-netlify-deploy",
+          "relativePath": ".curated/netlify-deploy",
+          "contentHash": "bb2c29bf599a043cade932f60cc64f632ca100e8767ccdfa2ba1a42c8d43958f"
+        },
+        {
+          "targetId": "openai-curated-notion-knowledge-capture",
+          "relativePath": ".curated/notion-knowledge-capture",
+          "contentHash": "b49383b229bc766190ea22bb58502cfcf7e08449f5fce55a104eef1e54e27f00"
+        },
+        {
+          "targetId": "openai-curated-notion-meeting-intelligence",
+          "relativePath": ".curated/notion-meeting-intelligence",
+          "contentHash": "bad61faccbbe0f2cab53bcfbc4cb22f847ba8593ef14c2e37fea5b9b03346332"
+        },
+        {
+          "targetId": "openai-curated-notion-research-documentation",
+          "relativePath": ".curated/notion-research-documentation",
+          "contentHash": "e88a46da978cf6f088a788fa92ee736df699a355a72f41f14bdc258bf3ef57e7"
+        },
+        {
+          "targetId": "openai-curated-notion-spec-to-implementation",
+          "relativePath": ".curated/notion-spec-to-implementation",
+          "contentHash": "6e22c4c6df441e849fa6b4b825371b579c9bb4896f97bedca5f8536020427a81"
+        },
+        {
+          "targetId": "openai-curated-openai-docs",
+          "relativePath": ".curated/openai-docs",
+          "contentHash": "1941a2fa1d815f9fa46efbe410df4dbb57092e22140e768c085c4bedba859fa3"
+        },
+        {
+          "targetId": "openai-curated-pdf",
+          "relativePath": ".curated/pdf",
+          "contentHash": "d108cf2b36355ab37eb5962933f4d09785ec002f3105c506129320209306b9d2"
+        },
+        {
+          "targetId": "openai-curated-playwright",
+          "relativePath": ".curated/playwright",
+          "contentHash": "0ffaabcc8e0990627c4725f18bf1c7955534a796c1c199e872909de2013ce6a8"
+        },
+        {
+          "targetId": "openai-curated-playwright-interactive",
+          "relativePath": ".curated/playwright-interactive",
+          "contentHash": "f6c1155d923e6ae3ccc12abfef2266f119f8e9546df2ddeee1f5eb369845a0a1"
+        },
+        {
+          "targetId": "openai-curated-render-deploy",
+          "relativePath": ".curated/render-deploy",
+          "contentHash": "c17c75adeb1834ed5cee1e440a651ae476c4101cd63762fcd9a58eada917552d"
+        },
+        {
+          "targetId": "openai-curated-screenshot",
+          "relativePath": ".curated/screenshot",
+          "contentHash": "081935a6a163277537d46365f49d6b4a3cb40b4748347e7e88759c5927fa8cf5"
+        },
+        {
+          "targetId": "openai-curated-security-best-practices",
+          "relativePath": ".curated/security-best-practices",
+          "contentHash": "7b3dae1ffc5434d890f3c65c8f552af52d0307fab3b35dec13013c9ca3844c4f"
+        },
+        {
+          "targetId": "openai-curated-security-ownership-map",
+          "relativePath": ".curated/security-ownership-map",
+          "contentHash": "f06c1a59247569326702c945f397af163ea96cf2ecfdf2dde280605bf89a3ec8"
+        },
+        {
+          "targetId": "openai-curated-security-threat-model",
+          "relativePath": ".curated/security-threat-model",
+          "contentHash": "1283c0dd62a8104d9edda4583569b5d8510b4ddaa45120687c999250fd96bad2"
+        },
+        {
+          "targetId": "openai-curated-sentry",
+          "relativePath": ".curated/sentry",
+          "contentHash": "508c6f5c100586c81a34397d30f00f4b8771b66d698a7ac1836998df925dd007"
+        },
+        {
+          "targetId": "openai-curated-speech",
+          "relativePath": ".curated/speech",
+          "contentHash": "d6120efc03ea0e80204f687801cfaec8efc4519a3430b68e13e4ebd8e1c69b52"
+        },
+        {
+          "targetId": "openai-curated-transcribe",
+          "relativePath": ".curated/transcribe",
+          "contentHash": "f530021da9f377362ee4214e0bc689cbb5404640d2eb88ee272d51d61f530a09"
+        },
+        {
+          "targetId": "openai-curated-vercel-deploy",
+          "relativePath": ".curated/vercel-deploy",
+          "contentHash": "f4a6cbfbb378a320fae179a79f727a881d19677e9b3db96ed49d2dc02a74fa46"
+        },
+        {
+          "targetId": "openai-curated-winui-app",
+          "relativePath": ".curated/winui-app",
+          "contentHash": "917341ec9eb688d73e21362910a7178a92b2ae49544b7d8f17ee9e19adfe2ea8"
+        },
+        {
+          "targetId": "openai-curated-yeet",
+          "relativePath": ".curated/yeet",
+          "contentHash": "4829d4909081e1abf91507fb581e6f566ce7064001892414f32191895b08a595"
+        },
+        {
+          "targetId": "openai-system-imagegen",
+          "relativePath": ".system/imagegen",
+          "contentHash": "826d05b806d51fa81cd650f1c0854b0a1f7fbccd1b152c588ded1797a2e7218f"
+        },
+        {
+          "targetId": "openai-system-openai-docs",
+          "relativePath": ".system/openai-docs",
+          "contentHash": "1ee3c911a5c615c4f508e5611cb6e38548aba5ea12efb0c3e8838614cc6347b9"
+        },
+        {
+          "targetId": "openai-system-plugin-creator",
+          "relativePath": ".system/plugin-creator",
+          "contentHash": "3b43cb214f458a1ae13e1b93a69e493241d8e12c5a474afe8ae81ae0507aa216"
+        },
+        {
+          "targetId": "openai-system-skill-creator",
+          "relativePath": ".system/skill-creator",
+          "contentHash": "a17383bfb1448637ac1f757ad891ddb9676fa30b0eff620200f0e1cbc0cc0d50"
+        },
+        {
+          "targetId": "openai-system-skill-installer",
+          "relativePath": ".system/skill-installer",
+          "contentHash": "df58efeb75a6001d733701e7d73e24dd71b94a2a0016971f0bcfe097217888a5"
+        }
       ]
     },
     "antfu": {
@@ -963,6 +3106,93 @@
         "vue-testing-best-practices",
         "vueuse-functions",
         "web-design-guidelines"
+      ],
+      "skills": [
+        {
+          "targetId": "antfu-antfu",
+          "relativePath": "antfu",
+          "contentHash": "bf1badde2a7b0ac941613adaa3694cab11a258d589dbc8b31b42045ecbcfa0c1"
+        },
+        {
+          "targetId": "antfu-nuxt",
+          "relativePath": "nuxt",
+          "contentHash": "1022ec1de47ea1ad86a2a95c296527a17abe71affe88092f8a4949fd6897da13"
+        },
+        {
+          "targetId": "antfu-pinia",
+          "relativePath": "pinia",
+          "contentHash": "fba52570068a715fef7d306e582a5993bf08a838b55465d3c3c7bff8ba70f731"
+        },
+        {
+          "targetId": "antfu-pnpm",
+          "relativePath": "pnpm",
+          "contentHash": "5beb82c2dc0fe5a79f1022f0b8a0cf87310bf4a03306953e4699f224a7f17a95"
+        },
+        {
+          "targetId": "antfu-slidev",
+          "relativePath": "slidev",
+          "contentHash": "4da03b00af5f60beaf9e6aa65113d7f1c1fbdc49dc1bcef7556ae77dc90a1ee1"
+        },
+        {
+          "targetId": "antfu-tsdown",
+          "relativePath": "tsdown",
+          "contentHash": "3c51a9bc3cc52451e5a68c6ad78fa9a458bd27b39ab16099ed652036a2dce5a9"
+        },
+        {
+          "targetId": "antfu-turborepo",
+          "relativePath": "turborepo",
+          "contentHash": "5ab28fce169d83a897a3d78c5e2b24a855756e8eef9aa0563439f4164a708aab"
+        },
+        {
+          "targetId": "antfu-unocss",
+          "relativePath": "unocss",
+          "contentHash": "8888703f85d6dc097697c4fd5faa3f958540d4b8b3c44c19fc201e4edb44fe0b"
+        },
+        {
+          "targetId": "antfu-vite",
+          "relativePath": "vite",
+          "contentHash": "3cb7a75336e338faa9be15dd8b97479721ac8ceac6f1ff4061c9b9eefccd9983"
+        },
+        {
+          "targetId": "antfu-vitepress",
+          "relativePath": "vitepress",
+          "contentHash": "eba57687640159cd74333a6d0abcc1c6e7967883b978bc801b9a8fb461021d8c"
+        },
+        {
+          "targetId": "antfu-vitest",
+          "relativePath": "vitest",
+          "contentHash": "87c8cf025987d1f1a0e9c0fd0b8605946a0ebd5478676471ce296d8f0adc0f07"
+        },
+        {
+          "targetId": "antfu-vue",
+          "relativePath": "vue",
+          "contentHash": "eba0d129cc4c2cf9c08116d4b136cc6800322985e831a9e04da4e97f3dca137a"
+        },
+        {
+          "targetId": "antfu-vue-best-practices",
+          "relativePath": "vue-best-practices",
+          "contentHash": "05b373713e6bbd216fb3ee9709289b68bcdeb9eac8ffea477e35bdbd8e0f9acd"
+        },
+        {
+          "targetId": "antfu-vue-router-best-practices",
+          "relativePath": "vue-router-best-practices",
+          "contentHash": "33889faf631e80bf112a096dfe3e76029447f05f99d6d5c0aea2daddff186d7c"
+        },
+        {
+          "targetId": "antfu-vue-testing-best-practices",
+          "relativePath": "vue-testing-best-practices",
+          "contentHash": "376fd21d6adfd37f7d102fa17ca099abddef16943389f37588405b013cef23b8"
+        },
+        {
+          "targetId": "antfu-vueuse-functions",
+          "relativePath": "vueuse-functions",
+          "contentHash": "8c4a245c65d73b6d6e95335c499d214faa85cc10cf5187b0d6132d822f1c7d88"
+        },
+        {
+          "targetId": "antfu-web-design-guidelines",
+          "relativePath": "web-design-guidelines",
+          "contentHash": "f4647ca866a3accf763777f83e7682954f0187cd6bea7eea0399796652414e8f"
+        }
       ]
     },
     "mattpocock": {
@@ -1036,6 +3266,153 @@
         "productivity/grill-me",
         "productivity/handoff",
         "productivity/write-a-skill"
+      ],
+      "skills": [
+        {
+          "targetId": "mattpocock-deprecated-design-an-interface",
+          "relativePath": "deprecated/design-an-interface",
+          "contentHash": "a2596e9fa2d50e23ba014f64a5b8f9df4eb56b846a52cad152899ef5eb97b085"
+        },
+        {
+          "targetId": "mattpocock-deprecated-qa",
+          "relativePath": "deprecated/qa",
+          "contentHash": "d9727aac6503981bf69bdd8b37e0d85b32b8fbd353a57528c252dac1337ab761"
+        },
+        {
+          "targetId": "mattpocock-deprecated-request-refactor-plan",
+          "relativePath": "deprecated/request-refactor-plan",
+          "contentHash": "d59de4ba6cc1fe2dd267e8b9b5a1fd88e3e739e2130bc9dd78061d2a072830b8"
+        },
+        {
+          "targetId": "mattpocock-deprecated-ubiquitous-language",
+          "relativePath": "deprecated/ubiquitous-language",
+          "contentHash": "2449e2345b96b9f1e861c697b5eab50d03ae1254481a4306b6f815684e523b3a"
+        },
+        {
+          "targetId": "mattpocock-engineering-diagnose",
+          "relativePath": "engineering/diagnose",
+          "contentHash": "28886402bbfa0470248086eab9106a103b964b76ae9496e63ff0c8a6761b6d13"
+        },
+        {
+          "targetId": "mattpocock-engineering-grill-with-docs",
+          "relativePath": "engineering/grill-with-docs",
+          "contentHash": "3e35025119ba03efe7983dfdec3c8b96918142e3978512f3c2bf66d428310c7e"
+        },
+        {
+          "targetId": "mattpocock-engineering-improve-codebase-architecture",
+          "relativePath": "engineering/improve-codebase-architecture",
+          "contentHash": "f00de04c7bb83cfd0ed1f97f3401a83838212c30856912ee44ba406649e6c749"
+        },
+        {
+          "targetId": "mattpocock-engineering-prototype",
+          "relativePath": "engineering/prototype",
+          "contentHash": "a653deb65afa2ee8f45c68f6ef4f593147171b386e994c8cccf89292d9ea9d75"
+        },
+        {
+          "targetId": "mattpocock-engineering-setup-matt-pocock-skills",
+          "relativePath": "engineering/setup-matt-pocock-skills",
+          "contentHash": "c778d4e3d86ecc9125c357279a86780657b5db23110e1f7acf4f46d2441e7204"
+        },
+        {
+          "targetId": "mattpocock-engineering-tdd",
+          "relativePath": "engineering/tdd",
+          "contentHash": "af059705061156fd4845ddbb736fe92b564118ac5f03551e09ef9e8f6d970638"
+        },
+        {
+          "targetId": "mattpocock-engineering-to-issues",
+          "relativePath": "engineering/to-issues",
+          "contentHash": "0e6a2973fa5bdf32570227c578f7e474d945dd9281615d31439664c3ef016fce"
+        },
+        {
+          "targetId": "mattpocock-engineering-to-prd",
+          "relativePath": "engineering/to-prd",
+          "contentHash": "b60e3805e361e4eabc6f3df48d305299e0fde64cb24b6e95443c01de907a2e7d"
+        },
+        {
+          "targetId": "mattpocock-engineering-triage",
+          "relativePath": "engineering/triage",
+          "contentHash": "b819f0285e4e5814ac6472d0217f07dc9f23d2fdae3ebb0dd31d98360d8ac029"
+        },
+        {
+          "targetId": "mattpocock-engineering-zoom-out",
+          "relativePath": "engineering/zoom-out",
+          "contentHash": "2a6894c7f9b1c9c55f451c625a834c4f377e217b623a85280e55db5fe9cacf48"
+        },
+        {
+          "targetId": "mattpocock-in-progress-review",
+          "relativePath": "in-progress/review",
+          "contentHash": "5700f30d3f06706ee56c099adceec222fef26dbcf82817ff604962634e246b2e"
+        },
+        {
+          "targetId": "mattpocock-in-progress-teach",
+          "relativePath": "in-progress/teach",
+          "contentHash": "5d5eedf96b6944e7d1aaaefc333249a5b92b5a332ce63d1a539a5c2ea7d2b4c7"
+        },
+        {
+          "targetId": "mattpocock-in-progress-writing-beats",
+          "relativePath": "in-progress/writing-beats",
+          "contentHash": "0843367d0a653bb17e61b3771d0ec08fa463663bc0ab6f3f421141b2687c4429"
+        },
+        {
+          "targetId": "mattpocock-in-progress-writing-fragments",
+          "relativePath": "in-progress/writing-fragments",
+          "contentHash": "4ffa34a701caff27da54b9e073fef48471f0ccafee009d404c22ae542d0e8dea"
+        },
+        {
+          "targetId": "mattpocock-in-progress-writing-shape",
+          "relativePath": "in-progress/writing-shape",
+          "contentHash": "81a542b95fa865325835bf5ec7644a98e657c1e0f3374c56cb9f3b42b374660f"
+        },
+        {
+          "targetId": "mattpocock-misc-git-guardrails-claude-code",
+          "relativePath": "misc/git-guardrails-claude-code",
+          "contentHash": "03c4de7613c712aea336d64c467ea3ed14be2cbd52345925fe949c75c01c29f7"
+        },
+        {
+          "targetId": "mattpocock-misc-migrate-to-shoehorn",
+          "relativePath": "misc/migrate-to-shoehorn",
+          "contentHash": "de4da4c11d924fac79c924b2ee3d2db4a5cb98386eb490a599119463d036ae72"
+        },
+        {
+          "targetId": "mattpocock-misc-scaffold-exercises",
+          "relativePath": "misc/scaffold-exercises",
+          "contentHash": "75f5c9d771606fb9762f16522efc954df11c324f87148d8ff069bce166257de9"
+        },
+        {
+          "targetId": "mattpocock-misc-setup-pre-commit",
+          "relativePath": "misc/setup-pre-commit",
+          "contentHash": "872f4037cb7e6e0e340d4175c086550072959925dffc87b160d1a30dc9f63bbd"
+        },
+        {
+          "targetId": "mattpocock-personal-edit-article",
+          "relativePath": "personal/edit-article",
+          "contentHash": "cc372fb25b552017765aa0dac1b108f77eaee4555d607041efc1ad5d8c995b4a"
+        },
+        {
+          "targetId": "mattpocock-personal-obsidian-vault",
+          "relativePath": "personal/obsidian-vault",
+          "contentHash": "7bed1d552aa5e9345e493cd62cb13e65c5d829d153c349afdb2cb91c809fa6c4"
+        },
+        {
+          "targetId": "mattpocock-productivity-caveman",
+          "relativePath": "productivity/caveman",
+          "contentHash": "b4bb6fe3bf3da222993ca0aee5e7c6f5368b182dd30ce1172e8f8e3280eb7052"
+        },
+        {
+          "targetId": "mattpocock-productivity-grill-me",
+          "relativePath": "productivity/grill-me",
+          "contentHash": "74147eb6010a65957efef2b9e0f0b3ff935c1def7fc117697151b1d0f3610556"
+        },
+        {
+          "targetId": "mattpocock-productivity-handoff",
+          "relativePath": "productivity/handoff",
+          "contentHash": "d215dd8f2a19bf85fdaf67a3cdb5077641f6b4108f229ba79579414793d7b0a3"
+        },
+        {
+          "targetId": "mattpocock-productivity-write-a-skill",
+          "relativePath": "productivity/write-a-skill",
+          "contentHash": "be8f20e66309258034b82a7db5040b03798aa40546f9d387662c2bd86be23123"
+        }
       ]
     },
     "open-wot": {
@@ -1061,6 +3438,33 @@
         "wot-ui-cli",
         "wot-ui-unocss-preset-guide",
         "wot-ui-v2"
+      ],
+      "skills": [
+        {
+          "targetId": "open-wot-create-wot-ui-theme",
+          "relativePath": "create-wot-ui-theme",
+          "contentHash": "9779adcbf515147e27c1b3879ae2e11d3112273debca6909f5d7af75da5fc64b"
+        },
+        {
+          "targetId": "open-wot-migrate-v1-to-v2",
+          "relativePath": "migrate-v1-to-v2",
+          "contentHash": "3079937905ed12e18e914fa4489c4ab5e7a8e7ead253c8b966727e51bd20e37f"
+        },
+        {
+          "targetId": "open-wot-wot-ui-cli",
+          "relativePath": "wot-ui-cli",
+          "contentHash": "3ed0d47fb5d09462a028a2458c56225f0fc166a6887670a91ab18dcd9205ed48"
+        },
+        {
+          "targetId": "open-wot-wot-ui-unocss-preset-guide",
+          "relativePath": "wot-ui-unocss-preset-guide",
+          "contentHash": "cc97db48da121c35cec211b35191a7d44b17ece445984eb142d1ac7f13f0c717"
+        },
+        {
+          "targetId": "open-wot-wot-ui-v2",
+          "relativePath": "wot-ui-v2",
+          "contentHash": "27deb83f399cb349593d52c8ca666859b1f9fe032a6581725f28d663481fd689"
+        }
       ]
     },
     "addyosmani": {
@@ -1122,6 +3526,123 @@
         "spec-driven-development",
         "test-driven-development",
         "using-agent-skills"
+      ],
+      "skills": [
+        {
+          "targetId": "addyosmani-api-and-interface-design",
+          "relativePath": "api-and-interface-design",
+          "contentHash": "293db2903b41316a5109a1e0ce3e1740eeafae31735bc1f9143dafbfd1187363"
+        },
+        {
+          "targetId": "addyosmani-browser-testing-with-devtools",
+          "relativePath": "browser-testing-with-devtools",
+          "contentHash": "8fb8aef5678048b7786b4da6738accb58d55754f714d9ad02acee12f5d32a6f0"
+        },
+        {
+          "targetId": "addyosmani-ci-cd-and-automation",
+          "relativePath": "ci-cd-and-automation",
+          "contentHash": "a6ed8ed56456b01ff8314c44eefc69897d9905ae4e06bb2b7036286efb79b5f0"
+        },
+        {
+          "targetId": "addyosmani-code-review-and-quality",
+          "relativePath": "code-review-and-quality",
+          "contentHash": "7587de5eff9eccd098f0d3b57b6d86ee18df680a7bbbef03710de7c1a4e67263"
+        },
+        {
+          "targetId": "addyosmani-code-simplification",
+          "relativePath": "code-simplification",
+          "contentHash": "f0c5ed754057eb0c1e027e2587f59de816651feb5e837242296c43ea21cf621d"
+        },
+        {
+          "targetId": "addyosmani-context-engineering",
+          "relativePath": "context-engineering",
+          "contentHash": "ff9d4e5706bdd2eb7de1bfed569f1f42d28e478979ce6fcc32e617e7861b491d"
+        },
+        {
+          "targetId": "addyosmani-debugging-and-error-recovery",
+          "relativePath": "debugging-and-error-recovery",
+          "contentHash": "2539c0078466755c192123c34758aa432da5d29529340037113eeaecb6647b0e"
+        },
+        {
+          "targetId": "addyosmani-deprecation-and-migration",
+          "relativePath": "deprecation-and-migration",
+          "contentHash": "bf2d9b4e3bc635b32e8de70b0ab41e4395d7b585e6474347c53ce89d45fbdb75"
+        },
+        {
+          "targetId": "addyosmani-documentation-and-adrs",
+          "relativePath": "documentation-and-adrs",
+          "contentHash": "7fed35f9c5b95d8e3623ad24d78d209c3267ab62d7157fc03954c76a7e58adf4"
+        },
+        {
+          "targetId": "addyosmani-doubt-driven-development",
+          "relativePath": "doubt-driven-development",
+          "contentHash": "59aef769adeae40aad67a1d54474aaf914ea7ecdfc2a4752a54840a8d29f80de"
+        },
+        {
+          "targetId": "addyosmani-frontend-ui-engineering",
+          "relativePath": "frontend-ui-engineering",
+          "contentHash": "9f9e5b3141c891d866c2a15a11ac3aba4e86ec6c530d054f0534503c2e720cb1"
+        },
+        {
+          "targetId": "addyosmani-git-workflow-and-versioning",
+          "relativePath": "git-workflow-and-versioning",
+          "contentHash": "b1a84eac7a47f6e2985a27733137d862fcdeb552eefe2bd17629e1f3c20e0e97"
+        },
+        {
+          "targetId": "addyosmani-idea-refine",
+          "relativePath": "idea-refine",
+          "contentHash": "ee6ea1c7f444568e0b5e9b9791a8261d7834a180d2ecb96fd95ec6a4c0a4aef1"
+        },
+        {
+          "targetId": "addyosmani-incremental-implementation",
+          "relativePath": "incremental-implementation",
+          "contentHash": "5f16adf542330dfadb8b9a9c6d7ec45e4196bd1db9a67d4407e9dc07e6e29e41"
+        },
+        {
+          "targetId": "addyosmani-interview-me",
+          "relativePath": "interview-me",
+          "contentHash": "1d94741d10d2c826cd0c191aea3981ee94c8abb27ef2a166f6a372117d06448f"
+        },
+        {
+          "targetId": "addyosmani-performance-optimization",
+          "relativePath": "performance-optimization",
+          "contentHash": "46ebf029d5fe812c312d4c5388ba7f07a076685fd30c7dfa7539c07763f1304e"
+        },
+        {
+          "targetId": "addyosmani-planning-and-task-breakdown",
+          "relativePath": "planning-and-task-breakdown",
+          "contentHash": "d9dc9a1bea50a0bb2b5c51ed59833b65969b5b0bda2c8dacefb5560275443a35"
+        },
+        {
+          "targetId": "addyosmani-security-and-hardening",
+          "relativePath": "security-and-hardening",
+          "contentHash": "d13c91c5aa27dbd95c25a83aa5a3290294d9068852dec3b2918b167f1f09e5d6"
+        },
+        {
+          "targetId": "addyosmani-shipping-and-launch",
+          "relativePath": "shipping-and-launch",
+          "contentHash": "3e54575e5dcdc8f576cd1735aa804a56bb881c342bd6c702fd86531bd6652d56"
+        },
+        {
+          "targetId": "addyosmani-source-driven-development",
+          "relativePath": "source-driven-development",
+          "contentHash": "b979e7531ea601ed14a090f32a5b135db517c48ab9821c5e8b09efd80f4ff4d8"
+        },
+        {
+          "targetId": "addyosmani-spec-driven-development",
+          "relativePath": "spec-driven-development",
+          "contentHash": "16041b4b6149c0e99d7323f8c1e2104ddca2819bf46f78c402a8f0458938e344"
+        },
+        {
+          "targetId": "addyosmani-test-driven-development",
+          "relativePath": "test-driven-development",
+          "contentHash": "6c60e193d77a6c52eb3d9a7ca774f1801b9f798ec34f075720e0425a8094f50e"
+        },
+        {
+          "targetId": "addyosmani-using-agent-skills",
+          "relativePath": "using-agent-skills",
+          "contentHash": "b87977bdb6608aa0e3adf86d09fac6022a993031ba8afbbc68362ed216deb6a1"
+        }
       ]
     },
     "android": {
@@ -1173,6 +3694,98 @@
         "testing/testing-setup",
         "wear/jetpack-compose-m3",
         "xr/display-glasses-with-jetpack-compose-glimmer"
+      ],
+      "skills": [
+        {
+          "targetId": "android-build-agp-agp-9-upgrade",
+          "relativePath": "build/agp/agp-9-upgrade",
+          "contentHash": "17138317dac61f4769f77619915e0f29b9169bb9a347633ef07ecf6711e0d77b"
+        },
+        {
+          "targetId": "android-camera-camera1-to-camerax",
+          "relativePath": "camera/camera1-to-camerax",
+          "contentHash": "e894ad6f744a90b57cd498001282df2f98aef604c72154592d5b794203d8a3af"
+        },
+        {
+          "targetId": "android-device-ai-appfunctions",
+          "relativePath": "device-ai/appfunctions",
+          "contentHash": "25f718519bab0fcd5fc60517bec374db4032d25c3a27b380acde667cccc54507"
+        },
+        {
+          "targetId": "android-devtools-android-cli",
+          "relativePath": "devtools/android-cli",
+          "contentHash": "c5e711857f09650ceb2c0705f449fc4a53ef4c68bf8c7cc25333bcbcd73b090f"
+        },
+        {
+          "targetId": "android-identity-verified-email",
+          "relativePath": "identity/verified-email",
+          "contentHash": "ff5c5196e0e91fff4011f9525f35fee4e52960b4a53d09d1703a47d7c0281796"
+        },
+        {
+          "targetId": "android-jetpack-compose-adaptive",
+          "relativePath": "jetpack-compose/adaptive",
+          "contentHash": "92a27203ecf29170ad69bd627a953ad4f72aa4fea5ecc0ee70a5e444787df38b"
+        },
+        {
+          "targetId": "android-jetpack-compose-migration-migrate-xml-views-to-jetpack-compose",
+          "relativePath": "jetpack-compose/migration/migrate-xml-views-to-jetpack-compose",
+          "contentHash": "79c0bce78ec7d80f3bf4305919af0bd89b226cec203d4a5a083cf6838394f692"
+        },
+        {
+          "targetId": "android-jetpack-compose-theming-styles",
+          "relativePath": "jetpack-compose/theming/styles",
+          "contentHash": "db08388a4f9270a863589b1ee89b5e24239210f56b9a2bd492c9fee4991da124"
+        },
+        {
+          "targetId": "android-navigation-navigation-3",
+          "relativePath": "navigation/navigation-3",
+          "contentHash": "7df20587187539edd13931f336dce32fe60ff7aacb2be47409c5a3189df480c0"
+        },
+        {
+          "targetId": "android-performance-r8-analyzer",
+          "relativePath": "performance/r8-analyzer",
+          "contentHash": "fa7a7b8b6352a4c6ac30535b1fc092913613e5cbb07b32eb43d90f4c78e04578"
+        },
+        {
+          "targetId": "android-play-engage-sdk-integration",
+          "relativePath": "play/engage-sdk-integration",
+          "contentHash": "7ec212cbee8d2dbf94d0b3efb9ad7b2e779e06182ca5c5d9effc044c0949065a"
+        },
+        {
+          "targetId": "android-play-play-billing-library-version-upgrade",
+          "relativePath": "play/play-billing-library-version-upgrade",
+          "contentHash": "972aa1c2a45b52f2e2a891a5a3cafe801d3dc2bbda3d610eeff8d466b15648a3"
+        },
+        {
+          "targetId": "android-profilers-perfetto-sql",
+          "relativePath": "profilers/perfetto-sql",
+          "contentHash": "13e701190c529212ada3c6252c18a3cac8f33b1027b72db8c0bdd2f7726eb5ca"
+        },
+        {
+          "targetId": "android-profilers-perfetto-trace-analysis",
+          "relativePath": "profilers/perfetto-trace-analysis",
+          "contentHash": "cb1b5b16a4c74b7e18bed1b07217867c9e3c0155b4d3ce4dfb5800737f75f3db"
+        },
+        {
+          "targetId": "android-system-edge-to-edge",
+          "relativePath": "system/edge-to-edge",
+          "contentHash": "d071a6d8a97c99235f8cb05795c2dc83f0420be2221cecf0de3ef2495cf67324"
+        },
+        {
+          "targetId": "android-testing-testing-setup",
+          "relativePath": "testing/testing-setup",
+          "contentHash": "097ae4ae1dbf148b527fa56e5823c03b45f93a0a66d31f6c92f0ab9effac0363"
+        },
+        {
+          "targetId": "android-wear-jetpack-compose-m3",
+          "relativePath": "wear/jetpack-compose-m3",
+          "contentHash": "6cf0b7c05033195078d41ef6d8a538c165ab9b5fdfc045588e7ca80139738923"
+        },
+        {
+          "targetId": "android-xr-display-glasses-with-jetpack-compose-glimmer",
+          "relativePath": "xr/display-glasses-with-jetpack-compose-glimmer",
+          "contentHash": "1b663a78a81fcb1bc63d1ba8799103099da368113d72a46c6ed99d6e13566109"
+        }
       ]
     },
     "vuejs-ai": {
@@ -1187,23 +3800,44 @@
       "status": "synced",
       "targets": [
         "vuejs-ai-create-adaptable-composable",
-        "vuejs-ai-vue-best-practices",
         "vuejs-ai-vue-debug-guides",
         "vuejs-ai-vue-jsx-best-practices",
         "vuejs-ai-vue-options-api-best-practices",
-        "vuejs-ai-vue-pinia-best-practices",
-        "vuejs-ai-vue-router-best-practices",
-        "vuejs-ai-vue-testing-best-practices"
+        "vuejs-ai-vue-pinia-best-practices"
       ],
       "skillPaths": [
         "create-adaptable-composable",
-        "vue-best-practices",
         "vue-debug-guides",
         "vue-jsx-best-practices",
         "vue-options-api-best-practices",
-        "vue-pinia-best-practices",
-        "vue-router-best-practices",
-        "vue-testing-best-practices"
+        "vue-pinia-best-practices"
+      ],
+      "skills": [
+        {
+          "targetId": "vuejs-ai-create-adaptable-composable",
+          "relativePath": "create-adaptable-composable",
+          "contentHash": "9d6c8822577020dd62594e7fca4c11feb2be1af36f62d3f190984fe5aae1f6d1"
+        },
+        {
+          "targetId": "vuejs-ai-vue-debug-guides",
+          "relativePath": "vue-debug-guides",
+          "contentHash": "c39cee74b0b6a4a8f7e50447ae9fd7494c80e86f50dc75753620e2ebeae22c3f"
+        },
+        {
+          "targetId": "vuejs-ai-vue-jsx-best-practices",
+          "relativePath": "vue-jsx-best-practices",
+          "contentHash": "bd3487c0d6217ecdd0604fee84454f51d4b8db0c333921378eccd495be8a0fcc"
+        },
+        {
+          "targetId": "vuejs-ai-vue-options-api-best-practices",
+          "relativePath": "vue-options-api-best-practices",
+          "contentHash": "fd0a8c9e698a5d0413290f5c8e934f8ddd8c3db68ea5c2bd352a749b85744ea8"
+        },
+        {
+          "targetId": "vuejs-ai-vue-pinia-best-practices",
+          "relativePath": "vue-pinia-best-practices",
+          "contentHash": "70c5fae1e97d1df1d7a1207ad1df606d0c7375855f0c1cb0c9c94351931ab862"
+        }
       ]
     }
   }
