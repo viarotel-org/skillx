@@ -5,9 +5,9 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-      - skills/**
-      - .skills-sync/manifest.json
+    paths:
+      - skills-sources.yaml
+      - skillx/**
 
 permissions:
   contents: write
@@ -22,6 +22,8 @@ jobs:
     name: Sync subscribed skills
     runs-on: ubuntu-latest
     timeout-minutes: 45
+    outputs:
+      changed: ${{ steps.changes.outputs.changed }}
 
     steps:
       - name: Checkout repository
@@ -88,7 +90,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A -- skills .skills-sync/manifest.json
-          git commit -m "fix: sync skills subscriptions"
+          git commit -m "chore: sync skills subscriptions"
 
           for attempt in 1 2 3; do
             git pull --rebase origin "$DEFAULT_BRANCH"
@@ -108,6 +110,7 @@ jobs:
   release-please:
     name: Release Please
     needs: sync
+    if: needs.sync.outputs.changed == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Run release-please

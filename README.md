@@ -244,9 +244,9 @@ pnpm test
 
 ### Sync Skills
 
-`.github/workflows/sync-skills.yml` runs on pushes to `main` and on manual dispatch. It installs dependencies, validates the source config, runs tests and linting, runs `pnpm sync`, uploads the sync summary artifact, and commits changed `skills/` content plus `.skills-sync/manifest.json` back to the default branch.
+`.github/workflows/sync-skills.yml` runs on manual dispatch and on pushes to `main` that touch `skills-sources.yaml` or files under `skillx/`. It installs dependencies, validates the source config, runs tests and linting, runs `pnpm sync`, uploads the sync summary artifact, and commits changed `skills/` content plus `.skills-sync/manifest.json` back to the default branch.
 
-After a successful sync job, the same workflow runs release-please so release metadata follows both normal code commits and subscription updates. Generated-only sync commits are ignored by the push trigger to avoid re-running the workflow for changes it just wrote. Release behavior is configured in `release-please-config.json` for the Node package at the repository root.
+After a successful sync job, the same workflow runs release-please only when `pnpm sync` actually changed `skills/` content or `.skills-sync/manifest.json`. Generated-only sync commits still do not retrigger the workflow because the push trigger is limited to `skills-sources.yaml` and `skillx/**`. Sync commits use `chore: sync skills subscriptions`, and release behavior is configured in `release-please-config.json` so those chore commits still create or update the release PR, changelog, and tag flow for the root Node package.
 
 ## Contributing
 
