@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { execFile } from 'node:child_process'
-import { mkdir, mkdtemp, readFile, rm, symlink, writeFile } from 'node:fs/promises'
+import { lstat, mkdir, mkdtemp, readFile, readlink, rm, symlink, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import path from 'node:path'
 import { pathToFileURL } from 'node:url'
@@ -19,6 +19,8 @@ import {
   readManifest,
   resolveInside,
 } from '../scripts/skills-sync/fs.mjs'
+import { normalizeConcurrency, resolveLinkConfig } from '../scripts/skills-sync/link-config.mjs'
+import { formatLinkError, hasLinkFailures, linkSkillDirectories } from '../scripts/skills-sync/link.mjs'
 import { createSummary, writeSummaryFiles } from '../scripts/skills-sync/summary.mjs'
 
 const execFileAsync = promisify(execFile)
@@ -111,6 +113,107 @@ it('can import the sync orchestrator without executing the CLI', async () => {
 
   assert.equal(typeof syncModule.syncSkills, 'function')
   assert.equal(typeof syncModule.parseArgs, 'function')
+})
+
+it('can import the link CLI without executing it and parses options', async () => {
+  const linkScriptUrl = pathToFileURL(path.resolve('scripts/link-skills.mjs'))
+  linkScriptUrl.searchParams.set('testImport', String(Date.now()))
+
+  const linkModule = await import(linkScriptUrl.href)
+
+  assert.equal(typeof linkModule.linkSkills, 'function')
+  assert.equal(typeof linkModule.parseArgs, 'function')
+  assert.deepEqual(linkModule.parseArgs(['--', '--targets', 'a,b']), {
+    targets: 'a,b',
+    dryRun: false,
+    force: false,
+    verbose: false,
+  })
+  assert.deepEqual(linkModule.parseArgs(['--targets', 'a,b', '--dry-run', '--force', '--verbose']), {
+    targets: 'a,b',
+    dryRun: true,
+    force: true,
+    verbose: true,
+  })
+  assert.throws(() => linkModule.parseArgs(['--targets']), /requires/)
+  assert.throws(() => linkModule.parseArgs(['--unknown']), /Unknown argument/)
+})
+
+it('resolves link targets by cli env config and default priority', async () => {
+  const rootPath = await mkdtemp(path.join(tmpdir(), 'skillx-test-'))
+  const defaultRootPath = await mkdtemp(path.join(tmpdir(), 'skillx-test-default-'))
+  const homeDir = path.join(rootPath, 'home')
+
+  try {
+    await writeFile(path.join(rootPath, 'agents.config.json'), JSON.stringify({
+      targets: ['./top-level-config'],
+      concurrency: 6,
+      link: {
+        targets: ['./nested-config'],
+        concurrency: 7,
+      },
+    }), 'utf8')
+
+    const cliConfig = await resolveLinkConfig({
+      cwd: rootPath,
+      targets: '~/cli-agents,./relative-agents,./relative-agents',
+      env: { AGENTS_DIRS: './env-agents' },
+      homeDir,
+    })
+
+    assert.equal(cliConfig.targetSource, 'cli')
+    assert.equal(cliConfig.concurrency, 7)
+    assert.deepEqual(cliConfig.targets.map(target => target.absolutePath), [
+      path.join(homeDir, 'cli-agents'),
+      path.join(rootPath, 'relative-agents'),
+    ])
+
+    const envConfig = await resolveLinkConfig({
+      cwd: rootPath,
+      env: { AGENTS_DIRS: './env-agents' },
+      homeDir,
+    })
+    assert.equal(envConfig.targetSource, 'env')
+    assert.deepEqual(envConfig.targets.map(target => target.absolutePath), [path.join(rootPath, 'env-agents')])
+
+    const fileConfig = await resolveLinkConfig({ cwd: rootPath, env: {}, homeDir })
+    assert.equal(fileConfig.targetSource, 'config')
+    assert.deepEqual(fileConfig.targets.map(target => target.absolutePath), [path.join(rootPath, 'nested-config')])
+
+    const defaultConfig = await resolveLinkConfig({ cwd: defaultRootPath, env: {}, homeDir })
+    assert.equal(defaultConfig.targetSource, 'default')
+    assert.deepEqual(defaultConfig.targets.map(target => target.absolutePath), [path.join(homeDir, '.agents')])
+  }
+  finally {
+    await rm(rootPath, { recursive: true, force: true })
+    await rm(defaultRootPath, { recursive: true, force: true })
+  }
+})
+
+it('loads TypeScript agents config and validates link concurrency', async () => {
+  const rootPath = await mkdtemp(path.join(tmpdir(), 'skillx-test-'))
+
+  try {
+    await writeFile(path.join(rootPath, 'agents.config.ts'), [
+      'export default {',
+      '  link: {',
+      '    targets: ["./ts-agents"],',
+      '    concurrency: 3,',
+      '  },',
+      '}',
+      '',
+    ].join('\n'), 'utf8')
+
+    const config = await resolveLinkConfig({ cwd: rootPath, env: {}, homeDir: rootPath })
+
+    assert.equal(config.concurrency, 3)
+    assert.deepEqual(config.targets.map(target => target.absolutePath), [path.join(rootPath, 'ts-agents')])
+    assert.throws(() => normalizeConcurrency(0), /between 1 and 64/)
+    assert.throws(() => normalizeConcurrency(65), /between 1 and 64/)
+  }
+  finally {
+    await rm(rootPath, { recursive: true, force: true })
+  }
 })
 
 it('normalizes clone timeout and retry settings', () => {
@@ -465,6 +568,121 @@ it('prevents concurrent sync runs with a repository lock', async () => {
   finally {
     await rm(rootPath, { recursive: true, force: true })
   }
+})
+
+it('creates skill links idempotently and leaves dry-run targets unchanged', async () => {
+  const rootPath = await mkdtemp(path.join(tmpdir(), 'skillx-test-'))
+  const targetPath = path.join(rootPath, 'agents')
+  const dryRunTargetPath = path.join(rootPath, 'dry-run-agents')
+
+  try {
+    await writeSkillFile(rootPath, 'alpha')
+    await writeSkillFile(rootPath, 'beta')
+
+    const createdSummary = await linkSkillDirectories(rootPath, createLinkConfig([targetPath], 2), {}, createSilentLogger())
+
+    assert.equal(createdSummary.created, 2)
+    assert.equal(createdSummary.failed, 0)
+    assert.equal(await readlink(path.join(targetPath, 'alpha')), path.join(rootPath, 'skills', 'alpha'))
+    assert.equal(await readlink(path.join(targetPath, 'beta')), path.join(rootPath, 'skills', 'beta'))
+
+    const skippedSummary = await linkSkillDirectories(rootPath, createLinkConfig([targetPath], 2), {}, createSilentLogger())
+
+    assert.equal(skippedSummary.skipped, 2)
+    assert.equal(hasLinkFailures(skippedSummary), false)
+
+    const dryRunSummary = await linkSkillDirectories(rootPath, createLinkConfig([dryRunTargetPath], 2), { dryRun: true }, createSilentLogger())
+
+    assert.equal(dryRunSummary.results.every(result => result.status === 'planned'), true)
+    assert.equal(await pathExists(dryRunTargetPath), false)
+  }
+  finally {
+    await rm(rootPath, { recursive: true, force: true })
+  }
+})
+
+it('links top-level generated skills without treating nested children as separate targets', async () => {
+  const rootPath = await mkdtemp(path.join(tmpdir(), 'skillx-test-'))
+  const targetPath = path.join(rootPath, 'agents')
+
+  try {
+    await writeSkillFile(rootPath, 'parent')
+    await writeSkillFile(rootPath, 'parent/child')
+
+    const summary = await linkSkillDirectories(rootPath, createLinkConfig([targetPath]), {}, createSilentLogger())
+
+    assert.equal(summary.created, 1)
+    assert.equal(await pathExists(path.join(targetPath, 'parent')), true)
+    assert.equal(await pathExists(path.join(targetPath, 'parent', 'child')), true)
+  }
+  finally {
+    await rm(rootPath, { recursive: true, force: true })
+  }
+})
+
+it('warns on wrong skill links and repairs them with force', async () => {
+  const rootPath = await mkdtemp(path.join(tmpdir(), 'skillx-test-'))
+  const targetPath = path.join(rootPath, 'agents')
+  const wrongTargetPath = path.join(rootPath, 'wrong-target')
+
+  try {
+    await writeSkillFile(rootPath, 'alpha')
+    await mkdir(targetPath, { recursive: true })
+    await mkdir(wrongTargetPath, { recursive: true })
+    await symlink(wrongTargetPath, path.join(targetPath, 'alpha'), 'dir')
+
+    const warnedSummary = await linkSkillDirectories(rootPath, createLinkConfig([targetPath]), {}, createSilentLogger())
+
+    assert.equal(warnedSummary.warned, 1)
+    assert.equal(hasLinkFailures(warnedSummary), true)
+    assert.equal(await readlink(path.join(targetPath, 'alpha')), wrongTargetPath)
+
+    const fixedSummary = await linkSkillDirectories(rootPath, createLinkConfig([targetPath]), { force: true }, createSilentLogger())
+
+    assert.equal(fixedSummary.fixed, 1)
+    assert.equal(fixedSummary.warned, 0)
+    assert.equal(await readlink(path.join(targetPath, 'alpha')), path.join(rootPath, 'skills', 'alpha'))
+  }
+  finally {
+    await rm(rootPath, { recursive: true, force: true })
+  }
+})
+
+it('does not overwrite non-symlink paths and continues after target failures', async () => {
+  const rootPath = await mkdtemp(path.join(tmpdir(), 'skillx-test-'))
+  const goodTargetPath = path.join(rootPath, 'good-agents')
+  const blockedTargetPath = path.join(rootPath, 'blocked-agents')
+  const fileTargetPath = path.join(rootPath, 'file-target')
+
+  try {
+    await writeSkillFile(rootPath, 'alpha')
+    await mkdir(blockedTargetPath, { recursive: true })
+    await writeFile(path.join(blockedTargetPath, 'alpha'), 'local file\n', 'utf8')
+    await writeFile(fileTargetPath, 'not a directory\n', 'utf8')
+
+    const summary = await linkSkillDirectories(rootPath, createLinkConfig([
+      goodTargetPath,
+      blockedTargetPath,
+      fileTargetPath,
+    ]), { force: true }, createSilentLogger())
+
+    assert.equal(summary.created, 1)
+    assert.equal(summary.warned, 1)
+    assert.equal(summary.failed, 1)
+    assert.equal(await readlink(path.join(goodTargetPath, 'alpha')), path.join(rootPath, 'skills', 'alpha'))
+    assert.equal(await readFile(path.join(blockedTargetPath, 'alpha'), 'utf8'), 'local file\n')
+    await assert.rejects(() => lstat(path.join(fileTargetPath, 'alpha')), /ENOTDIR|ENOENT/)
+  }
+  finally {
+    await rm(rootPath, { recursive: true, force: true })
+  }
+})
+
+it('explains Windows symlink permission failures clearly', () => {
+  const error = new Error('operation not permitted')
+  error.code = 'EPERM'
+
+  assert.match(formatLinkError(error, 'win32'), /Developer Mode or administrator privileges/)
 })
 
 it('reports corrupted manifests with recovery guidance', async () => {
@@ -1009,6 +1227,25 @@ function createSilentLogger() {
     debug() {},
     group() {},
     groupEnd() {},
+  }
+}
+
+async function writeSkillFile(rootPath, skillName) {
+  const skillPath = path.join(rootPath, 'skills', ...skillName.split('/'))
+  await mkdir(skillPath, { recursive: true })
+  await writeFile(path.join(skillPath, 'SKILL.md'), `# ${skillName}\n`, 'utf8')
+}
+
+function createLinkConfig(targetPaths, concurrency = 4) {
+  return {
+    targets: targetPaths.map(targetPath => ({
+      absolutePath: targetPath,
+      displayPath: targetPath,
+      inputPath: targetPath,
+    })),
+    concurrency,
+    targetSource: 'cli',
+    configPath: null,
   }
 }
 

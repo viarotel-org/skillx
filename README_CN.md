@@ -16,6 +16,7 @@
 - 支持跨来源的内容哈希去重，来源顺序决定优先级。
 - 基于 `.skills-sync/manifest.json` 的保守式清理策略。
 - 支持 dry-run（预演）模式，在正式写入前验证克隆、过滤器和目标路径。
+- 支持将 `skills/` 中的技能以符号链接同步到一个或多个智能体运行时目录，便于多环境复用。
 - 支持 GitHub Actions 自动化，用于提交后技能同步与发布自动化。
 
 ## 技术栈
@@ -46,7 +47,21 @@ scripts/sync-skills.mjs
         +-- 写入 .skills-sync/manifest.json 和运行摘要
 ```
 
+      ```txt
+      skills/
+        |
+        v
+      scripts/link-skills.mjs
+        |
+          +-- 只扫描一次顶层生成技能目录
+        +-- 为每个技能和目标目录生成独立任务
+        +-- 使用有限并发处理任务队列
+        +-- 独立创建、跳过、警告或修复符号链接
+      ```
+
 同步流程在写入生成输出前会规划所有已启用来源，再将计划中的副本提交到 `skills/`。它只移除之前记录在清单中且当前不再活跃的生成目录，未知目录和受保护的 id 不会被改动。订阅仓库中的符号链接会被跳过并在同步摘要中单独报告，不会被复制到生成的技能中。
+
+      链接流程不会复制技能内容。它会为顶层生成技能创建 `<target>/<skill-name> -> <repo>/skills/<skill-name>` 目录符号链接，让多个智能体运行时复用同一份生成技能集合。
 
 ## 快速开始
 
@@ -72,6 +87,12 @@ pnpm sync:dry-run
 
 ```sh
 pnpm sync
+```
+
+将生成技能链接到智能体运行时目录：
+
+```sh
+pnpm run sync:link -- --targets ~/.agents/skills,../other-agents/skills
 ```
 
 运行测试和代码规范检查：
@@ -166,6 +187,41 @@ deduplicate:
 | --- | --- | --- |
 | `deduplicate` | 否 | 全局去重配置，接受 `true`、`false` 或 `{ enabled, strategy }`，目前唯一支持的策略为 `content-hash`。 |
 
+### 链接目标（Link Targets）
+
+`pnpm run sync:link` 会扫描一次 `skills/` 下的顶层生成目录，然后将每个技能链接到一个或多个目标目录。每个操作互相独立，因此某个目标失败不会回滚或阻断其他目标。
+
+目标解析优先级：
+
+1. `--targets <paths>` 命令行参数。
+2. `AGENTS_DIRS` 环境变量。
+3. 仓库根目录中的 `agents.config.ts`、`agents.config.js` 或 `agents.config.json`。
+4. `$HOME/.agents`。
+
+目标可以是逗号分隔字符串，也可以是字符串数组。`~` 会展开为当前用户 home 目录，相对路径以仓库根目录解析，并会按绝对路径去重。
+
+```js
+// agents.config.js
+export default {
+  link: {
+    targets: ['~/.agents/skills', '../other-agents/skills'],
+    concurrency: 48,
+  },
+}
+```
+
+配置也支持顶层 `targets` 和 `concurrency`；当存在嵌套 `link` 配置时，`link` 中的值优先。链接并发默认为 `48`，必须是 `1` 到 `64` 之间的整数。
+
+链接行为保持幂等：
+
+- 已存在且正确的符号链接会跳过。
+- 缺失的符号链接会创建。
+- 已存在但指向错误的符号链接只有在传入 `--force` 时才会修复，否则报告为警告。
+- 已存在的非符号链接路径永远不会被覆盖，即使传入 `--force`。
+- `--dry-run` 只报告计划创建或修复的内容，不修改文件系统。
+
+macOS 和 Linux 会直接创建目录符号链接。Windows 会尝试真实目录符号链接；如果需要开发者模式或管理员权限，会输出清晰原因，不会静默退化为复制。
+
 ### 输出模式
 
 本仓库在 `skills-sources.yaml` 中将 `flat` 作为默认模式，因此生成的技能路径是订阅仓库的权威快照。上游移除的技能会在下次成功同步后从生成输出中删除。
@@ -215,6 +271,7 @@ skills/
 ├── .github/workflows/       # 统一的同步与发布自动化工作流
 ├── .skills-sync/            # 生成的清单、摘要及临时同步工作区
 ├── scripts/
+│   ├── link-skills.mjs      # 将生成技能符号链接到智能体运行时目录
 │   ├── sync-skills.mjs      # 主同步命令
 │   ├── validate-skills-config.mjs
 │   └── skills-sync/         # 配置、文件系统、Git、日志及摘要辅助模块
@@ -243,6 +300,7 @@ skills/
 | `pnpm validate` | 验证 `skills-sources.yaml`。 |
 | `pnpm sync:dry-run` | 克隆已启用来源并验证同步计划，不修改生成的技能目录或清单。 |
 | `pnpm sync` | 将已启用来源同步到 `skills/` 并写入生成的元数据。 |
+| `pnpm run sync:link` | 将 `skills/` 下的每个顶层生成技能链接到一个或多个智能体运行时目录。 |
 | `pnpm test` | 运行 Vitest 测试套件。 |
 | `pnpm lint` | 运行 ESLint（远程生成的技能会被 lint 配置忽略）。 |
 | `pnpm lint:fix` | 运行 ESLint 并自动修复。 |
@@ -252,6 +310,8 @@ skills/
 ```sh
 pnpm sync -- --config ./skills-sources.yaml --verbose
 pnpm sync -- --dry-run --keep-temp
+pnpm run sync:link -- --dry-run --targets ~/.agents/skills --verbose
+pnpm run sync:link -- --targets ~/.agents/skills,../other-agents/skills --force
 ```
 
 `validate-skills-config.mjs` 支持 `--config` 参数用于验证指定的 YAML 文件。
@@ -267,6 +327,7 @@ pnpm sync -- --dry-run --keep-temp
 - Include 和 exclude 过滤。
 - 扁平与嵌套目标规划。
 - 内容哈希去重、禁用行为一致性及保留来源去重恢复。
+- 链接目标解析、幂等符号链接处理、强制修复和目标级失败隔离。
 - 过时生成目录检测。
 - 未知目录报告。
 - 路径遍历防护。

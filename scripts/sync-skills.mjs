@@ -4,6 +4,7 @@ import { readFile, rm } from 'node:fs/promises'
 import path from 'node:path'
 import process from 'node:process'
 import { fileURLToPath } from 'node:url'
+import { mapWithConcurrency } from './skills-sync/concurrency.mjs'
 import { getErrorMessage, loadSkillsConfig } from './skills-sync/config.mjs'
 import {
   acquireSyncLock,
@@ -29,6 +30,8 @@ import {
 import { classifyGitError, cloneSource, formatCommandError, getHeadCommit } from './skills-sync/git.mjs'
 import { createLogger } from './skills-sync/logger.mjs'
 import { createSummary, writeSummaryFiles } from './skills-sync/summary.mjs'
+
+export { mapWithConcurrency } from './skills-sync/concurrency.mjs'
 
 /**
  * @typedef {object} SyncOptions
@@ -457,32 +460,6 @@ async function syncFlatSource(cwd, plannedTargets, runWorkspace, skippedSymlinks
     await copyDirectory(plannedTarget.absolutePath, stagedPath, { skippedSymlinks })
     await atomicReplaceDirectory(targetPath, stagedPath, runWorkspace.backupsPath)
   }
-}
-
-/**
- * @template Input
- * @template Output
- * @param {Input[]} items
- * @param {number} concurrency
- * @param {(item: Input, index: number) => Promise<Output>} mapper
- * @returns {Promise<Output[]>}
- */
-export async function mapWithConcurrency(items, concurrency, mapper) {
-  const results = Array.from({ length: items.length })
-  let nextIndex = 0
-
-  async function worker() {
-    while (nextIndex < items.length) {
-      const currentIndex = nextIndex
-      nextIndex += 1
-      results[currentIndex] = await mapper(items[currentIndex], currentIndex)
-    }
-  }
-
-  const workerCount = Math.min(Math.max(1, concurrency), items.length)
-  await Promise.all(Array.from({ length: workerCount }, () => worker()))
-
-  return results
 }
 
 /**

@@ -16,6 +16,7 @@ A predictable hub for local and subscribed AI agent skills.
 - Optional content-hash deduplication across sources, with source order deciding the winner.
 - Conservative cleanup based on `.skills-sync/manifest.json`.
 - Dry-run support for validating clones, filters, and target paths before writing generated skills.
+- Symlink sync from `skills/` into one or more agent runtime directories for multi-environment reuse.
 - GitHub Actions automation for post-commit skill sync and release automation.
 
 ## Tech Stack
@@ -46,7 +47,21 @@ scripts/sync-skills.mjs
         +-- write .skills-sync/manifest.json and run summaries
 ```
 
+      ```txt
+      skills/
+        |
+        v
+      scripts/link-skills.mjs
+        |
+          +-- scan top-level generated skills once
+        +-- build one task per skill and target directory
+        +-- process the queue with bounded concurrency
+        +-- create, skip, warn, or repair symlinks independently
+      ```
+
 The sync process plans all enabled sources before writing generated output, then commits planned copies into `skills/`. It removes only generated directories that were previously recorded in the manifest and are no longer active. Unknown directories and protected ids are left untouched. Symlinks from subscribed repositories are skipped and reported in the sync summary instead of being copied into generated skills.
+
+      The link process never copies skill content. It creates `<target>/<skill-name> -> <repo>/skills/<skill-name>` directory symlinks for top-level generated skills so multiple agent runtimes can reuse the same generated skill set.
 
 ## Getting Started
 
@@ -72,6 +87,12 @@ Run a real sync:
 
 ```sh
 pnpm sync
+```
+
+Link generated skills into agent runtime directories:
+
+```sh
+pnpm run sync:link -- --targets ~/.agents/skills,../other-agents/skills
 ```
 
 Run tests and linting:
@@ -166,6 +187,41 @@ Top-level fields:
 | --- | --- | --- |
 | `deduplicate` | No | Global deduplication config. Accepts `true`, `false`, or `{ enabled, strategy }`. The only supported strategy is `content-hash`. |
 
+### Link Targets
+
+`pnpm run sync:link` scans top-level generated directories in `skills/` once and links every skill into one or more target directories. Each operation is independent, so a failure in one target does not roll back or block the others.
+
+Target resolution priority:
+
+1. `--targets <paths>` CLI option.
+2. `AGENTS_DIRS` environment variable.
+3. `agents.config.ts`, `agents.config.js`, or `agents.config.json` in the repository root.
+4. `$HOME/.agents`.
+
+Targets can be comma-separated strings or string arrays. `~` expands to the current home directory, relative paths resolve from the repository root, and duplicate absolute paths are removed.
+
+```js
+// agents.config.js
+export default {
+  link: {
+    targets: ['~/.agents/skills', '../other-agents/skills'],
+    concurrency: 48,
+  },
+}
+```
+
+The config may also use top-level `targets` and `concurrency`; nested `link` values take precedence when present. Link concurrency defaults to `48` and must be an integer from `1` to `64`.
+
+Link behavior is idempotent:
+
+- Existing correct symlinks are skipped.
+- Missing symlinks are created.
+- Existing wrong symlinks are repaired only with `--force`; otherwise they are reported as warnings.
+- Existing non-symlink paths are never overwritten, even with `--force`.
+- `--dry-run` reports planned creates or repairs without changing the filesystem.
+
+macOS and Linux create directory symlinks directly. On Windows, the command attempts a real directory symlink and reports a clear error if Developer Mode or administrator privileges are required; it does not silently fall back to copying.
+
 ### Output Modes
 
 This repository uses `flat` as its configured default in `skills-sources.yaml`, so generated skill paths are source-of-truth snapshots of the subscribed repositories. Skills removed upstream are removed from generated output on the next successful sync.
@@ -215,6 +271,7 @@ The validator always includes the default protected id `subscribe`. Additional `
 ├── .github/workflows/       # Unified sync and release automation
 ├── .skills-sync/            # Generated manifest, summaries, and temporary sync workspace
 ├── scripts/
+│   ├── link-skills.mjs      # Symlink generated skills into agent runtime directories
 │   ├── sync-skills.mjs      # Main sync command
 │   ├── validate-skills-config.mjs
 │   └── skills-sync/         # Config, filesystem, git, logging, and summary helpers
@@ -230,7 +287,6 @@ The validator always includes the default protected id `subscribe`. Additional `
 
 `pnpm sync` writes these generated files:
 
-- `.skills-sync/manifest.json`: managed source metadata, commits, target ids, and selected skill paths.
 - `.skills-sync/manifest.json`: managed source metadata, commits, target ids, selected skill paths, and per-skill content hashes for deduplication and preserved-source recovery.
 - `.skills-sync/summary.md`: human-readable sync report.
 - `.skills-sync/summary.json`: machine-readable sync report.
@@ -244,6 +300,7 @@ Temporary clone and staging data is created under `.skills-sync/tmp/` and cleane
 | `pnpm validate` | Validate `skills-sources.yaml`. |
 | `pnpm sync:dry-run` | Clone enabled sources and validate the sync plan without changing generated skill directories or the manifest. |
 | `pnpm sync` | Sync enabled sources into `skills/` and write generated metadata. |
+| `pnpm run sync:link` | Link every top-level generated skill under `skills/` into one or more agent runtime directories. |
 | `pnpm test` | Run the Vitest test suite. |
 | `pnpm lint` | Run ESLint. Remote generated skills are ignored by lint config. |
 | `pnpm lint:fix` | Run ESLint with automatic fixes. |
@@ -253,6 +310,8 @@ Additional sync options are available through the script:
 ```sh
 pnpm sync -- --config ./skills-sources.yaml --verbose
 pnpm sync -- --dry-run --keep-temp
+pnpm run sync:link -- --dry-run --targets ~/.agents/skills --verbose
+pnpm run sync:link -- --targets ~/.agents/skills,../other-agents/skills --force
 ```
 
 `validate-skills-config.mjs` supports `--config` for validating an alternate YAML file.
@@ -268,6 +327,7 @@ The test suite focuses on the sync contract:
 - Include and exclude filtering.
 - Flat and nested target planning.
 - Content-hash deduplication, disabled behavior parity, and preserved-source dedup recovery.
+- Link target resolution, idempotent symlink handling, forced repair, and target-level failure isolation.
 - Stale generated directory detection.
 - Unknown directory reporting.
 - Path traversal prevention.

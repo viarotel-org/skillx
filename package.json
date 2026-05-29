@@ -15,12 +15,14 @@
   "scripts": {
     "sync": "node scripts/sync-skills.mjs",
     "sync:dry-run": "node scripts/sync-skills.mjs --dry-run",
+    "sync:link": "node scripts/link-skills.mjs",
     "validate": "node scripts/validate-skills-config.mjs",
     "test": "vitest run",
     "lint": "eslint",
     "lint:fix": "eslint --fix"
   },
   "dependencies": {
+    "jiti": "^2.7.0",
     "minimatch": "^10.2.5",
     "yaml": "^2.8.1"
   },
