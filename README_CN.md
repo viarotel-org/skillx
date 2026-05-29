@@ -6,6 +6,8 @@
 
 `skillx` 将手动维护的本地技能与订阅的远程技能统一管理在同一个仓库中。它会验证 YAML 来源列表、克隆已配置的仓库、发现所有包含 `SKILL.md` 的目录、过滤发现的技能，然后将受管理的副本连同清单和运行摘要一起写入 `skills/`。
 
+![Skillx Banner](https://cdn.jsdelivr.net/gh/viarotel/resources@latest/skillx/banner.png)
+
 ## 功能特性
 
 - 本地技能存储可从仓库相对目录订阅。

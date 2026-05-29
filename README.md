@@ -6,6 +6,8 @@ A predictable hub for local and subscribed AI agent skills.
 
 `skillx` keeps hand-maintained local skills and subscribed remote skills in one repository. It validates a YAML source list, clones configured repositories, discovers every directory containing `SKILL.md`, filters the discovered skills, then writes managed copies into `skills/` with a manifest and run summary.
 
+![Skillx Banner](https://cdn.jsdelivr.net/gh/viarotel/resources@latest/skillx/banner.png)
+
 ## Features
 
 - Local skill storage can be subscribed from repository-relative directories.
