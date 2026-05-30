@@ -315,7 +315,10 @@ async function planSource(cwd, source, runWorkspace, options, logger) {
     const sourcePlanInput = await prepareSourcePlanInput(cwd, source, runWorkspace, logger)
     const discoveredSkills = await discoverSkillDirs(sourcePlanInput.sourceSkillsPath)
     const selectedSkills = filterSkillDirs(discoveredSkills, source)
-    const plannedTargets = await attachSkillContentHashes(planSkillTargets(source, selectedSkills))
+    const plannedTargets = await attachSkillContentHashes(planSkillTargets(source, selectedSkills).map(plannedTarget => ({
+      ...plannedTarget,
+      sourceRootPath: sourcePlanInput.sourceRootPath,
+    })))
     const targets = getUniqueValues(plannedTargets.map(target => target.targetId))
     const skillPaths = plannedTargets.map(target => target.relativePath)
 
@@ -368,7 +371,7 @@ async function planSource(cwd, source, runWorkspace, options, logger) {
  * @param {SourceConfig} source
  * @param {RunWorkspace} runWorkspace
  * @param {Logger} logger
- * @returns {Promise<{ sourceSkillsPath: string, commit: string | null }>}
+ * @returns {Promise<{ sourceRootPath: string, sourceSkillsPath: string, commit: string | null }>}
  */
 async function prepareSourcePlanInput(cwd, source, runWorkspace, logger) {
   if (source.type === 'local') {
@@ -383,6 +386,7 @@ async function prepareSourcePlanInput(cwd, source, runWorkspace, logger) {
     await assertDirectory(sourceSkillsPath, `Source path ${source.path}`)
 
     return {
+      sourceRootPath,
       sourceSkillsPath,
       commit: null,
     }
@@ -398,6 +402,7 @@ async function prepareSourcePlanInput(cwd, source, runWorkspace, logger) {
   await assertDirectory(sourceSkillsPath, `Source path ${source.path}`)
 
   return {
+    sourceRootPath: repoPath,
     sourceSkillsPath,
     commit: await getHeadCommit(repoPath),
   }
@@ -441,7 +446,10 @@ async function syncNestedSource(cwd, source, plannedTargets, runWorkspace, skipp
     const stagedSkillPath = plannedTarget.nestedPath === '.'
       ? stagedPath
       : path.join(stagedPath, ...plannedTarget.nestedPath.split('/'))
-    await copyDirectory(plannedTarget.absolutePath, stagedSkillPath, { skippedSymlinks })
+    await copyDirectory(plannedTarget.absolutePath, stagedSkillPath, {
+      skippedSymlinks,
+      sourceRootPath: plannedTarget.sourceRootPath,
+    })
   }
 
   await atomicReplaceDirectory(targetPath, stagedPath, runWorkspace.backupsPath)
@@ -457,7 +465,10 @@ async function syncFlatSource(cwd, plannedTargets, runWorkspace, skippedSymlinks
   for (const plannedTarget of plannedTargets) {
     const stagedPath = path.join(runWorkspace.stagingPath, plannedTarget.targetId)
     const targetPath = resolveInside(cwd, SKILLS_ROOT, plannedTarget.targetId)
-    await copyDirectory(plannedTarget.absolutePath, stagedPath, { skippedSymlinks })
+    await copyDirectory(plannedTarget.absolutePath, stagedPath, {
+      skippedSymlinks,
+      sourceRootPath: plannedTarget.sourceRootPath,
+    })
     await atomicReplaceDirectory(targetPath, stagedPath, runWorkspace.backupsPath)
   }
 }

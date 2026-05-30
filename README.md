@@ -44,7 +44,7 @@ scripts/sync-skills.mjs
         +-- discover directories containing SKILL.md
         +-- apply includes/excludes filters
         +-- plan generated targets with flat or nested mode
-    +-- stage planned copies and skip symlinks by default
+    +-- stage planned copies and safely expand source-local symlinks
         +-- atomically replace managed directories in skills/
         +-- write .skills-sync/manifest.json and run summaries
 ```
@@ -61,7 +61,7 @@ scripts/sync-skills.mjs
         +-- create, skip, warn, or repair symlinks independently
       ```
 
-The sync process plans all enabled sources before writing generated output, then commits planned copies into `skills/`. It removes only generated directories that were previously recorded in the manifest and are no longer active. Unknown directories and protected ids are left untouched. Symlinks from subscribed repositories are skipped and reported in the sync summary instead of being copied into generated skills.
+The sync process plans all enabled sources before writing generated output, then commits planned copies into `skills/`. It removes only generated directories that were previously recorded in the manifest and are no longer active. Unknown directories and protected ids are left untouched. Symlinks from subscribed repositories are expanded into real files or directories when they resolve inside the source repository. Unsafe, circular, broken, or unsupported symlinks are skipped and reported in the sync summary.
 
       The link process never copies skill content. It creates `<target>/<skill-name> -> <repo>/skills/<skill-name>` directory symlinks for top-level generated skills so multiple agent runtimes can reuse the same generated skill set.
 
@@ -326,6 +326,7 @@ The test suite focuses on the sync contract:
 - Source id and protected id validation.
 - Safe relative path validation.
 - Recursive skill discovery.
+- Source-local symlink expansion for skill data and scripts.
 - Include and exclude filtering.
 - Flat and nested target planning.
 - Content-hash deduplication, disabled behavior parity, and preserved-source dedup recovery.

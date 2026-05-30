@@ -98,3 +98,9 @@ sources:
       - electron-skills/**
       - uniapp-skills/**
       - stitch-skills/**
+
+  - id: ui-ux-pro-max-skill
+    type: remote
+    location: https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git
+    branch: main
+    path: .claude/skills

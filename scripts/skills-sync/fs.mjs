@@ -1,5 +1,5 @@
 import { constants as fileConstants } from 'node:fs'
-import { access, cp, lstat, mkdir, readdir, readFile, readlink, rename, rm, stat, writeFile } from 'node:fs/promises'
+import { access, copyFile, lstat, mkdir, readdir, readFile, readlink, realpath, rename, rm, stat, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import process from 'node:process'
 import { minimatch } from 'minimatch'
@@ -15,7 +15,8 @@ const EXCLUDED_ROOT_FILES = ['.env', '.env.local', '.env.production', '.gitattri
  * @property {boolean} [dryRun]
  * @property {boolean} [keepTemp]
  * @property {string} [runId]
- * @property {{ path: string, target: string }[]} [skippedSymlinks]
+ * @property {string} [sourceRootPath]
+ * @property {{ path: string, target: string, reason?: string }[]} [skippedSymlinks]
  */
 
 /**
@@ -84,7 +85,7 @@ const EXCLUDED_ROOT_FILES = ['.env', '.env.local', '.env.production', '.gitattri
  */
 
 /**
- * @typedef {DiscoveredSkill & { targetId: string, nestedPath: string, contentHash?: string }} PlannedSkillTarget
+ * @typedef {DiscoveredSkill & { targetId: string, nestedPath: string, contentHash?: string, sourceRootPath?: string }} PlannedSkillTarget
  */
 
 /**
@@ -417,12 +418,14 @@ export async function copyDirectory(sourcePath, targetPath, options = {}) {
 
   await rm(targetPath, { recursive: true, force: true })
   await mkdir(path.dirname(targetPath), { recursive: true })
-  await cp(sourcePath, targetPath, {
-    recursive: true,
-    force: true,
-    dereference: false,
-    filter: source => shouldCopyPath(sourcePath, source, options.skippedSymlinks ?? []),
-  })
+
+  const sourceRootPath = options.sourceRootPath ?? sourcePath
+  const copyContext = {
+    sourceRootRealPath: await realpath(sourceRootPath),
+    skippedSymlinks: options.skippedSymlinks ?? [],
+  }
+
+  await copyEntry(sourcePath, targetPath, '', copyContext, new Set())
 }
 
 /**
@@ -463,25 +466,129 @@ export async function atomicReplaceDirectory(targetPath, stagedPath, backupRoot,
 }
 
 /**
- * @param {string} rootPath
  * @param {string} sourcePath
- * @param {{ path: string, target: string }[]} skippedSymlinks
- * @returns {Promise<boolean>}
+ * @param {string} targetPath
+ * @param {string} relativePath
+ * @param {{ sourceRootRealPath: string, skippedSymlinks: { path: string, target: string, reason?: string }[] }} copyContext
+ * @param {Set<string>} ancestorRealPaths
+ * @returns {Promise<void>}
  */
-async function shouldCopyPath(rootPath, sourcePath, skippedSymlinks) {
-  const relativePath = path.relative(rootPath, sourcePath)
-  if (relativePath.length === 0) {
-    return true
+async function copyEntry(sourcePath, targetPath, relativePath, copyContext, ancestorRealPaths) {
+  const sourceStat = await lstat(sourcePath)
+
+  if (sourceStat.isSymbolicLink()) {
+    await copySymlinkTarget(sourcePath, targetPath, relativePath, copyContext, ancestorRealPaths)
+    return
   }
 
-  const sourceStat = await lstat(sourcePath)
-  if (sourceStat.isSymbolicLink()) {
-    skippedSymlinks.push({
-      path: relativePath.split(path.sep).join('/'),
-      target: await readlink(sourcePath),
-    })
+  if (sourceStat.isDirectory()) {
+    await copyRealDirectory(sourcePath, targetPath, relativePath, copyContext, ancestorRealPaths)
+    return
+  }
 
-    return false
+  if (sourceStat.isFile()) {
+    await mkdir(path.dirname(targetPath), { recursive: true })
+    await copyFile(sourcePath, targetPath)
+  }
+}
+
+/**
+ * @param {string} sourcePath
+ * @param {string} targetPath
+ * @param {string} relativePath
+ * @param {{ sourceRootRealPath: string, skippedSymlinks: { path: string, target: string, reason?: string }[] }} copyContext
+ * @param {Set<string>} ancestorRealPaths
+ * @returns {Promise<void>}
+ */
+async function copyRealDirectory(sourcePath, targetPath, relativePath, copyContext, ancestorRealPaths) {
+  const sourceRealPath = await realpath(sourcePath)
+  if (ancestorRealPaths.has(sourceRealPath)) {
+    return
+  }
+
+  await mkdir(targetPath, { recursive: true })
+
+  const nextAncestorRealPaths = new Set(ancestorRealPaths)
+  nextAncestorRealPaths.add(sourceRealPath)
+  const entries = await readdir(sourcePath, { withFileTypes: true })
+
+  for (const entry of entries.sort((leftEntry, rightEntry) => leftEntry.name.localeCompare(rightEntry.name))) {
+    const childRelativePath = relativePath.length === 0
+      ? entry.name
+      : path.join(relativePath, entry.name)
+
+    if (!shouldCopyRelativePath(childRelativePath)) {
+      continue
+    }
+
+    await copyEntry(
+      path.join(sourcePath, entry.name),
+      path.join(targetPath, entry.name),
+      childRelativePath,
+      copyContext,
+      nextAncestorRealPaths,
+    )
+  }
+}
+
+/**
+ * @param {string} sourcePath
+ * @param {string} targetPath
+ * @param {string} relativePath
+ * @param {{ sourceRootRealPath: string, skippedSymlinks: { path: string, target: string, reason?: string }[] }} copyContext
+ * @param {Set<string>} ancestorRealPaths
+ * @returns {Promise<void>}
+ */
+async function copySymlinkTarget(sourcePath, targetPath, relativePath, copyContext, ancestorRealPaths) {
+  const linkTarget = await readlink(sourcePath)
+  const resolvedTargetPath = path.resolve(path.dirname(sourcePath), linkTarget)
+  let resolvedTargetRealPath
+
+  try {
+    resolvedTargetRealPath = await realpath(resolvedTargetPath)
+  }
+  catch (error) {
+    recordSkippedSymlink(copyContext.skippedSymlinks, relativePath, linkTarget, isCircularSymlinkError(error) ? 'circular' : 'broken')
+    return
+  }
+
+  if (!isPathInside(copyContext.sourceRootRealPath, resolvedTargetRealPath)) {
+    recordSkippedSymlink(copyContext.skippedSymlinks, relativePath, linkTarget, 'outside-source-root')
+    return
+  }
+
+  if (!shouldCopyResolvedSourcePath(copyContext.sourceRootRealPath, resolvedTargetRealPath)) {
+    recordSkippedSymlink(copyContext.skippedSymlinks, relativePath, linkTarget, 'excluded-target')
+    return
+  }
+
+  const targetStat = await stat(resolvedTargetRealPath)
+  if (targetStat.isDirectory()) {
+    if (ancestorRealPaths.has(resolvedTargetRealPath)) {
+      recordSkippedSymlink(copyContext.skippedSymlinks, relativePath, linkTarget, 'circular')
+      return
+    }
+
+    await copyRealDirectory(resolvedTargetRealPath, targetPath, relativePath, copyContext, ancestorRealPaths)
+    return
+  }
+
+  if (targetStat.isFile()) {
+    await mkdir(path.dirname(targetPath), { recursive: true })
+    await copyFile(resolvedTargetRealPath, targetPath)
+    return
+  }
+
+  recordSkippedSymlink(copyContext.skippedSymlinks, relativePath, linkTarget, 'unsupported-target')
+}
+
+/**
+ * @param {string} relativePath
+ * @returns {boolean}
+ */
+function shouldCopyRelativePath(relativePath) {
+  if (relativePath.length === 0) {
+    return true
   }
 
   const pathSegments = relativePath.split(path.sep)
@@ -493,11 +600,54 @@ async function shouldCopyPath(rootPath, sourcePath, skippedSymlinks) {
     return false
   }
 
-  if (path.basename(sourcePath).startsWith('.env.')) {
+  if (path.basename(relativePath).startsWith('.env.')) {
     return false
   }
 
-  return path.basename(sourcePath) !== '.DS_Store'
+  return path.basename(relativePath) !== '.DS_Store'
+}
+
+/**
+ * @param {string} sourceRootRealPath
+ * @param {string} resolvedSourcePath
+ * @returns {boolean}
+ */
+function shouldCopyResolvedSourcePath(sourceRootRealPath, resolvedSourcePath) {
+  const relativePath = path.relative(sourceRootRealPath, resolvedSourcePath)
+  return relativePath.length === 0 || shouldCopyRelativePath(relativePath)
+}
+
+/**
+ * @param {{ path: string, target: string, reason?: string }[]} skippedSymlinks
+ * @param {string} relativePath
+ * @param {string} target
+ * @param {string} reason
+ * @returns {void}
+ */
+function recordSkippedSymlink(skippedSymlinks, relativePath, target, reason) {
+  skippedSymlinks.push({
+    path: relativePath.split(path.sep).join('/'),
+    target,
+    reason,
+  })
+}
+
+/**
+ * @param {unknown} error
+ * @returns {boolean}
+ */
+function isCircularSymlinkError(error) {
+  return isNodeError(error) && error.code === 'ELOOP'
+}
+
+/**
+ * @param {string} rootPath
+ * @param {string} candidatePath
+ * @returns {boolean}
+ */
+function isPathInside(rootPath, candidatePath) {
+  const relativePath = path.relative(rootPath, candidatePath)
+  return relativePath.length === 0 || (!relativePath.startsWith('..') && !path.isAbsolute(relativePath))
 }
 
 /**
@@ -518,6 +668,7 @@ async function collectSkillDirs(sourceRootPath, directoryPath, skills) {
   }
 
   const childDirectories = entries
+    .filter(entry => !entry.isSymbolicLink())
     .filter(entry => entry.isDirectory())
     .filter(entry => !EXCLUDED_DIRECTORY_NAMES.includes(entry.name))
 

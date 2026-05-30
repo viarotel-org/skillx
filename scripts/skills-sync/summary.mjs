@@ -24,7 +24,7 @@ const WRITE_STEP_SUMMARY_VALUE = '1'
  * @property {number} [skillCount]
  * @property {string | null} [commit]
  * @property {string} [message]
- * @property {{ path: string, target: string }[]} [skippedSymlinks]
+ * @property {{ path: string, target: string, reason?: string }[]} [skippedSymlinks]
  */
 
 /**
@@ -38,7 +38,7 @@ const WRITE_STEP_SUMMARY_VALUE = '1'
  * @property {string[]} staleRemoved
  * @property {string[]} stalePlanned
  * @property {string[]} unknownDirs
- * @property {{ source: string, path: string, target: string }[]} skippedSymlinks
+ * @property {{ source: string, path: string, target: string, reason?: string }[]} skippedSymlinks
  * @property {DeduplicatedSummaryItem[]} deduplicated
  */
 
@@ -174,7 +174,7 @@ function formatCleanupLines(summary) {
   }
 
   if (summary.skippedSymlinks.length > 0) {
-    lines.push(`- Skipped symlinks: ${summary.skippedSymlinks.map(item => `${item.source}/${item.path} -> ${item.target}`).join(', ')}`)
+    lines.push(`- Skipped unsafe symlinks: ${summary.skippedSymlinks.map(formatSkippedSymlink).join(', ')}`)
   }
 
   if (lines.length === 0) {
@@ -182,6 +182,15 @@ function formatCleanupLines(summary) {
   }
 
   return lines
+}
+
+/**
+ * @param {{ source: string, path: string, target: string, reason?: string }} item
+ * @returns {string}
+ */
+function formatSkippedSymlink(item) {
+  const reason = item.reason ? ` (${item.reason})` : ''
+  return `${item.source}/${item.path} -> ${item.target}${reason}`
 }
 
 /**

@@ -1056,24 +1056,137 @@ it('writes content hashes into the v3 manifest after sync', async () => {
   }
 })
 
-it('skips symlinks when copying skills and reports skipped paths', async () => {
-  const sourcePath = await mkdtemp(path.join(tmpdir(), 'skillx-source-'))
+it('expands internal symlinked skill resources into real files and directories', async () => {
+  const sourceRootPath = await mkdtemp(path.join(tmpdir(), 'skillx-source-root-'))
   const targetPath = await mkdtemp(path.join(tmpdir(), 'skillx-target-'))
+  const skillPath = path.join(sourceRootPath, '.claude', 'skills', 'ui-ux-pro-max')
   const skippedSymlinks = []
 
   try {
+    await mkdir(path.join(sourceRootPath, 'data'), { recursive: true })
+    await mkdir(path.join(sourceRootPath, 'scripts'), { recursive: true })
+    await mkdir(path.join(sourceRootPath, 'shared'), { recursive: true })
+    await mkdir(skillPath, { recursive: true })
+    await writeFile(path.join(skillPath, 'SKILL.md'), '# UI UX Pro Max\n', 'utf8')
+    await writeFile(path.join(sourceRootPath, 'data', 'tokens.json'), '{"accent":"blue"}\n', 'utf8')
+    await writeFile(path.join(sourceRootPath, 'scripts', 'render.mjs'), 'export const render = true\n', 'utf8')
+    await writeFile(path.join(sourceRootPath, 'shared', 'nested.txt'), 'nested\n', 'utf8')
+    await symlink('../shared', path.join(sourceRootPath, 'data', 'shared-link'), 'dir')
+    await symlink(path.relative(skillPath, path.join(sourceRootPath, 'data')), path.join(skillPath, 'data'), 'dir')
+    await symlink(path.relative(skillPath, path.join(sourceRootPath, 'scripts')), path.join(skillPath, 'scripts'), 'dir')
+
+    await copyDirectory(skillPath, path.join(targetPath, 'copied'), { sourceRootPath, skippedSymlinks })
+
+    assert.equal(await readFile(path.join(targetPath, 'copied', 'SKILL.md'), 'utf8'), '# UI UX Pro Max\n')
+    assert.equal(await readFile(path.join(targetPath, 'copied', 'data', 'tokens.json'), 'utf8'), '{"accent":"blue"}\n')
+    assert.equal(await readFile(path.join(targetPath, 'copied', 'data', 'shared-link', 'nested.txt'), 'utf8'), 'nested\n')
+    assert.equal(await readFile(path.join(targetPath, 'copied', 'scripts', 'render.mjs'), 'utf8'), 'export const render = true\n')
+    assert.equal((await lstat(path.join(targetPath, 'copied', 'data'))).isSymbolicLink(), false)
+    assert.equal((await lstat(path.join(targetPath, 'copied', 'scripts'))).isSymbolicLink(), false)
+    assert.deepEqual(skippedSymlinks, [])
+  }
+  finally {
+    await rm(sourceRootPath, { recursive: true, force: true })
+    await rm(targetPath, { recursive: true, force: true })
+  }
+})
+
+it('skips unsafe symlinks when copying skills and reports reasons', async () => {
+  const sourcePath = await mkdtemp(path.join(tmpdir(), 'skillx-source-'))
+  const targetPath = await mkdtemp(path.join(tmpdir(), 'skillx-target-'))
+  const outsideTargetPath = await mkdtemp(path.join(tmpdir(), 'skillx-outside-'))
+  const skippedSymlinks = []
+
+  try {
+    await mkdir(path.join(sourcePath, 'nested'), { recursive: true })
     await writeFile(path.join(sourcePath, 'SKILL.md'), '# Skill\n', 'utf8')
-    await symlink('/tmp/outside-skillx-target', path.join(sourcePath, 'outside-link'))
+    await writeFile(path.join(sourcePath, 'nested', 'inside.txt'), 'inside\n', 'utf8')
+    await symlink(outsideTargetPath, path.join(sourcePath, 'outside-link'))
+    await symlink('missing-target', path.join(sourcePath, 'broken-link'))
+    await symlink('..', path.join(sourcePath, 'nested', 'circular-link'), 'dir')
 
     await copyDirectory(sourcePath, path.join(targetPath, 'copied'), { skippedSymlinks })
 
     assert.equal(await readFile(path.join(targetPath, 'copied', 'SKILL.md'), 'utf8'), '# Skill\n')
+    assert.equal(await readFile(path.join(targetPath, 'copied', 'nested', 'inside.txt'), 'utf8'), 'inside\n')
     assert.equal(await pathExists(path.join(targetPath, 'copied', 'outside-link')), false)
-    assert.deepEqual(skippedSymlinks, [{ path: 'outside-link', target: '/tmp/outside-skillx-target' }])
+    assert.equal(await pathExists(path.join(targetPath, 'copied', 'broken-link')), false)
+    assert.equal(await pathExists(path.join(targetPath, 'copied', 'nested', 'circular-link')), false)
+    assert.deepEqual(skippedSymlinks, [
+      { path: 'broken-link', target: 'missing-target', reason: 'broken' },
+      { path: 'nested/circular-link', target: '..', reason: 'circular' },
+      { path: 'outside-link', target: outsideTargetPath, reason: 'outside-source-root' },
+    ])
   }
   finally {
     await rm(sourcePath, { recursive: true, force: true })
     await rm(targetPath, { recursive: true, force: true })
+    await rm(outsideTargetPath, { recursive: true, force: true })
+  }
+})
+
+it('does not discover skills through symlinked directories', async () => {
+  const sourcePath = await createTempSkillTree({
+    'real-skill/SKILL.md': '# Real Skill',
+  })
+
+  try {
+    await symlink(path.join(sourcePath, 'real-skill'), path.join(sourcePath, 'linked-skill'), 'dir')
+
+    const skills = await discoverSkillDirs(sourcePath)
+
+    assert.deepEqual(skills.map(skill => skill.relativePath), ['real-skill'])
+  }
+  finally {
+    await rm(sourcePath, { recursive: true, force: true })
+  }
+})
+
+it('syncs skills with symlinked root data and scripts resources', async () => {
+  const rootPath = await mkdtemp(path.join(tmpdir(), 'skillx-test-'))
+  const sourceRepoPath = await mkdtemp(path.join(tmpdir(), 'skillx-source-'))
+  const skillPath = path.join(sourceRepoPath, '.claude', 'skills', 'ui-ux-pro-max')
+
+  try {
+    await createGitRepo(sourceRepoPath)
+    await mkdir(path.join(sourceRepoPath, 'data'), { recursive: true })
+    await mkdir(path.join(sourceRepoPath, 'scripts'), { recursive: true })
+    await mkdir(skillPath, { recursive: true })
+    await writeFile(path.join(sourceRepoPath, 'data', 'palette.json'), '{"primary":"#2563eb"}\n', 'utf8')
+    await writeFile(path.join(sourceRepoPath, 'scripts', 'audit.mjs'), 'export const audit = true\n', 'utf8')
+    await writeFile(path.join(skillPath, 'SKILL.md'), '# UI UX Pro Max\n', 'utf8')
+    await symlink(path.relative(skillPath, path.join(sourceRepoPath, 'data')), path.join(skillPath, 'data'), 'dir')
+    await symlink(path.relative(skillPath, path.join(sourceRepoPath, 'scripts')), path.join(skillPath, 'scripts'), 'dir')
+    await commitAll(sourceRepoPath, 'add symlinked skill resources')
+    await writeFile(path.join(rootPath, 'skills-sources.yaml'), [
+      'version: 1',
+      'sources:',
+      '  - id: fixture',
+      '    type: remote',
+      `    location: ${pathToFileURL(sourceRepoPath).href}`,
+      '    branch: main',
+      '    path: .claude/skills',
+      '',
+    ].join('\n'), 'utf8')
+
+    const syncScriptUrl = pathToFileURL(path.resolve('scripts/sync-skills.mjs'))
+    syncScriptUrl.searchParams.set('symlinkResourceSyncTest', String(Date.now()))
+    const { syncSkills } = await import(syncScriptUrl.href)
+
+    await syncSkills({ cwd: rootPath }, createSilentLogger())
+
+    const generatedSkillPath = path.join(rootPath, 'skills', 'fixture-ui-ux-pro-max')
+    const summary = JSON.parse(await readFile(path.join(rootPath, '.skills-sync', 'summary.json'), 'utf8'))
+    assert.equal(await readFile(path.join(generatedSkillPath, 'SKILL.md'), 'utf8'), '# UI UX Pro Max\n')
+    assert.equal(await readFile(path.join(generatedSkillPath, 'data', 'palette.json'), 'utf8'), '{"primary":"#2563eb"}\n')
+    assert.equal(await readFile(path.join(generatedSkillPath, 'scripts', 'audit.mjs'), 'utf8'), 'export const audit = true\n')
+    assert.equal((await lstat(path.join(generatedSkillPath, 'data'))).isSymbolicLink(), false)
+    assert.equal((await lstat(path.join(generatedSkillPath, 'scripts'))).isSymbolicLink(), false)
+    assert.deepEqual(summary.skippedSymlinks, [])
+  }
+  finally {
+    await rm(rootPath, { recursive: true, force: true })
+    await rm(sourceRepoPath, { recursive: true, force: true })
   }
 })
 

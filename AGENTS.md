@@ -41,7 +41,7 @@
 - `sourceConcurrency` controls how many enabled sources are planned concurrently before generated directories are written.
 - This repository configures `mode: flat` by default; upstream removals should be reflected by stale generated target cleanup on the next sync.
 - `preserveOnFailure` defaults to `false`; only set it to `true` when intentionally keeping previous generated output for failed sources.
-- Symlinks from subscribed sources are skipped during copy and reported in `.skills-sync/summary.*`.
+- Symlinks from subscribed sources are expanded during copy when their resolved targets stay inside the source root; unsafe, circular, broken, or unsupported symlinks are skipped and reported in `.skills-sync/summary.*`.
 - `sync:link` intentionally creates symlinks from agent runtime targets back to top-level generated `skills/*`; correct symlinks are skipped, wrong symlinks require `--force`, and non-symlink paths are never overwritten.
 - `mode: flat` slugs discovered skill paths into separate target ids and must fail on collisions; `mode: nested` keeps selected skills grouped under the source id.
 - ESLint should ignore generated skill outputs; do not use generated directories as a place for source changes.
