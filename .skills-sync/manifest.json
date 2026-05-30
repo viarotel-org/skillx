@@ -2742,7 +2742,7 @@
       "mode": "flat",
       "includes": [],
       "excludes": [],
-      "commit": "b0401f07213a66414d84a65cb50c1d226f99485a",
+      "commit": "a8924c2a35cfa290458852c4fad17c9133054c2e",
       "status": "synced",
       "targets": [
         "openai-curated-aspnet-core",
@@ -2960,7 +2960,7 @@
         {
           "targetId": "openai-curated-openai-docs",
           "relativePath": ".curated/openai-docs",
-          "contentHash": "1941a2fa1d815f9fa46efbe410df4dbb57092e22140e768c085c4bedba859fa3"
+          "contentHash": "d2b48f7b356a0880ced6fba52a29af24565e2818437694052b96f84bc2f69e92"
         },
         {
           "targetId": "openai-curated-pdf",
@@ -3040,7 +3040,7 @@
         {
           "targetId": "openai-system-openai-docs",
           "relativePath": ".system/openai-docs",
-          "contentHash": "1ee3c911a5c615c4f508e5611cb6e38548aba5ea12efb0c3e8838614cc6347b9"
+          "contentHash": "5cae604fb26d9ca3db47af72e16e9c1bffa47f9e6508b77566d2374dac75e610"
         },
         {
           "targetId": "openai-system-plugin-creator",
@@ -4510,6 +4510,72 @@
           "targetId": "full-stack-skills-vue-ui-skills-vant-vue3",
           "relativePath": "vue-ui-skills/vant-vue3",
           "contentHash": "e126035df290c1f4b4f783bdcc493e988571900f843c04d52e420b2a44c6de01"
+        }
+      ]
+    },
+    "ui-ux-pro-max-skill": {
+      "type": "remote",
+      "location": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git",
+      "branch": "main",
+      "path": ".claude/skills",
+      "mode": "flat",
+      "includes": [],
+      "excludes": [],
+      "commit": "b7e3af80f6e331f6fb456667b82b12cade7c9d35",
+      "status": "synced",
+      "targets": [
+        "ui-ux-pro-max-skill-banner-design",
+        "ui-ux-pro-max-skill-brand",
+        "ui-ux-pro-max-skill-design",
+        "ui-ux-pro-max-skill-design-system",
+        "ui-ux-pro-max-skill-slides",
+        "ui-ux-pro-max-skill-ui-styling",
+        "ui-ux-pro-max-skill-ui-ux-pro-max"
+      ],
+      "skillPaths": [
+        "banner-design",
+        "brand",
+        "design",
+        "design-system",
+        "slides",
+        "ui-styling",
+        "ui-ux-pro-max"
+      ],
+      "skills": [
+        {
+          "targetId": "ui-ux-pro-max-skill-banner-design",
+          "relativePath": "banner-design",
+          "contentHash": "b55b30c763e2aa9aac953021bcb72bd03669f187150fc0815ab1313846b79466"
+        },
+        {
+          "targetId": "ui-ux-pro-max-skill-brand",
+          "relativePath": "brand",
+          "contentHash": "1312fe0046f4b52fc53695efa102da6f900688c32f839dbe154e803cb8cea1ad"
+        },
+        {
+          "targetId": "ui-ux-pro-max-skill-design",
+          "relativePath": "design",
+          "contentHash": "87a5278f1fdb2e2e51c7506b69aed58efbf261185e524e37450b866e594dd102"
+        },
+        {
+          "targetId": "ui-ux-pro-max-skill-design-system",
+          "relativePath": "design-system",
+          "contentHash": "eb484103939b1ba2778c351f0c97b7899ea09ebe143bafb7eed29385dfedf854"
+        },
+        {
+          "targetId": "ui-ux-pro-max-skill-slides",
+          "relativePath": "slides",
+          "contentHash": "e071a7ad7a72f10344d3fe55a29cebf8750a255ecbf98af2daee9e6432bd8b3a"
+        },
+        {
+          "targetId": "ui-ux-pro-max-skill-ui-styling",
+          "relativePath": "ui-styling",
+          "contentHash": "12b07e5b883c72f01e6f103a353f00fba8b512e71ccc29af33ddf1f6aae311ae"
+        },
+        {
+          "targetId": "ui-ux-pro-max-skill-ui-ux-pro-max",
+          "relativePath": "ui-ux-pro-max",
+          "contentHash": "9bd26c52dfd10dfd613dd3cc85df217dc25a172e380bde41fdfa6fedda288b2a"
         }
       ]
     }
