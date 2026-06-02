@@ -21,6 +21,14 @@ sources:
     location: skillx
     path: .
 
+  - id: vercel-labs
+    type: remote
+    location: https://github.com/vercel-labs/skills.git
+    branch: main
+    path: skills
+    includes:
+      - find-skills
+
   - id: full-stack-skills
     type: remote
     location: https://github.com/partme-ai/full-stack-skills.git
