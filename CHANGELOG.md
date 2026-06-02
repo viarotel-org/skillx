@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.10.1](https://github.com/viarotel-org/skillx/compare/skillx-v0.10.0...skillx-v0.10.1) (2026-06-02)
+
+
+### Performance Improvements
+
+* 🚀 Streamlined feeds ([7e3e842](https://github.com/viarotel-org/skillx/commit/7e3e842b00ebf68015462810bec33469860f4b5d))
+
+
+### Miscellaneous Chores
+
+* sync skills subscriptions ([8d0c0df](https://github.com/viarotel-org/skillx/commit/8d0c0df90dfa34f1a8be820a7431f29575e61a43))
+
 ## [0.10.0](https://github.com/viarotel-org/skillx/compare/skillx-v0.9.0...skillx-v0.10.0) (2026-06-02)
 
 
