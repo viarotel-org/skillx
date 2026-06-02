@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.8.0](https://github.com/viarotel-org/skillx/compare/skillx-v0.7.0...skillx-v0.8.0) (2026-05-30)
+
+
+### Features
+
+* 🚀 Add JSON Schema smart tip support to skills-sources.yaml ([44ab054](https://github.com/viarotel-org/skillx/commit/44ab0544c624ca8a687deed92efcbc71c9bd74b1))
+
+
+### Bug Fixes
+
+* 🐛 Fix the generic skill collection pipeline ([18557f2](https://github.com/viarotel-org/skillx/commit/18557f26dbc8588e1fe6c49b67a3f249b6fbdc3f))
+
+
+### Miscellaneous Chores
+
+* sync skills subscriptions ([5f084dd](https://github.com/viarotel-org/skillx/commit/5f084dd6ca0d4e43f84f4a9259269d5abf0ef808))
+
 ## [0.7.0](https://github.com/viarotel-org/skillx/compare/skillx-v0.6.0...skillx-v0.7.0) (2026-05-29)
 
 
