@@ -33,6 +33,32 @@
         }
       ]
     },
+    "vercel-labs": {
+      "type": "remote",
+      "location": "https://github.com/vercel-labs/skills.git",
+      "branch": "main",
+      "path": "skills",
+      "mode": "flat",
+      "includes": [
+        "find-skills"
+      ],
+      "excludes": [],
+      "commit": "b469d6954dd10be20d3e8d9bb59463584d42efbb",
+      "status": "synced",
+      "targets": [
+        "vercel-labs-find-skills"
+      ],
+      "skillPaths": [
+        "find-skills"
+      ],
+      "skills": [
+        {
+          "targetId": "vercel-labs-find-skills",
+          "relativePath": "find-skills",
+          "contentHash": "1e85f6f9686e145aca4a124e3b704b9bbea9aa87e08515c1e352eee70f6e6e7a"
+        }
+      ]
+    },
     "full-stack-skills": {
       "type": "remote",
       "location": "https://github.com/partme-ai/full-stack-skills.git",
