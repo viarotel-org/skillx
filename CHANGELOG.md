@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.9.0](https://github.com/viarotel-org/skillx/compare/skillx-v0.8.2...skillx-v0.9.0) (2026-06-02)
+
+
+### Features
+
+* 🚀 Add find-skills ([176f819](https://github.com/viarotel-org/skillx/commit/176f819064ec90b8aad18efb5bef7abe207de646))
+
+
+### Performance Improvements
+
+* 🚀 Update subscription configuration ([51c37ca](https://github.com/viarotel-org/skillx/commit/51c37cad317dd4f24a65e372970d8e2745ec1cba))
+
+
+### Miscellaneous Chores
+
+* sync skills subscriptions ([8064867](https://github.com/viarotel-org/skillx/commit/8064867cbb18c75b1042d51d79e7eca15f118713))
+* sync skills subscriptions ([d5c5e07](https://github.com/viarotel-org/skillx/commit/d5c5e071bf96a34c48a5f507660792e983babc6c))
+
 ## [0.8.2](https://github.com/viarotel-org/skillx/compare/skillx-v0.8.1...skillx-v0.8.2) (2026-06-02)
 
 
