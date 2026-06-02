@@ -46,6 +46,12 @@ sources:
     location: https://github.com/vuejs-ai/skills.git
     branch: main
     path: skills
+    includes:
+      - create-adaptable-composable
+      - vue-debug-guides
+      - vue-jsx-best-practices
+      - vue-options-api-best-practices
+      - vue-pinia-best-practices
 
   - id: addyosmani
     type: remote
@@ -65,11 +71,8 @@ sources:
       - frontend-ui-engineering
       - git-workflow-and-versioning
       - incremental-implementation
-      - javascript-typescript-jest
       - performance-optimization
       - planning-and-task-breakdown
-      - playwright-explore-website
-      - playwright-generate-test
       - premium-frontend-ui
       - refactor
       - review-and-refactor
@@ -77,10 +80,7 @@ sources:
       - shipping-and-launch
       - source-driven-development
       - spec-driven-development
-      - test-driven-development
-      - unit-test-vue-pinia
       - web-design-reviewer
-      - webapp-testing
 
   - id: awesome-copilot
     type: remote
@@ -90,13 +90,8 @@ sources:
     includes:
       - acquire-codebase-knowledge
       - chrome-devtools
-      - javascript-typescript-jest
-      - unit-test-vue-pinia
-      - playwright-explore-website
-      - playwright-generate-test
       - premium-frontend-ui
       - web-design-reviewer
-      - webapp-testing
       - gsap-framer-scroll-animation
       - refactor
       - review-and-refactor
@@ -139,6 +134,12 @@ sources:
     location: https://github.com/wot-ui/open-wot.git
     branch: main
     path: skills
+    includes:
+      - create-wot-ui-theme
+      - migrate-v1-to-v2
+      - wot-ui-cli
+      - wot-ui-unocss-preset-guide
+      - wot-ui-v2
 
   - id: anthropic
     type: remote
@@ -148,7 +149,6 @@ sources:
     includes:
       - frontend-design
       - web-artifacts-builder
-      - webapp-testing
       - theme-factory
 
   - id: openai
@@ -157,13 +157,6 @@ sources:
     branch: main
     path: skills/.curated
     includes:
-      - define-goal
-      - playwright
-      - playwright-interactive
       - screenshot
       - vercel-deploy
       - cloudflare-deploy
-      - netlify-deploy
-      - figma
-      - figma-use
-      - figma-implement-design
