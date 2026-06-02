@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.8.2](https://github.com/viarotel-org/skillx/compare/skillx-v0.8.1...skillx-v0.8.2) (2026-06-02)
+
+
+### Bug Fixes
+
+* Streamline skills library ([c103ad6](https://github.com/viarotel-org/skillx/commit/c103ad6d5b6c962f265325c7eef581a82e11304a))
+
+
+### Miscellaneous Chores
+
+* sync skills subscriptions ([731b6f7](https://github.com/viarotel-org/skillx/commit/731b6f76d3deb8a847937c0f160f4b4934c5aea4))
+
 ## [0.8.1](https://github.com/viarotel-org/skillx/compare/skillx-v0.8.0...skillx-v0.8.1) (2026-06-02)
 
 
