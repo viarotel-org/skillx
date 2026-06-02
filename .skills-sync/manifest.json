@@ -521,41 +521,163 @@
       "path": "skills",
       "mode": "flat",
       "includes": [
-        "acquire-codebase-knowledge/**",
-        "api-and-interface-design/**",
-        "browser-testing-with-devtools/**",
-        "chrome-devtools/**",
-        "code-review-and-quality/**",
-        "code-simplification/**",
-        "context-engineering/**",
-        "debugging-and-error-recovery/**",
-        "documentation-and-adrs/**",
-        "frontend-ui-engineering/**",
-        "git-workflow-and-versioning/**",
-        "incremental-implementation/**",
-        "javascript-typescript-jest/**",
-        "performance-optimization/**",
-        "planning-and-task-breakdown/**",
-        "playwright-explore-website/**",
-        "playwright-generate-test/**",
-        "premium-frontend-ui/**",
-        "refactor/**",
-        "review-and-refactor/**",
-        "security-and-hardening/**",
-        "shipping-and-launch/**",
-        "source-driven-development/**",
-        "spec-driven-development/**",
-        "test-driven-development/**",
-        "unit-test-vue-pinia/**",
-        "web-design-reviewer/**",
-        "webapp-testing/**"
+        "acquire-codebase-knowledge",
+        "api-and-interface-design",
+        "browser-testing-with-devtools",
+        "chrome-devtools",
+        "code-review-and-quality",
+        "code-simplification",
+        "context-engineering",
+        "debugging-and-error-recovery",
+        "documentation-and-adrs",
+        "frontend-ui-engineering",
+        "git-workflow-and-versioning",
+        "incremental-implementation",
+        "javascript-typescript-jest",
+        "performance-optimization",
+        "planning-and-task-breakdown",
+        "playwright-explore-website",
+        "playwright-generate-test",
+        "premium-frontend-ui",
+        "refactor",
+        "review-and-refactor",
+        "security-and-hardening",
+        "shipping-and-launch",
+        "source-driven-development",
+        "spec-driven-development",
+        "test-driven-development",
+        "unit-test-vue-pinia",
+        "web-design-reviewer",
+        "webapp-testing"
       ],
       "excludes": [],
       "commit": "6ce029897d2b794940325fc7148774a6ec51111c",
       "status": "synced",
-      "targets": [],
-      "skillPaths": [],
-      "skills": []
+      "targets": [
+        "addyosmani-api-and-interface-design",
+        "addyosmani-browser-testing-with-devtools",
+        "addyosmani-code-review-and-quality",
+        "addyosmani-code-simplification",
+        "addyosmani-context-engineering",
+        "addyosmani-debugging-and-error-recovery",
+        "addyosmani-documentation-and-adrs",
+        "addyosmani-frontend-ui-engineering",
+        "addyosmani-git-workflow-and-versioning",
+        "addyosmani-incremental-implementation",
+        "addyosmani-performance-optimization",
+        "addyosmani-planning-and-task-breakdown",
+        "addyosmani-security-and-hardening",
+        "addyosmani-shipping-and-launch",
+        "addyosmani-source-driven-development",
+        "addyosmani-spec-driven-development",
+        "addyosmani-test-driven-development"
+      ],
+      "skillPaths": [
+        "api-and-interface-design",
+        "browser-testing-with-devtools",
+        "code-review-and-quality",
+        "code-simplification",
+        "context-engineering",
+        "debugging-and-error-recovery",
+        "documentation-and-adrs",
+        "frontend-ui-engineering",
+        "git-workflow-and-versioning",
+        "incremental-implementation",
+        "performance-optimization",
+        "planning-and-task-breakdown",
+        "security-and-hardening",
+        "shipping-and-launch",
+        "source-driven-development",
+        "spec-driven-development",
+        "test-driven-development"
+      ],
+      "skills": [
+        {
+          "targetId": "addyosmani-api-and-interface-design",
+          "relativePath": "api-and-interface-design",
+          "contentHash": "293db2903b41316a5109a1e0ce3e1740eeafae31735bc1f9143dafbfd1187363"
+        },
+        {
+          "targetId": "addyosmani-browser-testing-with-devtools",
+          "relativePath": "browser-testing-with-devtools",
+          "contentHash": "8fb8aef5678048b7786b4da6738accb58d55754f714d9ad02acee12f5d32a6f0"
+        },
+        {
+          "targetId": "addyosmani-code-review-and-quality",
+          "relativePath": "code-review-and-quality",
+          "contentHash": "7587de5eff9eccd098f0d3b57b6d86ee18df680a7bbbef03710de7c1a4e67263"
+        },
+        {
+          "targetId": "addyosmani-code-simplification",
+          "relativePath": "code-simplification",
+          "contentHash": "f0c5ed754057eb0c1e027e2587f59de816651feb5e837242296c43ea21cf621d"
+        },
+        {
+          "targetId": "addyosmani-context-engineering",
+          "relativePath": "context-engineering",
+          "contentHash": "ff9d4e5706bdd2eb7de1bfed569f1f42d28e478979ce6fcc32e617e7861b491d"
+        },
+        {
+          "targetId": "addyosmani-debugging-and-error-recovery",
+          "relativePath": "debugging-and-error-recovery",
+          "contentHash": "2539c0078466755c192123c34758aa432da5d29529340037113eeaecb6647b0e"
+        },
+        {
+          "targetId": "addyosmani-documentation-and-adrs",
+          "relativePath": "documentation-and-adrs",
+          "contentHash": "7fed35f9c5b95d8e3623ad24d78d209c3267ab62d7157fc03954c76a7e58adf4"
+        },
+        {
+          "targetId": "addyosmani-frontend-ui-engineering",
+          "relativePath": "frontend-ui-engineering",
+          "contentHash": "9f9e5b3141c891d866c2a15a11ac3aba4e86ec6c530d054f0534503c2e720cb1"
+        },
+        {
+          "targetId": "addyosmani-git-workflow-and-versioning",
+          "relativePath": "git-workflow-and-versioning",
+          "contentHash": "b1a84eac7a47f6e2985a27733137d862fcdeb552eefe2bd17629e1f3c20e0e97"
+        },
+        {
+          "targetId": "addyosmani-incremental-implementation",
+          "relativePath": "incremental-implementation",
+          "contentHash": "5f16adf542330dfadb8b9a9c6d7ec45e4196bd1db9a67d4407e9dc07e6e29e41"
+        },
+        {
+          "targetId": "addyosmani-performance-optimization",
+          "relativePath": "performance-optimization",
+          "contentHash": "46ebf029d5fe812c312d4c5388ba7f07a076685fd30c7dfa7539c07763f1304e"
+        },
+        {
+          "targetId": "addyosmani-planning-and-task-breakdown",
+          "relativePath": "planning-and-task-breakdown",
+          "contentHash": "d9dc9a1bea50a0bb2b5c51ed59833b65969b5b0bda2c8dacefb5560275443a35"
+        },
+        {
+          "targetId": "addyosmani-security-and-hardening",
+          "relativePath": "security-and-hardening",
+          "contentHash": "d13c91c5aa27dbd95c25a83aa5a3290294d9068852dec3b2918b167f1f09e5d6"
+        },
+        {
+          "targetId": "addyosmani-shipping-and-launch",
+          "relativePath": "shipping-and-launch",
+          "contentHash": "3e54575e5dcdc8f576cd1735aa804a56bb881c342bd6c702fd86531bd6652d56"
+        },
+        {
+          "targetId": "addyosmani-source-driven-development",
+          "relativePath": "source-driven-development",
+          "contentHash": "b979e7531ea601ed14a090f32a5b135db517c48ab9821c5e8b09efd80f4ff4d8"
+        },
+        {
+          "targetId": "addyosmani-spec-driven-development",
+          "relativePath": "spec-driven-development",
+          "contentHash": "16041b4b6149c0e99d7323f8c1e2104ddca2819bf46f78c402a8f0458938e344"
+        },
+        {
+          "targetId": "addyosmani-test-driven-development",
+          "relativePath": "test-driven-development",
+          "contentHash": "6c60e193d77a6c52eb3d9a7ca774f1801b9f798ec34f075720e0425a8094f50e"
+        }
+      ]
     },
     "awesome-copilot": {
       "type": "remote",
@@ -564,30 +686,152 @@
       "path": "skills",
       "mode": "flat",
       "includes": [
-        "acquire-codebase-knowledge/**",
-        "chrome-devtools/**",
-        "javascript-typescript-jest/**",
-        "unit-test-vue-pinia/**",
-        "playwright-explore-website/**",
-        "playwright-generate-test/**",
-        "premium-frontend-ui/**",
-        "web-design-reviewer/**",
-        "webapp-testing/**",
-        "gsap-framer-scroll-animation/**",
-        "refactor/**",
-        "review-and-refactor/**",
-        "context-map/**",
-        "code-tour/**",
-        "create-specification/**",
-        "create-implementation-plan/**",
-        "documentation-writer/**"
+        "acquire-codebase-knowledge",
+        "chrome-devtools",
+        "javascript-typescript-jest",
+        "unit-test-vue-pinia",
+        "playwright-explore-website",
+        "playwright-generate-test",
+        "premium-frontend-ui",
+        "web-design-reviewer",
+        "webapp-testing",
+        "gsap-framer-scroll-animation",
+        "refactor",
+        "review-and-refactor",
+        "context-map",
+        "code-tour",
+        "create-specification",
+        "create-implementation-plan",
+        "documentation-writer"
       ],
       "excludes": [],
       "commit": "9b74459b5ae5aad67781c4a9de1093605d620f23",
       "status": "synced",
-      "targets": [],
-      "skillPaths": [],
-      "skills": []
+      "targets": [
+        "awesome-copilot-acquire-codebase-knowledge",
+        "awesome-copilot-chrome-devtools",
+        "awesome-copilot-code-tour",
+        "awesome-copilot-context-map",
+        "awesome-copilot-create-implementation-plan",
+        "awesome-copilot-create-specification",
+        "awesome-copilot-documentation-writer",
+        "awesome-copilot-gsap-framer-scroll-animation",
+        "awesome-copilot-javascript-typescript-jest",
+        "awesome-copilot-playwright-explore-website",
+        "awesome-copilot-playwright-generate-test",
+        "awesome-copilot-premium-frontend-ui",
+        "awesome-copilot-refactor",
+        "awesome-copilot-review-and-refactor",
+        "awesome-copilot-unit-test-vue-pinia",
+        "awesome-copilot-web-design-reviewer",
+        "awesome-copilot-webapp-testing"
+      ],
+      "skillPaths": [
+        "acquire-codebase-knowledge",
+        "chrome-devtools",
+        "code-tour",
+        "context-map",
+        "create-implementation-plan",
+        "create-specification",
+        "documentation-writer",
+        "gsap-framer-scroll-animation",
+        "javascript-typescript-jest",
+        "playwright-explore-website",
+        "playwright-generate-test",
+        "premium-frontend-ui",
+        "refactor",
+        "review-and-refactor",
+        "unit-test-vue-pinia",
+        "web-design-reviewer",
+        "webapp-testing"
+      ],
+      "skills": [
+        {
+          "targetId": "awesome-copilot-acquire-codebase-knowledge",
+          "relativePath": "acquire-codebase-knowledge",
+          "contentHash": "7ca01711e1615171b26ce9e2729bedf041348d7fd0f24bc04e0d400dc93e41b9"
+        },
+        {
+          "targetId": "awesome-copilot-chrome-devtools",
+          "relativePath": "chrome-devtools",
+          "contentHash": "e85ec55f68317923033375f00b431e9d5822283ea4bfad967f5fa7cbc61e6265"
+        },
+        {
+          "targetId": "awesome-copilot-code-tour",
+          "relativePath": "code-tour",
+          "contentHash": "365f0d06c564e6bb0f950a28f92e875780d4f0fef0ff6b86e05151a17f658f09"
+        },
+        {
+          "targetId": "awesome-copilot-context-map",
+          "relativePath": "context-map",
+          "contentHash": "af0037b06a0b56a5014e16a32538ac419725638659428b7e229ed5bbb9087a37"
+        },
+        {
+          "targetId": "awesome-copilot-create-implementation-plan",
+          "relativePath": "create-implementation-plan",
+          "contentHash": "58f9876006d632bc364794b0270e2c13a8e4de937e4641e6928927a08200aa67"
+        },
+        {
+          "targetId": "awesome-copilot-create-specification",
+          "relativePath": "create-specification",
+          "contentHash": "ae2c3ca87d871056b4b7d8e11758ee8c29fcb307ba890b1407ab5a88b8d2a5d8"
+        },
+        {
+          "targetId": "awesome-copilot-documentation-writer",
+          "relativePath": "documentation-writer",
+          "contentHash": "7e8244988c9f4eb63bf8c0edf160578544621eb96e5e51e2d848f1401c5de8f1"
+        },
+        {
+          "targetId": "awesome-copilot-gsap-framer-scroll-animation",
+          "relativePath": "gsap-framer-scroll-animation",
+          "contentHash": "1ae197bfe22da3f51b7e77e67af01f87f12b9e797c237ce87e64f644b6528238"
+        },
+        {
+          "targetId": "awesome-copilot-javascript-typescript-jest",
+          "relativePath": "javascript-typescript-jest",
+          "contentHash": "cb9a552dfe63cae4f310b27067ba28351b59ad17e83a9e1c5ff23c542ce6fdd8"
+        },
+        {
+          "targetId": "awesome-copilot-playwright-explore-website",
+          "relativePath": "playwright-explore-website",
+          "contentHash": "1496280e250b5b79c2c3081f093fa1fea22ac19a2fdc05074589875cdd9f55d3"
+        },
+        {
+          "targetId": "awesome-copilot-playwright-generate-test",
+          "relativePath": "playwright-generate-test",
+          "contentHash": "79dbb1a49fc5a6502788ccba1a4bd30769a017a1cc31d9db329d1326ea3d898f"
+        },
+        {
+          "targetId": "awesome-copilot-premium-frontend-ui",
+          "relativePath": "premium-frontend-ui",
+          "contentHash": "b7edf35b33931d15ea0c1d271f3c05d469e2b6923ed4df1c955d4da86287d9fb"
+        },
+        {
+          "targetId": "awesome-copilot-refactor",
+          "relativePath": "refactor",
+          "contentHash": "58a38edd230cdcdd866939906321c8ba6f47c98a70d0cda373360196ee2ca1a7"
+        },
+        {
+          "targetId": "awesome-copilot-review-and-refactor",
+          "relativePath": "review-and-refactor",
+          "contentHash": "95b48ed4b137777ddc87b77cb0873ed7f485141a517825e71af1a984cf5a6cd6"
+        },
+        {
+          "targetId": "awesome-copilot-unit-test-vue-pinia",
+          "relativePath": "unit-test-vue-pinia",
+          "contentHash": "4239e4c27c148bf4bbafd338bf8aeeb7993eda9e544eb80f0f15c68d5536e167"
+        },
+        {
+          "targetId": "awesome-copilot-web-design-reviewer",
+          "relativePath": "web-design-reviewer",
+          "contentHash": "2b324a0a6b44f16ddd2259f3cb2cb326b315ff5c42b5bf5c99132cd6f77835e5"
+        },
+        {
+          "targetId": "awesome-copilot-webapp-testing",
+          "relativePath": "webapp-testing",
+          "contentHash": "c4629221463d79c84555721ae2a30a6c345dd4d16c38cf6dbe735126e2426044"
+        }
+      ]
     },
     "ui-ux-pro-max-skill": {
       "type": "remote",
@@ -1316,17 +1560,48 @@
       "path": "skills",
       "mode": "flat",
       "includes": [
-        "frontend-design/**",
-        "web-artifacts-builder/**",
-        "webapp-testing/**",
-        "theme-factory/**"
+        "frontend-design",
+        "web-artifacts-builder",
+        "webapp-testing",
+        "theme-factory"
       ],
       "excludes": [],
       "commit": "da20c92503b2e8ff1cf28ca81a0df4673debdbf7",
       "status": "synced",
-      "targets": [],
-      "skillPaths": [],
-      "skills": []
+      "targets": [
+        "anthropic-frontend-design",
+        "anthropic-theme-factory",
+        "anthropic-web-artifacts-builder",
+        "anthropic-webapp-testing"
+      ],
+      "skillPaths": [
+        "frontend-design",
+        "theme-factory",
+        "web-artifacts-builder",
+        "webapp-testing"
+      ],
+      "skills": [
+        {
+          "targetId": "anthropic-frontend-design",
+          "relativePath": "frontend-design",
+          "contentHash": "b81e2ff87ed8fa4d6c377ccb127a7254c9e6a77e3ae94f21e6b514f7bb2945a0"
+        },
+        {
+          "targetId": "anthropic-theme-factory",
+          "relativePath": "theme-factory",
+          "contentHash": "c35893e221e28895c52143cc11bf30e41a44817796b39d4b15727dadc9796552"
+        },
+        {
+          "targetId": "anthropic-web-artifacts-builder",
+          "relativePath": "web-artifacts-builder",
+          "contentHash": "81c5002c6643b0de7b8710b00e7a9038daa6fb9b68d59870ee6adb12da8d10f8"
+        },
+        {
+          "targetId": "anthropic-webapp-testing",
+          "relativePath": "webapp-testing",
+          "contentHash": "51b7349e77ec63b7744a6f63647e7566a0b4d2e301121cc10e8c2113af6556a2"
+        }
+      ]
     },
     "openai": {
       "type": "remote",
@@ -1335,23 +1610,96 @@
       "path": "skills/.curated",
       "mode": "flat",
       "includes": [
-        "define-goal/**",
-        "playwright/**",
-        "playwright-interactive/**",
-        "screenshot/**",
-        "vercel-deploy/**",
-        "cloudflare-deploy/**",
-        "netlify-deploy/**",
-        "figma/**",
-        "figma-use/**",
-        "figma-implement-design/**"
+        "define-goal",
+        "playwright",
+        "playwright-interactive",
+        "screenshot",
+        "vercel-deploy",
+        "cloudflare-deploy",
+        "netlify-deploy",
+        "figma",
+        "figma-use",
+        "figma-implement-design"
       ],
       "excludes": [],
       "commit": "a8924c2a35cfa290458852c4fad17c9133054c2e",
       "status": "synced",
-      "targets": [],
-      "skillPaths": [],
-      "skills": []
+      "targets": [
+        "openai-cloudflare-deploy",
+        "openai-define-goal",
+        "openai-figma",
+        "openai-figma-implement-design",
+        "openai-figma-use",
+        "openai-netlify-deploy",
+        "openai-playwright",
+        "openai-playwright-interactive",
+        "openai-screenshot",
+        "openai-vercel-deploy"
+      ],
+      "skillPaths": [
+        "cloudflare-deploy",
+        "define-goal",
+        "figma",
+        "figma-implement-design",
+        "figma-use",
+        "netlify-deploy",
+        "playwright",
+        "playwright-interactive",
+        "screenshot",
+        "vercel-deploy"
+      ],
+      "skills": [
+        {
+          "targetId": "openai-cloudflare-deploy",
+          "relativePath": "cloudflare-deploy",
+          "contentHash": "d7632537cf19be17cf33d2c696b9d9c2ea3ee51026030e9b203d5b9255e75b15"
+        },
+        {
+          "targetId": "openai-define-goal",
+          "relativePath": "define-goal",
+          "contentHash": "708df89ff19cbae82a762efae036735d1914b5c7e44df1832e0b723f6cd9ee30"
+        },
+        {
+          "targetId": "openai-figma",
+          "relativePath": "figma",
+          "contentHash": "5b11f7c8d0ce4c047b401323e7b8fe6559bd3162a3397bf5248634a5444609d5"
+        },
+        {
+          "targetId": "openai-figma-implement-design",
+          "relativePath": "figma-implement-design",
+          "contentHash": "63f3d12d444547bbf68c10a12982b1f42e0f6e26fc074324564a13184d4b15ad"
+        },
+        {
+          "targetId": "openai-figma-use",
+          "relativePath": "figma-use",
+          "contentHash": "afa9c4ae068a18b93e4914b2d224180ace113db7713dd66f4df397f16ba9c4b4"
+        },
+        {
+          "targetId": "openai-netlify-deploy",
+          "relativePath": "netlify-deploy",
+          "contentHash": "bb2c29bf599a043cade932f60cc64f632ca100e8767ccdfa2ba1a42c8d43958f"
+        },
+        {
+          "targetId": "openai-playwright",
+          "relativePath": "playwright",
+          "contentHash": "0ffaabcc8e0990627c4725f18bf1c7955534a796c1c199e872909de2013ce6a8"
+        },
+        {
+          "targetId": "openai-playwright-interactive",
+          "relativePath": "playwright-interactive",
+          "contentHash": "f6c1155d923e6ae3ccc12abfef2266f119f8e9546df2ddeee1f5eb369845a0a1"
+        },
+        {
+          "targetId": "openai-screenshot",
+          "relativePath": "screenshot",
+          "contentHash": "081935a6a163277537d46365f49d6b4a3cb40b4748347e7e88759c5927fa8cf5"
+        },
+        {
+          "targetId": "openai-vercel-deploy",
+          "relativePath": "vercel-deploy",
+          "contentHash": "f4a6cbfbb378a320fae179a79f727a881d19677e9b3db96ed49d2dc02a74fa46"
+        }
+      ]
     }
   }
 }
