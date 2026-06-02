@@ -112,14 +112,6 @@ sources:
     branch: main
     path: .claude/skills
 
-  - id: mattpocock
-    type: remote
-    location: https://github.com/mattpocock/skills.git
-    branch: main
-    path: skills
-    excludes:
-      - deprecated
-
   - id: antfu
     type: remote
     location: https://github.com/antfu/skills.git
@@ -131,6 +123,10 @@ sources:
     location: https://github.com/netlify/context-and-tools.git
     branch: main
     path: skills
+    includes:
+      - netlify-deploy
+      - netlify-frameworks
+      - netlify-cli-and-deploy
 
   - id: shopify-ai-toolkit
     type: remote
