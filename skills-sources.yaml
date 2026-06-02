@@ -45,34 +45,34 @@ sources:
     branch: main
     path: skills
     includes:
-      - acquire-codebase-knowledge/**
-      - api-and-interface-design/**
-      - browser-testing-with-devtools/**
-      - chrome-devtools/**
-      - code-review-and-quality/**
-      - code-simplification/**
-      - context-engineering/**
-      - debugging-and-error-recovery/**
-      - documentation-and-adrs/**
-      - frontend-ui-engineering/**
-      - git-workflow-and-versioning/**
-      - incremental-implementation/**
-      - javascript-typescript-jest/**
-      - performance-optimization/**
-      - planning-and-task-breakdown/**
-      - playwright-explore-website/**
-      - playwright-generate-test/**
-      - premium-frontend-ui/**
-      - refactor/**
-      - review-and-refactor/**
-      - security-and-hardening/**
-      - shipping-and-launch/**
-      - source-driven-development/**
-      - spec-driven-development/**
-      - test-driven-development/**
-      - unit-test-vue-pinia/**
-      - web-design-reviewer/**
-      - webapp-testing/**
+      - acquire-codebase-knowledge
+      - api-and-interface-design
+      - browser-testing-with-devtools
+      - chrome-devtools
+      - code-review-and-quality
+      - code-simplification
+      - context-engineering
+      - debugging-and-error-recovery
+      - documentation-and-adrs
+      - frontend-ui-engineering
+      - git-workflow-and-versioning
+      - incremental-implementation
+      - javascript-typescript-jest
+      - performance-optimization
+      - planning-and-task-breakdown
+      - playwright-explore-website
+      - playwright-generate-test
+      - premium-frontend-ui
+      - refactor
+      - review-and-refactor
+      - security-and-hardening
+      - shipping-and-launch
+      - source-driven-development
+      - spec-driven-development
+      - test-driven-development
+      - unit-test-vue-pinia
+      - web-design-reviewer
+      - webapp-testing
 
   - id: awesome-copilot
     type: remote
@@ -80,23 +80,23 @@ sources:
     branch: main
     path: skills
     includes:
-      - acquire-codebase-knowledge/**
-      - chrome-devtools/**
-      - javascript-typescript-jest/**
-      - unit-test-vue-pinia/**
-      - playwright-explore-website/**
-      - playwright-generate-test/**
-      - premium-frontend-ui/**
-      - web-design-reviewer/**
-      - webapp-testing/**
-      - gsap-framer-scroll-animation/**
-      - refactor/**
-      - review-and-refactor/**
-      - context-map/**
-      - code-tour/**
-      - create-specification/**
-      - create-implementation-plan/**
-      - documentation-writer/**
+      - acquire-codebase-knowledge
+      - chrome-devtools
+      - javascript-typescript-jest
+      - unit-test-vue-pinia
+      - playwright-explore-website
+      - playwright-generate-test
+      - premium-frontend-ui
+      - web-design-reviewer
+      - webapp-testing
+      - gsap-framer-scroll-animation
+      - refactor
+      - review-and-refactor
+      - context-map
+      - code-tour
+      - create-specification
+      - create-implementation-plan
+      - documentation-writer
 
   - id: ui-ux-pro-max-skill
     type: remote
@@ -142,10 +142,10 @@ sources:
     branch: main
     path: skills
     includes:
-      - frontend-design/**
-      - web-artifacts-builder/**
-      - webapp-testing/**
-      - theme-factory/**
+      - frontend-design
+      - web-artifacts-builder
+      - webapp-testing
+      - theme-factory
 
   - id: openai
     type: remote
@@ -153,13 +153,13 @@ sources:
     branch: main
     path: skills/.curated
     includes:
-      - define-goal/**
-      - playwright/**
-      - playwright-interactive/**
-      - screenshot/**
-      - vercel-deploy/**
-      - cloudflare-deploy/**
-      - netlify-deploy/**
-      - figma/**
-      - figma-use/**
-      - figma-implement-design/**
+      - define-goal
+      - playwright
+      - playwright-interactive
+      - screenshot
+      - vercel-deploy
+      - cloudflare-deploy
+      - netlify-deploy
+      - figma
+      - figma-use
+      - figma-implement-design
