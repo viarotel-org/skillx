@@ -925,228 +925,6 @@
         }
       ]
     },
-    "mattpocock": {
-      "type": "remote",
-      "location": "https://github.com/mattpocock/skills.git",
-      "branch": "main",
-      "path": "skills",
-      "mode": "flat",
-      "includes": [],
-      "excludes": [
-        "deprecated"
-      ],
-      "commit": "aaf2453fbdfe7a15c07f11d861224f34ab4b53cb",
-      "status": "synced",
-      "targets": [
-        "mattpocock-deprecated-design-an-interface",
-        "mattpocock-deprecated-qa",
-        "mattpocock-deprecated-request-refactor-plan",
-        "mattpocock-deprecated-ubiquitous-language",
-        "mattpocock-engineering-diagnose",
-        "mattpocock-engineering-grill-with-docs",
-        "mattpocock-engineering-improve-codebase-architecture",
-        "mattpocock-engineering-prototype",
-        "mattpocock-engineering-setup-matt-pocock-skills",
-        "mattpocock-engineering-tdd",
-        "mattpocock-engineering-to-issues",
-        "mattpocock-engineering-to-prd",
-        "mattpocock-engineering-triage",
-        "mattpocock-engineering-zoom-out",
-        "mattpocock-in-progress-review",
-        "mattpocock-in-progress-teach",
-        "mattpocock-in-progress-writing-beats",
-        "mattpocock-in-progress-writing-fragments",
-        "mattpocock-in-progress-writing-shape",
-        "mattpocock-misc-git-guardrails-claude-code",
-        "mattpocock-misc-migrate-to-shoehorn",
-        "mattpocock-misc-scaffold-exercises",
-        "mattpocock-misc-setup-pre-commit",
-        "mattpocock-personal-edit-article",
-        "mattpocock-personal-obsidian-vault",
-        "mattpocock-productivity-caveman",
-        "mattpocock-productivity-grill-me",
-        "mattpocock-productivity-handoff",
-        "mattpocock-productivity-write-a-skill"
-      ],
-      "skillPaths": [
-        "deprecated/design-an-interface",
-        "deprecated/qa",
-        "deprecated/request-refactor-plan",
-        "deprecated/ubiquitous-language",
-        "engineering/diagnose",
-        "engineering/grill-with-docs",
-        "engineering/improve-codebase-architecture",
-        "engineering/prototype",
-        "engineering/setup-matt-pocock-skills",
-        "engineering/tdd",
-        "engineering/to-issues",
-        "engineering/to-prd",
-        "engineering/triage",
-        "engineering/zoom-out",
-        "in-progress/review",
-        "in-progress/teach",
-        "in-progress/writing-beats",
-        "in-progress/writing-fragments",
-        "in-progress/writing-shape",
-        "misc/git-guardrails-claude-code",
-        "misc/migrate-to-shoehorn",
-        "misc/scaffold-exercises",
-        "misc/setup-pre-commit",
-        "personal/edit-article",
-        "personal/obsidian-vault",
-        "productivity/caveman",
-        "productivity/grill-me",
-        "productivity/handoff",
-        "productivity/write-a-skill"
-      ],
-      "skills": [
-        {
-          "targetId": "mattpocock-deprecated-design-an-interface",
-          "relativePath": "deprecated/design-an-interface",
-          "contentHash": "a2596e9fa2d50e23ba014f64a5b8f9df4eb56b846a52cad152899ef5eb97b085"
-        },
-        {
-          "targetId": "mattpocock-deprecated-qa",
-          "relativePath": "deprecated/qa",
-          "contentHash": "d9727aac6503981bf69bdd8b37e0d85b32b8fbd353a57528c252dac1337ab761"
-        },
-        {
-          "targetId": "mattpocock-deprecated-request-refactor-plan",
-          "relativePath": "deprecated/request-refactor-plan",
-          "contentHash": "d59de4ba6cc1fe2dd267e8b9b5a1fd88e3e739e2130bc9dd78061d2a072830b8"
-        },
-        {
-          "targetId": "mattpocock-deprecated-ubiquitous-language",
-          "relativePath": "deprecated/ubiquitous-language",
-          "contentHash": "2449e2345b96b9f1e861c697b5eab50d03ae1254481a4306b6f815684e523b3a"
-        },
-        {
-          "targetId": "mattpocock-engineering-diagnose",
-          "relativePath": "engineering/diagnose",
-          "contentHash": "28886402bbfa0470248086eab9106a103b964b76ae9496e63ff0c8a6761b6d13"
-        },
-        {
-          "targetId": "mattpocock-engineering-grill-with-docs",
-          "relativePath": "engineering/grill-with-docs",
-          "contentHash": "3e35025119ba03efe7983dfdec3c8b96918142e3978512f3c2bf66d428310c7e"
-        },
-        {
-          "targetId": "mattpocock-engineering-improve-codebase-architecture",
-          "relativePath": "engineering/improve-codebase-architecture",
-          "contentHash": "f00de04c7bb83cfd0ed1f97f3401a83838212c30856912ee44ba406649e6c749"
-        },
-        {
-          "targetId": "mattpocock-engineering-prototype",
-          "relativePath": "engineering/prototype",
-          "contentHash": "a653deb65afa2ee8f45c68f6ef4f593147171b386e994c8cccf89292d9ea9d75"
-        },
-        {
-          "targetId": "mattpocock-engineering-setup-matt-pocock-skills",
-          "relativePath": "engineering/setup-matt-pocock-skills",
-          "contentHash": "c778d4e3d86ecc9125c357279a86780657b5db23110e1f7acf4f46d2441e7204"
-        },
-        {
-          "targetId": "mattpocock-engineering-tdd",
-          "relativePath": "engineering/tdd",
-          "contentHash": "af059705061156fd4845ddbb736fe92b564118ac5f03551e09ef9e8f6d970638"
-        },
-        {
-          "targetId": "mattpocock-engineering-to-issues",
-          "relativePath": "engineering/to-issues",
-          "contentHash": "0e6a2973fa5bdf32570227c578f7e474d945dd9281615d31439664c3ef016fce"
-        },
-        {
-          "targetId": "mattpocock-engineering-to-prd",
-          "relativePath": "engineering/to-prd",
-          "contentHash": "5212dee3af6a95e60d7daaedac08f15f2789b170468d57d23f722e516a255269"
-        },
-        {
-          "targetId": "mattpocock-engineering-triage",
-          "relativePath": "engineering/triage",
-          "contentHash": "b819f0285e4e5814ac6472d0217f07dc9f23d2fdae3ebb0dd31d98360d8ac029"
-        },
-        {
-          "targetId": "mattpocock-engineering-zoom-out",
-          "relativePath": "engineering/zoom-out",
-          "contentHash": "2a6894c7f9b1c9c55f451c625a834c4f377e217b623a85280e55db5fe9cacf48"
-        },
-        {
-          "targetId": "mattpocock-in-progress-review",
-          "relativePath": "in-progress/review",
-          "contentHash": "5700f30d3f06706ee56c099adceec222fef26dbcf82817ff604962634e246b2e"
-        },
-        {
-          "targetId": "mattpocock-in-progress-teach",
-          "relativePath": "in-progress/teach",
-          "contentHash": "b55c93d761d4d1a70555e6caa86abe1a692892ebdacfda2e51d5ba8612decf31"
-        },
-        {
-          "targetId": "mattpocock-in-progress-writing-beats",
-          "relativePath": "in-progress/writing-beats",
-          "contentHash": "0843367d0a653bb17e61b3771d0ec08fa463663bc0ab6f3f421141b2687c4429"
-        },
-        {
-          "targetId": "mattpocock-in-progress-writing-fragments",
-          "relativePath": "in-progress/writing-fragments",
-          "contentHash": "4ffa34a701caff27da54b9e073fef48471f0ccafee009d404c22ae542d0e8dea"
-        },
-        {
-          "targetId": "mattpocock-in-progress-writing-shape",
-          "relativePath": "in-progress/writing-shape",
-          "contentHash": "81a542b95fa865325835bf5ec7644a98e657c1e0f3374c56cb9f3b42b374660f"
-        },
-        {
-          "targetId": "mattpocock-misc-git-guardrails-claude-code",
-          "relativePath": "misc/git-guardrails-claude-code",
-          "contentHash": "03c4de7613c712aea336d64c467ea3ed14be2cbd52345925fe949c75c01c29f7"
-        },
-        {
-          "targetId": "mattpocock-misc-migrate-to-shoehorn",
-          "relativePath": "misc/migrate-to-shoehorn",
-          "contentHash": "de4da4c11d924fac79c924b2ee3d2db4a5cb98386eb490a599119463d036ae72"
-        },
-        {
-          "targetId": "mattpocock-misc-scaffold-exercises",
-          "relativePath": "misc/scaffold-exercises",
-          "contentHash": "75f5c9d771606fb9762f16522efc954df11c324f87148d8ff069bce166257de9"
-        },
-        {
-          "targetId": "mattpocock-misc-setup-pre-commit",
-          "relativePath": "misc/setup-pre-commit",
-          "contentHash": "872f4037cb7e6e0e340d4175c086550072959925dffc87b160d1a30dc9f63bbd"
-        },
-        {
-          "targetId": "mattpocock-personal-edit-article",
-          "relativePath": "personal/edit-article",
-          "contentHash": "cc372fb25b552017765aa0dac1b108f77eaee4555d607041efc1ad5d8c995b4a"
-        },
-        {
-          "targetId": "mattpocock-personal-obsidian-vault",
-          "relativePath": "personal/obsidian-vault",
-          "contentHash": "7bed1d552aa5e9345e493cd62cb13e65c5d829d153c349afdb2cb91c809fa6c4"
-        },
-        {
-          "targetId": "mattpocock-productivity-caveman",
-          "relativePath": "productivity/caveman",
-          "contentHash": "b4bb6fe3bf3da222993ca0aee5e7c6f5368b182dd30ce1172e8f8e3280eb7052"
-        },
-        {
-          "targetId": "mattpocock-productivity-grill-me",
-          "relativePath": "productivity/grill-me",
-          "contentHash": "74147eb6010a65957efef2b9e0f0b3ff935c1def7fc117697151b1d0f3610556"
-        },
-        {
-          "targetId": "mattpocock-productivity-handoff",
-          "relativePath": "productivity/handoff",
-          "contentHash": "d215dd8f2a19bf85fdaf67a3cdb5077641f6b4108f229ba79579414793d7b0a3"
-        },
-        {
-          "targetId": "mattpocock-productivity-write-a-skill",
-          "relativePath": "productivity/write-a-skill",
-          "contentHash": "be8f20e66309258034b82a7db5040b03798aa40546f9d387662c2bd86be23123"
-        }
-      ]
-    },
     "antfu": {
       "type": "remote",
       "location": "https://github.com/antfu/skills.git",
@@ -1268,70 +1046,29 @@
       "branch": "main",
       "path": "skills",
       "mode": "flat",
-      "includes": [],
+      "includes": [
+        "netlify-deploy",
+        "netlify-frameworks",
+        "netlify-cli-and-deploy"
+      ],
       "excludes": [],
       "commit": "cffaf74f79128620b8200956222aeb819f5f8fd5",
       "status": "synced",
       "targets": [
-        "netlify-context-and-tools-netlify-ai-gateway",
-        "netlify-context-and-tools-netlify-blobs",
-        "netlify-context-and-tools-netlify-caching",
         "netlify-context-and-tools-netlify-cli-and-deploy",
-        "netlify-context-and-tools-netlify-config",
-        "netlify-context-and-tools-netlify-database",
         "netlify-context-and-tools-netlify-deploy",
-        "netlify-context-and-tools-netlify-edge-functions",
-        "netlify-context-and-tools-netlify-forms",
-        "netlify-context-and-tools-netlify-frameworks",
-        "netlify-context-and-tools-netlify-functions",
-        "netlify-context-and-tools-netlify-identity",
-        "netlify-context-and-tools-netlify-image-cdn"
+        "netlify-context-and-tools-netlify-frameworks"
       ],
       "skillPaths": [
-        "netlify-ai-gateway",
-        "netlify-blobs",
-        "netlify-caching",
         "netlify-cli-and-deploy",
-        "netlify-config",
-        "netlify-database",
         "netlify-deploy",
-        "netlify-edge-functions",
-        "netlify-forms",
-        "netlify-frameworks",
-        "netlify-functions",
-        "netlify-identity",
-        "netlify-image-cdn"
+        "netlify-frameworks"
       ],
       "skills": [
-        {
-          "targetId": "netlify-context-and-tools-netlify-ai-gateway",
-          "relativePath": "netlify-ai-gateway",
-          "contentHash": "76a9ee1dbe68431fac1ae90f2d3a52591491d67f17185fa9ddce2021d43e0075"
-        },
-        {
-          "targetId": "netlify-context-and-tools-netlify-blobs",
-          "relativePath": "netlify-blobs",
-          "contentHash": "af17c313be786c47ea66cad7558a0fb572f35ba0c531185e17dccc956ae9c881"
-        },
-        {
-          "targetId": "netlify-context-and-tools-netlify-caching",
-          "relativePath": "netlify-caching",
-          "contentHash": "2d8d4358454ef49c25668c1f549b3ea25f708365026a13e92160071ccdf762b2"
-        },
         {
           "targetId": "netlify-context-and-tools-netlify-cli-and-deploy",
           "relativePath": "netlify-cli-and-deploy",
           "contentHash": "dccc4b22dc4a5ddec35a10b93588dd34ecb655a30d6e63e598c1a5e47d0411f0"
-        },
-        {
-          "targetId": "netlify-context-and-tools-netlify-config",
-          "relativePath": "netlify-config",
-          "contentHash": "bcc297f4f93407a235b74025404ae81f2c8082edfa40313946cc8b385735bb0d"
-        },
-        {
-          "targetId": "netlify-context-and-tools-netlify-database",
-          "relativePath": "netlify-database",
-          "contentHash": "2ee2b530df5ae35a8a4db070f51ab11febdf8c08711ef13e8b7fa3bbbe6b3c2c"
         },
         {
           "targetId": "netlify-context-and-tools-netlify-deploy",
@@ -1339,34 +1076,9 @@
           "contentHash": "acd44a15aa355853b6fc2c23b9be9713cd7e36bdcf39e6604b94fc1968aaa2c2"
         },
         {
-          "targetId": "netlify-context-and-tools-netlify-edge-functions",
-          "relativePath": "netlify-edge-functions",
-          "contentHash": "c30e744bea2eb68de5995bf1e8e4cbee1849f4b319dd04df79f54262d034124d"
-        },
-        {
-          "targetId": "netlify-context-and-tools-netlify-forms",
-          "relativePath": "netlify-forms",
-          "contentHash": "f26fc3198010fff39d9d12113e2bd13f5278ba749c52cb90f5cea5c7e0ef9aa5"
-        },
-        {
           "targetId": "netlify-context-and-tools-netlify-frameworks",
           "relativePath": "netlify-frameworks",
           "contentHash": "49c66d5db590e917c469ebba77e656f065bdad41aca3fc0d2311bb81aaf02708"
-        },
-        {
-          "targetId": "netlify-context-and-tools-netlify-functions",
-          "relativePath": "netlify-functions",
-          "contentHash": "b1f56e7099ce4b703a0c0b29a0e7cde03837d58fdefc3544f7de0d511fac0caa"
-        },
-        {
-          "targetId": "netlify-context-and-tools-netlify-identity",
-          "relativePath": "netlify-identity",
-          "contentHash": "d432e8b29135f409a68557ba0413d3e1f1db4040e8638b68c126ee060736efc7"
-        },
-        {
-          "targetId": "netlify-context-and-tools-netlify-image-cdn",
-          "relativePath": "netlify-image-cdn",
-          "contentHash": "7a09bfa2e9b8506c118af691d464384d0b2fa5c68ee97e237d7d66d3011d230b"
         }
       ]
     },
