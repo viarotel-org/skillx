@@ -21,72 +21,6 @@ sources:
     location: skillx
     path: .
 
-  - id: awesome-copilot
-    type: remote
-    location: https://github.com/github/awesome-copilot
-    branch: main
-    path: skills
-
-  - id: anthropic
-    type: remote
-    location: https://github.com/anthropics/skills.git
-    branch: main
-    path: skills
-
-  - id: openai
-    type: remote
-    location: https://github.com/openai/skills.git
-    branch: main
-    path: skills
-
-  - id: antfu
-    type: remote
-    location: https://github.com/antfu/skills.git
-    branch: main
-    path: skills
-
-  - id: mattpocock
-    type: remote
-    location: https://github.com/mattpocock/skills.git
-    branch: main
-    path: skills
-
-  - id: open-wot
-    type: remote
-    location: https://github.com/wot-ui/open-wot.git
-    branch: main
-    path: skills
-
-  - id: addyosmani
-    type: remote
-    location: https://github.com/addyosmani/agent-skills.git
-    branch: main
-    path: skills
-
-  - id: android
-    type: remote
-    location: https://github.com/android/skills.git
-    branch: main
-    path: .
-
-  - id: vuejs-ai
-    type: remote
-    location: https://github.com/vuejs-ai/skills.git
-    branch: main
-    path: skills
-
-  - id: shopify-ai-toolkit
-    type: remote
-    location: https://github.com/Shopify/Shopify-AI-Toolkit.git
-    branch: main
-    path: skills
-
-  - id: netlify-context-and-tools
-    type: remote
-    location: https://github.com/netlify/context-and-tools.git
-    branch: main
-    path: skills
-
   - id: full-stack-skills
     type: remote
     location: https://github.com/partme-ai/full-stack-skills.git
@@ -99,8 +33,133 @@ sources:
       - uniapp-skills/**
       - stitch-skills/**
 
+  - id: vuejs-ai
+    type: remote
+    location: https://github.com/vuejs-ai/skills.git
+    branch: main
+    path: skills
+
+  - id: addyosmani
+    type: remote
+    location: https://github.com/addyosmani/agent-skills.git
+    branch: main
+    path: skills
+    includes:
+      - acquire-codebase-knowledge/**
+      - api-and-interface-design/**
+      - browser-testing-with-devtools/**
+      - chrome-devtools/**
+      - code-review-and-quality/**
+      - code-simplification/**
+      - context-engineering/**
+      - debugging-and-error-recovery/**
+      - documentation-and-adrs/**
+      - frontend-ui-engineering/**
+      - git-workflow-and-versioning/**
+      - incremental-implementation/**
+      - javascript-typescript-jest/**
+      - performance-optimization/**
+      - planning-and-task-breakdown/**
+      - playwright-explore-website/**
+      - playwright-generate-test/**
+      - premium-frontend-ui/**
+      - refactor/**
+      - review-and-refactor/**
+      - security-and-hardening/**
+      - shipping-and-launch/**
+      - source-driven-development/**
+      - spec-driven-development/**
+      - test-driven-development/**
+      - unit-test-vue-pinia/**
+      - web-design-reviewer/**
+      - webapp-testing/**
+
+  - id: awesome-copilot
+    type: remote
+    location: https://github.com/github/awesome-copilot
+    branch: main
+    path: skills
+    includes:
+      - acquire-codebase-knowledge/**
+      - chrome-devtools/**
+      - javascript-typescript-jest/**
+      - unit-test-vue-pinia/**
+      - playwright-explore-website/**
+      - playwright-generate-test/**
+      - premium-frontend-ui/**
+      - web-design-reviewer/**
+      - webapp-testing/**
+      - gsap-framer-scroll-animation/**
+      - refactor/**
+      - review-and-refactor/**
+      - context-map/**
+      - code-tour/**
+      - create-specification/**
+      - create-implementation-plan/**
+      - documentation-writer/**
+
   - id: ui-ux-pro-max-skill
     type: remote
     location: https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git
     branch: main
     path: .claude/skills
+
+  - id: mattpocock
+    type: remote
+    location: https://github.com/mattpocock/skills.git
+    branch: main
+    path: skills
+    excludes:
+      - deprecated
+
+  - id: antfu
+    type: remote
+    location: https://github.com/antfu/skills.git
+    branch: main
+    path: skills
+
+  - id: netlify-context-and-tools
+    type: remote
+    location: https://github.com/netlify/context-and-tools.git
+    branch: main
+    path: skills
+
+  - id: shopify-ai-toolkit
+    type: remote
+    location: https://github.com/Shopify/Shopify-AI-Toolkit.git
+    branch: main
+    path: skills
+
+  - id: open-wot
+    type: remote
+    location: https://github.com/wot-ui/open-wot.git
+    branch: main
+    path: skills
+
+  - id: anthropic
+    type: remote
+    location: https://github.com/anthropics/skills.git
+    branch: main
+    path: skills
+    includes:
+      - frontend-design/**
+      - web-artifacts-builder/**
+      - webapp-testing/**
+      - theme-factory/**
+
+  - id: openai
+    type: remote
+    location: https://github.com/openai/skills.git
+    branch: main
+    path: skills/.curated
+    includes:
+      - define-goal/**
+      - playwright/**
+      - playwright-interactive/**
+      - screenshot/**
+      - vercel-deploy/**
+      - cloudflare-deploy/**
+      - netlify-deploy/**
+      - figma/**
+      - figma-use/**
+      - figma-implement-design/**
