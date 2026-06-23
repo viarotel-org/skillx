@@ -13,14 +13,23 @@
       "commit": null,
       "status": "synced",
       "targets": [
+        "skillx-api-doc-generator",
         "skillx-escrcpy",
-        "skillx-viarotel"
+        "skillx-viarotel",
+        "skillx-viarotel-create-skill"
       ],
       "skillPaths": [
+        "api-doc-generator",
         "escrcpy",
-        "viarotel"
+        "viarotel",
+        "viarotel-create-skill"
       ],
       "skills": [
+        {
+          "targetId": "skillx-api-doc-generator",
+          "relativePath": "api-doc-generator",
+          "contentHash": "9de237a1e17bd2629558ace07432729db125709d02e924c0ceacf5b039327d8f"
+        },
         {
           "targetId": "skillx-escrcpy",
           "relativePath": "escrcpy",
@@ -30,6 +39,11 @@
           "targetId": "skillx-viarotel",
           "relativePath": "viarotel",
           "contentHash": "5eb05f7a066b7c41e9687abffba839eee58c025da902841fae7a2322c7c30e9f"
+        },
+        {
+          "targetId": "skillx-viarotel-create-skill",
+          "relativePath": "viarotel-create-skill",
+          "contentHash": "6b71e4eeac6e0982f557a5d29f3578acd1aa4b10cf617869f8b7c293ba9784d1"
         }
       ]
     },
@@ -547,7 +561,7 @@
         "documentation-writer"
       ],
       "excludes": [],
-      "commit": "56a508cca5cbb30a2440534a1f377887d86b9747",
+      "commit": "3304e8e11c7457924ec1bdbfc2e2ce8e7e4eec5b",
       "status": "synced",
       "targets": [
         "awesome-copilot-acquire-codebase-knowledge",
@@ -648,7 +662,7 @@
       "mode": "flat",
       "includes": [],
       "excludes": [],
-      "commit": "d457006301be21d51dc8722ba2a6d143047d4122",
+      "commit": "1518fec29d19ce905cd0c689255137b9dcab7ccc",
       "status": "synced",
       "targets": [
         "ui-ux-pro-max-skill-banner-design",
