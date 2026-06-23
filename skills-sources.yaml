@@ -175,6 +175,6 @@ sources:
 
   - id: shadcn-vue
     type: remote
-    location: https://github.com/unovue/shadcn-vue
+    location: https://github.com/unovue/shadcn-vue.git
     branch: main
     path: skills
