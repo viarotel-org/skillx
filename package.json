@@ -1,7 +1,7 @@
 {
   "name": "skillx",
   "type": "module",
-  "version": "0.10.1",
+  "version": "0.11.0",
   "private": true,
   "packageManager": "pnpm@10.32.1",
   "description": "A predictable hub for local and subscribed AI agent skills.",
