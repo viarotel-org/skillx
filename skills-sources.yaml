@@ -29,17 +29,29 @@ sources:
     includes:
       - find-skills
 
-  - id: full-stack-skills
+  - id: full-stack-skills-vue
     type: remote
-    location: https://github.com/partme-ai/full-stack-skills.git
+    location: https://github.com/full-stack-skills/vue-skills.git
     branch: main
     path: skills
-    includes:
-      - vue-skills/**
-      - vue-ui-skills/**
-      - electron-skills/**
-      - uniapp-skills/**
-      - stitch-skills/**
+
+  - id: full-stack-skills-vue-ui
+    type: remote
+    location: https://github.com/full-stack-skills/vue-ui-skills.git
+    branch: main
+    path: skills
+
+  - id: full-stack-skills-electron
+    type: remote
+    location: https://github.com/full-stack-skills/electron-skills.git
+    branch: main
+    path: skills
+
+  - id: full-stack-skills-uniapp
+    type: remote
+    location: https://github.com/full-stack-skills/uniapp-skills.git
+    branch: main
+    path: skills
 
   - id: vuejs-ai
     type: remote
