@@ -1210,6 +1210,30 @@
           "contentHash": "f4a6cbfbb378a320fae179a79f727a881d19677e9b3db96ed49d2dc02a74fa46"
         }
       ]
+    },
+    "unovue": {
+      "type": "remote",
+      "location": "https://github.com/unovue/shadcn-vue.git",
+      "branch": "dev",
+      "path": "skills",
+      "mode": "flat",
+      "includes": [],
+      "excludes": [],
+      "commit": "66eca793a27b0a80c8cc54a0801c962d0130c71b",
+      "status": "synced",
+      "targets": [
+        "unovue-shadcn-vue"
+      ],
+      "skillPaths": [
+        "shadcn-vue"
+      ],
+      "skills": [
+        {
+          "targetId": "unovue-shadcn-vue",
+          "relativePath": "shadcn-vue",
+          "contentHash": "88b43308172f3dbaa31956b08998f68c3fd0a9fa9bc2cec680de62147b8e3737"
+        }
+      ]
     }
   }
 }
