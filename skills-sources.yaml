@@ -172,3 +172,9 @@ sources:
       - screenshot
       - vercel-deploy
       - cloudflare-deploy
+
+  - id: shadcn-vue
+    type: remote
+    location: https://github.com/unovue/shadcn-vue
+    branch: main
+    path: skills
