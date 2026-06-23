@@ -43,7 +43,7 @@
         "find-skills"
       ],
       "excludes": [],
-      "commit": "b469d6954dd10be20d3e8d9bb59463584d42efbb",
+      "commit": "cb7b7ca180bf363ccff2cc8b6f504bdcda152285",
       "status": "synced",
       "targets": [
         "vercel-labs-find-skills"
@@ -56,414 +56,6 @@
           "targetId": "vercel-labs-find-skills",
           "relativePath": "find-skills",
           "contentHash": "1e85f6f9686e145aca4a124e3b704b9bbea9aa87e08515c1e352eee70f6e6e7a"
-        }
-      ]
-    },
-    "full-stack-skills": {
-      "type": "remote",
-      "location": "https://github.com/partme-ai/full-stack-skills.git",
-      "branch": "main",
-      "path": "skills",
-      "mode": "flat",
-      "includes": [
-        "vue-skills/**",
-        "vue-ui-skills/**",
-        "electron-skills/**",
-        "uniapp-skills/**",
-        "stitch-skills/**"
-      ],
-      "excludes": [],
-      "commit": "aed23d528f0f5517f7ac2e5303baa7ab33c4b1d6",
-      "status": "synced",
-      "targets": [
-        "full-stack-skills-electron-skills-electron",
-        "full-stack-skills-electron-skills-electron-egg",
-        "full-stack-skills-electron-skills-upgradelink",
-        "full-stack-skills-stitch-skills-stitch-design-md",
-        "full-stack-skills-stitch-skills-stitch-mcp-create-project",
-        "full-stack-skills-stitch-skills-stitch-mcp-generate-screen-from-text",
-        "full-stack-skills-stitch-skills-stitch-mcp-get-project",
-        "full-stack-skills-stitch-skills-stitch-mcp-get-screen",
-        "full-stack-skills-stitch-skills-stitch-mcp-list-projects",
-        "full-stack-skills-stitch-skills-stitch-mcp-list-screens",
-        "full-stack-skills-stitch-skills-stitch-react-components",
-        "full-stack-skills-stitch-skills-stitch-remotion",
-        "full-stack-skills-stitch-skills-stitch-shadcn-ui",
-        "full-stack-skills-stitch-skills-stitch-skill-creator",
-        "full-stack-skills-stitch-skills-stitch-ued-guide",
-        "full-stack-skills-stitch-skills-stitch-ui-design-spec-bootstrap",
-        "full-stack-skills-stitch-skills-stitch-ui-design-spec-element-plus",
-        "full-stack-skills-stitch-skills-stitch-ui-design-spec-generator",
-        "full-stack-skills-stitch-skills-stitch-ui-design-spec-layui",
-        "full-stack-skills-stitch-skills-stitch-ui-design-spec-uview",
-        "full-stack-skills-stitch-skills-stitch-ui-design-spec-uviewpro",
-        "full-stack-skills-stitch-skills-stitch-ui-design-spec-vant",
-        "full-stack-skills-stitch-skills-stitch-ui-design-variants",
-        "full-stack-skills-stitch-skills-stitch-ui-designer",
-        "full-stack-skills-stitch-skills-stitch-ui-prompt-architect",
-        "full-stack-skills-stitch-skills-stitch-uview-components",
-        "full-stack-skills-stitch-skills-stitch-uviewpro-components",
-        "full-stack-skills-stitch-skills-stitch-vue-bootstrap-components",
-        "full-stack-skills-stitch-skills-stitch-vue-element-components",
-        "full-stack-skills-stitch-skills-stitch-vue-layui-components",
-        "full-stack-skills-stitch-skills-stitch-vue-vant-components",
-        "full-stack-skills-uniapp-skills-uniapp-ad",
-        "full-stack-skills-uniapp-skills-uniapp-cloud",
-        "full-stack-skills-uniapp-skills-uniapp-mini",
-        "full-stack-skills-uniapp-skills-uniapp-native-app",
-        "full-stack-skills-uniapp-skills-uniapp-native-plugin",
-        "full-stack-skills-uniapp-skills-uniapp-plugin",
-        "full-stack-skills-uniapp-skills-uniapp-project",
-        "full-stack-skills-uniapp-skills-uniapp-project-creator",
-        "full-stack-skills-uniapp-skills-uniapp-ucharts",
-        "full-stack-skills-uniapp-skills-uniapp-uview",
-        "full-stack-skills-uniapp-skills-uniappx-project",
-        "full-stack-skills-uniapp-skills-uniappx-project-creator",
-        "full-stack-skills-uniapp-skills-uniappx-uview-pro",
-        "full-stack-skills-vue-skills-pinia",
-        "full-stack-skills-vue-skills-vue-router",
-        "full-stack-skills-vue-skills-vue-router-v3",
-        "full-stack-skills-vue-skills-vue-router-v4",
-        "full-stack-skills-vue-skills-vue2",
-        "full-stack-skills-vue-skills-vue3",
-        "full-stack-skills-vue-skills-vuex-vue2",
-        "full-stack-skills-vue-ui-skills-bootstrap-vue3",
-        "full-stack-skills-vue-ui-skills-element-plus-vue3",
-        "full-stack-skills-vue-ui-skills-layui-vue3",
-        "full-stack-skills-vue-ui-skills-vant-vue3"
-      ],
-      "skillPaths": [
-        "electron-skills/electron",
-        "electron-skills/electron-egg",
-        "electron-skills/upgradeLink",
-        "stitch-skills/stitch-design-md",
-        "stitch-skills/stitch-mcp-create-project",
-        "stitch-skills/stitch-mcp-generate-screen-from-text",
-        "stitch-skills/stitch-mcp-get-project",
-        "stitch-skills/stitch-mcp-get-screen",
-        "stitch-skills/stitch-mcp-list-projects",
-        "stitch-skills/stitch-mcp-list-screens",
-        "stitch-skills/stitch-react-components",
-        "stitch-skills/stitch-remotion",
-        "stitch-skills/stitch-shadcn-ui",
-        "stitch-skills/stitch-skill-creator",
-        "stitch-skills/stitch-ued-guide",
-        "stitch-skills/stitch-ui-design-spec-bootstrap",
-        "stitch-skills/stitch-ui-design-spec-element-plus",
-        "stitch-skills/stitch-ui-design-spec-generator",
-        "stitch-skills/stitch-ui-design-spec-layui",
-        "stitch-skills/stitch-ui-design-spec-uview",
-        "stitch-skills/stitch-ui-design-spec-uviewpro",
-        "stitch-skills/stitch-ui-design-spec-vant",
-        "stitch-skills/stitch-ui-design-variants",
-        "stitch-skills/stitch-ui-designer",
-        "stitch-skills/stitch-ui-prompt-architect",
-        "stitch-skills/stitch-uview-components",
-        "stitch-skills/stitch-uviewpro-components",
-        "stitch-skills/stitch-vue-bootstrap-components",
-        "stitch-skills/stitch-vue-element-components",
-        "stitch-skills/stitch-vue-layui-components",
-        "stitch-skills/stitch-vue-vant-components",
-        "uniapp-skills/uniapp-ad",
-        "uniapp-skills/uniapp-cloud",
-        "uniapp-skills/uniapp-mini",
-        "uniapp-skills/uniapp-native-app",
-        "uniapp-skills/uniapp-native-plugin",
-        "uniapp-skills/uniapp-plugin",
-        "uniapp-skills/uniapp-project",
-        "uniapp-skills/uniapp-project-creator",
-        "uniapp-skills/uniapp-ucharts",
-        "uniapp-skills/uniapp-uview",
-        "uniapp-skills/uniappx-project",
-        "uniapp-skills/uniappx-project-creator",
-        "uniapp-skills/uniappx-uview-pro",
-        "vue-skills/pinia",
-        "vue-skills/vue-router",
-        "vue-skills/vue-router-v3",
-        "vue-skills/vue-router-v4",
-        "vue-skills/vue2",
-        "vue-skills/vue3",
-        "vue-skills/vuex-vue2",
-        "vue-ui-skills/bootstrap-vue3",
-        "vue-ui-skills/element-plus-vue3",
-        "vue-ui-skills/layui-vue3",
-        "vue-ui-skills/vant-vue3"
-      ],
-      "skills": [
-        {
-          "targetId": "full-stack-skills-electron-skills-electron",
-          "relativePath": "electron-skills/electron",
-          "contentHash": "5c84770f1909ee81db570b5f06dd9fd6962fd5279a8c061fe13a4a4c2401f210"
-        },
-        {
-          "targetId": "full-stack-skills-electron-skills-electron-egg",
-          "relativePath": "electron-skills/electron-egg",
-          "contentHash": "c699ecc2af0a766e4e487e7ad28734e84eea356ea4169cd2cfd006aa09aa0801"
-        },
-        {
-          "targetId": "full-stack-skills-electron-skills-upgradelink",
-          "relativePath": "electron-skills/upgradeLink",
-          "contentHash": "2ada2ccb43bd45e3633fbf5ec1d4e4cb249aa101960daf9c0cfb26a10606a63c"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-skills-stitch-design-md",
-          "relativePath": "stitch-skills/stitch-design-md",
-          "contentHash": "43a20299fdc30aa9ae083a41077635bc37f4d9daa4dbac60b30c82d6c657ddc7"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-skills-stitch-mcp-create-project",
-          "relativePath": "stitch-skills/stitch-mcp-create-project",
-          "contentHash": "70d51e3fdfb154fd78347ea057bbcf912b6c9ba85bd857f0335db83087c6d67c"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-skills-stitch-mcp-generate-screen-from-text",
-          "relativePath": "stitch-skills/stitch-mcp-generate-screen-from-text",
-          "contentHash": "7fad711adcca831fd6815f4d48db2e3f411f846108c99cde076299c1f3d0575d"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-skills-stitch-mcp-get-project",
-          "relativePath": "stitch-skills/stitch-mcp-get-project",
-          "contentHash": "20369df16ce5f965db7c90fcb734f20bd1180f0a1d697ac5eb690686174626a0"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-skills-stitch-mcp-get-screen",
-          "relativePath": "stitch-skills/stitch-mcp-get-screen",
-          "contentHash": "e44b475d2881d3cf98b98b71e529790036f77dcffe8ea729d05b425b1a17b279"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-skills-stitch-mcp-list-projects",
-          "relativePath": "stitch-skills/stitch-mcp-list-projects",
-          "contentHash": "5ea6f1158282d620eecec5a94a17471588743d279dbdd8287735062453923e3e"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-skills-stitch-mcp-list-screens",
-          "relativePath": "stitch-skills/stitch-mcp-list-screens",
-          "contentHash": "184e607fd862b7dc12c3f05ab160ab568b127438a6f9eb05d58f916c20ff038e"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-skills-stitch-react-components",
-          "relativePath": "stitch-skills/stitch-react-components",
-          "contentHash": "4b96c18df5c1cceb58d019fd90709db7c3a52278db6edc17fb66cde4c927250c"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-skills-stitch-remotion",
-          "relativePath": "stitch-skills/stitch-remotion",
-          "contentHash": "0a25488de0dbbf34193bc42bccf3dc559913b3a1cd6e96586d2f36c898526b53"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-skills-stitch-shadcn-ui",
-          "relativePath": "stitch-skills/stitch-shadcn-ui",
-          "contentHash": "d5ea50781a0ee4f4485dff5acdea4bf4a7c56dc14e551755cd78ee2a67228aed"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-skills-stitch-skill-creator",
-          "relativePath": "stitch-skills/stitch-skill-creator",
-          "contentHash": "28df5225c2db96cd61e97810b3bd440a8047e72ac63ce32c757da44e9b4a5ce1"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-skills-stitch-ued-guide",
-          "relativePath": "stitch-skills/stitch-ued-guide",
-          "contentHash": "5c4b1bec8095f9572ab49471d201572ac555975a167bcba8e109322e6eeb0054"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-skills-stitch-ui-design-spec-bootstrap",
-          "relativePath": "stitch-skills/stitch-ui-design-spec-bootstrap",
-          "contentHash": "3ad0249e1865c9ec7884f5df0bfed2c59ce9cbd7cb944aca2fc5964e6600fc7c"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-skills-stitch-ui-design-spec-element-plus",
-          "relativePath": "stitch-skills/stitch-ui-design-spec-element-plus",
-          "contentHash": "b47d937be13a56f366e93c5619c4608839817b6623dcf4d4b47ef6157c2bd628"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-skills-stitch-ui-design-spec-generator",
-          "relativePath": "stitch-skills/stitch-ui-design-spec-generator",
-          "contentHash": "945b6ff9bcf610101747928d5709847f805d63a78811167b0143052b3a889d79"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-skills-stitch-ui-design-spec-layui",
-          "relativePath": "stitch-skills/stitch-ui-design-spec-layui",
-          "contentHash": "38a26a45c96a4d8d433238830b53b50137fe8348725384f8e0f5a2442593819e"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-skills-stitch-ui-design-spec-uview",
-          "relativePath": "stitch-skills/stitch-ui-design-spec-uview",
-          "contentHash": "ee8ef4c696e88ae1c808fb5a9bb3e2ce018af8b7aa0553b9509a3d8808adec73"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-skills-stitch-ui-design-spec-uviewpro",
-          "relativePath": "stitch-skills/stitch-ui-design-spec-uviewpro",
-          "contentHash": "c70851ce5c295fcea59322b6ee13d4ac67a4d308dbe1d02754372d5b3622dbc3"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-skills-stitch-ui-design-spec-vant",
-          "relativePath": "stitch-skills/stitch-ui-design-spec-vant",
-          "contentHash": "494c4b3499a81d2817f8ef2362a20184bdae4bc6bc722d799ab7940157bbd85f"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-skills-stitch-ui-design-variants",
-          "relativePath": "stitch-skills/stitch-ui-design-variants",
-          "contentHash": "ee37d4ee7c478e636418debd0e330769462ce497a44c5800f7d8960e1af4b53e"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-skills-stitch-ui-designer",
-          "relativePath": "stitch-skills/stitch-ui-designer",
-          "contentHash": "ff63fa7f6ef6d5ab438e76e44b5626f4819c6cb87b5a64f7a7045b37c34e3358"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-skills-stitch-ui-prompt-architect",
-          "relativePath": "stitch-skills/stitch-ui-prompt-architect",
-          "contentHash": "aa81aebcd55e5cc750a3c5dce87a14c3159c57cf16cb4c4304823c26484b6bcf"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-skills-stitch-uview-components",
-          "relativePath": "stitch-skills/stitch-uview-components",
-          "contentHash": "b0ff277fa6dad2112dd0d4ae44ec256f89ee3bcb7ce3e62659922b19fd522727"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-skills-stitch-uviewpro-components",
-          "relativePath": "stitch-skills/stitch-uviewpro-components",
-          "contentHash": "d9dab7e3301884eece497f6d066eee755c5d865c0e9ab5c4efaa8424b0760294"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-skills-stitch-vue-bootstrap-components",
-          "relativePath": "stitch-skills/stitch-vue-bootstrap-components",
-          "contentHash": "432369f621afaf0fc126b8f1e49490a3fb9340a6195e1f26827d2f6cfc5e322d"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-skills-stitch-vue-element-components",
-          "relativePath": "stitch-skills/stitch-vue-element-components",
-          "contentHash": "558bf0294c6a0bff10249d0df96b0b9997cf4ee1da2acae14f2a7b22b60cef6b"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-skills-stitch-vue-layui-components",
-          "relativePath": "stitch-skills/stitch-vue-layui-components",
-          "contentHash": "4689c563b4e14a3e72b0d6236b14e972b528c7e7d47e447c32d356ad5620b23e"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-skills-stitch-vue-vant-components",
-          "relativePath": "stitch-skills/stitch-vue-vant-components",
-          "contentHash": "368aef245f79fe70276c68c2abe4601912747e1dde85e1af2b78d5ac269e17b5"
-        },
-        {
-          "targetId": "full-stack-skills-uniapp-skills-uniapp-ad",
-          "relativePath": "uniapp-skills/uniapp-ad",
-          "contentHash": "7696a3a683ef67d3ad81da147188d743872cc6c84ece056d016c99c78aabe516"
-        },
-        {
-          "targetId": "full-stack-skills-uniapp-skills-uniapp-cloud",
-          "relativePath": "uniapp-skills/uniapp-cloud",
-          "contentHash": "61d846ffeda8e6226b4df8a1d316d7b51f09fae48ccfc50e0a09378285195aa9"
-        },
-        {
-          "targetId": "full-stack-skills-uniapp-skills-uniapp-mini",
-          "relativePath": "uniapp-skills/uniapp-mini",
-          "contentHash": "c16a2f407a6b2baa7b678277699f90d453cae90e249bc252368746ca993c82c6"
-        },
-        {
-          "targetId": "full-stack-skills-uniapp-skills-uniapp-native-app",
-          "relativePath": "uniapp-skills/uniapp-native-app",
-          "contentHash": "09fd7e7024ba2c9cad35df06d8027006a328d76f8db365fe17a6d7e32d03809c"
-        },
-        {
-          "targetId": "full-stack-skills-uniapp-skills-uniapp-native-plugin",
-          "relativePath": "uniapp-skills/uniapp-native-plugin",
-          "contentHash": "30bf9b1d9ebda6aeaa717fa4684a1fe0122e6a86e1801657b00c13fdee98f2a5"
-        },
-        {
-          "targetId": "full-stack-skills-uniapp-skills-uniapp-plugin",
-          "relativePath": "uniapp-skills/uniapp-plugin",
-          "contentHash": "fab9e551cf976f2a8d2b8a825f31315699d162d4de09277f5af8f8c171994d0b"
-        },
-        {
-          "targetId": "full-stack-skills-uniapp-skills-uniapp-project",
-          "relativePath": "uniapp-skills/uniapp-project",
-          "contentHash": "bc71f04c243ff13cec69638b4a8bdfff11fedaa222a060e92027a69e44e4a739"
-        },
-        {
-          "targetId": "full-stack-skills-uniapp-skills-uniapp-project-creator",
-          "relativePath": "uniapp-skills/uniapp-project-creator",
-          "contentHash": "3db80050f30d3a006a71eaca3d4bacb686531e37d4973e8b60b9c2b0ea8e75c0"
-        },
-        {
-          "targetId": "full-stack-skills-uniapp-skills-uniapp-ucharts",
-          "relativePath": "uniapp-skills/uniapp-ucharts",
-          "contentHash": "f6e7c60eea2550efbf873f5cab914183f5c50f001cce2df46812a1351c865828"
-        },
-        {
-          "targetId": "full-stack-skills-uniapp-skills-uniapp-uview",
-          "relativePath": "uniapp-skills/uniapp-uview",
-          "contentHash": "79b192379a6dd08333070959b7e54da11021aab020db6d658a2964e5598d1ea9"
-        },
-        {
-          "targetId": "full-stack-skills-uniapp-skills-uniappx-project",
-          "relativePath": "uniapp-skills/uniappx-project",
-          "contentHash": "4989106583beb390fd1f9a32f80c2e0cc1629196ec1964d73d39d34a28c2d183"
-        },
-        {
-          "targetId": "full-stack-skills-uniapp-skills-uniappx-project-creator",
-          "relativePath": "uniapp-skills/uniappx-project-creator",
-          "contentHash": "5052a6a9b8ab171f999864a8e97f6bf8592561697eb210dd05d2bc8ac6c6bad8"
-        },
-        {
-          "targetId": "full-stack-skills-uniapp-skills-uniappx-uview-pro",
-          "relativePath": "uniapp-skills/uniappx-uview-pro",
-          "contentHash": "75b24cc502d2ba31756b5258285c35a0d806b72bfc91570b14bd890f5741d0b0"
-        },
-        {
-          "targetId": "full-stack-skills-vue-skills-pinia",
-          "relativePath": "vue-skills/pinia",
-          "contentHash": "804313a3d54322a13f7296767129e952a1ee0912fd004430b80dd27cd09f80f2"
-        },
-        {
-          "targetId": "full-stack-skills-vue-skills-vue-router",
-          "relativePath": "vue-skills/vue-router",
-          "contentHash": "bd20b158c68b7ffaf51cd690f6ba4a94da574a2972cc029d558d6e1cafe3f829"
-        },
-        {
-          "targetId": "full-stack-skills-vue-skills-vue-router-v3",
-          "relativePath": "vue-skills/vue-router-v3",
-          "contentHash": "43c36af2d97f4154fbd32133fd53cb5915e6cc1954fcd48cd7946217c9613ef5"
-        },
-        {
-          "targetId": "full-stack-skills-vue-skills-vue-router-v4",
-          "relativePath": "vue-skills/vue-router-v4",
-          "contentHash": "c544902c07fcacff3ed9707f40232f1b5db91a81a5bd3a2670c63df9cffba124"
-        },
-        {
-          "targetId": "full-stack-skills-vue-skills-vue2",
-          "relativePath": "vue-skills/vue2",
-          "contentHash": "9a691cdcc0bb584619325246aea906aaed0cc9c79dcf5df35b221d47341801d1"
-        },
-        {
-          "targetId": "full-stack-skills-vue-skills-vue3",
-          "relativePath": "vue-skills/vue3",
-          "contentHash": "5c900cf9e762f3a58c1c8a7396140ab198e2e0cc7b20d1bd3a7944ab9cabd9ef"
-        },
-        {
-          "targetId": "full-stack-skills-vue-skills-vuex-vue2",
-          "relativePath": "vue-skills/vuex-vue2",
-          "contentHash": "7727fe087c23f56b44aa091fff8e02283fd69d159f6b2bdbc11458bd08ab265a"
-        },
-        {
-          "targetId": "full-stack-skills-vue-ui-skills-bootstrap-vue3",
-          "relativePath": "vue-ui-skills/bootstrap-vue3",
-          "contentHash": "3e529825e39cbd8fb614586df5beba0fa40730834fca1aaf8479991afb370e2f"
-        },
-        {
-          "targetId": "full-stack-skills-vue-ui-skills-element-plus-vue3",
-          "relativePath": "vue-ui-skills/element-plus-vue3",
-          "contentHash": "1c5ac95d851a52b5c26b95ccf4db6c62255ac2454dc338dc648b00c962e9a748"
-        },
-        {
-          "targetId": "full-stack-skills-vue-ui-skills-layui-vue3",
-          "relativePath": "vue-ui-skills/layui-vue3",
-          "contentHash": "af76693ab36edf39d7a710928e9f108092d5d8dc1ae89144e64c3f03f05cc33c"
-        },
-        {
-          "targetId": "full-stack-skills-vue-ui-skills-vant-vue3",
-          "relativePath": "vue-ui-skills/vant-vue3",
-          "contentHash": "e126035df290c1f4b4f783bdcc493e988571900f843c04d52e420b2a44c6de01"
         }
       ]
     },
@@ -556,7 +148,7 @@
         "web-design-reviewer"
       ],
       "excludes": [],
-      "commit": "6ce029897d2b794940325fc7148774a6ec51111c",
+      "commit": "775f826b757179f29d32d2e26494bb5c174f237e",
       "status": "synced",
       "targets": [
         "addyosmani-api-and-interface-design",
@@ -603,12 +195,12 @@
         {
           "targetId": "addyosmani-browser-testing-with-devtools",
           "relativePath": "browser-testing-with-devtools",
-          "contentHash": "8fb8aef5678048b7786b4da6738accb58d55754f714d9ad02acee12f5d32a6f0"
+          "contentHash": "4e3aacd6a380cd25bc6c2d67fdd1c926a9b22535b8a62109ecd33cefd909e3d9"
         },
         {
           "targetId": "addyosmani-code-review-and-quality",
           "relativePath": "code-review-and-quality",
-          "contentHash": "7587de5eff9eccd098f0d3b57b6d86ee18df680a7bbbef03710de7c1a4e67263"
+          "contentHash": "6d7c7cb43e8eb6727ab72b3baa570d8e8c00f484392cfd07acf4550fed2b6838"
         },
         {
           "targetId": "addyosmani-code-simplification",
@@ -623,7 +215,7 @@
         {
           "targetId": "addyosmani-debugging-and-error-recovery",
           "relativePath": "debugging-and-error-recovery",
-          "contentHash": "2539c0078466755c192123c34758aa432da5d29529340037113eeaecb6647b0e"
+          "contentHash": "927ad6917fa2891827351cfa3470cd715423faaa5c5f27fe74534d9324c35eea"
         },
         {
           "targetId": "addyosmani-documentation-and-adrs",
@@ -658,7 +250,7 @@
         {
           "targetId": "addyosmani-security-and-hardening",
           "relativePath": "security-and-hardening",
-          "contentHash": "d13c91c5aa27dbd95c25a83aa5a3290294d9068852dec3b2918b167f1f09e5d6"
+          "contentHash": "8fed058a520281384ed1bbfddbfb3d2b12479459231c67ae0d1f0d765bb52f95"
         },
         {
           "targetId": "addyosmani-shipping-and-launch",
@@ -698,7 +290,7 @@
         "documentation-writer"
       ],
       "excludes": [],
-      "commit": "9b74459b5ae5aad67781c4a9de1093605d620f23",
+      "commit": "56a508cca5cbb30a2440534a1f377887d86b9747",
       "status": "synced",
       "targets": [
         "awesome-copilot-acquire-codebase-knowledge",
@@ -799,7 +391,7 @@
       "mode": "flat",
       "includes": [],
       "excludes": [],
-      "commit": "b7e3af80f6e331f6fb456667b82b12cade7c9d35",
+      "commit": "d457006301be21d51dc8722ba2a6d143047d4122",
       "status": "synced",
       "targets": [
         "ui-ux-pro-max-skill-banner-design",
@@ -823,7 +415,7 @@
         {
           "targetId": "ui-ux-pro-max-skill-banner-design",
           "relativePath": "banner-design",
-          "contentHash": "b55b30c763e2aa9aac953021bcb72bd03669f187150fc0815ab1313846b79466"
+          "contentHash": "bd8fbb8e6c7538baf5ca7b82690b80984659ebb668f5b6b25692a86d4012fa16"
         },
         {
           "targetId": "ui-ux-pro-max-skill-brand",
@@ -833,7 +425,7 @@
         {
           "targetId": "ui-ux-pro-max-skill-design",
           "relativePath": "design",
-          "contentHash": "87a5278f1fdb2e2e51c7506b69aed58efbf261185e524e37450b866e594dd102"
+          "contentHash": "94ded841bb0f4b042f9a33ff06a224435a5c6b85fd9d08c9e106b1744870470b"
         },
         {
           "targetId": "ui-ux-pro-max-skill-design-system",
@@ -843,7 +435,7 @@
         {
           "targetId": "ui-ux-pro-max-skill-slides",
           "relativePath": "slides",
-          "contentHash": "e071a7ad7a72f10344d3fe55a29cebf8750a255ecbf98af2daee9e6432bd8b3a"
+          "contentHash": "b48544ca485db4db74ee06f17703ccc272e3fb295842e00814c0f66c04c206e1"
         },
         {
           "targetId": "ui-ux-pro-max-skill-ui-styling",
@@ -853,7 +445,7 @@
         {
           "targetId": "ui-ux-pro-max-skill-ui-ux-pro-max",
           "relativePath": "ui-ux-pro-max",
-          "contentHash": "9bd26c52dfd10dfd613dd3cc85df217dc25a172e380bde41fdfa6fedda288b2a"
+          "contentHash": "f571a0ab228ad3ad3ac41a51c2c3450a9edb6ac3eb65f16baf5b459d01d53689"
         }
       ]
     },
@@ -865,10 +457,12 @@
       "mode": "flat",
       "includes": [],
       "excludes": [],
-      "commit": "50deaeb269d80d92db7a2c5a677290309ae307fc",
+      "commit": "a74f281a27dadc02397bc1a174b0f2c97531b6ae",
       "status": "synced",
       "targets": [
         "antfu-antfu",
+        "antfu-antfu-design",
+        "antfu-nitro",
         "antfu-nuxt",
         "antfu-pinia",
         "antfu-pnpm",
@@ -888,6 +482,8 @@
       ],
       "skillPaths": [
         "antfu",
+        "antfu-design",
+        "nitro",
         "nuxt",
         "pinia",
         "pnpm",
@@ -909,12 +505,22 @@
         {
           "targetId": "antfu-antfu",
           "relativePath": "antfu",
-          "contentHash": "bf1badde2a7b0ac941613adaa3694cab11a258d589dbc8b31b42045ecbcfa0c1"
+          "contentHash": "22f8a4129da8e44d1ceff184c2f5774da2751eaa3ecc435725f20bed5d51f75a"
+        },
+        {
+          "targetId": "antfu-antfu-design",
+          "relativePath": "antfu-design",
+          "contentHash": "983a6a4423ddc14c7e18c27dbbdc466103c0d88829aa637b417f68a20abc5513"
+        },
+        {
+          "targetId": "antfu-nitro",
+          "relativePath": "nitro",
+          "contentHash": "83550658c20d0d4e6614fa45e752b984ea149ab53bf3360ab53942b6bfe08942"
         },
         {
           "targetId": "antfu-nuxt",
           "relativePath": "nuxt",
-          "contentHash": "1022ec1de47ea1ad86a2a95c296527a17abe71affe88092f8a4949fd6897da13"
+          "contentHash": "0c7759f5201fcdd6fc149d14e4f55b29090228800a22b61f96c065b77caaff3a"
         },
         {
           "targetId": "antfu-pinia",
@@ -924,7 +530,7 @@
         {
           "targetId": "antfu-pnpm",
           "relativePath": "pnpm",
-          "contentHash": "5beb82c2dc0fe5a79f1022f0b8a0cf87310bf4a03306953e4699f224a7f17a95"
+          "contentHash": "e7f6c224184cb125e7dce8f1562c3c76a4cd6afd6326958ea1c75f92eca413dc"
         },
         {
           "targetId": "antfu-slidev",
@@ -934,12 +540,12 @@
         {
           "targetId": "antfu-tsdown",
           "relativePath": "tsdown",
-          "contentHash": "3c51a9bc3cc52451e5a68c6ad78fa9a458bd27b39ab16099ed652036a2dce5a9"
+          "contentHash": "fd4319fd620f55fdebd1b1586d8af7709527c14aa5b00442709170ecc511f1d0"
         },
         {
           "targetId": "antfu-turborepo",
           "relativePath": "turborepo",
-          "contentHash": "5ab28fce169d83a897a3d78c5e2b24a855756e8eef9aa0563439f4164a708aab"
+          "contentHash": "4079db2d8a9dabf699486fabd5e9d3ebfb76d5db4b66d976983c2dd3624d45bb"
         },
         {
           "targetId": "antfu-unocss",
@@ -959,7 +565,7 @@
         {
           "targetId": "antfu-vitest",
           "relativePath": "vitest",
-          "contentHash": "87c8cf025987d1f1a0e9c0fd0b8605946a0ebd5478676471ce296d8f0adc0f07"
+          "contentHash": "2da9b15c28b9be17d545751b0e0813de306331b3c4dccb748934f4fdd2298968"
         },
         {
           "targetId": "antfu-vue",
@@ -984,7 +590,7 @@
         {
           "targetId": "antfu-vueuse-functions",
           "relativePath": "vueuse-functions",
-          "contentHash": "8c4a245c65d73b6d6e95335c499d214faa85cc10cf5187b0d6132d822f1c7d88"
+          "contentHash": "7c9fd79442ef89a2301482835ea5656ef7884fcaf83fbe68343dd34ea3c9d3b4"
         },
         {
           "targetId": "antfu-web-design-guidelines",
@@ -1005,7 +611,7 @@
         "netlify-cli-and-deploy"
       ],
       "excludes": [],
-      "commit": "cffaf74f79128620b8200956222aeb819f5f8fd5",
+      "commit": "ab80a6ed2b6c4933a3f964101c82b45cab847b5b",
       "status": "synced",
       "targets": [
         "netlify-context-and-tools-netlify-cli-and-deploy",
@@ -1026,7 +632,7 @@
         {
           "targetId": "netlify-context-and-tools-netlify-deploy",
           "relativePath": "netlify-deploy",
-          "contentHash": "acd44a15aa355853b6fc2c23b9be9713cd7e36bdcf39e6604b94fc1968aaa2c2"
+          "contentHash": "da9b8106d026d264d7aea793d553ec3444a9f1792c16fc5e5cb3b735af937049"
         },
         {
           "targetId": "netlify-context-and-tools-netlify-frameworks",
@@ -1043,7 +649,7 @@
       "mode": "flat",
       "includes": [],
       "excludes": [],
-      "commit": "859be93bfc858f183ff5eb40183e35a4d91d2950",
+      "commit": "a8e87a7cff153479eb77230d9c232484a1f3062f",
       "status": "synced",
       "targets": [
         "shopify-ai-toolkit-shopify-admin",
@@ -1093,102 +699,102 @@
         {
           "targetId": "shopify-ai-toolkit-shopify-admin",
           "relativePath": "shopify-admin",
-          "contentHash": "1d64a253d1b34651e3ed181de95d182ac1cdce63c1ec7b0eabc9381dcf4b03b0"
+          "contentHash": "08757318d0c2865cd554da9fa58b769dda14c705676ceaac010198bae2db0aa5"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-app-store-review",
           "relativePath": "shopify-app-store-review",
-          "contentHash": "418e521a56613a4b5922884e512a57d184a5c5085e868649e94be00f63da71d9"
+          "contentHash": "85031fcc5fcbddc990c5ce0f66d32d83a40bdb7c558e63c69faa3be6a4dae2f7"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-custom-data",
           "relativePath": "shopify-custom-data",
-          "contentHash": "5abf06cc046c6ea32e03cefa398b0f4ee7387755ec013f0de2d72c6b34c46e23"
+          "contentHash": "2bb0626a163ee07fbe3564d32d6f43106863529cb646e442b32614a331122587"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-customer",
           "relativePath": "shopify-customer",
-          "contentHash": "d282a33f0936b53da1617336f442948916fc37854b5449fe6a1c57d431135f3e"
+          "contentHash": "d2f58d58aa443a1c0d8a2cefafbc318a9415fc1efce8da45f1e93a0b995986f9"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-dev",
           "relativePath": "shopify-dev",
-          "contentHash": "ba5e5a39351173c8bdd3e506e398eb4f8e3b5f810c07c4c3d34b13fc2a65bde2"
+          "contentHash": "15a7ab19dd44ce6be767ae03f1f6d8031e5ddb109952ec06d1801217e3d999fc"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-functions",
           "relativePath": "shopify-functions",
-          "contentHash": "2246db3bb9b8a34116d44f2e0c210543e96fb94580ac6742de7aaec3107c657a"
+          "contentHash": "acd0ca22c1846ef6101c0a2fd84a7ced3ef727d579b3f41cc396d47eb5688f0d"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-hydrogen",
           "relativePath": "shopify-hydrogen",
-          "contentHash": "0d7f8b77d5ab9f60da30d3fe6ce7c804bce1dbe330076fd96989222d58ddd6b6"
+          "contentHash": "8f049b3216fea0bbde8a1b52d50723bc1ca82e06f761e0e4e4945bdf8cd7c494"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-liquid",
           "relativePath": "shopify-liquid",
-          "contentHash": "9256e69c714ba02cb8941cb30949ba5e27e3913253489339190d07732916c810"
+          "contentHash": "a90340e1ede9c4c3bd998704b1ac81a35d84d21d98794b5e96797a0b7d09ea21"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-onboarding-dev",
           "relativePath": "shopify-onboarding-dev",
-          "contentHash": "2cf4f4894b2a2a98513cf8e9b4af440f3b4aa0c35214bab781a29809afa5244e"
+          "contentHash": "de92ddee8efba08cbe32c3728a79f3ccc59de6c4d3d6e03fc8f407aa65a5d2de"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-onboarding-merchant",
           "relativePath": "shopify-onboarding-merchant",
-          "contentHash": "b7a30d0c177ed3f21f7b45bd1747c42f4d9aa21e6166eb9801560c57ae88b1ce"
+          "contentHash": "fa89fd6c79f5a073b1d0a63a940fc0e495b5f89e0e231be25a20d5d45d6074b8"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-partner",
           "relativePath": "shopify-partner",
-          "contentHash": "56779bddc648e09652f38e880215fcf8e7a908933796ca76e6de74b0eb78b6ec"
+          "contentHash": "390028b6e87c43ca0e3b3374ee9a6ce04b92261ba375ba0996a14fea496b466f"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-payments-apps",
           "relativePath": "shopify-payments-apps",
-          "contentHash": "d6c5cb681b17f94739e6dada8e205c70c282f8ae7047ca7926e27492daa47ea3"
+          "contentHash": "688248dd30a647a980be0d52eb9c3d24b37a3b22ac1e3866cf8193d3675e5844"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-polaris-admin-extensions",
           "relativePath": "shopify-polaris-admin-extensions",
-          "contentHash": "709fc498588039ab412e610b4d618edcbc1fdd1cb37d110c21a683ab17618a0a"
+          "contentHash": "bd5ae1774953fcb036c37e7e23923dd2f1434e4ddf991b71f97b9570b30877dd"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-polaris-app-home",
           "relativePath": "shopify-polaris-app-home",
-          "contentHash": "6be8e236ce2a9a5385c1f0a38fd89aa7d762d1a406feacea665529bf47fad8ab"
+          "contentHash": "253a0464b87b0155502a818866d9bd851f87c33eff4684419e5b76bfc1cb6ae0"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-polaris-checkout-extensions",
           "relativePath": "shopify-polaris-checkout-extensions",
-          "contentHash": "f328a8af175a28b98c9948526a493ccbf71e917c74b011f0a994523f0ebbd8ad"
+          "contentHash": "7159d068664daf5bc0eaf83d5d80ac8a022d9273bdc2a7565d7fff5d441e3923"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-polaris-customer-account-extensions",
           "relativePath": "shopify-polaris-customer-account-extensions",
-          "contentHash": "cf7e340910fbd73c4a92ef4f09119fd49bcab775c60d254afcb26b03797c33f8"
+          "contentHash": "fbf6c7b9213eb01c65eabf1d84ff14d581b9daf3fb57f4eb7f4b6195df65445e"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-pos-ui",
           "relativePath": "shopify-pos-ui",
-          "contentHash": "c864595a912de232ec686f08051d001806bf361cc684b293dd52015239a891a6"
+          "contentHash": "b15f7828b6d09c064159bd9200fbba539a18cd23b1876708b445de44f91759b5"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-storefront-graphql",
           "relativePath": "shopify-storefront-graphql",
-          "contentHash": "272caca4abb9c11041047d4b01a47ea4f7f9273734d560e7057c8a1e63bfdf52"
+          "contentHash": "0e368426b6bb97ab0b46eaef3c70034acf65442dc715746c3a3b7d2f66c8f17d"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-use-shopify-cli",
           "relativePath": "shopify-use-shopify-cli",
-          "contentHash": "f302efc37c4fb8179f3a90c2714a270fc7b9c5caf9c958cab087edc528a7df24"
+          "contentHash": "aa07b717120738568e5e1ce611147f43a7126a8a3db6b42d1016e2de7bc8062d"
         },
         {
           "targetId": "shopify-ai-toolkit-ucp",
           "relativePath": "ucp",
-          "contentHash": "387161a2505a95c02c3f4af3dd0bdbd1ca902ae6f044496a485fca7625236079"
+          "contentHash": "41f48f9e2ca781295024754dc3ce07749baccb33da55a9f2970aa00ae00fbb2c"
         }
       ]
     },
@@ -1206,7 +812,7 @@
         "wot-ui-v2"
       ],
       "excludes": [],
-      "commit": "502e8408de3b434c5fa67d1e8854ec42b52bc3f1",
+      "commit": "ec4b56795240663ff0fa4baa3e53708f8a5b6e89",
       "status": "synced",
       "targets": [
         "open-wot-create-wot-ui-theme",
@@ -1262,7 +868,7 @@
         "theme-factory"
       ],
       "excludes": [],
-      "commit": "da20c92503b2e8ff1cf28ca81a0df4673debdbf7",
+      "commit": "57546260929473d4e0d1c1bb75297be2fdfa1949",
       "status": "synced",
       "targets": [
         "anthropic-frontend-design",
@@ -1278,7 +884,7 @@
         {
           "targetId": "anthropic-frontend-design",
           "relativePath": "frontend-design",
-          "contentHash": "b81e2ff87ed8fa4d6c377ccb127a7254c9e6a77e3ae94f21e6b514f7bb2945a0"
+          "contentHash": "1608ea77fbb6fc30d13a97d12cfa8ebf31358d40f0dd97beed24829d6b3f45dd"
         },
         {
           "targetId": "anthropic-theme-factory",
@@ -1304,7 +910,7 @@
         "cloudflare-deploy"
       ],
       "excludes": [],
-      "commit": "a8924c2a35cfa290458852c4fad17c9133054c2e",
+      "commit": "778b0e6129cf18cbaee3bf11479f583fadae8d03",
       "status": "synced",
       "targets": [
         "openai-cloudflare-deploy",
