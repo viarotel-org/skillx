@@ -59,6 +59,263 @@
         }
       ]
     },
+    "full-stack-skills-vue": {
+      "type": "remote",
+      "location": "https://github.com/full-stack-skills/vue-skills.git",
+      "branch": "main",
+      "path": "skills",
+      "mode": "flat",
+      "includes": [],
+      "excludes": [],
+      "commit": "3ed60e85efd1eaf37c082439e5a8ff54cf231b94",
+      "status": "synced",
+      "targets": [
+        "full-stack-skills-vue-pinia",
+        "full-stack-skills-vue-vue-router",
+        "full-stack-skills-vue-vue-router-v3",
+        "full-stack-skills-vue-vue-router-v4",
+        "full-stack-skills-vue-vue2",
+        "full-stack-skills-vue-vue3",
+        "full-stack-skills-vue-vuex-vue2"
+      ],
+      "skillPaths": [
+        "pinia",
+        "vue-router",
+        "vue-router-v3",
+        "vue-router-v4",
+        "vue2",
+        "vue3",
+        "vuex-vue2"
+      ],
+      "skills": [
+        {
+          "targetId": "full-stack-skills-vue-pinia",
+          "relativePath": "pinia",
+          "contentHash": "38726e7f1bdc655f7d4220d01c9dcc2b08cbc2fee9e7b1e581c73248ee8abe92"
+        },
+        {
+          "targetId": "full-stack-skills-vue-vue-router",
+          "relativePath": "vue-router",
+          "contentHash": "6f9e2aa3ff8982153633b39f2951101d322204b8f3f48a93a9dfc465c7e2c78f"
+        },
+        {
+          "targetId": "full-stack-skills-vue-vue-router-v3",
+          "relativePath": "vue-router-v3",
+          "contentHash": "d948cd3b84857575f792cdef28ea0a9f90de9b050eac8a09e60536637061def6"
+        },
+        {
+          "targetId": "full-stack-skills-vue-vue-router-v4",
+          "relativePath": "vue-router-v4",
+          "contentHash": "ceb999e801915078d1c186cd11f5ec3fcf3e743299c4a1dcf32141e9e8358601"
+        },
+        {
+          "targetId": "full-stack-skills-vue-vue2",
+          "relativePath": "vue2",
+          "contentHash": "89951734d5dea49a6ce281df59fa53f0bbf3624db6da6b0f139803d2d23e6528"
+        },
+        {
+          "targetId": "full-stack-skills-vue-vue3",
+          "relativePath": "vue3",
+          "contentHash": "be7463fb2087e209b69b24523588fdf4290efc15e0d97c9cc29d61070faf5674"
+        },
+        {
+          "targetId": "full-stack-skills-vue-vuex-vue2",
+          "relativePath": "vuex-vue2",
+          "contentHash": "cf3d46deac766ebee9d9174ae6e229021384fea7ab6bee069144a97a5b3370b2"
+        }
+      ]
+    },
+    "full-stack-skills-vue-ui": {
+      "type": "remote",
+      "location": "https://github.com/full-stack-skills/vue-ui-skills.git",
+      "branch": "main",
+      "path": "skills",
+      "mode": "flat",
+      "includes": [],
+      "excludes": [],
+      "commit": "cb38b3fd071ee766007d0cb3737fa49b3ef5b0e8",
+      "status": "synced",
+      "targets": [
+        "full-stack-skills-vue-ui-bootstrap-vue3",
+        "full-stack-skills-vue-ui-element-plus-vue3",
+        "full-stack-skills-vue-ui-layui-vue3",
+        "full-stack-skills-vue-ui-vant-vue3"
+      ],
+      "skillPaths": [
+        "bootstrap-vue3",
+        "element-plus-vue3",
+        "layui-vue3",
+        "vant-vue3"
+      ],
+      "skills": [
+        {
+          "targetId": "full-stack-skills-vue-ui-bootstrap-vue3",
+          "relativePath": "bootstrap-vue3",
+          "contentHash": "832f593aa4eb55c443463d21c9a3a49f2ca656651e5be602e7c646339eb704f5"
+        },
+        {
+          "targetId": "full-stack-skills-vue-ui-element-plus-vue3",
+          "relativePath": "element-plus-vue3",
+          "contentHash": "236f64d21a95926ec906724b7c5443ec6f4285a87dffc512fbaa7fee26aef3f0"
+        },
+        {
+          "targetId": "full-stack-skills-vue-ui-layui-vue3",
+          "relativePath": "layui-vue3",
+          "contentHash": "dce6d679dd1de1ba6e86abef3ce3df05d79ce2c5e3d279a67b683c25ca6cdb18"
+        },
+        {
+          "targetId": "full-stack-skills-vue-ui-vant-vue3",
+          "relativePath": "vant-vue3",
+          "contentHash": "982474e9290a922aa412e08b52de391dbeaa26a92ed2f2fe8a87bab29b1e2834"
+        }
+      ]
+    },
+    "full-stack-skills-electron": {
+      "type": "remote",
+      "location": "https://github.com/full-stack-skills/electron-skills.git",
+      "branch": "main",
+      "path": "skills",
+      "mode": "flat",
+      "includes": [],
+      "excludes": [],
+      "commit": "088a6d7ed27356a121730535abf76a35c70225a3",
+      "status": "synced",
+      "targets": [
+        "full-stack-skills-electron-electron",
+        "full-stack-skills-electron-electron-egg",
+        "full-stack-skills-electron-upgradelink"
+      ],
+      "skillPaths": [
+        "electron",
+        "electron-egg",
+        "upgradeLink"
+      ],
+      "skills": [
+        {
+          "targetId": "full-stack-skills-electron-electron",
+          "relativePath": "electron",
+          "contentHash": "3d7a6da310baf075ec75179a4df925b9bcb2f44f7a89edd4aba23769d53ecbcb"
+        },
+        {
+          "targetId": "full-stack-skills-electron-electron-egg",
+          "relativePath": "electron-egg",
+          "contentHash": "64dc90695811dfae4a70bd4b8e37178034e5eeaa2be4516f0fb65b65db58e1a1"
+        },
+        {
+          "targetId": "full-stack-skills-electron-upgradelink",
+          "relativePath": "upgradeLink",
+          "contentHash": "55cf65a12dc4ea142cd5632ec621da25b12768a690a1a85a750ff7e6ef7329e4"
+        }
+      ]
+    },
+    "full-stack-skills-uniapp": {
+      "type": "remote",
+      "location": "https://github.com/full-stack-skills/uniapp-skills.git",
+      "branch": "main",
+      "path": "skills",
+      "mode": "flat",
+      "includes": [],
+      "excludes": [],
+      "commit": "73dcaef1dfcba20e337155f9fc74c2ecc8af6995",
+      "status": "synced",
+      "targets": [
+        "full-stack-skills-uniapp-uniapp-ad",
+        "full-stack-skills-uniapp-uniapp-cloud",
+        "full-stack-skills-uniapp-uniapp-mini",
+        "full-stack-skills-uniapp-uniapp-native-app",
+        "full-stack-skills-uniapp-uniapp-native-plugin",
+        "full-stack-skills-uniapp-uniapp-plugin",
+        "full-stack-skills-uniapp-uniapp-project",
+        "full-stack-skills-uniapp-uniapp-project-creator",
+        "full-stack-skills-uniapp-uniapp-ucharts",
+        "full-stack-skills-uniapp-uniapp-uview",
+        "full-stack-skills-uniapp-uniappx-project",
+        "full-stack-skills-uniapp-uniappx-project-creator",
+        "full-stack-skills-uniapp-uniappx-uview-pro"
+      ],
+      "skillPaths": [
+        "uniapp-ad",
+        "uniapp-cloud",
+        "uniapp-mini",
+        "uniapp-native-app",
+        "uniapp-native-plugin",
+        "uniapp-plugin",
+        "uniapp-project",
+        "uniapp-project-creator",
+        "uniapp-ucharts",
+        "uniapp-uview",
+        "uniappx-project",
+        "uniappx-project-creator",
+        "uniappx-uview-pro"
+      ],
+      "skills": [
+        {
+          "targetId": "full-stack-skills-uniapp-uniapp-ad",
+          "relativePath": "uniapp-ad",
+          "contentHash": "0e6b4059326d2a0d48911394764dd7a5185fc2295aa54b428d78f9cd3a382427"
+        },
+        {
+          "targetId": "full-stack-skills-uniapp-uniapp-cloud",
+          "relativePath": "uniapp-cloud",
+          "contentHash": "65550b62eba24aa82a4271f33fab58f1a9e4583834f721dbf24b6771417d55a1"
+        },
+        {
+          "targetId": "full-stack-skills-uniapp-uniapp-mini",
+          "relativePath": "uniapp-mini",
+          "contentHash": "84c0f9d5fab988291814c1445ee81532b1584b65536a5e9bd46328f7fe966732"
+        },
+        {
+          "targetId": "full-stack-skills-uniapp-uniapp-native-app",
+          "relativePath": "uniapp-native-app",
+          "contentHash": "a1b877ef472435b08ef349c0b6c711ebe56b18d54d87a92d9c191f974964031c"
+        },
+        {
+          "targetId": "full-stack-skills-uniapp-uniapp-native-plugin",
+          "relativePath": "uniapp-native-plugin",
+          "contentHash": "de7e20105b9273d23672a6fb925306b5bb930de51f807e179a8a0880af6d69ab"
+        },
+        {
+          "targetId": "full-stack-skills-uniapp-uniapp-plugin",
+          "relativePath": "uniapp-plugin",
+          "contentHash": "47e8585fb837fab38b28cabe742688aec167261a70a28889eb5ef99d9b8cc39a"
+        },
+        {
+          "targetId": "full-stack-skills-uniapp-uniapp-project",
+          "relativePath": "uniapp-project",
+          "contentHash": "b3145a8404e220652f0869d4d91fc0bd85e9abb4c83a9982831d69a676f44758"
+        },
+        {
+          "targetId": "full-stack-skills-uniapp-uniapp-project-creator",
+          "relativePath": "uniapp-project-creator",
+          "contentHash": "f78797caecd78d5b94c0ef42ede753e8f9d62af9e9a21e6dc0a7affb9d737731"
+        },
+        {
+          "targetId": "full-stack-skills-uniapp-uniapp-ucharts",
+          "relativePath": "uniapp-ucharts",
+          "contentHash": "eee898e67d6511a901cfb35bf2386a4521b5a26f1c7497121eb7801ecd49419a"
+        },
+        {
+          "targetId": "full-stack-skills-uniapp-uniapp-uview",
+          "relativePath": "uniapp-uview",
+          "contentHash": "461dfa16376aab325935f17924a146b0f361e32ee293adbb95fec1447046731e"
+        },
+        {
+          "targetId": "full-stack-skills-uniapp-uniappx-project",
+          "relativePath": "uniappx-project",
+          "contentHash": "aeddf2bd0f238c2f1d218475e6358dbe8d4b03e4aa408c3c8f3f90c73750f03d"
+        },
+        {
+          "targetId": "full-stack-skills-uniapp-uniappx-project-creator",
+          "relativePath": "uniappx-project-creator",
+          "contentHash": "6df684178167978c90edd902b8f275df110d1470a920442437653ffde19cff71"
+        },
+        {
+          "targetId": "full-stack-skills-uniapp-uniappx-uview-pro",
+          "relativePath": "uniappx-uview-pro",
+          "contentHash": "59bb9570e0e0f975ee5d98685d8ae101dff4a62e3b633d7dcb46a8f925dd6872"
+        }
+      ]
+    },
     "vuejs-ai": {
       "type": "remote",
       "location": "https://github.com/vuejs-ai/skills.git",
