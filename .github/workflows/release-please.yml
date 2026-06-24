@@ -3,6 +3,12 @@ name: Release Please
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  releases: write
+
 concurrency:
   group: release-please-${{ github.ref }}
   cancel-in-progress: false
@@ -11,10 +17,6 @@ jobs:
   release-please:
     name: Generate Release PR
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      issues: write
-      pull-requests: write
     steps:
       - name: Run release-please action
         uses: googleapis/release-please-action@v5
