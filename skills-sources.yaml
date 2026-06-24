@@ -53,6 +53,12 @@ sources:
     branch: main
     path: skills
 
+  - id: full-stack-skills-stitch
+    type: remote
+    location: https://github.com/full-stack-skills/stitch-skills.git
+    branch: main
+    path: skills
+
   - id: vuejs-ai
     type: remote
     location: https://github.com/vuejs-ai/skills.git
