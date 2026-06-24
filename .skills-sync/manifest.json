@@ -57,7 +57,7 @@
         "find-skills"
       ],
       "excludes": [],
-      "commit": "cb7b7ca180bf363ccff2cc8b6f504bdcda152285",
+      "commit": "9a7d8acfbf29f9cced7fb5a504da1d65b484aed3",
       "status": "synced",
       "targets": [
         "vercel-labs-find-skills"
@@ -69,7 +69,7 @@
         {
           "targetId": "vercel-labs-find-skills",
           "relativePath": "find-skills",
-          "contentHash": "1e85f6f9686e145aca4a124e3b704b9bbea9aa87e08515c1e352eee70f6e6e7a"
+          "contentHash": "deddc03b4b5f50755b97fcdb737a786676992ef7e9be614d2cd2c71e0320bebf"
         }
       ]
     },
@@ -330,6 +330,226 @@
         }
       ]
     },
+    "full-stack-skills-stitch": {
+      "type": "remote",
+      "location": "https://github.com/full-stack-skills/stitch-skills.git",
+      "branch": "main",
+      "path": "skills",
+      "mode": "flat",
+      "includes": [],
+      "excludes": [],
+      "commit": "eda8bf135a4b32db74e943b19ebec4458c7311ae",
+      "status": "synced",
+      "targets": [
+        "full-stack-skills-stitch-stitch-design-md",
+        "full-stack-skills-stitch-stitch-mcp-create-project",
+        "full-stack-skills-stitch-stitch-mcp-generate-screen-from-text",
+        "full-stack-skills-stitch-stitch-mcp-get-project",
+        "full-stack-skills-stitch-stitch-mcp-get-screen",
+        "full-stack-skills-stitch-stitch-mcp-list-projects",
+        "full-stack-skills-stitch-stitch-mcp-list-screens",
+        "full-stack-skills-stitch-stitch-react-components",
+        "full-stack-skills-stitch-stitch-remotion",
+        "full-stack-skills-stitch-stitch-shadcn-ui",
+        "full-stack-skills-stitch-stitch-skill-creator",
+        "full-stack-skills-stitch-stitch-ued-guide",
+        "full-stack-skills-stitch-stitch-ui-design-spec-bootstrap",
+        "full-stack-skills-stitch-stitch-ui-design-spec-element-plus",
+        "full-stack-skills-stitch-stitch-ui-design-spec-generator",
+        "full-stack-skills-stitch-stitch-ui-design-spec-layui",
+        "full-stack-skills-stitch-stitch-ui-design-spec-uview",
+        "full-stack-skills-stitch-stitch-ui-design-spec-uviewpro",
+        "full-stack-skills-stitch-stitch-ui-design-spec-vant",
+        "full-stack-skills-stitch-stitch-ui-design-variants",
+        "full-stack-skills-stitch-stitch-ui-designer",
+        "full-stack-skills-stitch-stitch-ui-prompt-architect",
+        "full-stack-skills-stitch-stitch-uview-components",
+        "full-stack-skills-stitch-stitch-uview-plus-components",
+        "full-stack-skills-stitch-stitch-uviewpro-components",
+        "full-stack-skills-stitch-stitch-vue-bootstrap-components",
+        "full-stack-skills-stitch-stitch-vue-element-components",
+        "full-stack-skills-stitch-stitch-vue-layui-components",
+        "full-stack-skills-stitch-stitch-vue-vant-components"
+      ],
+      "skillPaths": [
+        "stitch-design-md",
+        "stitch-mcp-create-project",
+        "stitch-mcp-generate-screen-from-text",
+        "stitch-mcp-get-project",
+        "stitch-mcp-get-screen",
+        "stitch-mcp-list-projects",
+        "stitch-mcp-list-screens",
+        "stitch-react-components",
+        "stitch-remotion",
+        "stitch-shadcn-ui",
+        "stitch-skill-creator",
+        "stitch-ued-guide",
+        "stitch-ui-design-spec-bootstrap",
+        "stitch-ui-design-spec-element-plus",
+        "stitch-ui-design-spec-generator",
+        "stitch-ui-design-spec-layui",
+        "stitch-ui-design-spec-uview",
+        "stitch-ui-design-spec-uviewpro",
+        "stitch-ui-design-spec-vant",
+        "stitch-ui-design-variants",
+        "stitch-ui-designer",
+        "stitch-ui-prompt-architect",
+        "stitch-uview-components",
+        "stitch-uview-plus-components",
+        "stitch-uviewpro-components",
+        "stitch-vue-bootstrap-components",
+        "stitch-vue-element-components",
+        "stitch-vue-layui-components",
+        "stitch-vue-vant-components"
+      ],
+      "skills": [
+        {
+          "targetId": "full-stack-skills-stitch-stitch-design-md",
+          "relativePath": "stitch-design-md",
+          "contentHash": "5a84d59a0699047449d1d327da2a91fa2c2b6ce470c0dde5af276280df1cbd8c"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-stitch-mcp-create-project",
+          "relativePath": "stitch-mcp-create-project",
+          "contentHash": "84ab467e09bf4a6edff16ace6db3fb1251285d233ac002e0173d184d19024fdd"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-stitch-mcp-generate-screen-from-text",
+          "relativePath": "stitch-mcp-generate-screen-from-text",
+          "contentHash": "a2bc62d0a7e31123d8d4db15ee530fd3ff095e29f0f8e721939544c5d1d54e85"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-stitch-mcp-get-project",
+          "relativePath": "stitch-mcp-get-project",
+          "contentHash": "892e71fc9151d1d3a9d81a7ca784960fb441a603517d2d2939bc42ab2b5c0765"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-stitch-mcp-get-screen",
+          "relativePath": "stitch-mcp-get-screen",
+          "contentHash": "1a423338dbfee27f846ab6737b63da2a38bff9a6dab30a9223dd4e002d478662"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-stitch-mcp-list-projects",
+          "relativePath": "stitch-mcp-list-projects",
+          "contentHash": "9ac697ddda1a8615434e35d1a88688066ac98211f65cbe3b5551bfa557f0cec7"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-stitch-mcp-list-screens",
+          "relativePath": "stitch-mcp-list-screens",
+          "contentHash": "f3f821ea1573d4ea1bfb0fc4921a99ec97ec0820842d3b2bae0f01d3cb11fe26"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-stitch-react-components",
+          "relativePath": "stitch-react-components",
+          "contentHash": "9a2236a5a1856f6fe21a1d5fdfca95cd95262b30d7b98b4d50a5213c44d5582a"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-stitch-remotion",
+          "relativePath": "stitch-remotion",
+          "contentHash": "3d5c93f63f66a9a7de347832532516ff33ce520bf8840d0e8453c5c038e41263"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-stitch-shadcn-ui",
+          "relativePath": "stitch-shadcn-ui",
+          "contentHash": "6a74043901e5b22d30cebd6376213c6569b8655575ed9b4febac2121e2d97043"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-stitch-skill-creator",
+          "relativePath": "stitch-skill-creator",
+          "contentHash": "f64a9d21922fbdf079dd1a1290461dab8694a24316b559726b5513e57a3742b4"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-stitch-ued-guide",
+          "relativePath": "stitch-ued-guide",
+          "contentHash": "b8e3dfb37392dd64138f3ee7a92ff42ff44e825f6e6155fa3b8d5155813b7400"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-stitch-ui-design-spec-bootstrap",
+          "relativePath": "stitch-ui-design-spec-bootstrap",
+          "contentHash": "a77daadba5358d31ceec3e518898bc24ca09c355d2e81f3a96733dbccdad1e43"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-stitch-ui-design-spec-element-plus",
+          "relativePath": "stitch-ui-design-spec-element-plus",
+          "contentHash": "b5d9a5d9de32947178e0d33f1f0019fc681265a1eeacf39f52010e46a9558b96"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-stitch-ui-design-spec-generator",
+          "relativePath": "stitch-ui-design-spec-generator",
+          "contentHash": "f3e41b7cbc704913882691166e35e27e0dcb974d675c1b09fca98d47b5f3eb64"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-stitch-ui-design-spec-layui",
+          "relativePath": "stitch-ui-design-spec-layui",
+          "contentHash": "6709bda27b05f1524e3c751044b50ea91b23a35c0727bfbcfaa2c97bb75b4312"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-stitch-ui-design-spec-uview",
+          "relativePath": "stitch-ui-design-spec-uview",
+          "contentHash": "8722dec272d8975d79ce57d311b9ffcb03f4902fb35cd9dedf58152c9ea3b0aa"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-stitch-ui-design-spec-uviewpro",
+          "relativePath": "stitch-ui-design-spec-uviewpro",
+          "contentHash": "1083b01be92861f37a9b08db847bacff91d68d19e89f69de54c9e593b36f6d4d"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-stitch-ui-design-spec-vant",
+          "relativePath": "stitch-ui-design-spec-vant",
+          "contentHash": "624b61e0ebf0b72c3524c14eeb7c7c8ae6065296b3fed37ac38a27261312e677"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-stitch-ui-design-variants",
+          "relativePath": "stitch-ui-design-variants",
+          "contentHash": "96d42e71d68784bce8c97212d9e5e6c6ad376673df98d9e3067419fc5f942034"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-stitch-ui-designer",
+          "relativePath": "stitch-ui-designer",
+          "contentHash": "15db7ce8c1d9f45233b307de0a005b319d038a5f5309b1bdeba72c8f9594cd65"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-stitch-ui-prompt-architect",
+          "relativePath": "stitch-ui-prompt-architect",
+          "contentHash": "86fb9a3307c8e05a74560551e3a0861d2b0b5aa525dee4cddc3c2e93a409cbec"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-stitch-uview-components",
+          "relativePath": "stitch-uview-components",
+          "contentHash": "29b0075459cd254274bf3642bd75cc4e7c1456c5db6d2cb9fb5f118c77ad19d5"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-stitch-uview-plus-components",
+          "relativePath": "stitch-uview-plus-components",
+          "contentHash": "8c805420d5b6e3876d1b87dbdd43c548a437dd9837c1f59fb32f28b43c934069"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-stitch-uviewpro-components",
+          "relativePath": "stitch-uviewpro-components",
+          "contentHash": "2572e5d2e9e330a452f7a8fcbc180a8f9595783ca6e95870b55a5bd3c8bc177b"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-stitch-vue-bootstrap-components",
+          "relativePath": "stitch-vue-bootstrap-components",
+          "contentHash": "e21cd2c1d69224b69fe68625ce1cfc01b271c2525bab9f5c4ac057aa90f073c1"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-stitch-vue-element-components",
+          "relativePath": "stitch-vue-element-components",
+          "contentHash": "6ab6083b69d1abe33728e952036a2d9d1ccc222c09761a45e6e593f95c220afc"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-stitch-vue-layui-components",
+          "relativePath": "stitch-vue-layui-components",
+          "contentHash": "f36224f7cae41b4826111ba101d43690ee2c0a2677df69e6276bf6e7beb8f143"
+        },
+        {
+          "targetId": "full-stack-skills-stitch-stitch-vue-vant-components",
+          "relativePath": "stitch-vue-vant-components",
+          "contentHash": "c68c7f73cf8b7d7a96b86b8bd1f5df67da92bf19cb01d5db9ec9c713b5eda95a"
+        }
+      ]
+    },
     "vuejs-ai": {
       "type": "remote",
       "location": "https://github.com/vuejs-ai/skills.git",
@@ -419,7 +639,7 @@
         "web-design-reviewer"
       ],
       "excludes": [],
-      "commit": "775f826b757179f29d32d2e26494bb5c174f237e",
+      "commit": "e0d2e437477d0767ae8453d4754f6945001b4ed5",
       "status": "synced",
       "targets": [
         "addyosmani-api-and-interface-design",
@@ -506,7 +726,7 @@
         {
           "targetId": "addyosmani-incremental-implementation",
           "relativePath": "incremental-implementation",
-          "contentHash": "5f16adf542330dfadb8b9a9c6d7ec45e4196bd1db9a67d4407e9dc07e6e29e41"
+          "contentHash": "960f2ed08ccdd51527c347d29d2d00c80edb9992e95d67030d8a289ba04eed4e"
         },
         {
           "targetId": "addyosmani-performance-optimization",
@@ -516,7 +736,7 @@
         {
           "targetId": "addyosmani-planning-and-task-breakdown",
           "relativePath": "planning-and-task-breakdown",
-          "contentHash": "d9dc9a1bea50a0bb2b5c51ed59833b65969b5b0bda2c8dacefb5560275443a35"
+          "contentHash": "8cc81534485e2b3171c5036bb273984d4c2cb93efd526c63ff8a180a5516a224"
         },
         {
           "targetId": "addyosmani-security-and-hardening",
@@ -526,7 +746,7 @@
         {
           "targetId": "addyosmani-shipping-and-launch",
           "relativePath": "shipping-and-launch",
-          "contentHash": "3e54575e5dcdc8f576cd1735aa804a56bb881c342bd6c702fd86531bd6652d56"
+          "contentHash": "efc70a45ad6435d93f2b3cef16c125ff6d75a2383e49f30056fcba04b27d6e4a"
         },
         {
           "targetId": "addyosmani-source-driven-development",
@@ -536,7 +756,7 @@
         {
           "targetId": "addyosmani-spec-driven-development",
           "relativePath": "spec-driven-development",
-          "contentHash": "16041b4b6149c0e99d7323f8c1e2104ddca2819bf46f78c402a8f0458938e344"
+          "contentHash": "386c599468ca483b19337a1022dfb4c00f5541299be1e70fdd7993ea338e7e0e"
         }
       ]
     },
@@ -561,7 +781,7 @@
         "documentation-writer"
       ],
       "excludes": [],
-      "commit": "3304e8e11c7457924ec1bdbfc2e2ce8e7e4eec5b",
+      "commit": "bbb9295b63adb2db01f5e30bc32e454ab5f68382",
       "status": "synced",
       "targets": [
         "awesome-copilot-acquire-codebase-knowledge",
@@ -662,7 +882,7 @@
       "mode": "flat",
       "includes": [],
       "excludes": [],
-      "commit": "1518fec29d19ce905cd0c689255137b9dcab7ccc",
+      "commit": "a13b2a02fd58d8ad325fefd9d146f62708be8456",
       "status": "synced",
       "targets": [
         "ui-ux-pro-max-skill-banner-design",
@@ -882,7 +1102,7 @@
         "netlify-cli-and-deploy"
       ],
       "excludes": [],
-      "commit": "ab80a6ed2b6c4933a3f964101c82b45cab847b5b",
+      "commit": "1e8f876d64b7c2492e29b3b85c4ea745d341623c",
       "status": "synced",
       "targets": [
         "netlify-context-and-tools-netlify-cli-and-deploy",
@@ -920,7 +1140,7 @@
       "mode": "flat",
       "includes": [],
       "excludes": [],
-      "commit": "a8e87a7cff153479eb77230d9c232484a1f3062f",
+      "commit": "2de64b683f8120e215e783fbee12aa037ce77f55",
       "status": "synced",
       "targets": [
         "shopify-ai-toolkit-shopify-admin",
@@ -970,102 +1190,102 @@
         {
           "targetId": "shopify-ai-toolkit-shopify-admin",
           "relativePath": "shopify-admin",
-          "contentHash": "08757318d0c2865cd554da9fa58b769dda14c705676ceaac010198bae2db0aa5"
+          "contentHash": "077e9b6c7274e54e748e050da07ba8f317f198f52e0182752624dadbc39aa46a"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-app-store-review",
           "relativePath": "shopify-app-store-review",
-          "contentHash": "85031fcc5fcbddc990c5ce0f66d32d83a40bdb7c558e63c69faa3be6a4dae2f7"
+          "contentHash": "315b412601bf1a52483dd039260e502b19e8fd5323f2ab22b40a21ad7f0ea97b"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-custom-data",
           "relativePath": "shopify-custom-data",
-          "contentHash": "2bb0626a163ee07fbe3564d32d6f43106863529cb646e442b32614a331122587"
+          "contentHash": "123c37bf216e6cef1f8bf6a5fb562ccca52d71cbc7fd53e58c0f2c8655e7aa79"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-customer",
           "relativePath": "shopify-customer",
-          "contentHash": "d2f58d58aa443a1c0d8a2cefafbc318a9415fc1efce8da45f1e93a0b995986f9"
+          "contentHash": "3567253ca06b33e21294b88d42421c24eee935bb15c560b1f06303d5873e5ff7"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-dev",
           "relativePath": "shopify-dev",
-          "contentHash": "15a7ab19dd44ce6be767ae03f1f6d8031e5ddb109952ec06d1801217e3d999fc"
+          "contentHash": "e58c042739b057723f91ceb5ce3e0a615f9bca0ae5241e03d0a44909b2b70f14"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-functions",
           "relativePath": "shopify-functions",
-          "contentHash": "acd0ca22c1846ef6101c0a2fd84a7ced3ef727d579b3f41cc396d47eb5688f0d"
+          "contentHash": "0b585eaa23849f100608db40b04ca2ef86cd2a0e54706e77d35a53eb78bbafe4"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-hydrogen",
           "relativePath": "shopify-hydrogen",
-          "contentHash": "8f049b3216fea0bbde8a1b52d50723bc1ca82e06f761e0e4e4945bdf8cd7c494"
+          "contentHash": "5f7cfbb67be004db22abd6c798a682851019fcd272373505181e36260428f00b"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-liquid",
           "relativePath": "shopify-liquid",
-          "contentHash": "a90340e1ede9c4c3bd998704b1ac81a35d84d21d98794b5e96797a0b7d09ea21"
+          "contentHash": "2e5676b23f71df4fcd7cbe645c01d3e12fa20eb6309e58122f1b8d1549e7e4f1"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-onboarding-dev",
           "relativePath": "shopify-onboarding-dev",
-          "contentHash": "de92ddee8efba08cbe32c3728a79f3ccc59de6c4d3d6e03fc8f407aa65a5d2de"
+          "contentHash": "0bd69625ee875d51f54fdc799a186e413d3248a993b2e40362aa7cb2d81628fb"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-onboarding-merchant",
           "relativePath": "shopify-onboarding-merchant",
-          "contentHash": "fa89fd6c79f5a073b1d0a63a940fc0e495b5f89e0e231be25a20d5d45d6074b8"
+          "contentHash": "7328dbe3e938b54e99877595f16ab92ce5ba5869b6b9fdf4051be7bc2d8879a1"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-partner",
           "relativePath": "shopify-partner",
-          "contentHash": "390028b6e87c43ca0e3b3374ee9a6ce04b92261ba375ba0996a14fea496b466f"
+          "contentHash": "4f39bf75d8d11479a60aaa5fadac2cce2c4641d468943ec4845a253369b41693"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-payments-apps",
           "relativePath": "shopify-payments-apps",
-          "contentHash": "688248dd30a647a980be0d52eb9c3d24b37a3b22ac1e3866cf8193d3675e5844"
+          "contentHash": "a91df3d315044a671a5b4e2f43e474d8cfe929e9b49b4728f7d7b4faa1ef1117"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-polaris-admin-extensions",
           "relativePath": "shopify-polaris-admin-extensions",
-          "contentHash": "bd5ae1774953fcb036c37e7e23923dd2f1434e4ddf991b71f97b9570b30877dd"
+          "contentHash": "951c484c41f7b229603513945678f12ec4bd9eb223edd8b5a83511a5bd0464d5"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-polaris-app-home",
           "relativePath": "shopify-polaris-app-home",
-          "contentHash": "253a0464b87b0155502a818866d9bd851f87c33eff4684419e5b76bfc1cb6ae0"
+          "contentHash": "a14c4564db3cbc3ab87e35ece1e3dbc2061e9e9c0c77a52da0d329c3c9f4de29"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-polaris-checkout-extensions",
           "relativePath": "shopify-polaris-checkout-extensions",
-          "contentHash": "7159d068664daf5bc0eaf83d5d80ac8a022d9273bdc2a7565d7fff5d441e3923"
+          "contentHash": "05aed1aa7093b4b224fb70aeb38936aea1977d8a172600b898bb2f651b8d5e53"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-polaris-customer-account-extensions",
           "relativePath": "shopify-polaris-customer-account-extensions",
-          "contentHash": "fbf6c7b9213eb01c65eabf1d84ff14d581b9daf3fb57f4eb7f4b6195df65445e"
+          "contentHash": "8857a743a78b8a55e31e6efc9ca1f7a2b5e44f301e2f43d05d0e3f941dd8b87e"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-pos-ui",
           "relativePath": "shopify-pos-ui",
-          "contentHash": "b15f7828b6d09c064159bd9200fbba539a18cd23b1876708b445de44f91759b5"
+          "contentHash": "1c4bcbda492e015c86cb04fbdeab1df90658bb93044c7450968674e322a2eae7"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-storefront-graphql",
           "relativePath": "shopify-storefront-graphql",
-          "contentHash": "0e368426b6bb97ab0b46eaef3c70034acf65442dc715746c3a3b7d2f66c8f17d"
+          "contentHash": "d970395c5415f949ab33a3586392816720a3040e3f937f3bc529135c28506b2b"
         },
         {
           "targetId": "shopify-ai-toolkit-shopify-use-shopify-cli",
           "relativePath": "shopify-use-shopify-cli",
-          "contentHash": "aa07b717120738568e5e1ce611147f43a7126a8a3db6b42d1016e2de7bc8062d"
+          "contentHash": "8d8d8a23db7e72d962d00215e60bde26a18607f506d997c05f1ee04e1696883e"
         },
         {
           "targetId": "shopify-ai-toolkit-ucp",
           "relativePath": "ucp",
-          "contentHash": "41f48f9e2ca781295024754dc3ce07749baccb33da55a9f2970aa00ae00fbb2c"
+          "contentHash": "46956ad73af72bee979a7e1538d985645cca774f4cf2b0af6fc66b81e002effa"
         }
       ]
     },
@@ -1181,7 +1401,7 @@
         "cloudflare-deploy"
       ],
       "excludes": [],
-      "commit": "778b0e6129cf18cbaee3bf11479f583fadae8d03",
+      "commit": "49f948faa9258a0c61caceaf225e179651397431",
       "status": "synced",
       "targets": [
         "openai-cloudflare-deploy",
