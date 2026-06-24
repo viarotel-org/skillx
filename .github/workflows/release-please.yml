@@ -2,9 +2,10 @@ name: Release Please
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: ['sync-skills']
+    types:
+      - completed
 
 permissions:
   contents: write
@@ -26,3 +27,4 @@ jobs:
         with:
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
+          token: ${{ secrets.GH_TOKEN }}
