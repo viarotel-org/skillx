@@ -108,15 +108,14 @@ jobs:
             echo "Push failed; retrying after rebasing latest $DEFAULT_BRANCH"
           done
 
-  release-please:
-    name: Release Please
+  trigger-release-please:
+    name: Auto Trigger Release Please
     needs: sync
     if: needs.sync.outputs.changed == 'true'
     runs-on: ubuntu-latest
     steps:
-      - name: Run release-please
-        uses: googleapis/release-please-action@v5
+      - name: Dispatch release-please workflow
+        uses: benc-uk/workflow-dispatch@v1
         with:
-          config-file: release-please-config.json
-          manifest-file: .release-please-manifest.json
-          target-branch: ${{ github.event.repository.default_branch }}
+          workflow: release-please.yml
+          ref: ${{ github.ref }}
