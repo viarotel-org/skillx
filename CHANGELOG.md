@@ -1,5 +1,42 @@
 # Changelog
 
+## [0.12.0](https://github.com/viarotel-org/skillx/compare/skillx-v0.11.0...skillx-v0.12.0) (2026-06-24)
+
+
+### Features
+
+* 🚀 Add new skillx ([ae770e1](https://github.com/viarotel-org/skillx/commit/ae770e13ca1387d9e23f3652f520f0c7378511aa))
+* 🚀 Add shadcn-vue skill ([9258189](https://github.com/viarotel-org/skillx/commit/9258189267d70138c9a3b81450856302f4fa7b02))
+* 🚀 Add shadcn-vue skills ([98c19ba](https://github.com/viarotel-org/skillx/commit/98c19bab3ec1025c1997645c08a4eb799d495295))
+* 🚀 Add stitch-skills ([1c359eb](https://github.com/viarotel-org/skillx/commit/1c359ebc728d4817857e3d0e4a427a218674956b))
+* 🚀 Add trae skills config ([0b28cfb](https://github.com/viarotel-org/skillx/commit/0b28cfbbc2c19aacc9faf4e58ed2c5cba6b07bdc))
+
+
+### Bug Fixes
+
+* 🐛 Fix the workflow permission issue ([b4cfcad](https://github.com/viarotel-org/skillx/commit/b4cfcad8cddfd46776e76ad6bf80c8e4070db3ba))
+* 🚀 Fix the problem that shadcn-vue branch error causes failure to pull ([ba4e674](https://github.com/viarotel-org/skillx/commit/ba4e6745233b9a9fbf138ec02bc2ca44c4a32023))
+
+
+### Performance Improvements
+
+* 🚀 Update workflows ([2d1ec74](https://github.com/viarotel-org/skillx/commit/2d1ec7452d2127d4d0b9b5b63239eb4c63f37c44))
+* 🚀 Update workflows ([c04e557](https://github.com/viarotel-org/skillx/commit/c04e557e254ae9bcc869c99d7cad5c00f583716a))
+* 🚀 Update workflows ([0a3a1c8](https://github.com/viarotel-org/skillx/commit/0a3a1c8260f6e779886fb36b4cddd1fe5ad65fe6))
+* 🚀 Update workflows ([95a280e](https://github.com/viarotel-org/skillx/commit/95a280e53c06deb811b598eff3ac20e1d587bdb1))
+* 🚀 Update workflows ([71be832](https://github.com/viarotel-org/skillx/commit/71be832f7193ae2da7130dbe367286d58046fffd))
+* 🚀 Update workflows ([03ae002](https://github.com/viarotel-org/skillx/commit/03ae002282c0741193ec308eb5669d62e1b24fe0))
+* 🚀 Update workflows ([7b44773](https://github.com/viarotel-org/skillx/commit/7b4477387a1a30aa39d4a88489f951bf8ccd71c9))
+* 🚀 Update workflows ([b63f5f3](https://github.com/viarotel-org/skillx/commit/b63f5f3ccecc0c59eb6c7dd78050743d4705b859))
+* 🚀 Update workflows ([1d5b1cc](https://github.com/viarotel-org/skillx/commit/1d5b1ccb1436a33bb5c6ed1d42ea13da62d69e18))
+
+
+### Miscellaneous Chores
+
+* sync skills subscriptions ([7f8d502](https://github.com/viarotel-org/skillx/commit/7f8d5028f415e2ffc4ee024a034a69d89ee88321))
+* sync skills subscriptions ([aa86ccc](https://github.com/viarotel-org/skillx/commit/aa86ccc94eccc94b121e42e0d921918ee5a16f22))
+* sync skills subscriptions ([86e77a2](https://github.com/viarotel-org/skillx/commit/86e77a2cbd93ab1cbc9be20dbbb27ef5fe05a342))
+
 ## [0.11.0](https://github.com/viarotel-org/skillx/compare/skillx-v0.10.1...skillx-v0.11.0) (2026-06-23)
 
 
