@@ -3,7 +3,7 @@ name: Release Please
 on:
   workflow_dispatch:
   workflow_run:
-    workflows: ['sync-skills']
+    workflows: [sync-skills]
     types:
       - completed
 
