@@ -330,226 +330,6 @@
         }
       ]
     },
-    "full-stack-skills-stitch": {
-      "type": "remote",
-      "location": "https://github.com/full-stack-skills/stitch-skills.git",
-      "branch": "main",
-      "path": "skills",
-      "mode": "flat",
-      "includes": [],
-      "excludes": [],
-      "commit": "eda8bf135a4b32db74e943b19ebec4458c7311ae",
-      "status": "synced",
-      "targets": [
-        "full-stack-skills-stitch-stitch-design-md",
-        "full-stack-skills-stitch-stitch-mcp-create-project",
-        "full-stack-skills-stitch-stitch-mcp-generate-screen-from-text",
-        "full-stack-skills-stitch-stitch-mcp-get-project",
-        "full-stack-skills-stitch-stitch-mcp-get-screen",
-        "full-stack-skills-stitch-stitch-mcp-list-projects",
-        "full-stack-skills-stitch-stitch-mcp-list-screens",
-        "full-stack-skills-stitch-stitch-react-components",
-        "full-stack-skills-stitch-stitch-remotion",
-        "full-stack-skills-stitch-stitch-shadcn-ui",
-        "full-stack-skills-stitch-stitch-skill-creator",
-        "full-stack-skills-stitch-stitch-ued-guide",
-        "full-stack-skills-stitch-stitch-ui-design-spec-bootstrap",
-        "full-stack-skills-stitch-stitch-ui-design-spec-element-plus",
-        "full-stack-skills-stitch-stitch-ui-design-spec-generator",
-        "full-stack-skills-stitch-stitch-ui-design-spec-layui",
-        "full-stack-skills-stitch-stitch-ui-design-spec-uview",
-        "full-stack-skills-stitch-stitch-ui-design-spec-uviewpro",
-        "full-stack-skills-stitch-stitch-ui-design-spec-vant",
-        "full-stack-skills-stitch-stitch-ui-design-variants",
-        "full-stack-skills-stitch-stitch-ui-designer",
-        "full-stack-skills-stitch-stitch-ui-prompt-architect",
-        "full-stack-skills-stitch-stitch-uview-components",
-        "full-stack-skills-stitch-stitch-uview-plus-components",
-        "full-stack-skills-stitch-stitch-uviewpro-components",
-        "full-stack-skills-stitch-stitch-vue-bootstrap-components",
-        "full-stack-skills-stitch-stitch-vue-element-components",
-        "full-stack-skills-stitch-stitch-vue-layui-components",
-        "full-stack-skills-stitch-stitch-vue-vant-components"
-      ],
-      "skillPaths": [
-        "stitch-design-md",
-        "stitch-mcp-create-project",
-        "stitch-mcp-generate-screen-from-text",
-        "stitch-mcp-get-project",
-        "stitch-mcp-get-screen",
-        "stitch-mcp-list-projects",
-        "stitch-mcp-list-screens",
-        "stitch-react-components",
-        "stitch-remotion",
-        "stitch-shadcn-ui",
-        "stitch-skill-creator",
-        "stitch-ued-guide",
-        "stitch-ui-design-spec-bootstrap",
-        "stitch-ui-design-spec-element-plus",
-        "stitch-ui-design-spec-generator",
-        "stitch-ui-design-spec-layui",
-        "stitch-ui-design-spec-uview",
-        "stitch-ui-design-spec-uviewpro",
-        "stitch-ui-design-spec-vant",
-        "stitch-ui-design-variants",
-        "stitch-ui-designer",
-        "stitch-ui-prompt-architect",
-        "stitch-uview-components",
-        "stitch-uview-plus-components",
-        "stitch-uviewpro-components",
-        "stitch-vue-bootstrap-components",
-        "stitch-vue-element-components",
-        "stitch-vue-layui-components",
-        "stitch-vue-vant-components"
-      ],
-      "skills": [
-        {
-          "targetId": "full-stack-skills-stitch-stitch-design-md",
-          "relativePath": "stitch-design-md",
-          "contentHash": "5a84d59a0699047449d1d327da2a91fa2c2b6ce470c0dde5af276280df1cbd8c"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-stitch-mcp-create-project",
-          "relativePath": "stitch-mcp-create-project",
-          "contentHash": "84ab467e09bf4a6edff16ace6db3fb1251285d233ac002e0173d184d19024fdd"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-stitch-mcp-generate-screen-from-text",
-          "relativePath": "stitch-mcp-generate-screen-from-text",
-          "contentHash": "a2bc62d0a7e31123d8d4db15ee530fd3ff095e29f0f8e721939544c5d1d54e85"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-stitch-mcp-get-project",
-          "relativePath": "stitch-mcp-get-project",
-          "contentHash": "892e71fc9151d1d3a9d81a7ca784960fb441a603517d2d2939bc42ab2b5c0765"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-stitch-mcp-get-screen",
-          "relativePath": "stitch-mcp-get-screen",
-          "contentHash": "1a423338dbfee27f846ab6737b63da2a38bff9a6dab30a9223dd4e002d478662"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-stitch-mcp-list-projects",
-          "relativePath": "stitch-mcp-list-projects",
-          "contentHash": "9ac697ddda1a8615434e35d1a88688066ac98211f65cbe3b5551bfa557f0cec7"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-stitch-mcp-list-screens",
-          "relativePath": "stitch-mcp-list-screens",
-          "contentHash": "f3f821ea1573d4ea1bfb0fc4921a99ec97ec0820842d3b2bae0f01d3cb11fe26"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-stitch-react-components",
-          "relativePath": "stitch-react-components",
-          "contentHash": "9a2236a5a1856f6fe21a1d5fdfca95cd95262b30d7b98b4d50a5213c44d5582a"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-stitch-remotion",
-          "relativePath": "stitch-remotion",
-          "contentHash": "3d5c93f63f66a9a7de347832532516ff33ce520bf8840d0e8453c5c038e41263"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-stitch-shadcn-ui",
-          "relativePath": "stitch-shadcn-ui",
-          "contentHash": "6a74043901e5b22d30cebd6376213c6569b8655575ed9b4febac2121e2d97043"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-stitch-skill-creator",
-          "relativePath": "stitch-skill-creator",
-          "contentHash": "f64a9d21922fbdf079dd1a1290461dab8694a24316b559726b5513e57a3742b4"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-stitch-ued-guide",
-          "relativePath": "stitch-ued-guide",
-          "contentHash": "b8e3dfb37392dd64138f3ee7a92ff42ff44e825f6e6155fa3b8d5155813b7400"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-stitch-ui-design-spec-bootstrap",
-          "relativePath": "stitch-ui-design-spec-bootstrap",
-          "contentHash": "a77daadba5358d31ceec3e518898bc24ca09c355d2e81f3a96733dbccdad1e43"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-stitch-ui-design-spec-element-plus",
-          "relativePath": "stitch-ui-design-spec-element-plus",
-          "contentHash": "b5d9a5d9de32947178e0d33f1f0019fc681265a1eeacf39f52010e46a9558b96"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-stitch-ui-design-spec-generator",
-          "relativePath": "stitch-ui-design-spec-generator",
-          "contentHash": "f3e41b7cbc704913882691166e35e27e0dcb974d675c1b09fca98d47b5f3eb64"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-stitch-ui-design-spec-layui",
-          "relativePath": "stitch-ui-design-spec-layui",
-          "contentHash": "6709bda27b05f1524e3c751044b50ea91b23a35c0727bfbcfaa2c97bb75b4312"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-stitch-ui-design-spec-uview",
-          "relativePath": "stitch-ui-design-spec-uview",
-          "contentHash": "8722dec272d8975d79ce57d311b9ffcb03f4902fb35cd9dedf58152c9ea3b0aa"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-stitch-ui-design-spec-uviewpro",
-          "relativePath": "stitch-ui-design-spec-uviewpro",
-          "contentHash": "1083b01be92861f37a9b08db847bacff91d68d19e89f69de54c9e593b36f6d4d"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-stitch-ui-design-spec-vant",
-          "relativePath": "stitch-ui-design-spec-vant",
-          "contentHash": "624b61e0ebf0b72c3524c14eeb7c7c8ae6065296b3fed37ac38a27261312e677"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-stitch-ui-design-variants",
-          "relativePath": "stitch-ui-design-variants",
-          "contentHash": "96d42e71d68784bce8c97212d9e5e6c6ad376673df98d9e3067419fc5f942034"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-stitch-ui-designer",
-          "relativePath": "stitch-ui-designer",
-          "contentHash": "15db7ce8c1d9f45233b307de0a005b319d038a5f5309b1bdeba72c8f9594cd65"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-stitch-ui-prompt-architect",
-          "relativePath": "stitch-ui-prompt-architect",
-          "contentHash": "86fb9a3307c8e05a74560551e3a0861d2b0b5aa525dee4cddc3c2e93a409cbec"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-stitch-uview-components",
-          "relativePath": "stitch-uview-components",
-          "contentHash": "29b0075459cd254274bf3642bd75cc4e7c1456c5db6d2cb9fb5f118c77ad19d5"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-stitch-uview-plus-components",
-          "relativePath": "stitch-uview-plus-components",
-          "contentHash": "8c805420d5b6e3876d1b87dbdd43c548a437dd9837c1f59fb32f28b43c934069"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-stitch-uviewpro-components",
-          "relativePath": "stitch-uviewpro-components",
-          "contentHash": "2572e5d2e9e330a452f7a8fcbc180a8f9595783ca6e95870b55a5bd3c8bc177b"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-stitch-vue-bootstrap-components",
-          "relativePath": "stitch-vue-bootstrap-components",
-          "contentHash": "e21cd2c1d69224b69fe68625ce1cfc01b271c2525bab9f5c4ac057aa90f073c1"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-stitch-vue-element-components",
-          "relativePath": "stitch-vue-element-components",
-          "contentHash": "6ab6083b69d1abe33728e952036a2d9d1ccc222c09761a45e6e593f95c220afc"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-stitch-vue-layui-components",
-          "relativePath": "stitch-vue-layui-components",
-          "contentHash": "f36224f7cae41b4826111ba101d43690ee2c0a2677df69e6276bf6e7beb8f143"
-        },
-        {
-          "targetId": "full-stack-skills-stitch-stitch-vue-vant-components",
-          "relativePath": "stitch-vue-vant-components",
-          "contentHash": "c68c7f73cf8b7d7a96b86b8bd1f5df67da92bf19cb01d5db9ec9c713b5eda95a"
-        }
-      ]
-    },
     "vuejs-ai": {
       "type": "remote",
       "location": "https://github.com/vuejs-ai/skills.git",
@@ -639,7 +419,7 @@
         "web-design-reviewer"
       ],
       "excludes": [],
-      "commit": "e0d2e437477d0767ae8453d4754f6945001b4ed5",
+      "commit": "54c5adfc6b3b494b834d7c61a8feb41c9b5db083",
       "status": "synced",
       "targets": [
         "addyosmani-api-and-interface-design",
@@ -781,7 +561,7 @@
         "documentation-writer"
       ],
       "excludes": [],
-      "commit": "bbb9295b63adb2db01f5e30bc32e454ab5f68382",
+      "commit": "cd420ca862a301755a32ed76d53611bd5e04de30",
       "status": "synced",
       "targets": [
         "awesome-copilot-acquire-codebase-knowledge",
@@ -882,7 +662,7 @@
       "mode": "flat",
       "includes": [],
       "excludes": [],
-      "commit": "a13b2a02fd58d8ad325fefd9d146f62708be8456",
+      "commit": "65e23199492fa911af32d9078e627ab4de01f4c8",
       "status": "synced",
       "targets": [
         "ui-ux-pro-max-skill-banner-design",
@@ -906,37 +686,37 @@
         {
           "targetId": "ui-ux-pro-max-skill-banner-design",
           "relativePath": "banner-design",
-          "contentHash": "bd8fbb8e6c7538baf5ca7b82690b80984659ebb668f5b6b25692a86d4012fa16"
+          "contentHash": "913d9c4b2a3b405d638d50131e0dd3fe2787c839423d79287b7858ac29255acc"
         },
         {
           "targetId": "ui-ux-pro-max-skill-brand",
           "relativePath": "brand",
-          "contentHash": "1312fe0046f4b52fc53695efa102da6f900688c32f839dbe154e803cb8cea1ad"
+          "contentHash": "6a450ee1a83a403d47cec2ede9030feb60a67a81fc425d2406e975339313bd44"
         },
         {
           "targetId": "ui-ux-pro-max-skill-design",
           "relativePath": "design",
-          "contentHash": "94ded841bb0f4b042f9a33ff06a224435a5c6b85fd9d08c9e106b1744870470b"
+          "contentHash": "413f4ab913d07f7fd92acbadc25d71aad63443be0c40d11234944aea688603b6"
         },
         {
           "targetId": "ui-ux-pro-max-skill-design-system",
           "relativePath": "design-system",
-          "contentHash": "eb484103939b1ba2778c351f0c97b7899ea09ebe143bafb7eed29385dfedf854"
+          "contentHash": "655468bb723a6bc9d17fcb09a6a005e10e313d63b879f4d74fb2abdc3041ae3f"
         },
         {
           "targetId": "ui-ux-pro-max-skill-slides",
           "relativePath": "slides",
-          "contentHash": "b48544ca485db4db74ee06f17703ccc272e3fb295842e00814c0f66c04c206e1"
+          "contentHash": "2b90bdaf63f231919a01f4962f374ecd84af101a7e7545f8d9c68e049025accb"
         },
         {
           "targetId": "ui-ux-pro-max-skill-ui-styling",
           "relativePath": "ui-styling",
-          "contentHash": "12b07e5b883c72f01e6f103a353f00fba8b512e71ccc29af33ddf1f6aae311ae"
+          "contentHash": "f8b6c3832d2af51f67b3932e3c4a79bcd8a8596cc61ce1547a686fc951e5c62d"
         },
         {
           "targetId": "ui-ux-pro-max-skill-ui-ux-pro-max",
           "relativePath": "ui-ux-pro-max",
-          "contentHash": "f571a0ab228ad3ad3ac41a51c2c3450a9edb6ac3eb65f16baf5b459d01d53689"
+          "contentHash": "58fe081898866a04a578e7947faae083c1a18ffad502c3486f633c25aa69c7a3"
         }
       ]
     },
@@ -1102,7 +882,7 @@
         "netlify-cli-and-deploy"
       ],
       "excludes": [],
-      "commit": "1e8f876d64b7c2492e29b3b85c4ea745d341623c",
+      "commit": "a1d397b8addd2cd8e61e6592542203ecfa7c5152",
       "status": "synced",
       "targets": [
         "netlify-context-and-tools-netlify-cli-and-deploy",
@@ -1439,7 +1219,7 @@
       "mode": "flat",
       "includes": [],
       "excludes": [],
-      "commit": "66eca793a27b0a80c8cc54a0801c962d0130c71b",
+      "commit": "bc1d9f0367b78fd8d2c917f69deb624971cb3f28",
       "status": "synced",
       "targets": [
         "unovue-shadcn-vue"
