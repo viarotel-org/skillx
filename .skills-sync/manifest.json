@@ -57,7 +57,7 @@
         "find-skills"
       ],
       "excludes": [],
-      "commit": "9a7d8acfbf29f9cced7fb5a504da1d65b484aed3",
+      "commit": "c042b919289e113a419da93d4c0db9b4c91fe368",
       "status": "synced",
       "targets": [
         "vercel-labs-find-skills"
@@ -69,7 +69,7 @@
         {
           "targetId": "vercel-labs-find-skills",
           "relativePath": "find-skills",
-          "contentHash": "deddc03b4b5f50755b97fcdb737a786676992ef7e9be614d2cd2c71e0320bebf"
+          "contentHash": "c00eeea0e13e74fe4a9d84ba0a8542205a1b736d65f13134fe1a6647eb14976f"
         }
       ]
     },
@@ -81,7 +81,7 @@
       "mode": "flat",
       "includes": [],
       "excludes": [],
-      "commit": "3ed60e85efd1eaf37c082439e5a8ff54cf231b94",
+      "commit": "42fed3534b4ef60a1eb3dde6bb59b0f69ce0ec46",
       "status": "synced",
       "targets": [
         "full-stack-skills-vue-pinia",
@@ -147,7 +147,7 @@
       "mode": "flat",
       "includes": [],
       "excludes": [],
-      "commit": "cb38b3fd071ee766007d0cb3737fa49b3ef5b0e8",
+      "commit": "ceb08ec7bba42f447e5b1fce5c48e91ac5a52fa5",
       "status": "synced",
       "targets": [
         "full-stack-skills-vue-ui-bootstrap-vue3",
@@ -192,7 +192,7 @@
       "mode": "flat",
       "includes": [],
       "excludes": [],
-      "commit": "088a6d7ed27356a121730535abf76a35c70225a3",
+      "commit": "f33bce7d6441b80ff8b33d82e964435dce64e484",
       "status": "synced",
       "targets": [
         "full-stack-skills-electron-electron",
@@ -230,7 +230,7 @@
       "mode": "flat",
       "includes": [],
       "excludes": [],
-      "commit": "73dcaef1dfcba20e337155f9fc74c2ecc8af6995",
+      "commit": "f5be92bb6397ab874aa3c18e3549377ea4f8bb64",
       "status": "synced",
       "targets": [
         "full-stack-skills-uniapp-uniapp-ad",
@@ -419,7 +419,7 @@
         "web-design-reviewer"
       ],
       "excludes": [],
-      "commit": "54c5adfc6b3b494b834d7c61a8feb41c9b5db083",
+      "commit": "fefc4075ddfd8363d3b2aa8b26e6440f1ce204c0",
       "status": "synced",
       "targets": [
         "addyosmani-api-and-interface-design",
@@ -471,7 +471,7 @@
         {
           "targetId": "addyosmani-code-review-and-quality",
           "relativePath": "code-review-and-quality",
-          "contentHash": "6d7c7cb43e8eb6727ab72b3baa570d8e8c00f484392cfd07acf4550fed2b6838"
+          "contentHash": "bec431b759ff389e47b8d2c9d74e1981ff93cf5f3c36b4a3b6a71a75c250be2c"
         },
         {
           "targetId": "addyosmani-code-simplification",
@@ -491,17 +491,17 @@
         {
           "targetId": "addyosmani-documentation-and-adrs",
           "relativePath": "documentation-and-adrs",
-          "contentHash": "7fed35f9c5b95d8e3623ad24d78d209c3267ab62d7157fc03954c76a7e58adf4"
+          "contentHash": "b867bb80fb681257c7625ae59a0dfd849b1fc0f0a2f0338e7923f38030df9793"
         },
         {
           "targetId": "addyosmani-frontend-ui-engineering",
           "relativePath": "frontend-ui-engineering",
-          "contentHash": "9f9e5b3141c891d866c2a15a11ac3aba4e86ec6c530d054f0534503c2e720cb1"
+          "contentHash": "9c284b1f06d617b289c0d250004af5cbaedd5135071e1b17c0211a0aa03a73a4"
         },
         {
           "targetId": "addyosmani-git-workflow-and-versioning",
           "relativePath": "git-workflow-and-versioning",
-          "contentHash": "b1a84eac7a47f6e2985a27733137d862fcdeb552eefe2bd17629e1f3c20e0e97"
+          "contentHash": "51677cf03845dd29d08ea4d3125665057b720aea3dccc572f25d8b172409ece6"
         },
         {
           "targetId": "addyosmani-incremental-implementation",
@@ -511,17 +511,17 @@
         {
           "targetId": "addyosmani-performance-optimization",
           "relativePath": "performance-optimization",
-          "contentHash": "46ebf029d5fe812c312d4c5388ba7f07a076685fd30c7dfa7539c07763f1304e"
+          "contentHash": "c56f6059fed0b77c50c946e38275f04c8b297657f3742d5782ee564514ecc4dc"
         },
         {
           "targetId": "addyosmani-planning-and-task-breakdown",
           "relativePath": "planning-and-task-breakdown",
-          "contentHash": "8cc81534485e2b3171c5036bb273984d4c2cb93efd526c63ff8a180a5516a224"
+          "contentHash": "d87ff6bb23aa791f78a504d784e903bb13602975923f884af5d13d5b66b1651a"
         },
         {
           "targetId": "addyosmani-security-and-hardening",
           "relativePath": "security-and-hardening",
-          "contentHash": "8fed058a520281384ed1bbfddbfb3d2b12479459231c67ae0d1f0d765bb52f95"
+          "contentHash": "266c60e073bc81651ad070a1427a93af4d062dc44470580eae31806b38561833"
         },
         {
           "targetId": "addyosmani-shipping-and-launch",
@@ -536,7 +536,7 @@
         {
           "targetId": "addyosmani-spec-driven-development",
           "relativePath": "spec-driven-development",
-          "contentHash": "386c599468ca483b19337a1022dfb4c00f5541299be1e70fdd7993ea338e7e0e"
+          "contentHash": "af5b873414a8b45b96b0d30d5297400f55eb3a56425161a088e470c14260a1e5"
         }
       ]
     },
@@ -561,7 +561,7 @@
         "documentation-writer"
       ],
       "excludes": [],
-      "commit": "cd420ca862a301755a32ed76d53611bd5e04de30",
+      "commit": "786bdcfc65b669faee10803db460a7218858ad21",
       "status": "synced",
       "targets": [
         "awesome-copilot-acquire-codebase-knowledge",
@@ -615,7 +615,7 @@
         {
           "targetId": "awesome-copilot-create-implementation-plan",
           "relativePath": "create-implementation-plan",
-          "contentHash": "58f9876006d632bc364794b0270e2c13a8e4de937e4641e6928927a08200aa67"
+          "contentHash": "11caba1048cbdbfca6f7ce13a0e0580d6e9d943f7b775ee24978ece1d3334066"
         },
         {
           "targetId": "awesome-copilot-create-specification",
@@ -662,7 +662,7 @@
       "mode": "flat",
       "includes": [],
       "excludes": [],
-      "commit": "65e23199492fa911af32d9078e627ab4de01f4c8",
+      "commit": "1307d97a72e6c1cda572cb65471ae5ce82995218",
       "status": "synced",
       "targets": [
         "ui-ux-pro-max-skill-banner-design",
@@ -716,7 +716,7 @@
         {
           "targetId": "ui-ux-pro-max-skill-ui-ux-pro-max",
           "relativePath": "ui-ux-pro-max",
-          "contentHash": "58fe081898866a04a578e7947faae083c1a18ffad502c3486f633c25aa69c7a3"
+          "contentHash": "305a7527fcb2f5b6e4129ab22cd839b5172d26df7f14d3324bfdec8fc1763560"
         }
       ]
     },
@@ -882,190 +882,26 @@
         "netlify-cli-and-deploy"
       ],
       "excludes": [],
-      "commit": "a1d397b8addd2cd8e61e6592542203ecfa7c5152",
+      "commit": "b4ac277e6795f90e6a1d163c001c0d7667ff9143",
       "status": "synced",
       "targets": [
-        "netlify-context-and-tools-netlify-cli-and-deploy",
         "netlify-context-and-tools-netlify-deploy",
         "netlify-context-and-tools-netlify-frameworks"
       ],
       "skillPaths": [
-        "netlify-cli-and-deploy",
         "netlify-deploy",
         "netlify-frameworks"
       ],
       "skills": [
         {
-          "targetId": "netlify-context-and-tools-netlify-cli-and-deploy",
-          "relativePath": "netlify-cli-and-deploy",
-          "contentHash": "dccc4b22dc4a5ddec35a10b93588dd34ecb655a30d6e63e598c1a5e47d0411f0"
-        },
-        {
           "targetId": "netlify-context-and-tools-netlify-deploy",
           "relativePath": "netlify-deploy",
-          "contentHash": "da9b8106d026d264d7aea793d553ec3444a9f1792c16fc5e5cb3b735af937049"
+          "contentHash": "6f3f8e18233bec6da07aba3b3a7b69d24943dc189ff17cf86dea1dcc8f9ea861"
         },
         {
           "targetId": "netlify-context-and-tools-netlify-frameworks",
           "relativePath": "netlify-frameworks",
-          "contentHash": "49c66d5db590e917c469ebba77e656f065bdad41aca3fc0d2311bb81aaf02708"
-        }
-      ]
-    },
-    "shopify-ai-toolkit": {
-      "type": "remote",
-      "location": "https://github.com/Shopify/Shopify-AI-Toolkit.git",
-      "branch": "main",
-      "path": "skills",
-      "mode": "flat",
-      "includes": [],
-      "excludes": [],
-      "commit": "2de64b683f8120e215e783fbee12aa037ce77f55",
-      "status": "synced",
-      "targets": [
-        "shopify-ai-toolkit-shopify-admin",
-        "shopify-ai-toolkit-shopify-app-store-review",
-        "shopify-ai-toolkit-shopify-custom-data",
-        "shopify-ai-toolkit-shopify-customer",
-        "shopify-ai-toolkit-shopify-dev",
-        "shopify-ai-toolkit-shopify-functions",
-        "shopify-ai-toolkit-shopify-hydrogen",
-        "shopify-ai-toolkit-shopify-liquid",
-        "shopify-ai-toolkit-shopify-onboarding-dev",
-        "shopify-ai-toolkit-shopify-onboarding-merchant",
-        "shopify-ai-toolkit-shopify-partner",
-        "shopify-ai-toolkit-shopify-payments-apps",
-        "shopify-ai-toolkit-shopify-polaris-admin-extensions",
-        "shopify-ai-toolkit-shopify-polaris-app-home",
-        "shopify-ai-toolkit-shopify-polaris-checkout-extensions",
-        "shopify-ai-toolkit-shopify-polaris-customer-account-extensions",
-        "shopify-ai-toolkit-shopify-pos-ui",
-        "shopify-ai-toolkit-shopify-storefront-graphql",
-        "shopify-ai-toolkit-shopify-use-shopify-cli",
-        "shopify-ai-toolkit-ucp"
-      ],
-      "skillPaths": [
-        "shopify-admin",
-        "shopify-app-store-review",
-        "shopify-custom-data",
-        "shopify-customer",
-        "shopify-dev",
-        "shopify-functions",
-        "shopify-hydrogen",
-        "shopify-liquid",
-        "shopify-onboarding-dev",
-        "shopify-onboarding-merchant",
-        "shopify-partner",
-        "shopify-payments-apps",
-        "shopify-polaris-admin-extensions",
-        "shopify-polaris-app-home",
-        "shopify-polaris-checkout-extensions",
-        "shopify-polaris-customer-account-extensions",
-        "shopify-pos-ui",
-        "shopify-storefront-graphql",
-        "shopify-use-shopify-cli",
-        "ucp"
-      ],
-      "skills": [
-        {
-          "targetId": "shopify-ai-toolkit-shopify-admin",
-          "relativePath": "shopify-admin",
-          "contentHash": "077e9b6c7274e54e748e050da07ba8f317f198f52e0182752624dadbc39aa46a"
-        },
-        {
-          "targetId": "shopify-ai-toolkit-shopify-app-store-review",
-          "relativePath": "shopify-app-store-review",
-          "contentHash": "315b412601bf1a52483dd039260e502b19e8fd5323f2ab22b40a21ad7f0ea97b"
-        },
-        {
-          "targetId": "shopify-ai-toolkit-shopify-custom-data",
-          "relativePath": "shopify-custom-data",
-          "contentHash": "123c37bf216e6cef1f8bf6a5fb562ccca52d71cbc7fd53e58c0f2c8655e7aa79"
-        },
-        {
-          "targetId": "shopify-ai-toolkit-shopify-customer",
-          "relativePath": "shopify-customer",
-          "contentHash": "3567253ca06b33e21294b88d42421c24eee935bb15c560b1f06303d5873e5ff7"
-        },
-        {
-          "targetId": "shopify-ai-toolkit-shopify-dev",
-          "relativePath": "shopify-dev",
-          "contentHash": "e58c042739b057723f91ceb5ce3e0a615f9bca0ae5241e03d0a44909b2b70f14"
-        },
-        {
-          "targetId": "shopify-ai-toolkit-shopify-functions",
-          "relativePath": "shopify-functions",
-          "contentHash": "0b585eaa23849f100608db40b04ca2ef86cd2a0e54706e77d35a53eb78bbafe4"
-        },
-        {
-          "targetId": "shopify-ai-toolkit-shopify-hydrogen",
-          "relativePath": "shopify-hydrogen",
-          "contentHash": "5f7cfbb67be004db22abd6c798a682851019fcd272373505181e36260428f00b"
-        },
-        {
-          "targetId": "shopify-ai-toolkit-shopify-liquid",
-          "relativePath": "shopify-liquid",
-          "contentHash": "2e5676b23f71df4fcd7cbe645c01d3e12fa20eb6309e58122f1b8d1549e7e4f1"
-        },
-        {
-          "targetId": "shopify-ai-toolkit-shopify-onboarding-dev",
-          "relativePath": "shopify-onboarding-dev",
-          "contentHash": "0bd69625ee875d51f54fdc799a186e413d3248a993b2e40362aa7cb2d81628fb"
-        },
-        {
-          "targetId": "shopify-ai-toolkit-shopify-onboarding-merchant",
-          "relativePath": "shopify-onboarding-merchant",
-          "contentHash": "7328dbe3e938b54e99877595f16ab92ce5ba5869b6b9fdf4051be7bc2d8879a1"
-        },
-        {
-          "targetId": "shopify-ai-toolkit-shopify-partner",
-          "relativePath": "shopify-partner",
-          "contentHash": "4f39bf75d8d11479a60aaa5fadac2cce2c4641d468943ec4845a253369b41693"
-        },
-        {
-          "targetId": "shopify-ai-toolkit-shopify-payments-apps",
-          "relativePath": "shopify-payments-apps",
-          "contentHash": "a91df3d315044a671a5b4e2f43e474d8cfe929e9b49b4728f7d7b4faa1ef1117"
-        },
-        {
-          "targetId": "shopify-ai-toolkit-shopify-polaris-admin-extensions",
-          "relativePath": "shopify-polaris-admin-extensions",
-          "contentHash": "951c484c41f7b229603513945678f12ec4bd9eb223edd8b5a83511a5bd0464d5"
-        },
-        {
-          "targetId": "shopify-ai-toolkit-shopify-polaris-app-home",
-          "relativePath": "shopify-polaris-app-home",
-          "contentHash": "a14c4564db3cbc3ab87e35ece1e3dbc2061e9e9c0c77a52da0d329c3c9f4de29"
-        },
-        {
-          "targetId": "shopify-ai-toolkit-shopify-polaris-checkout-extensions",
-          "relativePath": "shopify-polaris-checkout-extensions",
-          "contentHash": "05aed1aa7093b4b224fb70aeb38936aea1977d8a172600b898bb2f651b8d5e53"
-        },
-        {
-          "targetId": "shopify-ai-toolkit-shopify-polaris-customer-account-extensions",
-          "relativePath": "shopify-polaris-customer-account-extensions",
-          "contentHash": "8857a743a78b8a55e31e6efc9ca1f7a2b5e44f301e2f43d05d0e3f941dd8b87e"
-        },
-        {
-          "targetId": "shopify-ai-toolkit-shopify-pos-ui",
-          "relativePath": "shopify-pos-ui",
-          "contentHash": "1c4bcbda492e015c86cb04fbdeab1df90658bb93044c7450968674e322a2eae7"
-        },
-        {
-          "targetId": "shopify-ai-toolkit-shopify-storefront-graphql",
-          "relativePath": "shopify-storefront-graphql",
-          "contentHash": "d970395c5415f949ab33a3586392816720a3040e3f937f3bc529135c28506b2b"
-        },
-        {
-          "targetId": "shopify-ai-toolkit-shopify-use-shopify-cli",
-          "relativePath": "shopify-use-shopify-cli",
-          "contentHash": "8d8d8a23db7e72d962d00215e60bde26a18607f506d997c05f1ee04e1696883e"
-        },
-        {
-          "targetId": "shopify-ai-toolkit-ucp",
-          "relativePath": "ucp",
-          "contentHash": "46956ad73af72bee979a7e1538d985645cca774f4cf2b0af6fc66b81e002effa"
+          "contentHash": "cf30dfe2bb7c40cbfe09e8bf1cbbd359ff2c1818d8c32ebba852e47a36e9eb14"
         }
       ]
     },
@@ -1083,7 +919,7 @@
         "wot-ui-v2"
       ],
       "excludes": [],
-      "commit": "ec4b56795240663ff0fa4baa3e53708f8a5b6e89",
+      "commit": "45765dac66bd2f9741762cd0993c21e4d721b446",
       "status": "synced",
       "targets": [
         "open-wot-create-wot-ui-theme",
@@ -1139,7 +975,7 @@
         "theme-factory"
       ],
       "excludes": [],
-      "commit": "57546260929473d4e0d1c1bb75297be2fdfa1949",
+      "commit": "fa0fa64bdc967915dc8399e803be67759e1e62b8",
       "status": "synced",
       "targets": [
         "anthropic-frontend-design",
@@ -1219,7 +1055,7 @@
       "mode": "flat",
       "includes": [],
       "excludes": [],
-      "commit": "bc1d9f0367b78fd8d2c917f69deb624971cb3f28",
+      "commit": "de6c4e272b4b42d395d3601e4a6f277f0b26e0b1",
       "status": "synced",
       "targets": [
         "unovue-shadcn-vue"
@@ -1232,6 +1068,30 @@
           "targetId": "unovue-shadcn-vue",
           "relativePath": "shadcn-vue",
           "contentHash": "88b43308172f3dbaa31956b08998f68c3fd0a9fa9bc2cec680de62147b8e3737"
+        }
+      ]
+    },
+    "amap-jsapi-skill": {
+      "type": "remote",
+      "location": "https://github.com/AMap-Web/amap-skills.git",
+      "branch": "main",
+      "path": "amap-jsapi-skill",
+      "mode": "flat",
+      "includes": [],
+      "excludes": [],
+      "commit": "0e544c2c46846d9e5b726efe9e78fe87252b7e29",
+      "status": "synced",
+      "targets": [
+        "amap-jsapi-skill"
+      ],
+      "skillPaths": [
+        "."
+      ],
+      "skills": [
+        {
+          "targetId": "amap-jsapi-skill",
+          "relativePath": ".",
+          "contentHash": "3440226666ff7781997746bcac1a7b67c8f99e210c3b9a9f7f13e43c71fbc990"
         }
       ]
     }

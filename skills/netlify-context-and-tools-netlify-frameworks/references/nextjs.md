@@ -2,9 +2,11 @@
 
 ## Setup
 
-> **Check current versions before pinning.** Knowledge cutoffs lag behind npm, and guessing a version tends to fail (`npm install` rejects it, or worse, installs something incompatible). Before pinning `next` or any other package in `package.json`, run `npm view <pkg> version` to get the current `latest`. Or omit explicit pins and let `npm install` pick them up.
+> **Check current versions before pinning.** Knowledge cutoffs lag behind npm, and guessing a version tends to fail (`npm install` rejects it, or worse, installs something incompatible). Before pinning `next` or any other package in `package.json`, run `npm view <pkg> version` to get the current `latest`. Or omit explicit pins and let `npm install` pick them up. If that check itself fails (no network, registry unreachable), still don't fall back to a guessed exact pin — install without a version (or with `@latest`) and tell the user live verification wasn't possible so they should confirm the installed versions. Never present an unverified `x.y.z` as the current release.
 
-Next.js on Netlify uses the `@netlify/next` runtime, which is installed automatically. No manual adapter installation is required — Netlify detects Next.js and configures the build automatically.
+Next.js on Netlify uses the `@netlify/plugin-nextjs` runtime, which is installed automatically. No manual adapter installation is required — Netlify detects Next.js and configures the build automatically.
+
+The current Next.js Runtime (v5) supports **Next.js 13.5 and later**. A project on an older Next.js version cannot use it — upgrade Next.js to at least 13.5 before deploying.
 
 ```toml
 # netlify.toml

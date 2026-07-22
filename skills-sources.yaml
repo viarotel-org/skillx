@@ -135,11 +135,11 @@ sources:
       - netlify-frameworks
       - netlify-cli-and-deploy
 
-  - id: shopify-ai-toolkit
-    type: remote
-    location: https://github.com/Shopify/Shopify-AI-Toolkit.git
-    branch: main
-    path: skills
+  # - id: shopify-ai-toolkit
+  #   type: remote
+  #   location: https://github.com/Shopify/Shopify-AI-Toolkit.git
+  #   branch: main
+  #   path: skills
 
   - id: open-wot
     type: remote
@@ -178,3 +178,9 @@ sources:
     location: https://github.com/unovue/shadcn-vue.git
     branch: dev
     path: skills
+
+  - id: amap-jsapi-skill
+    type: remote
+    location: https://github.com/AMap-Web/amap-skills.git
+    branch: main
+    path: amap-jsapi-skill
