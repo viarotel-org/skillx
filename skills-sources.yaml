@@ -195,10 +195,10 @@ sources:
     type: remote
     location: https://github.com/TencentLBS/tencentmap-webservice-skill.git
     branch: main
-    path: tencentmap-webservice-skill
+    path: .
 
   - id: tencentmap-lbs-skill
     type: remote
     location: https://github.com/TencentLBS/tencentmap-lbs-skill.git
     branch: main
-    path: tencentmap-lbs-skill
+    path: .
