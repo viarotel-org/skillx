@@ -184,3 +184,21 @@ sources:
     location: https://github.com/AMap-Web/amap-skills.git
     branch: main
     path: amap-jsapi-skill
+
+  - id: tencentmap-jsapi-gl-skill
+    type: remote
+    location: https://github.com/TencentLBS/tencentmap-jsapi-gl-skill.git
+    branch: main
+    path: tencentmap-jsapi-gl-skill
+
+  - id: tencentmap-webservice-skill
+    type: remote
+    location: https://github.com/TencentLBS/tencentmap-webservice-skill.git
+    branch: main
+    path: tencentmap-webservice-skill
+
+  - id: tencentmap-lbs-skill
+    type: remote
+    location: https://github.com/TencentLBS/tencentmap-lbs-skill.git
+    branch: main
+    path: tencentmap-lbs-skill
