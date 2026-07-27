@@ -57,7 +57,7 @@
         "find-skills"
       ],
       "excludes": [],
-      "commit": "c042b919289e113a419da93d4c0db9b4c91fe368",
+      "commit": "e173b8c88f2581cfdaa1b6767c6519a08155790e",
       "status": "synced",
       "targets": [
         "vercel-labs-find-skills"
@@ -419,7 +419,7 @@
         "web-design-reviewer"
       ],
       "excludes": [],
-      "commit": "fefc4075ddfd8363d3b2aa8b26e6440f1ce204c0",
+      "commit": "7829ffd90d973b6325f5f12f1b1226dcace74443",
       "status": "synced",
       "targets": [
         "addyosmani-api-and-interface-design",
@@ -486,7 +486,7 @@
         {
           "targetId": "addyosmani-debugging-and-error-recovery",
           "relativePath": "debugging-and-error-recovery",
-          "contentHash": "927ad6917fa2891827351cfa3470cd715423faaa5c5f27fe74534d9324c35eea"
+          "contentHash": "67ce2c9442da0c5a6e3515617fc9c4003cfe232ef7c7210da342f40f508f9958"
         },
         {
           "targetId": "addyosmani-documentation-and-adrs",
@@ -506,17 +506,17 @@
         {
           "targetId": "addyosmani-incremental-implementation",
           "relativePath": "incremental-implementation",
-          "contentHash": "960f2ed08ccdd51527c347d29d2d00c80edb9992e95d67030d8a289ba04eed4e"
+          "contentHash": "f3336e581a5247d9a6a58096f0015dbbfb7673a35e71aebd39491c55662a1906"
         },
         {
           "targetId": "addyosmani-performance-optimization",
           "relativePath": "performance-optimization",
-          "contentHash": "c56f6059fed0b77c50c946e38275f04c8b297657f3742d5782ee564514ecc4dc"
+          "contentHash": "64f4f4105b66d155f0a6654dd8d542a58329d282c4e07bc82881bb755230fb29"
         },
         {
           "targetId": "addyosmani-planning-and-task-breakdown",
           "relativePath": "planning-and-task-breakdown",
-          "contentHash": "d87ff6bb23aa791f78a504d784e903bb13602975923f884af5d13d5b66b1651a"
+          "contentHash": "1fd1c06f06042d60123ec7144fd7f16655993b6cbc152e76eb5fcdd1a4805a6c"
         },
         {
           "targetId": "addyosmani-security-and-hardening",
@@ -526,7 +526,7 @@
         {
           "targetId": "addyosmani-shipping-and-launch",
           "relativePath": "shipping-and-launch",
-          "contentHash": "efc70a45ad6435d93f2b3cef16c125ff6d75a2383e49f30056fcba04b27d6e4a"
+          "contentHash": "f45d9bb9e96fd1a49f3231179acac9d3cd2bbe02f237f0e08fa86866cc57909a"
         },
         {
           "targetId": "addyosmani-source-driven-development",
@@ -561,7 +561,7 @@
         "documentation-writer"
       ],
       "excludes": [],
-      "commit": "786bdcfc65b669faee10803db460a7218858ad21",
+      "commit": "329f2dcdaf02a59e88a0f55a8f51414fa3378966",
       "status": "synced",
       "targets": [
         "awesome-copilot-acquire-codebase-knowledge",
@@ -662,7 +662,7 @@
       "mode": "flat",
       "includes": [],
       "excludes": [],
-      "commit": "1307d97a72e6c1cda572cb65471ae5ce82995218",
+      "commit": "3b5df7547964f0cb3424de74cff55b69039250d3",
       "status": "synced",
       "targets": [
         "ui-ux-pro-max-skill-banner-design",
@@ -919,7 +919,7 @@
         "wot-ui-v2"
       ],
       "excludes": [],
-      "commit": "45765dac66bd2f9741762cd0993c21e4d721b446",
+      "commit": "863ff5924de3d1b94d2ae91c7097d843d9a33e1e",
       "status": "synced",
       "targets": [
         "open-wot-create-wot-ui-theme",
@@ -949,7 +949,7 @@
         {
           "targetId": "open-wot-wot-ui-cli",
           "relativePath": "wot-ui-cli",
-          "contentHash": "3ed0d47fb5d09462a028a2458c56225f0fc166a6887670a91ab18dcd9205ed48"
+          "contentHash": "af1020410b91827745bf5218fc5384fdc2053f6e2dfb9e6bc8c80586b1ea53fb"
         },
         {
           "targetId": "open-wot-wot-ui-unocss-preset-guide",
@@ -975,7 +975,7 @@
         "theme-factory"
       ],
       "excludes": [],
-      "commit": "fa0fa64bdc967915dc8399e803be67759e1e62b8",
+      "commit": "b29e7cf65e5cb78a5ac33d582270551bc74a14eb",
       "status": "synced",
       "targets": [
         "anthropic-frontend-design",
@@ -1055,7 +1055,7 @@
       "mode": "flat",
       "includes": [],
       "excludes": [],
-      "commit": "de6c4e272b4b42d395d3601e4a6f277f0b26e0b1",
+      "commit": "feb41b5c3fea0eecc6857896c870eff4480641c8",
       "status": "synced",
       "targets": [
         "unovue-shadcn-vue"
@@ -1092,6 +1092,30 @@
           "targetId": "amap-jsapi-skill",
           "relativePath": ".",
           "contentHash": "3440226666ff7781997746bcac1a7b67c8f99e210c3b9a9f7f13e43c71fbc990"
+        }
+      ]
+    },
+    "tencentmap-jsapi-gl-skill": {
+      "type": "remote",
+      "location": "https://github.com/TencentLBS/tencentmap-jsapi-gl-skill.git",
+      "branch": "main",
+      "path": "tencentmap-jsapi-gl-skill",
+      "mode": "flat",
+      "includes": [],
+      "excludes": [],
+      "commit": "2f217b63e727de4345092bea4f43f425ea1ec8ea",
+      "status": "synced",
+      "targets": [
+        "tencentmap-jsapi-gl-skill"
+      ],
+      "skillPaths": [
+        "."
+      ],
+      "skills": [
+        {
+          "targetId": "tencentmap-jsapi-gl-skill",
+          "relativePath": ".",
+          "contentHash": "f9de1080a11cbb252235b826cb7402bc7a1bb90ea887ad3d406a9bb45b3182cd"
         }
       ]
     }
