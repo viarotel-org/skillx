@@ -1118,6 +1118,54 @@
           "contentHash": "f9de1080a11cbb252235b826cb7402bc7a1bb90ea887ad3d406a9bb45b3182cd"
         }
       ]
+    },
+    "tencentmap-webservice-skill": {
+      "type": "remote",
+      "location": "https://github.com/TencentLBS/tencentmap-webservice-skill.git",
+      "branch": "main",
+      "path": ".",
+      "mode": "flat",
+      "includes": [],
+      "excludes": [],
+      "commit": "2819c63c550ac8ff3df1ac4c35e3a7d58d4c8626",
+      "status": "synced",
+      "targets": [
+        "tencentmap-webservice-skill"
+      ],
+      "skillPaths": [
+        "."
+      ],
+      "skills": [
+        {
+          "targetId": "tencentmap-webservice-skill",
+          "relativePath": ".",
+          "contentHash": "c3dacfe03079c3c89a8ed4ab635a750d86da3f34a3b7e2dd47d5c91395246f40"
+        }
+      ]
+    },
+    "tencentmap-lbs-skill": {
+      "type": "remote",
+      "location": "https://github.com/TencentLBS/tencentmap-lbs-skill.git",
+      "branch": "main",
+      "path": ".",
+      "mode": "flat",
+      "includes": [],
+      "excludes": [],
+      "commit": "53049dd041726c70f9610274b49711a385c16665",
+      "status": "synced",
+      "targets": [
+        "tencentmap-lbs-skill"
+      ],
+      "skillPaths": [
+        "."
+      ],
+      "skills": [
+        {
+          "targetId": "tencentmap-lbs-skill",
+          "relativePath": ".",
+          "contentHash": "08aa1b0c96efeddb0b770cafb87593e96c9b5df4dd272744235257b3708b72ac"
+        }
+      ]
     }
   }
 }
