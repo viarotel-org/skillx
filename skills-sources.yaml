@@ -34,6 +34,12 @@ sources:
     location: https://github.com/full-stack-skills/vue-skills.git
     branch: main
     path: skills
+    excludes:
+      - vue-router
+      - vue-router-v3
+      - vue2
+      - vuex-vue2
+      - pinia
 
   - id: full-stack-skills-vue-ui
     type: remote
@@ -46,6 +52,9 @@ sources:
     location: https://github.com/full-stack-skills/electron-skills.git
     branch: main
     path: skills
+    excludes:
+      - upgradeLink
+      - upgradelink
 
   - id: full-stack-skills-uniapp
     type: remote
@@ -61,7 +70,6 @@ sources:
     includes:
       - create-adaptable-composable
       - vue-debug-guides
-      - vue-jsx-best-practices
       - vue-options-api-best-practices
       - vue-pinia-best-practices
 
@@ -71,10 +79,8 @@ sources:
     branch: main
     path: skills
     includes:
-      - acquire-codebase-knowledge
       - api-and-interface-design
       - browser-testing-with-devtools
-      - chrome-devtools
       - code-review-and-quality
       - code-simplification
       - context-engineering
@@ -85,14 +91,10 @@ sources:
       - incremental-implementation
       - performance-optimization
       - planning-and-task-breakdown
-      - premium-frontend-ui
-      - refactor
-      - review-and-refactor
       - security-and-hardening
       - shipping-and-launch
       - source-driven-development
       - spec-driven-development
-      - web-design-reviewer
 
   - id: awesome-copilot
     type: remote
@@ -101,16 +103,11 @@ sources:
     path: skills
     includes:
       - acquire-codebase-knowledge
-      - chrome-devtools
       - premium-frontend-ui
       - web-design-reviewer
       - gsap-framer-scroll-animation
       - refactor
-      - review-and-refactor
-      - context-map
       - code-tour
-      - create-specification
-      - create-implementation-plan
       - documentation-writer
 
   - id: ui-ux-pro-max-skill
@@ -118,6 +115,9 @@ sources:
     location: https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git
     branch: main
     path: .claude/skills
+    excludes:
+      - banner-design
+      - slides
 
   - id: antfu
     type: remote
@@ -189,16 +189,10 @@ sources:
     type: remote
     location: https://github.com/TencentLBS/tencentmap-jsapi-gl-skill.git
     branch: main
-    path: tencentmap-jsapi-gl-skill
+    path: .
 
   - id: tencentmap-webservice-skill
     type: remote
     location: https://github.com/TencentLBS/tencentmap-webservice-skill.git
-    branch: main
-    path: .
-
-  - id: tencentmap-lbs-skill
-    type: remote
-    location: https://github.com/TencentLBS/tencentmap-lbs-skill.git
     branch: main
     path: .

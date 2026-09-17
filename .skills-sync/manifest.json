@@ -57,7 +57,7 @@
         "find-skills"
       ],
       "excludes": [],
-      "commit": "e173b8c88f2581cfdaa1b6767c6519a08155790e",
+      "commit": "1a6f8649f93dda000a9672e63e8c9c9eeed24da4",
       "status": "synced",
       "targets": [
         "vercel-labs-find-skills"
@@ -80,62 +80,33 @@
       "path": "skills",
       "mode": "flat",
       "includes": [],
-      "excludes": [],
-      "commit": "42fed3534b4ef60a1eb3dde6bb59b0f69ce0ec46",
-      "status": "synced",
-      "targets": [
-        "full-stack-skills-vue-pinia",
-        "full-stack-skills-vue-vue-router",
-        "full-stack-skills-vue-vue-router-v3",
-        "full-stack-skills-vue-vue-router-v4",
-        "full-stack-skills-vue-vue2",
-        "full-stack-skills-vue-vue3",
-        "full-stack-skills-vue-vuex-vue2"
-      ],
-      "skillPaths": [
-        "pinia",
+      "excludes": [
         "vue-router",
         "vue-router-v3",
-        "vue-router-v4",
         "vue2",
-        "vue3",
-        "vuex-vue2"
+        "vuex-vue2",
+        "pinia"
+      ],
+      "commit": "3fa2e2ede15c8b9b9bf94dee70e49e8372acf874",
+      "status": "synced",
+      "targets": [
+        "full-stack-skills-vue-vue-router-v4",
+        "full-stack-skills-vue-vue3"
+      ],
+      "skillPaths": [
+        "vue-router-v4",
+        "vue3"
       ],
       "skills": [
         {
-          "targetId": "full-stack-skills-vue-pinia",
-          "relativePath": "pinia",
-          "contentHash": "38726e7f1bdc655f7d4220d01c9dcc2b08cbc2fee9e7b1e581c73248ee8abe92"
-        },
-        {
-          "targetId": "full-stack-skills-vue-vue-router",
-          "relativePath": "vue-router",
-          "contentHash": "6f9e2aa3ff8982153633b39f2951101d322204b8f3f48a93a9dfc465c7e2c78f"
-        },
-        {
-          "targetId": "full-stack-skills-vue-vue-router-v3",
-          "relativePath": "vue-router-v3",
-          "contentHash": "d948cd3b84857575f792cdef28ea0a9f90de9b050eac8a09e60536637061def6"
-        },
-        {
           "targetId": "full-stack-skills-vue-vue-router-v4",
           "relativePath": "vue-router-v4",
-          "contentHash": "ceb999e801915078d1c186cd11f5ec3fcf3e743299c4a1dcf32141e9e8358601"
-        },
-        {
-          "targetId": "full-stack-skills-vue-vue2",
-          "relativePath": "vue2",
-          "contentHash": "89951734d5dea49a6ce281df59fa53f0bbf3624db6da6b0f139803d2d23e6528"
+          "contentHash": "50a330acea51a7dc3341d78accec97ae181e7fea86aea66e1d516aeb74e0704c"
         },
         {
           "targetId": "full-stack-skills-vue-vue3",
           "relativePath": "vue3",
-          "contentHash": "be7463fb2087e209b69b24523588fdf4290efc15e0d97c9cc29d61070faf5674"
-        },
-        {
-          "targetId": "full-stack-skills-vue-vuex-vue2",
-          "relativePath": "vuex-vue2",
-          "contentHash": "cf3d46deac766ebee9d9174ae6e229021384fea7ab6bee069144a97a5b3370b2"
+          "contentHash": "0a44d7cfc0fbb7761f8b3af0c1e82f3a9717512b30eefb46147d1550fad013ce"
         }
       ]
     },
@@ -147,7 +118,7 @@
       "mode": "flat",
       "includes": [],
       "excludes": [],
-      "commit": "ceb08ec7bba42f447e5b1fce5c48e91ac5a52fa5",
+      "commit": "9326541c31a3d01f10ac25aafd37a51150bd5a02",
       "status": "synced",
       "targets": [
         "full-stack-skills-vue-ui-bootstrap-vue3",
@@ -165,22 +136,22 @@
         {
           "targetId": "full-stack-skills-vue-ui-bootstrap-vue3",
           "relativePath": "bootstrap-vue3",
-          "contentHash": "832f593aa4eb55c443463d21c9a3a49f2ca656651e5be602e7c646339eb704f5"
+          "contentHash": "e96a4072329862244c5628bf6bb57781de772cf3b9a0b6b993ca32a3f8f19776"
         },
         {
           "targetId": "full-stack-skills-vue-ui-element-plus-vue3",
           "relativePath": "element-plus-vue3",
-          "contentHash": "236f64d21a95926ec906724b7c5443ec6f4285a87dffc512fbaa7fee26aef3f0"
+          "contentHash": "2727231b4a17aa59a0911d6d6febe1c3e1df2a6a02fc9b024efc7205dd1fc83d"
         },
         {
           "targetId": "full-stack-skills-vue-ui-layui-vue3",
           "relativePath": "layui-vue3",
-          "contentHash": "dce6d679dd1de1ba6e86abef3ce3df05d79ce2c5e3d279a67b683c25ca6cdb18"
+          "contentHash": "56153a096779a937eeb682f4b3ce555c90198c185985ef5ce514ec2c182dd19d"
         },
         {
           "targetId": "full-stack-skills-vue-ui-vant-vue3",
           "relativePath": "vant-vue3",
-          "contentHash": "982474e9290a922aa412e08b52de391dbeaa26a92ed2f2fe8a87bab29b1e2834"
+          "contentHash": "d4b362dfadec999536a6a9ecef8378cdf09e479d94591018e7968d4106384cee"
         }
       ]
     },
@@ -191,34 +162,30 @@
       "path": "skills",
       "mode": "flat",
       "includes": [],
-      "excludes": [],
-      "commit": "f33bce7d6441b80ff8b33d82e964435dce64e484",
+      "excludes": [
+        "upgradeLink",
+        "upgradelink"
+      ],
+      "commit": "cf5f4f7a679e07de6d15ce21e7dc2d7300ff0b2a",
       "status": "synced",
       "targets": [
         "full-stack-skills-electron-electron",
-        "full-stack-skills-electron-electron-egg",
-        "full-stack-skills-electron-upgradelink"
+        "full-stack-skills-electron-electron-egg"
       ],
       "skillPaths": [
         "electron",
-        "electron-egg",
-        "upgradeLink"
+        "electron-egg"
       ],
       "skills": [
         {
           "targetId": "full-stack-skills-electron-electron",
           "relativePath": "electron",
-          "contentHash": "3d7a6da310baf075ec75179a4df925b9bcb2f44f7a89edd4aba23769d53ecbcb"
+          "contentHash": "e79883e1af75896eac83e4d50c3afb00c6fe5ef45ed16b670ae52532a6df9a7a"
         },
         {
           "targetId": "full-stack-skills-electron-electron-egg",
           "relativePath": "electron-egg",
-          "contentHash": "64dc90695811dfae4a70bd4b8e37178034e5eeaa2be4516f0fb65b65db58e1a1"
-        },
-        {
-          "targetId": "full-stack-skills-electron-upgradelink",
-          "relativePath": "upgradeLink",
-          "contentHash": "55cf65a12dc4ea142cd5632ec621da25b12768a690a1a85a750ff7e6ef7329e4"
+          "contentHash": "91ad3572bf584acc26f2fcbf03bc9dc003d0fe1a1f724fa20c810fbf2849d9ce"
         }
       ]
     },
@@ -230,7 +197,7 @@
       "mode": "flat",
       "includes": [],
       "excludes": [],
-      "commit": "f5be92bb6397ab874aa3c18e3549377ea4f8bb64",
+      "commit": "3782329a08d632661cb92f6f02bb8c9d64550d15",
       "status": "synced",
       "targets": [
         "full-stack-skills-uniapp-uniapp-ad",
@@ -266,67 +233,67 @@
         {
           "targetId": "full-stack-skills-uniapp-uniapp-ad",
           "relativePath": "uniapp-ad",
-          "contentHash": "0e6b4059326d2a0d48911394764dd7a5185fc2295aa54b428d78f9cd3a382427"
+          "contentHash": "8bad6624adb08248e87d8ba52d3b4a7158da1e3efa385ddbc7c72202090995b4"
         },
         {
           "targetId": "full-stack-skills-uniapp-uniapp-cloud",
           "relativePath": "uniapp-cloud",
-          "contentHash": "65550b62eba24aa82a4271f33fab58f1a9e4583834f721dbf24b6771417d55a1"
+          "contentHash": "2d2ed960c5901606b01ceea49560ad9f85cf5f0c7954fe1160229153dfe373a8"
         },
         {
           "targetId": "full-stack-skills-uniapp-uniapp-mini",
           "relativePath": "uniapp-mini",
-          "contentHash": "84c0f9d5fab988291814c1445ee81532b1584b65536a5e9bd46328f7fe966732"
+          "contentHash": "da0dca03e338692e5ab5cef40308cfda03cd7b3a5997ab5796fb599c50cfbd3c"
         },
         {
           "targetId": "full-stack-skills-uniapp-uniapp-native-app",
           "relativePath": "uniapp-native-app",
-          "contentHash": "a1b877ef472435b08ef349c0b6c711ebe56b18d54d87a92d9c191f974964031c"
+          "contentHash": "20ea09386cf63360cb15ef49d99cbc8401f41c436080633c7abd5d9fe10f748b"
         },
         {
           "targetId": "full-stack-skills-uniapp-uniapp-native-plugin",
           "relativePath": "uniapp-native-plugin",
-          "contentHash": "de7e20105b9273d23672a6fb925306b5bb930de51f807e179a8a0880af6d69ab"
+          "contentHash": "3c1f0b1c61bafb877e3eea05180d6045dee676306879881cbafdeb859f011a8d"
         },
         {
           "targetId": "full-stack-skills-uniapp-uniapp-plugin",
           "relativePath": "uniapp-plugin",
-          "contentHash": "47e8585fb837fab38b28cabe742688aec167261a70a28889eb5ef99d9b8cc39a"
+          "contentHash": "a84a50b81c6817021292b20128830716ee62f836e1c3424d8cacf8cd2717eab5"
         },
         {
           "targetId": "full-stack-skills-uniapp-uniapp-project",
           "relativePath": "uniapp-project",
-          "contentHash": "b3145a8404e220652f0869d4d91fc0bd85e9abb4c83a9982831d69a676f44758"
+          "contentHash": "75e2850a92b4306ae0abe4c45b2d0d7b3ceaf019017cd8745de1302daa3fad16"
         },
         {
           "targetId": "full-stack-skills-uniapp-uniapp-project-creator",
           "relativePath": "uniapp-project-creator",
-          "contentHash": "f78797caecd78d5b94c0ef42ede753e8f9d62af9e9a21e6dc0a7affb9d737731"
+          "contentHash": "cb1f51ff6df360f29ebaa5b8b683df9ebdd2dbe9ee1baf31d317ee9c594b81a8"
         },
         {
           "targetId": "full-stack-skills-uniapp-uniapp-ucharts",
           "relativePath": "uniapp-ucharts",
-          "contentHash": "eee898e67d6511a901cfb35bf2386a4521b5a26f1c7497121eb7801ecd49419a"
+          "contentHash": "ea2fc789710f775c67bbe147065b8339a06b306e86ef79508d62db70b29d48c6"
         },
         {
           "targetId": "full-stack-skills-uniapp-uniapp-uview",
           "relativePath": "uniapp-uview",
-          "contentHash": "461dfa16376aab325935f17924a146b0f361e32ee293adbb95fec1447046731e"
+          "contentHash": "f885397ddbcc281d2ee07b4412e74d5ebcc5b3ce894e5f57930107d7b4be5634"
         },
         {
           "targetId": "full-stack-skills-uniapp-uniappx-project",
           "relativePath": "uniappx-project",
-          "contentHash": "aeddf2bd0f238c2f1d218475e6358dbe8d4b03e4aa408c3c8f3f90c73750f03d"
+          "contentHash": "ec9e770dff9bf26bccc243ed21d30fc032223f6e7ea4e871d707e1b35871a5c1"
         },
         {
           "targetId": "full-stack-skills-uniapp-uniappx-project-creator",
           "relativePath": "uniappx-project-creator",
-          "contentHash": "6df684178167978c90edd902b8f275df110d1470a920442437653ffde19cff71"
+          "contentHash": "cc00ea78ebc8a8927486bfac2d0d8f3279bacad1993a6778a4f753d6c06622b7"
         },
         {
           "targetId": "full-stack-skills-uniapp-uniappx-uview-pro",
           "relativePath": "uniappx-uview-pro",
-          "contentHash": "59bb9570e0e0f975ee5d98685d8ae101dff4a62e3b633d7dcb46a8f925dd6872"
+          "contentHash": "fe3b0e6f59eecdd06f07dbfbc4dbb8d7387d947a868bf2ab8c9747e9c92b9e1b"
         }
       ]
     },
@@ -339,7 +306,6 @@
       "includes": [
         "create-adaptable-composable",
         "vue-debug-guides",
-        "vue-jsx-best-practices",
         "vue-options-api-best-practices",
         "vue-pinia-best-practices"
       ],
@@ -349,14 +315,12 @@
       "targets": [
         "vuejs-ai-create-adaptable-composable",
         "vuejs-ai-vue-debug-guides",
-        "vuejs-ai-vue-jsx-best-practices",
         "vuejs-ai-vue-options-api-best-practices",
         "vuejs-ai-vue-pinia-best-practices"
       ],
       "skillPaths": [
         "create-adaptable-composable",
         "vue-debug-guides",
-        "vue-jsx-best-practices",
         "vue-options-api-best-practices",
         "vue-pinia-best-practices"
       ],
@@ -370,11 +334,6 @@
           "targetId": "vuejs-ai-vue-debug-guides",
           "relativePath": "vue-debug-guides",
           "contentHash": "c39cee74b0b6a4a8f7e50447ae9fd7494c80e86f50dc75753620e2ebeae22c3f"
-        },
-        {
-          "targetId": "vuejs-ai-vue-jsx-best-practices",
-          "relativePath": "vue-jsx-best-practices",
-          "contentHash": "bd3487c0d6217ecdd0604fee84454f51d4b8db0c333921378eccd495be8a0fcc"
         },
         {
           "targetId": "vuejs-ai-vue-options-api-best-practices",
@@ -395,10 +354,8 @@
       "path": "skills",
       "mode": "flat",
       "includes": [
-        "acquire-codebase-knowledge",
         "api-and-interface-design",
         "browser-testing-with-devtools",
-        "chrome-devtools",
         "code-review-and-quality",
         "code-simplification",
         "context-engineering",
@@ -409,17 +366,13 @@
         "incremental-implementation",
         "performance-optimization",
         "planning-and-task-breakdown",
-        "premium-frontend-ui",
-        "refactor",
-        "review-and-refactor",
         "security-and-hardening",
         "shipping-and-launch",
         "source-driven-development",
-        "spec-driven-development",
-        "web-design-reviewer"
+        "spec-driven-development"
       ],
       "excludes": [],
-      "commit": "7829ffd90d973b6325f5f12f1b1226dcace74443",
+      "commit": "be4e44a9fbc5e8df0beaefadbb28bd22ee61cc39",
       "status": "synced",
       "targets": [
         "addyosmani-api-and-interface-design",
@@ -461,7 +414,7 @@
         {
           "targetId": "addyosmani-api-and-interface-design",
           "relativePath": "api-and-interface-design",
-          "contentHash": "293db2903b41316a5109a1e0ce3e1740eeafae31735bc1f9143dafbfd1187363"
+          "contentHash": "5dafd0c44a3aabf11cae5bcb34f6fcc24dfa5c01ba6e0d3176bce997f4d68bc8"
         },
         {
           "targetId": "addyosmani-browser-testing-with-devtools",
@@ -471,7 +424,7 @@
         {
           "targetId": "addyosmani-code-review-and-quality",
           "relativePath": "code-review-and-quality",
-          "contentHash": "bec431b759ff389e47b8d2c9d74e1981ff93cf5f3c36b4a3b6a71a75c250be2c"
+          "contentHash": "8f3cabca581bbf7cb5f0add3f7454e7a4523f9d4353a6a4a217e6fa515309612"
         },
         {
           "targetId": "addyosmani-code-simplification",
@@ -481,62 +434,62 @@
         {
           "targetId": "addyosmani-context-engineering",
           "relativePath": "context-engineering",
-          "contentHash": "ff9d4e5706bdd2eb7de1bfed569f1f42d28e478979ce6fcc32e617e7861b491d"
+          "contentHash": "8b736cb9e55b82b265ab6ff78349c0e826e8a6df550deddf665b7fb3ff858b63"
         },
         {
           "targetId": "addyosmani-debugging-and-error-recovery",
           "relativePath": "debugging-and-error-recovery",
-          "contentHash": "67ce2c9442da0c5a6e3515617fc9c4003cfe232ef7c7210da342f40f508f9958"
+          "contentHash": "21f3960f5d7ae2cc95c40896545004dbbcbbd752ea65fc2d53962554d4174220"
         },
         {
           "targetId": "addyosmani-documentation-and-adrs",
           "relativePath": "documentation-and-adrs",
-          "contentHash": "b867bb80fb681257c7625ae59a0dfd849b1fc0f0a2f0338e7923f38030df9793"
+          "contentHash": "87ae44a0c7bb3eefc2131a9d11caabcc14e4d8dcb27d66a3a675551ee2ce1671"
         },
         {
           "targetId": "addyosmani-frontend-ui-engineering",
           "relativePath": "frontend-ui-engineering",
-          "contentHash": "9c284b1f06d617b289c0d250004af5cbaedd5135071e1b17c0211a0aa03a73a4"
+          "contentHash": "2b74ac4862be3902ec918dceac9366a6fe83b9e003601c0deaf6be09c1766aca"
         },
         {
           "targetId": "addyosmani-git-workflow-and-versioning",
           "relativePath": "git-workflow-and-versioning",
-          "contentHash": "51677cf03845dd29d08ea4d3125665057b720aea3dccc572f25d8b172409ece6"
+          "contentHash": "b7465d187935c52546d39fdc7bd6ac36d94eda25a9500ef8c18b767d2eb116ea"
         },
         {
           "targetId": "addyosmani-incremental-implementation",
           "relativePath": "incremental-implementation",
-          "contentHash": "f3336e581a5247d9a6a58096f0015dbbfb7673a35e71aebd39491c55662a1906"
+          "contentHash": "df66536610071727feae1ca95f3c391c248ad828041750ccd3699cce763aa00b"
         },
         {
           "targetId": "addyosmani-performance-optimization",
           "relativePath": "performance-optimization",
-          "contentHash": "64f4f4105b66d155f0a6654dd8d542a58329d282c4e07bc82881bb755230fb29"
+          "contentHash": "00694d0c69bbde674d0e39de24052d90afea32d9fef9553eaee21a50a7e9b8cf"
         },
         {
           "targetId": "addyosmani-planning-and-task-breakdown",
           "relativePath": "planning-and-task-breakdown",
-          "contentHash": "1fd1c06f06042d60123ec7144fd7f16655993b6cbc152e76eb5fcdd1a4805a6c"
+          "contentHash": "ed0f90cc5951ddd4bcab7f871f64efec93a49af9279ef93bc470da77ad8da3f7"
         },
         {
           "targetId": "addyosmani-security-and-hardening",
           "relativePath": "security-and-hardening",
-          "contentHash": "266c60e073bc81651ad070a1427a93af4d062dc44470580eae31806b38561833"
+          "contentHash": "4aa7a433a0a8042f47197f05893343bd9d1cc02a9179537ef3437c05c49b385d"
         },
         {
           "targetId": "addyosmani-shipping-and-launch",
           "relativePath": "shipping-and-launch",
-          "contentHash": "f45d9bb9e96fd1a49f3231179acac9d3cd2bbe02f237f0e08fa86866cc57909a"
+          "contentHash": "af610cf4892db7eab2e91c899e33feba90e1000bac4528b2f8dde930816ac125"
         },
         {
           "targetId": "addyosmani-source-driven-development",
           "relativePath": "source-driven-development",
-          "contentHash": "b979e7531ea601ed14a090f32a5b135db517c48ab9821c5e8b09efd80f4ff4d8"
+          "contentHash": "c59faf851377f0eeda45306398d16eb96d77ab1c2fd3e1a7fb58e9a0af33c1e9"
         },
         {
           "targetId": "addyosmani-spec-driven-development",
           "relativePath": "spec-driven-development",
-          "contentHash": "af5b873414a8b45b96b0d30d5297400f55eb3a56425161a088e470c14260a1e5"
+          "contentHash": "f7129bca8742bad73f60209bd237e8b10dab6f1fae8576dc552fb1923bc1e721"
         }
       ]
     },
@@ -548,79 +501,44 @@
       "mode": "flat",
       "includes": [
         "acquire-codebase-knowledge",
-        "chrome-devtools",
         "premium-frontend-ui",
         "web-design-reviewer",
         "gsap-framer-scroll-animation",
         "refactor",
-        "review-and-refactor",
-        "context-map",
         "code-tour",
-        "create-specification",
-        "create-implementation-plan",
         "documentation-writer"
       ],
       "excludes": [],
-      "commit": "329f2dcdaf02a59e88a0f55a8f51414fa3378966",
+      "commit": "0a66795706fffe0a2fb99a7eb1af5f9b67c6db8d",
       "status": "synced",
       "targets": [
         "awesome-copilot-acquire-codebase-knowledge",
-        "awesome-copilot-chrome-devtools",
         "awesome-copilot-code-tour",
-        "awesome-copilot-context-map",
-        "awesome-copilot-create-implementation-plan",
-        "awesome-copilot-create-specification",
         "awesome-copilot-documentation-writer",
         "awesome-copilot-gsap-framer-scroll-animation",
         "awesome-copilot-premium-frontend-ui",
         "awesome-copilot-refactor",
-        "awesome-copilot-review-and-refactor",
         "awesome-copilot-web-design-reviewer"
       ],
       "skillPaths": [
         "acquire-codebase-knowledge",
-        "chrome-devtools",
         "code-tour",
-        "context-map",
-        "create-implementation-plan",
-        "create-specification",
         "documentation-writer",
         "gsap-framer-scroll-animation",
         "premium-frontend-ui",
         "refactor",
-        "review-and-refactor",
         "web-design-reviewer"
       ],
       "skills": [
         {
           "targetId": "awesome-copilot-acquire-codebase-knowledge",
           "relativePath": "acquire-codebase-knowledge",
-          "contentHash": "7ca01711e1615171b26ce9e2729bedf041348d7fd0f24bc04e0d400dc93e41b9"
-        },
-        {
-          "targetId": "awesome-copilot-chrome-devtools",
-          "relativePath": "chrome-devtools",
-          "contentHash": "e85ec55f68317923033375f00b431e9d5822283ea4bfad967f5fa7cbc61e6265"
+          "contentHash": "a86527533d2ee4df27063af24402b9e1a345c33bba3cf423c96da7cdb3864a60"
         },
         {
           "targetId": "awesome-copilot-code-tour",
           "relativePath": "code-tour",
           "contentHash": "365f0d06c564e6bb0f950a28f92e875780d4f0fef0ff6b86e05151a17f658f09"
-        },
-        {
-          "targetId": "awesome-copilot-context-map",
-          "relativePath": "context-map",
-          "contentHash": "af0037b06a0b56a5014e16a32538ac419725638659428b7e229ed5bbb9087a37"
-        },
-        {
-          "targetId": "awesome-copilot-create-implementation-plan",
-          "relativePath": "create-implementation-plan",
-          "contentHash": "11caba1048cbdbfca6f7ce13a0e0580d6e9d943f7b775ee24978ece1d3334066"
-        },
-        {
-          "targetId": "awesome-copilot-create-specification",
-          "relativePath": "create-specification",
-          "contentHash": "ae2c3ca87d871056b4b7d8e11758ee8c29fcb307ba890b1407ab5a88b8d2a5d8"
         },
         {
           "targetId": "awesome-copilot-documentation-writer",
@@ -643,14 +561,9 @@
           "contentHash": "58a38edd230cdcdd866939906321c8ba6f47c98a70d0cda373360196ee2ca1a7"
         },
         {
-          "targetId": "awesome-copilot-review-and-refactor",
-          "relativePath": "review-and-refactor",
-          "contentHash": "95b48ed4b137777ddc87b77cb0873ed7f485141a517825e71af1a984cf5a6cd6"
-        },
-        {
           "targetId": "awesome-copilot-web-design-reviewer",
           "relativePath": "web-design-reviewer",
-          "contentHash": "2b324a0a6b44f16ddd2259f3cb2cb326b315ff5c42b5bf5c99132cd6f77835e5"
+          "contentHash": "a08a147cfe555dabe30f2c8f2e267f287e992f74f2b802e68989884338e23b17"
         }
       ]
     },
@@ -661,62 +574,51 @@
       "path": ".claude/skills",
       "mode": "flat",
       "includes": [],
-      "excludes": [],
-      "commit": "3b5df7547964f0cb3424de74cff55b69039250d3",
+      "excludes": [
+        "banner-design",
+        "slides"
+      ],
+      "commit": "15de38fb70bc80ae9276fa7703b48ae861a672e6",
       "status": "synced",
       "targets": [
-        "ui-ux-pro-max-skill-banner-design",
         "ui-ux-pro-max-skill-brand",
         "ui-ux-pro-max-skill-design",
         "ui-ux-pro-max-skill-design-system",
-        "ui-ux-pro-max-skill-slides",
         "ui-ux-pro-max-skill-ui-styling",
         "ui-ux-pro-max-skill-ui-ux-pro-max"
       ],
       "skillPaths": [
-        "banner-design",
         "brand",
         "design",
         "design-system",
-        "slides",
         "ui-styling",
         "ui-ux-pro-max"
       ],
       "skills": [
         {
-          "targetId": "ui-ux-pro-max-skill-banner-design",
-          "relativePath": "banner-design",
-          "contentHash": "913d9c4b2a3b405d638d50131e0dd3fe2787c839423d79287b7858ac29255acc"
-        },
-        {
           "targetId": "ui-ux-pro-max-skill-brand",
           "relativePath": "brand",
-          "contentHash": "6a450ee1a83a403d47cec2ede9030feb60a67a81fc425d2406e975339313bd44"
+          "contentHash": "53e7f858e18dea4d687db6e49e8a33786cbcdf720aa40e84bd6d6250f5e59aa8"
         },
         {
           "targetId": "ui-ux-pro-max-skill-design",
           "relativePath": "design",
-          "contentHash": "413f4ab913d07f7fd92acbadc25d71aad63443be0c40d11234944aea688603b6"
+          "contentHash": "c84f3ecfd6a0fd1c46abf6805a0bbc26ea0b94a104f457e243ccf0943ece123c"
         },
         {
           "targetId": "ui-ux-pro-max-skill-design-system",
           "relativePath": "design-system",
-          "contentHash": "655468bb723a6bc9d17fcb09a6a005e10e313d63b879f4d74fb2abdc3041ae3f"
-        },
-        {
-          "targetId": "ui-ux-pro-max-skill-slides",
-          "relativePath": "slides",
-          "contentHash": "2b90bdaf63f231919a01f4962f374ecd84af101a7e7545f8d9c68e049025accb"
+          "contentHash": "8aa5ff93320559a6e5289d37b6b06b3307737dbfb4a6f3fc44135c705613c511"
         },
         {
           "targetId": "ui-ux-pro-max-skill-ui-styling",
           "relativePath": "ui-styling",
-          "contentHash": "f8b6c3832d2af51f67b3932e3c4a79bcd8a8596cc61ce1547a686fc951e5c62d"
+          "contentHash": "41f6d6a41bf827544e7b47f2ad2fe0264db7820bc6b425adbc037fc5508ffef0"
         },
         {
           "targetId": "ui-ux-pro-max-skill-ui-ux-pro-max",
           "relativePath": "ui-ux-pro-max",
-          "contentHash": "305a7527fcb2f5b6e4129ab22cd839b5172d26df7f14d3324bfdec8fc1763560"
+          "contentHash": "ea087c341bfb5b23195c7302027268ede86da802554c18a5c4896a6017b439f9"
         }
       ]
     },
@@ -882,7 +784,7 @@
         "netlify-cli-and-deploy"
       ],
       "excludes": [],
-      "commit": "b4ac277e6795f90e6a1d163c001c0d7667ff9143",
+      "commit": "eddd0a3c67642651097a65b2d2d4194eaec173a1",
       "status": "synced",
       "targets": [
         "netlify-context-and-tools-netlify-deploy",
@@ -896,12 +798,12 @@
         {
           "targetId": "netlify-context-and-tools-netlify-deploy",
           "relativePath": "netlify-deploy",
-          "contentHash": "6f3f8e18233bec6da07aba3b3a7b69d24943dc189ff17cf86dea1dcc8f9ea861"
+          "contentHash": "478284bb5d658070f11cdc7c9104c46fa409a4ad1438463918bb3d6e20b50a37"
         },
         {
           "targetId": "netlify-context-and-tools-netlify-frameworks",
           "relativePath": "netlify-frameworks",
-          "contentHash": "cf30dfe2bb7c40cbfe09e8bf1cbbd359ff2c1818d8c32ebba852e47a36e9eb14"
+          "contentHash": "231c3ce4dccce8d27c3990aeaaf38763fb326c1eb54d1f11fff27f3fc49fa43e"
         }
       ]
     },
@@ -919,7 +821,7 @@
         "wot-ui-v2"
       ],
       "excludes": [],
-      "commit": "863ff5924de3d1b94d2ae91c7097d843d9a33e1e",
+      "commit": "d60d2f7beb631b791f651529b8936ac1381eccdd",
       "status": "synced",
       "targets": [
         "open-wot-create-wot-ui-theme",
@@ -944,12 +846,12 @@
         {
           "targetId": "open-wot-migrate-v1-to-v2",
           "relativePath": "migrate-v1-to-v2",
-          "contentHash": "3079937905ed12e18e914fa4489c4ab5e7a8e7ead253c8b966727e51bd20e37f"
+          "contentHash": "2934e40e877b08d458738851589bb2f179c83891b84404eadc41b1fb1725215b"
         },
         {
           "targetId": "open-wot-wot-ui-cli",
           "relativePath": "wot-ui-cli",
-          "contentHash": "af1020410b91827745bf5218fc5384fdc2053f6e2dfb9e6bc8c80586b1ea53fb"
+          "contentHash": "1c4572fc871f8c0a09d0342a61727bc1a83422b067356631370c5f66b4412e83"
         },
         {
           "targetId": "open-wot-wot-ui-unocss-preset-guide",
@@ -975,7 +877,7 @@
         "theme-factory"
       ],
       "excludes": [],
-      "commit": "b29e7cf65e5cb78a5ac33d582270551bc74a14eb",
+      "commit": "34040c9c568585f6929bedeaad110ad08f079624",
       "status": "synced",
       "targets": [
         "anthropic-frontend-design",
@@ -991,7 +893,7 @@
         {
           "targetId": "anthropic-frontend-design",
           "relativePath": "frontend-design",
-          "contentHash": "1608ea77fbb6fc30d13a97d12cfa8ebf31358d40f0dd97beed24829d6b3f45dd"
+          "contentHash": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3"
         },
         {
           "targetId": "anthropic-theme-factory",
@@ -1055,7 +957,7 @@
       "mode": "flat",
       "includes": [],
       "excludes": [],
-      "commit": "feb41b5c3fea0eecc6857896c870eff4480641c8",
+      "commit": "0f810bec6c2510ef064d9657dc7039927df1a240",
       "status": "synced",
       "targets": [
         "unovue-shadcn-vue"
@@ -1099,11 +1001,11 @@
       "type": "remote",
       "location": "https://github.com/TencentLBS/tencentmap-jsapi-gl-skill.git",
       "branch": "main",
-      "path": "tencentmap-jsapi-gl-skill",
+      "path": ".",
       "mode": "flat",
       "includes": [],
       "excludes": [],
-      "commit": "2f217b63e727de4345092bea4f43f425ea1ec8ea",
+      "commit": "d5408b2e4c7e0bcce3cbd93ab605577c8da5e315",
       "status": "synced",
       "targets": [
         "tencentmap-jsapi-gl-skill"
@@ -1115,7 +1017,7 @@
         {
           "targetId": "tencentmap-jsapi-gl-skill",
           "relativePath": ".",
-          "contentHash": "f9de1080a11cbb252235b826cb7402bc7a1bb90ea887ad3d406a9bb45b3182cd"
+          "contentHash": "c98361a21bb13cbe114eedfa6bf92c8a079fcf3dfe4b14f9d8ebb7c5cae6dca6"
         }
       ]
     },
@@ -1127,7 +1029,7 @@
       "mode": "flat",
       "includes": [],
       "excludes": [],
-      "commit": "2819c63c550ac8ff3df1ac4c35e3a7d58d4c8626",
+      "commit": "2a52c24f652f5dff96a520051abc70c55d1eb49a",
       "status": "synced",
       "targets": [
         "tencentmap-webservice-skill"
@@ -1139,7 +1041,7 @@
         {
           "targetId": "tencentmap-webservice-skill",
           "relativePath": ".",
-          "contentHash": "c3dacfe03079c3c89a8ed4ab635a750d86da3f34a3b7e2dd47d5c91395246f40"
+          "contentHash": "1795f00c78a9dc4f18f5a49816ff3e6dcdfd0ccb4ec467fbe0c9f26bdd0c0c03"
         }
       ]
     },
@@ -1152,7 +1054,7 @@
       "includes": [],
       "excludes": [],
       "commit": "53049dd041726c70f9610274b49711a385c16665",
-      "status": "synced",
+      "status": "preserved",
       "targets": [
         "tencentmap-lbs-skill"
       ],
