@@ -1044,30 +1044,6 @@
           "contentHash": "1795f00c78a9dc4f18f5a49816ff3e6dcdfd0ccb4ec467fbe0c9f26bdd0c0c03"
         }
       ]
-    },
-    "tencentmap-lbs-skill": {
-      "type": "remote",
-      "location": "https://github.com/TencentLBS/tencentmap-lbs-skill.git",
-      "branch": "main",
-      "path": ".",
-      "mode": "flat",
-      "includes": [],
-      "excludes": [],
-      "commit": "53049dd041726c70f9610274b49711a385c16665",
-      "status": "preserved",
-      "targets": [
-        "tencentmap-lbs-skill"
-      ],
-      "skillPaths": [
-        "."
-      ],
-      "skills": [
-        {
-          "targetId": "tencentmap-lbs-skill",
-          "relativePath": ".",
-          "contentHash": "08aa1b0c96efeddb0b770cafb87593e96c9b5df4dd272744235257b3708b72ac"
-        }
-      ]
     }
   }
 }
